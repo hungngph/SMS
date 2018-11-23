@@ -2,10 +2,10 @@ C:\Users\PhiHung\Desktop\SMS\SMS\bin\Debug\SMS.exe.config
 C:\Users\PhiHung\Desktop\SMS\SMS\bin\Debug\SMS.exe
 C:\Users\PhiHung\Desktop\SMS\SMS\bin\Debug\SMS.pdb
 C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.csprojAssemblyReference.cache
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmLogin.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmMain.resources
 C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.Properties.Resources.resources
 C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.csproj.GenerateResource.cache
 C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.csproj.CoreCompileInputs.cache
 C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.exe
 C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.pdb
-C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmLogin.resources
-C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmMain.resources

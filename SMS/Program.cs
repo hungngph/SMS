@@ -18,10 +18,10 @@ namespace SMS
             Application.SetCompatibleTextRenderingDefault(false);
             
             //Form Main
-            //Application.Run(new frmMain());
+            Application.Run(new frmMain());
             
             //Form Login
-            Application.Run(new frmLogin());
+            //Application.Run(new frmLogin());
         }
     }
 }
