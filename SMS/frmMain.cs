@@ -48,8 +48,12 @@ namespace SMS
             btn12.Visible = !btn12.Visible;
         }
 
-        
-        private void btn11_Click(object sender, EventArgs e) { }
+        //Đổi mật khẩu
+        private void btn11_Click(object sender, EventArgs e)
+        {
+            frmDoiMK dmk = new frmDoiMK();
+            dmk.Show();
+        }
 
         //Chỉnh sửa danh sách người dùng
         private void btn12_Click(object sender, EventArgs e)

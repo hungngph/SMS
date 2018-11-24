@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmChinhSuaDSNguoiDung));
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textMS = new System.Windows.Forms.TextBox();
             this.textLop = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -46,7 +47,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.cboQuyen = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtConfimMk = new System.Windows.Forms.TextBox();
+            this.txtXacNhanMk = new System.Windows.Forms.TextBox();
             this.txtMK = new System.Windows.Forms.TextBox();
             this.txtTaikhoan = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -57,7 +58,6 @@
             this.btnThemmoi = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgrLogin = new System.Windows.Forms.DataGridView();
-            this.textMS = new System.Windows.Forms.TextBox();
             this.btnThoat = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -67,11 +67,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DimGray;
             this.label1.Location = new System.Drawing.Point(306, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(507, 63);
+            this.label1.Size = new System.Drawing.Size(434, 55);
             this.label1.TabIndex = 5;
             this.label1.Text = "Quản lý người dùng";
             // 
@@ -93,7 +93,7 @@
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.cboQuyen);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.txtConfimMk);
+            this.groupBox1.Controls.Add(this.txtXacNhanMk);
             this.groupBox1.Controls.Add(this.txtMK);
             this.groupBox1.Controls.Add(this.txtTaikhoan);
             this.groupBox1.Controls.Add(this.label5);
@@ -107,6 +107,15 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin chi tiết";
+            // 
+            // textMS
+            // 
+            this.textMS.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textMS.ForeColor = System.Drawing.Color.Black;
+            this.textMS.Location = new System.Drawing.Point(560, 20);
+            this.textMS.Name = "textMS";
+            this.textMS.Size = new System.Drawing.Size(207, 30);
+            this.textMS.TabIndex = 62;
             // 
             // textLop
             // 
@@ -267,13 +276,13 @@
             this.label6.TabIndex = 17;
             this.label6.Text = "Quyền";
             // 
-            // txtConfimMk
+            // txtXacNhanMk
             // 
-            this.txtConfimMk.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.txtConfimMk.Location = new System.Drawing.Point(559, 172);
-            this.txtConfimMk.Name = "txtConfimMk";
-            this.txtConfimMk.Size = new System.Drawing.Size(208, 30);
-            this.txtConfimMk.TabIndex = 15;
+            this.txtXacNhanMk.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.txtXacNhanMk.Location = new System.Drawing.Point(559, 172);
+            this.txtXacNhanMk.Name = "txtXacNhanMk";
+            this.txtXacNhanMk.Size = new System.Drawing.Size(208, 30);
+            this.txtXacNhanMk.TabIndex = 15;
             // 
             // txtMK
             // 
@@ -386,15 +395,6 @@
             this.dgrLogin.Size = new System.Drawing.Size(1013, 262);
             this.dgrLogin.TabIndex = 0;
             // 
-            // textMS
-            // 
-            this.textMS.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textMS.ForeColor = System.Drawing.Color.Black;
-            this.textMS.Location = new System.Drawing.Point(560, 20);
-            this.textMS.Name = "textMS";
-            this.textMS.Size = new System.Drawing.Size(207, 30);
-            this.textMS.TabIndex = 62;
-            // 
             // btnThoat
             // 
             this.btnThoat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
@@ -408,6 +408,7 @@
             this.btnThoat.TabIndex = 30;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = false;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // frmChinhSuaDSNguoiDung
             // 
@@ -449,7 +450,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cboQuyen;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtConfimMk;
+        private System.Windows.Forms.TextBox txtXacNhanMk;
         private System.Windows.Forms.TextBox txtMK;
         private System.Windows.Forms.TextBox txtTaikhoan;
         private System.Windows.Forms.Label label5;

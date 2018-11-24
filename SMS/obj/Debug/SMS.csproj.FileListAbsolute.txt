@@ -10,3 +10,4 @@ C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.csproj.CoreCompileInputs.cache
 C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.exe
 C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.pdb
 C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmChinhSuaDSNguoiDung.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmDoiMK.resources
