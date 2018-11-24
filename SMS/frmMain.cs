@@ -18,15 +18,6 @@ namespace SMS
             InitializeComponent();
         }
 
-        //Form Fullscreen
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-            FormBorderStyle = FormBorderStyle.None;
-            WindowState = FormWindowState.Maximized;
-        }
-
-        //
-
         //Di chuyển form
         Boolean flag; int x, y;
         private void F1_MouseDown(object sender, MouseEventArgs e)
@@ -49,23 +40,6 @@ namespace SMS
         }
         //
 
-        //Nút đóng form
-        private void button8_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Bạn có muốn đóng chương trình?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                System.Windows.Forms.Application.Exit();
-            else
-                this.Activate();
-        }
-        //
-
-        //Nút thu nhỏ form
-        private void button9_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-        //
-
         //Các chức năng chính:
         //1.Quản lý người dùng
         private void btnGroup1_Click(object sender, EventArgs e)
@@ -74,9 +48,15 @@ namespace SMS
             btn12.Visible = !btn12.Visible;
         }
 
+        
         private void btn11_Click(object sender, EventArgs e) { }
 
-        private void btn12_Click(object sender, EventArgs e) { }
+        //Chỉnh sửa danh sách người dùng
+        private void btn12_Click(object sender, EventArgs e)
+        {
+            frmChinhSuaDSNguoiDung csdsng = new frmChinhSuaDSNguoiDung();
+            csdsng.Show();
+        }
 
         //2.Cập nhật thông tin
         private void btnGroup2_Click(object sender, EventArgs e)
