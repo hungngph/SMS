@@ -1,0 +1,22 @@
+->: chứa tham chiếu
+SqlDataReader -> SqlCommand -> SqlConnection
+
+//Sử dụng Error Provider
+
+đề nghị Update vào thứ 2 (Còn update)
+
+1. Sửa quản lí -> quản lý :v
+2. Sửa table DANGNHAP -> TAIKHOAN
+3. Sửa tên formLogin
+	textMatKhau -> txtMatKhau
+4. Sửa QUYENTRUYCAP 
+	admin -> Admin
+5. Sửa cố vấn
+6. Event MouseMove trong frmChinhSuaDSNguoiDung 
+7. Sửa btnThemmoi -> btnThemMoi
+8. Sửa textDiaChi -> txtDiaChi frmChinhSuaDSNguoiDung
+9. frmChinhSuaDSNguoiDung thừa 
+10. frmChinhSuaDSNguoiDung combobox phải làm theo database
+11. Sửa database quyền: Admin, Giáo viên, Sinh viên
+
+T3 chuyển sang code hết
