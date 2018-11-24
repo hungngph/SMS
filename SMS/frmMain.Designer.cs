@@ -105,6 +105,9 @@
             // 
             // flowLayoutPanelFunction
             // 
+            this.flowLayoutPanelFunction.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanelFunction.AutoScroll = true;
             this.flowLayoutPanelFunction.Controls.Add(this.btnGroup1);
             this.flowLayoutPanelFunction.Controls.Add(this.btn12);
@@ -131,7 +134,6 @@
             this.flowLayoutPanelFunction.Controls.Add(this.btn64);
             this.flowLayoutPanelFunction.Controls.Add(this.btn65);
             this.flowLayoutPanelFunction.Controls.Add(this.btnGroup7);
-            this.flowLayoutPanelFunction.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanelFunction.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanelFunction.Name = "flowLayoutPanelFunction";
             this.flowLayoutPanelFunction.Size = new System.Drawing.Size(292, 1027);
