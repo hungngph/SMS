@@ -58,6 +58,12 @@
     <Compile Include="frmDoiMK.Designer.cs">
       <DependentUpon>frmDoiMK.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmNhapKhoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNhapKhoa.Designer.cs">
+      <DependentUpon>frmNhapKhoa.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +76,24 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmNhapLop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNhapLop.Designer.cs">
+      <DependentUpon>frmNhapLop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNhapMonHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNhapMonHoc.Designer.cs">
+      <DependentUpon>frmNhapMonHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNhapThongTinSV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNhapThongTinSV.Designer.cs">
+      <DependentUpon>frmNhapThongTinSV.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmChinhSuaDSNguoiDung.resx">
@@ -78,11 +102,23 @@
     <EmbeddedResource Include="frmDoiMK.resx">
       <DependentUpon>frmDoiMK.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmNhapKhoa.resx">
+      <DependentUpon>frmNhapKhoa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNhapLop.resx">
+      <DependentUpon>frmNhapLop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNhapMonHoc.resx">
+      <DependentUpon>frmNhapMonHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNhapThongTinSV.resx">
+      <DependentUpon>frmNhapThongTinSV.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

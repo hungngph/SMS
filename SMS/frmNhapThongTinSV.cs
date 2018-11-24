@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace SMS
 {
-    public partial class frmLogin : Form
+    public partial class frmNhapThongTinSV : Form
     {
-        public frmLogin()
+        public frmNhapThongTinSV()
         {
             InitializeComponent();
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

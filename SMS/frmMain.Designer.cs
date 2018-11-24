@@ -577,7 +577,7 @@
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "frmMain";
-            this.Text = "Đồ án Quản lý Sinh viên";
+            this.Text = "Đồ Án Quản Lý Sinh Viên";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.F1_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.F1_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.F1_MouseUp);

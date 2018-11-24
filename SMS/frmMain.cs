@@ -71,10 +71,31 @@ namespace SMS
             btn24.Visible = !btn24.Visible;
         }
 
-        private void btn21_Click(object sender, EventArgs e) { }
-        private void btn22_Click(object sender, EventArgs e) { }
-        private void btn23_Click(object sender, EventArgs e) { }
-        private void btn24_Click(object sender, EventArgs e) { }
+        //Nhập thông tin sinh viên
+        private void btn21_Click(object sender, EventArgs e)
+        {
+            frmNhapThongTinSV nttsv= new frmNhapThongTinSV();
+            nttsv.Show();
+        }
+
+        //Nhập môn học
+        private void btn22_Click(object sender, EventArgs e)
+        {
+            frmNhapMonHoc nmh = new frmNhapMonHoc();
+            nmh.Show();
+        }
+
+        //Nhập lớp học
+        private void btn23_Click(object sender, EventArgs e)
+        {
+            frmNhapLop nl = new frmNhapLop();
+            nl.Show();
+        }
+        private void btn24_Click(object sender, EventArgs e)
+        {
+            frmNhapKhoa nk = new frmNhapKhoa();
+            nk.Show();
+        }
 
         //3.Đăng ký môn học và nhập điểm
         private void btnGroup3_Click(object sender, EventArgs e)

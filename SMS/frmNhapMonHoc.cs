@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace SMS
 {
-    public partial class frmLogin : Form
+    public partial class frmNhapMonHoc : Form
     {
-        public frmLogin()
+        public frmNhapMonHoc()
         {
             InitializeComponent();
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

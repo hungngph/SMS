@@ -48,7 +48,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.DimGray;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(126)))), ((int)(((byte)(49)))));
             this.label1.Location = new System.Drawing.Point(154, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(387, 51);
@@ -139,6 +139,7 @@
             // btnOk
             // 
             this.btnOk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.btnOk.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnOk.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.btnOk.ForeColor = System.Drawing.Color.White;
             this.btnOk.Image = ((System.Drawing.Image)(resources.GetObject("btnOk.Image")));
@@ -153,6 +154,7 @@
             // btnThoat
             // 
             this.btnThoat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.btnThoat.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnThoat.Font = new System.Drawing.Font("Times New Roman", 10F);
             this.btnThoat.ForeColor = System.Drawing.Color.White;
             this.btnThoat.Image = ((System.Drawing.Image)(resources.GetObject("btnThoat.Image")));
@@ -176,7 +178,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "frmDoiMK";
-            this.Text = "Đổi mật khẩu";
+            this.Text = "Đổi Mật Khẩu";
             this.groupBoxThongTin.ResumeLayout(false);
             this.groupBoxThongTin.PerformLayout();
             this.ResumeLayout(false);

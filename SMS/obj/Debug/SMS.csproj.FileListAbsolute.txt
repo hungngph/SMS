@@ -11,3 +11,7 @@ C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.exe
 C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.pdb
 C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmChinhSuaDSNguoiDung.resources
 C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmDoiMK.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmNhapThongTinSV.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmNhapMonHoc.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmNhapLop.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmNhapKhoa.resources
