@@ -1,0 +1,10 @@
+Sua thu tu tab: -> Lut sua lai
+*Nhaplopquanly: Sai
+chua có Nhaplopmonhoc
+textmatkhau -> txt matkhau: done
+tendangnhap: textbox -> combobox
+thêm btnLuu trong các form nhâp, chinh sua thông tin: done (frmNhapKhoa & frmNhapMonHoc)
+khi click: btnSua  -> btncapnhap: done
+textMaKhoa -> txtMakhoa: done
+textMonHoc -> txtMonHoc: done
+datagridview dgr -> dgv : done
