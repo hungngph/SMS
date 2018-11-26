@@ -18,5 +18,8 @@ SqlDataReader -> SqlCommand -> SqlConnection
 9. frmChinhSuaDSNguoiDung thừa 
 10. frmChinhSuaDSNguoiDung combobox phải làm theo database
 11. Sửa database quyền: Admin, Giáo viên, Sinh viên
+12. Hùng thêm error Provider
+13. Đặt thuộc tính cho data grid view
+
 
 T3 chuyển sang code hết
