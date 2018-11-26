@@ -26,3 +26,5 @@ T3 chuyển sang code hết
 
 
 1/12/2018 xử lý khóa chính khóa phụ
+
+- Chuyển tất cả code xử lý sang 1 class quản lý database, sẽ update mỗi tối 
