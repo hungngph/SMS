@@ -103,8 +103,16 @@ namespace SMS
             btn31.Visible = !btn31.Visible;
             btn32.Visible = !btn32.Visible;
         }
-        private void btn31_Click(object sender, EventArgs e) { }
-        private void btn32_Click(object sender, EventArgs e) { }
+        private void btn31_Click(object sender, EventArgs e)
+        {
+            frmNhapDiem ndiem = new frmNhapDiem();
+            ndiem.Show();
+        }
+        private void btn32_Click(object sender, EventArgs e)
+        {
+            frmXemDiem xdiem = new frmXemDiem();
+            xdiem.Show();
+        }
         //
 
         //4.Thông tin học phí và điểm
@@ -113,8 +121,16 @@ namespace SMS
             btn41.Visible = !btn41.Visible;
             btn42.Visible = !btn42.Visible;
         }
-        private void btn41_Click(object sender, EventArgs e) { }
-        private void btn42_Click(object sender, EventArgs e) { }
+        private void btn41_Click(object sender, EventArgs e)
+        {
+            frmXemDiemCaNhan dcn = new frmXemDiemCaNhan();
+            dcn.Show();
+        }
+        private void btn42_Click(object sender, EventArgs e)
+        {
+            frmHocPhi hp = new frmHocPhi();
+            hp.Show();
+        }
         //
 
         //5.Tìm kiếm
@@ -125,9 +141,21 @@ namespace SMS
             btn53.Visible = !btn53.Visible;      
         }
 
-        private void btn51_Click(object sender, EventArgs e) { }
-        private void btn52_Click(object sender, EventArgs e) { }
-        private void btn53_Click(object sender, EventArgs e) { }
+        private void btn51_Click(object sender, EventArgs e)
+        {
+            frmTimKiemTTSinhVien tkttsv = new frmTimKiemTTSinhVien();
+            tkttsv.Show();
+        }
+        private void btn52_Click(object sender, EventArgs e)
+        {
+            frmTimKiemLopQL tklql = new frmTimKiemLopQL();
+            tklql.Show();
+        }
+        private void btn53_Click(object sender, EventArgs e)
+        {
+            frmTimKiemMonHoc tkmh = new frmTimKiemMonHoc();
+            tkmh.Show();
+        }
         //
 
         //6.Báo cáo và xuất
@@ -150,7 +178,8 @@ namespace SMS
         //7.Giới thiệu
         private void btnGroup7_Click(object sender, EventArgs e)
         {
-
+            frmGioiThieu gt = new frmGioiThieu();
+            gt.Show();
         }
         //
     }

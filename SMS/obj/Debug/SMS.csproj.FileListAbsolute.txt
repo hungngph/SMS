@@ -15,3 +15,33 @@ C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmNhapThongTinSV.resources
 C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmNhapMonHoc.resources
 C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmNhapLop.resources
 C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmNhapKhoa.resources
+E:\Học Tập\SMS\SMS\bin\Debug\SMS.exe.config
+E:\Học Tập\SMS\SMS\bin\Debug\SMS.exe
+E:\Học Tập\SMS\SMS\bin\Debug\SMS.pdb
+E:\Học Tập\SMS\SMS\obj\Debug\SMS.csprojAssemblyReference.cache
+E:\Học Tập\SMS\SMS\obj\Debug\SMS.frmChinhSuaDSNguoiDung.resources
+E:\Học Tập\SMS\SMS\obj\Debug\SMS.frmDoiMK.resources
+E:\Học Tập\SMS\SMS\obj\Debug\SMS.frmNhapDiem.resources
+E:\Học Tập\SMS\SMS\obj\Debug\SMS.frmNhapKhoa.resources
+E:\Học Tập\SMS\SMS\obj\Debug\SMS.frmLogin.resources
+E:\Học Tập\SMS\SMS\obj\Debug\SMS.frmMain.resources
+E:\Học Tập\SMS\SMS\obj\Debug\SMS.frmNhapLop.resources
+E:\Học Tập\SMS\SMS\obj\Debug\SMS.frmNhapMonHoc.resources
+E:\Học Tập\SMS\SMS\obj\Debug\SMS.frmNhapThongTinSV.resources
+E:\Học Tập\SMS\SMS\obj\Debug\SMS.Properties.Resources.resources
+E:\Học Tập\SMS\SMS\obj\Debug\SMS.csproj.GenerateResource.cache
+E:\Học Tập\SMS\SMS\obj\Debug\SMS.csproj.CoreCompileInputs.cache
+E:\Học Tập\SMS\SMS\obj\Debug\SMS.exe
+E:\Học Tập\SMS\SMS\obj\Debug\SMS.pdb
+E:\Học Tập\SMS\SMS\obj\Debug\SMS.frmXemDiem.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmNhapDiem.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmXemDiem.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmHocPhi.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmXemDiemCaNhan.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmDanhSachLopQL.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmDanhSachMH.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmDanhSachSV.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmTimKiemLopQL.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmTimKiemMonHoc.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmTimKiemTTSinhVien.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmGioiThieu.resources

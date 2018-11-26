@@ -37,7 +37,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.groupDS = new System.Windows.Forms.GroupBox();
             this.dgrKhoa = new System.Windows.Forms.DataGridView();
-            this.btnThoat = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThemmoi = new System.Windows.Forms.Button();
@@ -132,21 +132,20 @@
             this.dgrKhoa.Size = new System.Drawing.Size(1013, 262);
             this.dgrKhoa.TabIndex = 0;
             // 
-            // btnThoat
+            // button1
             // 
-            this.btnThoat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.btnThoat.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnThoat.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.btnThoat.ForeColor = System.Drawing.Color.White;
-            this.btnThoat.Image = ((System.Drawing.Image)(resources.GetObject("btnThoat.Image")));
-            this.btnThoat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThoat.Location = new System.Drawing.Point(758, 230);
-            this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(199, 53);
-            this.btnThoat.TabIndex = 62;
-            this.btnThoat.Text = "Thoát";
-            this.btnThoat.UseVisualStyleBackColor = false;
-            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Times New Roman", 10F);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(793, 229);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(199, 53);
+            this.button1.TabIndex = 83;
+            this.button1.Text = "Thoát";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // btnXoa
             // 
@@ -156,10 +155,10 @@
             this.btnXoa.ForeColor = System.Drawing.Color.White;
             this.btnXoa.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.Image")));
             this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXoa.Location = new System.Drawing.Point(758, 167);
+            this.btnXoa.Location = new System.Drawing.Point(793, 167);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(199, 53);
-            this.btnXoa.TabIndex = 61;
+            this.btnXoa.TabIndex = 82;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = false;
             // 
@@ -171,10 +170,10 @@
             this.btnSua.ForeColor = System.Drawing.Color.White;
             this.btnSua.Image = ((System.Drawing.Image)(resources.GetObject("btnSua.Image")));
             this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSua.Location = new System.Drawing.Point(520, 229);
+            this.btnSua.Location = new System.Drawing.Point(555, 229);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(199, 53);
-            this.btnSua.TabIndex = 60;
+            this.btnSua.TabIndex = 81;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = false;
             // 
@@ -186,10 +185,10 @@
             this.btnThemmoi.ForeColor = System.Drawing.Color.White;
             this.btnThemmoi.Image = ((System.Drawing.Image)(resources.GetObject("btnThemmoi.Image")));
             this.btnThemmoi.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThemmoi.Location = new System.Drawing.Point(520, 167);
+            this.btnThemmoi.Location = new System.Drawing.Point(555, 167);
             this.btnThemmoi.Name = "btnThemmoi";
             this.btnThemmoi.Size = new System.Drawing.Size(199, 53);
-            this.btnThemmoi.TabIndex = 59;
+            this.btnThemmoi.TabIndex = 80;
             this.btnThemmoi.Text = "Thêm mới";
             this.btnThemmoi.UseVisualStyleBackColor = false;
             // 
@@ -198,13 +197,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 671);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.groupBoxTTCT);
-            this.Controls.Add(this.groupDS);
-            this.Controls.Add(this.btnThoat);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThemmoi);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.groupBoxTTCT);
+            this.Controls.Add(this.groupDS);
             this.Name = "frmNhapKhoa";
             this.Text = "Nhập Thông Tin Khoa";
             this.groupBoxTTCT.ResumeLayout(false);
@@ -226,7 +225,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupDS;
         private System.Windows.Forms.DataGridView dgrKhoa;
-        private System.Windows.Forms.Button btnThoat;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThemmoi;

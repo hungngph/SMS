@@ -200,7 +200,7 @@
             this.btn21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.btn21.Location = new System.Drawing.Point(3, 291);
             this.btn21.Name = "btn21";
-            this.btn21.Size = new System.Drawing.Size(262, 66);
+            this.btn21.Size = new System.Drawing.Size(262, 87);
             this.btn21.TabIndex = 4;
             this.btn21.Text = "Nhập thông tin sinh viên";
             this.btn21.UseVisualStyleBackColor = false;
@@ -213,7 +213,7 @@
             this.btn22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn22.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btn22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.btn22.Location = new System.Drawing.Point(3, 363);
+            this.btn22.Location = new System.Drawing.Point(3, 384);
             this.btn22.Name = "btn22";
             this.btn22.Size = new System.Drawing.Size(262, 66);
             this.btn22.TabIndex = 5;
@@ -228,7 +228,7 @@
             this.btn23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn23.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btn23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.btn23.Location = new System.Drawing.Point(3, 435);
+            this.btn23.Location = new System.Drawing.Point(3, 456);
             this.btn23.Name = "btn23";
             this.btn23.Size = new System.Drawing.Size(262, 66);
             this.btn23.TabIndex = 6;
@@ -243,7 +243,7 @@
             this.btn24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn24.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btn24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.btn24.Location = new System.Drawing.Point(3, 507);
+            this.btn24.Location = new System.Drawing.Point(3, 528);
             this.btn24.Name = "btn24";
             this.btn24.Size = new System.Drawing.Size(262, 69);
             this.btn24.TabIndex = 7;
@@ -257,11 +257,11 @@
             this.btnGroup3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.btnGroup3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGroup3.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnGroup3.Location = new System.Drawing.Point(3, 582);
+            this.btnGroup3.Location = new System.Drawing.Point(3, 603);
             this.btnGroup3.Name = "btnGroup3";
             this.btnGroup3.Size = new System.Drawing.Size(262, 80);
             this.btnGroup3.TabIndex = 1;
-            this.btnGroup3.Text = "Đăng ký môn học và nhập điểm";
+            this.btnGroup3.Text = "Nhập và xem điểm";
             this.btnGroup3.UseVisualStyleBackColor = false;
             this.btnGroup3.Click += new System.EventHandler(this.btnGroup3_Click);
             // 
@@ -271,11 +271,11 @@
             this.btn31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn31.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btn31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.btn31.Location = new System.Drawing.Point(3, 668);
+            this.btn31.Location = new System.Drawing.Point(3, 689);
             this.btn31.Name = "btn31";
             this.btn31.Size = new System.Drawing.Size(262, 66);
             this.btn31.TabIndex = 4;
-            this.btn31.Text = "Nhập thông tin sinh viên";
+            this.btn31.Text = "Nhập điểm lớp quản lý";
             this.btn31.UseVisualStyleBackColor = false;
             this.btn31.Visible = false;
             this.btn31.Click += new System.EventHandler(this.btn31_Click);
@@ -286,7 +286,7 @@
             this.btn32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn32.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btn32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.btn32.Location = new System.Drawing.Point(3, 740);
+            this.btn32.Location = new System.Drawing.Point(3, 761);
             this.btn32.Name = "btn32";
             this.btn32.Size = new System.Drawing.Size(262, 66);
             this.btn32.TabIndex = 5;
@@ -300,7 +300,7 @@
             this.btnGroup4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.btnGroup4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGroup4.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnGroup4.Location = new System.Drawing.Point(3, 812);
+            this.btnGroup4.Location = new System.Drawing.Point(3, 833);
             this.btnGroup4.Name = "btnGroup4";
             this.btnGroup4.Size = new System.Drawing.Size(262, 80);
             this.btnGroup4.TabIndex = 1;
@@ -314,7 +314,7 @@
             this.btn41.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn41.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btn41.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.btn41.Location = new System.Drawing.Point(3, 898);
+            this.btn41.Location = new System.Drawing.Point(3, 919);
             this.btn41.Name = "btn41";
             this.btn41.Size = new System.Drawing.Size(262, 66);
             this.btn41.TabIndex = 4;
@@ -329,7 +329,7 @@
             this.btn42.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn42.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btn42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.btn42.Location = new System.Drawing.Point(3, 970);
+            this.btn42.Location = new System.Drawing.Point(3, 991);
             this.btn42.Name = "btn42";
             this.btn42.Size = new System.Drawing.Size(262, 66);
             this.btn42.TabIndex = 5;
@@ -343,7 +343,7 @@
             this.btnGroup5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.btnGroup5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGroup5.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnGroup5.Location = new System.Drawing.Point(3, 1042);
+            this.btnGroup5.Location = new System.Drawing.Point(3, 1063);
             this.btnGroup5.Name = "btnGroup5";
             this.btnGroup5.Size = new System.Drawing.Size(262, 80);
             this.btnGroup5.TabIndex = 8;
@@ -357,7 +357,7 @@
             this.btn51.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn51.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btn51.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.btn51.Location = new System.Drawing.Point(3, 1128);
+            this.btn51.Location = new System.Drawing.Point(3, 1149);
             this.btn51.Name = "btn51";
             this.btn51.Size = new System.Drawing.Size(262, 66);
             this.btn51.TabIndex = 9;
@@ -372,7 +372,7 @@
             this.btn52.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn52.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btn52.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.btn52.Location = new System.Drawing.Point(3, 1200);
+            this.btn52.Location = new System.Drawing.Point(3, 1221);
             this.btn52.Name = "btn52";
             this.btn52.Size = new System.Drawing.Size(262, 66);
             this.btn52.TabIndex = 10;
@@ -387,7 +387,7 @@
             this.btn53.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn53.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btn53.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.btn53.Location = new System.Drawing.Point(3, 1272);
+            this.btn53.Location = new System.Drawing.Point(3, 1293);
             this.btn53.Name = "btn53";
             this.btn53.Size = new System.Drawing.Size(262, 66);
             this.btn53.TabIndex = 11;
@@ -401,7 +401,7 @@
             this.btnGroup6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.btnGroup6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGroup6.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnGroup6.Location = new System.Drawing.Point(3, 1344);
+            this.btnGroup6.Location = new System.Drawing.Point(3, 1365);
             this.btnGroup6.Name = "btnGroup6";
             this.btnGroup6.Size = new System.Drawing.Size(262, 80);
             this.btnGroup6.TabIndex = 12;
@@ -415,7 +415,7 @@
             this.btn61.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn61.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btn61.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.btn61.Location = new System.Drawing.Point(3, 1430);
+            this.btn61.Location = new System.Drawing.Point(3, 1451);
             this.btn61.Name = "btn61";
             this.btn61.Size = new System.Drawing.Size(262, 66);
             this.btn61.TabIndex = 13;
@@ -430,7 +430,7 @@
             this.btn62.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn62.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btn62.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.btn62.Location = new System.Drawing.Point(3, 1502);
+            this.btn62.Location = new System.Drawing.Point(3, 1523);
             this.btn62.Name = "btn62";
             this.btn62.Size = new System.Drawing.Size(262, 66);
             this.btn62.TabIndex = 14;
@@ -445,7 +445,7 @@
             this.btn63.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn63.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btn63.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.btn63.Location = new System.Drawing.Point(3, 1574);
+            this.btn63.Location = new System.Drawing.Point(3, 1595);
             this.btn63.Name = "btn63";
             this.btn63.Size = new System.Drawing.Size(262, 66);
             this.btn63.TabIndex = 15;
@@ -460,7 +460,7 @@
             this.btn64.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn64.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btn64.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.btn64.Location = new System.Drawing.Point(3, 1646);
+            this.btn64.Location = new System.Drawing.Point(3, 1667);
             this.btn64.Name = "btn64";
             this.btn64.Size = new System.Drawing.Size(262, 66);
             this.btn64.TabIndex = 16;
@@ -475,7 +475,7 @@
             this.btn65.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn65.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btn65.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.btn65.Location = new System.Drawing.Point(3, 1718);
+            this.btn65.Location = new System.Drawing.Point(3, 1739);
             this.btn65.Name = "btn65";
             this.btn65.Size = new System.Drawing.Size(262, 66);
             this.btn65.TabIndex = 17;
@@ -489,7 +489,7 @@
             this.btnGroup7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.btnGroup7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGroup7.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnGroup7.Location = new System.Drawing.Point(3, 1790);
+            this.btnGroup7.Location = new System.Drawing.Point(3, 1811);
             this.btnGroup7.Name = "btnGroup7";
             this.btnGroup7.Size = new System.Drawing.Size(262, 80);
             this.btnGroup7.TabIndex = 18;
