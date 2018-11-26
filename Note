@@ -23,3 +23,6 @@ SqlDataReader -> SqlCommand -> SqlConnection
 
 
 T3 chuyển sang code hết
+
+
+1/12/2018 xử lý khóa chính khóa phụ
