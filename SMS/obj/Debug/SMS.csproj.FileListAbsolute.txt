@@ -1,0 +1,34 @@
+C:\Users\PhiHung\Desktop\SMS\SMS\bin\Debug\SMS.exe.config
+C:\Users\PhiHung\Desktop\SMS\SMS\bin\Debug\SMS.exe
+C:\Users\PhiHung\Desktop\SMS\SMS\bin\Debug\SMS.pdb
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.csprojAssemblyReference.cache
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmLogin.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmMain.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.Properties.Resources.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.csproj.GenerateResource.cache
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.csproj.CoreCompileInputs.cache
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.exe
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.pdb
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmChinhSuaDSNguoiDung.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmDoiMK.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmNhapThongTinSV.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmNhapMonHoc.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmNhapLop.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmNhapKhoa.resources
+C:\Users\ThinkKING\Downloads\SMS-phihung (2)\SMS-phihung\SMS\bin\Debug\SMS.exe.config
+C:\Users\ThinkKING\Downloads\SMS-phihung (2)\SMS-phihung\SMS\bin\Debug\SMS.exe
+C:\Users\ThinkKING\Downloads\SMS-phihung (2)\SMS-phihung\SMS\bin\Debug\SMS.pdb
+C:\Users\ThinkKING\Downloads\SMS-phihung (2)\SMS-phihung\SMS\obj\Debug\SMS.csprojAssemblyReference.cache
+C:\Users\ThinkKING\Downloads\SMS-phihung (2)\SMS-phihung\SMS\obj\Debug\SMS.frmChinhSuaDSNguoiDung.resources
+C:\Users\ThinkKING\Downloads\SMS-phihung (2)\SMS-phihung\SMS\obj\Debug\SMS.frmDoiMK.resources
+C:\Users\ThinkKING\Downloads\SMS-phihung (2)\SMS-phihung\SMS\obj\Debug\SMS.frmNhapKhoa.resources
+C:\Users\ThinkKING\Downloads\SMS-phihung (2)\SMS-phihung\SMS\obj\Debug\SMS.frmLogin.resources
+C:\Users\ThinkKING\Downloads\SMS-phihung (2)\SMS-phihung\SMS\obj\Debug\SMS.frmMain.resources
+C:\Users\ThinkKING\Downloads\SMS-phihung (2)\SMS-phihung\SMS\obj\Debug\SMS.frmNhapLop.resources
+C:\Users\ThinkKING\Downloads\SMS-phihung (2)\SMS-phihung\SMS\obj\Debug\SMS.frmNhapMonHoc.resources
+C:\Users\ThinkKING\Downloads\SMS-phihung (2)\SMS-phihung\SMS\obj\Debug\SMS.frmNhapThongTinSV.resources
+C:\Users\ThinkKING\Downloads\SMS-phihung (2)\SMS-phihung\SMS\obj\Debug\SMS.Properties.Resources.resources
+C:\Users\ThinkKING\Downloads\SMS-phihung (2)\SMS-phihung\SMS\obj\Debug\SMS.csproj.GenerateResource.cache
+C:\Users\ThinkKING\Downloads\SMS-phihung (2)\SMS-phihung\SMS\obj\Debug\SMS.csproj.CoreCompileInputs.cache
+C:\Users\ThinkKING\Downloads\SMS-phihung (2)\SMS-phihung\SMS\obj\Debug\SMS.exe
+C:\Users\ThinkKING\Downloads\SMS-phihung (2)\SMS-phihung\SMS\obj\Debug\SMS.pdb
