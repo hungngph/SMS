@@ -39,9 +39,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.groupDS = new System.Windows.Forms.GroupBox();
             this.dgrLH = new System.Windows.Forms.DataGridView();
-            this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThemmoi = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBoxTTCT.SuspendLayout();
             this.groupDS.SuspendLayout();
@@ -156,21 +156,6 @@
             this.dgrLH.Size = new System.Drawing.Size(1013, 262);
             this.dgrLH.TabIndex = 0;
             // 
-            // btnXoa
-            // 
-            this.btnXoa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.btnXoa.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnXoa.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.btnXoa.ForeColor = System.Drawing.Color.White;
-            this.btnXoa.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.Image")));
-            this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXoa.Location = new System.Drawing.Point(758, 163);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(199, 53);
-            this.btnXoa.TabIndex = 54;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = false;
-            // 
             // btnSua
             // 
             this.btnSua.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
@@ -201,6 +186,21 @@
             this.btnThemmoi.Text = "Thêm mới";
             this.btnThemmoi.UseVisualStyleBackColor = false;
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Font = new System.Drawing.Font("Times New Roman", 10F);
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(765, 225);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(199, 53);
+            this.button2.TabIndex = 83;
+            this.button2.Text = "Làm mới";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
@@ -209,11 +209,11 @@
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(758, 225);
+            this.button1.Location = new System.Drawing.Point(765, 163);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(199, 53);
-            this.button1.TabIndex = 79;
-            this.button1.Text = "Thoát";
+            this.button1.TabIndex = 84;
+            this.button1.Text = "Xóa";
             this.button1.UseVisualStyleBackColor = false;
             // 
             // frmNhapLop
@@ -222,7 +222,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 671);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnXoa);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.btnThemmoi);
             this.Controls.Add(this.label5);
@@ -251,9 +251,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupDS;
         private System.Windows.Forms.DataGridView dgrLH;
-        private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnThemmoi;
+        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
     }
 }
