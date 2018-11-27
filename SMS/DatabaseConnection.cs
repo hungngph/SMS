@@ -32,14 +32,19 @@ namespace SMS {
             SqlDataAdapter adapter = new SqlDataAdapter();
             adapter.SelectCommand = cmd;
             adapter.Fill(ds);
+            cmd.Dispose();
+            adapter.Dispose();
             return ds;
         }
         public static bool CheckExist(string query) {
+            bool flag = true;
             SqlCommand cmd = new SqlCommand(query, sqlConnection);
             SqlDataReader reader = cmd.ExecuteReader();
             if (!reader.Read())
-                return false;
-            return true;
+                flag = false;
+            cmd.Dispose();
+            reader.Dispose();
+            return flag;
         }
         public static bool RemoveRow(string query) {
             SqlCommand cmd = new SqlCommand(query, sqlConnection);
@@ -47,8 +52,10 @@ namespace SMS {
                 cmd.ExecuteNonQuery();
             }
             catch {
+                cmd.Dispose();
                 return false;
             }
+            cmd.Dispose();
             return true;
         }
         public static bool AddRow(string query) {
@@ -57,12 +64,11 @@ namespace SMS {
                 cmd.ExecuteNonQuery();
             }
             catch {
+                cmd.Dispose();
                 return false;
             }
+            cmd.Dispose();
             return true;
         }
-        #region LOGIN
-        
-        #endregion
     }
 }

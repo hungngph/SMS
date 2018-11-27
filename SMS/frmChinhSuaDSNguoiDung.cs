@@ -83,20 +83,23 @@ namespace SMS {
             FillDataGridView();
         }
         private void btnXoa_Click(object sender, EventArgs e) {
-            string query = "";
+            string query = "DELETE FROM TAIKHOAN WHERE TENDANGNHAP='";
             if (dgvDSND.SelectedRows.Count > 0) {
                 for (int i = 0; i < dgvDSND.SelectedRows.Count; i++) {
-
+                    if (!DatabaseConnection.RemoveRow(query + dgvDSND.SelectedRows[i].Cells[0].Value + "'")) {
+                        MessageBox.Show("Xóa không thành công " + dgvDSND.SelectedRows[i].Cells[0].Value);
+                        return;
+                    }
                 }
             } else 
             if (GeneralCheck()) {
-                query = "DELETE FROM TAIKHOAN WHERE '" + txtTaikhoan.Text + "'";
+                query = "DELETE FROM TAIKHOAN WHERE TENDANGNHAP='" + txtTaikhoan.Text + "'";
                 if (DatabaseConnection.RemoveRow(query))
                     MessageBox.Show("Xóa dữ liệu thành công", "Thông báo!");
                 else
                     MessageBox.Show("Lỗi", "Thông báo");
-                FillDataGridView();
             }
+            FillDataGridView();
         }
         bool GeneralCheck() {
             bool flag = true;
