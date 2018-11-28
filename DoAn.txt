@@ -1,0 +1,15 @@
+1. btnSua_Click
+2. AddRow, RemoveRow, EditRow => ExcuteSql
+3. Khi nhâp Mã khoa, nêu trùng => provider
+selectionMode: RowHeaderSelect
+ReadOnly: true
+AllowUserToAddRows, DeleteRow: false
+AllowUserToResizeRows: False
+AutoSizeColumnMode: Fill
+btn.cursor = hand
+textDiaChi -> txtDiaChi
+dgr -> dgv
+frmNhapThongTinSinhVien: Kich thuoc lon hon
++ NGAYSINH + HOCPHI
+Khoa -> Khóa hoc
+lop -> mã lop
