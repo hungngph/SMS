@@ -72,3 +72,6 @@ C:\Users\pc\Desktop\SMS\SMS\obj\Debug\SMS.frmXemDiem.resources
 C:\Users\pc\Desktop\SMS\SMS\obj\Debug\SMS.frmXemDiemCaNhan.resources
 C:\Users\pc\Desktop\SMS\SMS\obj\Debug\SMS.Properties.Resources.resources
 C:\Users\pc\Desktop\SMS\SMS\obj\Debug\SMS.csproj.GenerateResource.Cache
+D:\Documents\SMS\SMS\SMS\bin\Debug\SMS.exe.config
+D:\Documents\SMS\SMS\SMS\obj\Debug\SMS.exe
+D:\Documents\SMS\SMS\SMS\obj\Debug\SMS.pdb
