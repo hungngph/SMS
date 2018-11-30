@@ -21,10 +21,13 @@ namespace SMS
             //Application.Run(new frmNhapKhoa()); 
 
             //Form NhapMonHoc
-            //Application.Run(new frmNhapMonHoc());
+            Application.Run(new frmNhapMonHoc());
 
             //Form NhapThongTinSV
-            Application.Run(new frmNhapThongTinSV());
+            //Application.Run(new frmNhapThongTinSV());
+
+            //Form NhapLop
+            //Application.Run(new frmNhapLop());
         }
     }
 }

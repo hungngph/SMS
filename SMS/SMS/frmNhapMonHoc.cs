@@ -36,12 +36,12 @@ namespace SMS
         private void btnThemMoi_Click(object sender, EventArgs e)
         {
             // Câu lệnh truy vấn Table KHOA
-            string strSelect = "Select * From KHOA Where MAKHOA = '" + txtMaMH.Text + "'";
+            string strSelect = "Select * From MONHOC Where MAMH = '" + txtMaMH.Text + "'";
             if (GeneralCheck())
             {
                 if (DatabaseConnection.CheckExist(strSelect))
                 {
-                    MessageBox.Show("Mã khoa đã tồn tại. Xin vui lòng kiểm tra lại!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Mã môn học đã tồn tại. Xin vui lòng kiểm tra lại!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     txtMaMH.Focus();
                     txtMaMH.SelectAll();
                 }
@@ -54,9 +54,9 @@ namespace SMS
                     strInsert += txtTinChi.Text + "')";
                     //
                     if (DatabaseConnection.ExcuteSql(strInsert))
-                        MessageBox.Show("Thêm Khoa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Thêm Môn học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
-                        MessageBox.Show("Thêm Khoa thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show("Thêm Môn học thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     FillDataGridView();
                 }
             }
@@ -69,8 +69,7 @@ namespace SMS
             {
                 if (GeneralCheck())
                 {
-                    string strUpdate = "Update MONHOC Set MAMH = '" + txtMaMH.Text + "', ";
-                    strUpdate += "TENMH = N'" + txtTenMH.Text + "', ";
+                    string strUpdate = "Update MONHOC Set TENMH = N'" + txtTenMH.Text + "', ";
                     strUpdate += "SOTINCHI = '" + txtTinChi.Text + "' "; ;
                     strUpdate += "Where MAMH = '" + txtMaMH.Text + "'";
                     //

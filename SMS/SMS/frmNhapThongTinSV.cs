@@ -82,8 +82,7 @@ namespace SMS
             {
                 if (GeneralCheck())
                 {
-                    string strUpdate = "Set Dateformat dmy Update SINHVIEN Set MASV = '" + txtMSSV.Text + "', ";
-                    strUpdate += "TENSV = N'" + txtHoTen.Text + "', ";
+                    string strUpdate = "Set Dateformat dmy Update SINHVIEN Set TENSV = N'" + txtHoTen.Text + "', ";
                     strUpdate += "NGAYSINH = '" + dtpNgaySinh.Text + "', ";
                     strUpdate += "DIACHI = N'" + txtDiaChi.Text + "', ";
                     if(chkNam.Checked)

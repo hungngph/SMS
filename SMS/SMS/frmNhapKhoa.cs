@@ -67,8 +67,7 @@ namespace SMS
             {
                 if (GeneralCheck())
                 {
-                    string strUpdate = "Update KHOA Set MAKHOA = '" + txtMaKhoa.Text + "', ";
-                    strUpdate += "TENKHOA = N'" + txtTenKhoa.Text + "' ";
+                    string strUpdate = "Update KHOA Set TENKHOA = N'" + txtTenKhoa.Text + "' ";
                     strUpdate += "Where MAKHOA = '" + txtMaKhoa.Text + "'";
                     //
                     if (DatabaseConnection.ExcuteSql(strUpdate))
