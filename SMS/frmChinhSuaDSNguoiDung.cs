@@ -66,7 +66,7 @@ namespace SMS {
                 else {
                     query = "INSERT INTO TAIKHOAN(TENDANGNHAP, MATKHAU, QUYENTRUYCAP) " +
                         "VALUES(N'" + txtTaikhoan.Text + "',N'" + txtMK.Text + "','" + cboQuyen.Text + "')";
-                    if (DatabaseConnection.AddRow(query))
+                    if (DatabaseConnection.ExcuteSql(query))
                         MessageBox.Show("Thêm mới tài khoản thành công", "Thông báo");
                     else
                         MessageBox.Show("Thêm mới tài khoản thất bại", "Thông báo");
@@ -86,7 +86,7 @@ namespace SMS {
             string query = "DELETE FROM TAIKHOAN WHERE TENDANGNHAP='";
             if (dgvDSND.SelectedRows.Count > 0) {
                 for (int i = 0; i < dgvDSND.SelectedRows.Count; i++) {
-                    if (!DatabaseConnection.RemoveRow(query + dgvDSND.SelectedRows[i].Cells[0].Value + "'")) {
+                    if (!DatabaseConnection.ExcuteSql(query + dgvDSND.SelectedRows[i].Cells[0].Value + "'")) {
                         MessageBox.Show("Xóa không thành công " + dgvDSND.SelectedRows[i].Cells[0].Value);
                         return;
                     }
@@ -94,7 +94,7 @@ namespace SMS {
             } else 
             if (GeneralCheck()) {
                 query = "DELETE FROM TAIKHOAN WHERE TENDANGNHAP='" + txtTaikhoan.Text + "'";
-                if (DatabaseConnection.RemoveRow(query))
+                if (DatabaseConnection.ExcuteSql(query))
                     MessageBox.Show("Xóa dữ liệu thành công", "Thông báo!");
                 else
                     MessageBox.Show("Lỗi", "Thông báo");

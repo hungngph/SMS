@@ -8,16 +8,17 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Data;
 
-
 namespace SMS {
     class DatabaseConnection {
-        //Thanh phan ket noi
+        // Thành phần kết nối
         static SqlConnection sqlConnection;
-        //Kiem tra da ket noi sql
+
+        // Hàm kiểm tra kết nối sql có thành công hay không
         public static bool IsConnect() {
             return (sqlConnection != null && sqlConnection.State == ConnectionState.Open);
         }
-        //Ket noi sql neu chua ket noi
+
+        // Hàm kết nối sql
         public static bool Connected() {
             if (IsConnect())
                 return true;
@@ -29,18 +30,21 @@ namespace SMS {
             sqlConnection.Open();
             return (sqlConnection.State == ConnectionState.Open);
         }
-        //Lay table ra trong qua DataTable
+
+        // Lấy table thông qua DataTable
         public static DataTable GetDataTable(string query) {
-            SqlCommand cmd = new SqlCommand(query, sqlConnection);
             DataTable ds = new DataTable();
+            SqlCommand cmd = new SqlCommand(query, sqlConnection);
             SqlDataAdapter adapter = new SqlDataAdapter();
             adapter.SelectCommand = cmd;
             adapter.Fill(ds);
-            cmd.Dispose();
             adapter.Dispose();
+            ds.Dispose();
+            cmd.Dispose();
             return ds;
         }
-        //Kiem tra da ton tai ROW kem khoa chinh
+
+        // Kiểm tra đã tồn tại Row kèm theo khóa chính
         public static bool CheckExist(string query) {
             bool flag = true;
             SqlCommand cmd = new SqlCommand(query, sqlConnection);
@@ -51,8 +55,9 @@ namespace SMS {
             reader.Dispose();
             return flag;
         }
-        //Xoa row theo khoa chinh
-        public static bool RemoveRow(string query) {
+
+        // Thực thi câu lệnh sql
+        public static bool ExcuteSql(string query) {
             SqlCommand cmd = new SqlCommand(query, sqlConnection);
             try {
                 cmd.ExecuteNonQuery();
@@ -61,20 +66,6 @@ namespace SMS {
                 cmd.Dispose();
                 return false;
             }
-            cmd.Dispose();
-            return true;
-        }
-        //Them row 
-        public static bool AddRow(string query) {
-            SqlCommand cmd = new SqlCommand(query, sqlConnection);
-            try {
-                cmd.ExecuteNonQuery();
-            }
-            catch {
-                cmd.Dispose();
-                return false;
-            }
-            cmd.Dispose();
             return true;
         }
     }
