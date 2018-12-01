@@ -53,13 +53,13 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DimGray;
-            this.label3.Location = new System.Drawing.Point(50, 102);
+            this.label3.Location = new System.Drawing.Point(41, 119);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(472, 51);
+            this.label3.Size = new System.Drawing.Size(485, 41);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Đồ án Quản lý Sinh viên";
+            this.label3.Text = "Đồ án Quản lý Học sinh THPT";
             // 
             // txtTaiKhoan
             // 
