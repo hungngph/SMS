@@ -16,15 +16,5 @@ namespace SMS
         {
             InitializeComponent();
         }
-
-        private void btnThoat_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void txtTenGV_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

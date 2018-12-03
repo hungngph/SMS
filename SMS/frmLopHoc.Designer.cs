@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLopHoc));
             this.label5 = new System.Windows.Forms.Label();
             this.groupBoxTTCT = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.textMaLop = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtHK = new System.Windows.Forms.TextBox();
@@ -43,8 +45,6 @@
             this.btnThemmoi = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBoxTTCT.SuspendLayout();
             this.groupDS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrLH)).BeginInit();
@@ -79,6 +79,26 @@
             this.groupBoxTTCT.TabIndex = 45;
             this.groupBoxTTCT.TabStop = false;
             this.groupBoxTTCT.Text = "Thông tin lớp học";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.Black;
+            this.textBox1.Location = new System.Drawing.Point(195, 117);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(340, 30);
+            this.textBox1.TabIndex = 57;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(16, 120);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 22);
+            this.label1.TabIndex = 56;
+            this.label1.Text = "Tên lớp";
             // 
             // textMaLop
             // 
@@ -128,7 +148,6 @@
             this.txtTenGV.Name = "txtTenGV";
             this.txtTenGV.Size = new System.Drawing.Size(340, 30);
             this.txtTenGV.TabIndex = 49;
-            this.txtTenGV.TextChanged += new System.EventHandler(this.txtTenGV_TextChanged);
             // 
             // label9
             // 
@@ -220,26 +239,6 @@
             this.button1.TabIndex = 84;
             this.button1.Text = "Xóa";
             this.button1.UseVisualStyleBackColor = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.Black;
-            this.textBox1.Location = new System.Drawing.Point(195, 117);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(340, 30);
-            this.textBox1.TabIndex = 57;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(16, 120);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 22);
-            this.label1.TabIndex = 56;
-            this.label1.Text = "Tên lớp";
             // 
             // frmLopHoc
             // 

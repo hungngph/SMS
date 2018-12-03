@@ -16,10 +16,5 @@ namespace SMS
         {
             InitializeComponent();
         }
-
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
     }
 }
