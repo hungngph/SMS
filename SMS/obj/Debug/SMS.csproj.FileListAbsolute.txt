@@ -63,21 +63,3 @@ C:\Users\PhiHung\Desktop\SMS-phihung\SMS-phihung\SMS\obj\Debug\SMS.frmGiaoVien.r
 C:\Users\PhiHung\Desktop\SMS-phihung\SMS-phihung\SMS\obj\Debug\SMS.frmDoiMatKhau.resources
 C:\Users\PhiHung\Desktop\SMS-phihung\SMS-phihung\SMS\obj\Debug\SMS.frmDanhSachNguoiDung.resources
 C:\Users\PhiHung\Desktop\SMS-phihung\SMS-phihung\SMS\obj\Debug\SMS.frmHocSinh.resources
-C:\Users\ThinkKING\Downloads\SMS-phihung (5)\SMS-phihung\SMS\bin\Debug\SMS.exe.config
-C:\Users\ThinkKING\Downloads\SMS-phihung (5)\SMS-phihung\SMS\bin\Debug\SMS.exe
-C:\Users\ThinkKING\Downloads\SMS-phihung (5)\SMS-phihung\SMS\bin\Debug\SMS.pdb
-C:\Users\ThinkKING\Downloads\SMS-phihung (5)\SMS-phihung\SMS\obj\Debug\SMS.csprojAssemblyReference.cache
-C:\Users\ThinkKING\Downloads\SMS-phihung (5)\SMS-phihung\SMS\obj\Debug\SMS.frmDanhSachNguoiDung.resources
-C:\Users\ThinkKING\Downloads\SMS-phihung (5)\SMS-phihung\SMS\obj\Debug\SMS.frmDoiMatKhau.resources
-C:\Users\ThinkKING\Downloads\SMS-phihung (5)\SMS-phihung\SMS\obj\Debug\SMS.frmNhapDiem.resources
-C:\Users\ThinkKING\Downloads\SMS-phihung (5)\SMS-phihung\SMS\obj\Debug\SMS.frmLogin.resources
-C:\Users\ThinkKING\Downloads\SMS-phihung (5)\SMS-phihung\SMS\obj\Debug\SMS.frmMain.resources
-C:\Users\ThinkKING\Downloads\SMS-phihung (5)\SMS-phihung\SMS\obj\Debug\SMS.frmLopHoc.resources
-C:\Users\ThinkKING\Downloads\SMS-phihung (5)\SMS-phihung\SMS\obj\Debug\SMS.frmGiaoVien.resources
-C:\Users\ThinkKING\Downloads\SMS-phihung (5)\SMS-phihung\SMS\obj\Debug\SMS.frmHocSinh.resources
-C:\Users\ThinkKING\Downloads\SMS-phihung (5)\SMS-phihung\SMS\obj\Debug\SMS.frmXemDiem.resources
-C:\Users\ThinkKING\Downloads\SMS-phihung (5)\SMS-phihung\SMS\obj\Debug\SMS.Properties.Resources.resources
-C:\Users\ThinkKING\Downloads\SMS-phihung (5)\SMS-phihung\SMS\obj\Debug\SMS.csproj.GenerateResource.cache
-C:\Users\ThinkKING\Downloads\SMS-phihung (5)\SMS-phihung\SMS\obj\Debug\SMS.csproj.CoreCompileInputs.cache
-C:\Users\ThinkKING\Downloads\SMS-phihung (5)\SMS-phihung\SMS\obj\Debug\SMS.exe
-C:\Users\ThinkKING\Downloads\SMS-phihung (5)\SMS-phihung\SMS\obj\Debug\SMS.pdb

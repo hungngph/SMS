@@ -8,12 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SMS
-{
-    public partial class frmDanhSachNguoiDung : Form
-    {
-        public frmDanhSachNguoiDung()
-        {
+namespace SMS {
+    public partial class frmDanhSachNguoiDung : Form {
+        public frmDanhSachNguoiDung() {
             //this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             InitializeComponent();
         }

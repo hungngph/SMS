@@ -8,22 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SMS
-{
-    public partial class frmLopHoc : Form
-    {
-        public frmLopHoc()
-        {
+namespace SMS {
+    public partial class frmLopHoc : Form {
+        public frmLopHoc() {
             InitializeComponent();
         }
 
-        private void btnThoat_Click(object sender, EventArgs e)
-        {
+        private void btnThoat_Click(object sender, EventArgs e) {
             this.Close();
         }
 
-        private void txtTenGV_TextChanged(object sender, EventArgs e)
-        {
+        private void txtTenGV_TextChanged(object sender, EventArgs e) {
 
         }
 
@@ -50,7 +45,7 @@ namespace SMS
                 if (DatabaseConnection.CheckExist(query)) {
                     MessageBox.Show("Mã lớp đã tồn tại", "Thông báo");
                     txtMaLop.Focus();
-                } 
+                }
                 else {
                     query = "INSERT INTO LOP(MALOP, TENLOP, MAGVCN, SISO) " +
                         "VALUES('" + txtMaLop.Text + "',N'" + txtTenLop.Text + "','" + txtMaGV.Text + "'," + txtSiSo.Text + ")";

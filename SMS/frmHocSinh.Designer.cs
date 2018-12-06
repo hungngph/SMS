@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHocSinh));
             this.groupBoxTTCT = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtKhoa = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -58,23 +59,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupDS = new System.Windows.Forms.GroupBox();
             this.dgvHS = new System.Windows.Forms.DataGridView();
-            this.dtpNgSinh = new System.Windows.Forms.DateTimePicker();
             this.groupBoxTTCT.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupDS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHS)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxTTCT
             // 
-            this.groupBoxTTCT.Controls.Add(this.dtpNgSinh);
+            this.groupBoxTTCT.Controls.Add(this.textBox1);
             this.groupBoxTTCT.Controls.Add(this.label6);
             this.groupBoxTTCT.Controls.Add(this.txtKhoa);
             this.groupBoxTTCT.Controls.Add(this.label4);
@@ -101,6 +97,16 @@
             this.groupBoxTTCT.TabStop = false;
             this.groupBoxTTCT.Text = "Thông tin học sinh";
             // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.Black;
+            this.textBox1.Location = new System.Drawing.Point(156, 92);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(184, 26);
+            this.textBox1.TabIndex = 65;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -111,7 +117,6 @@
             this.label6.Size = new System.Drawing.Size(76, 19);
             this.label6.TabIndex = 64;
             this.label6.Text = "Ngày sinh";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // txtKhoa
             // 
@@ -122,7 +127,6 @@
             this.txtKhoa.Name = "txtKhoa";
             this.txtKhoa.Size = new System.Drawing.Size(184, 26);
             this.txtKhoa.TabIndex = 63;
-            this.txtKhoa.TextChanged += new System.EventHandler(this.txtKhoa_TextChanged);
             // 
             // label4
             // 
@@ -134,7 +138,6 @@
             this.label4.Size = new System.Drawing.Size(62, 19);
             this.label4.TabIndex = 62;
             this.label4.Text = "Dân tộc";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // txtMSSV
             // 
@@ -145,7 +148,6 @@
             this.txtMSSV.Name = "txtMSSV";
             this.txtMSSV.Size = new System.Drawing.Size(184, 26);
             this.txtMSSV.TabIndex = 59;
-            this.txtMSSV.TextChanged += new System.EventHandler(this.txtMSSV_TextChanged);
             // 
             // label1
             // 
@@ -157,7 +159,6 @@
             this.label1.Size = new System.Drawing.Size(112, 19);
             this.label1.TabIndex = 58;
             this.label1.Text = "Mã số học sinh";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // textDiaChi
             // 
@@ -168,7 +169,6 @@
             this.textDiaChi.Name = "textDiaChi";
             this.textDiaChi.Size = new System.Drawing.Size(184, 26);
             this.textDiaChi.TabIndex = 57;
-            this.textDiaChi.TextChanged += new System.EventHandler(this.textDiaChi_TextChanged);
             // 
             // label10
             // 
@@ -180,7 +180,6 @@
             this.label10.Size = new System.Drawing.Size(58, 19);
             this.label10.TabIndex = 56;
             this.label10.Text = "Địa chỉ";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // cboGioiTinh
             // 
@@ -195,7 +194,6 @@
             this.cboGioiTinh.Name = "cboGioiTinh";
             this.cboGioiTinh.Size = new System.Drawing.Size(184, 27);
             this.cboGioiTinh.TabIndex = 55;
-            this.cboGioiTinh.SelectedIndexChanged += new System.EventHandler(this.cboGioiTinh_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -207,7 +205,6 @@
             this.label7.Size = new System.Drawing.Size(70, 19);
             this.label7.TabIndex = 54;
             this.label7.Text = "Giới tính";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // mskPhone
             // 
@@ -219,7 +216,6 @@
             this.mskPhone.Name = "mskPhone";
             this.mskPhone.Size = new System.Drawing.Size(184, 26);
             this.mskPhone.TabIndex = 53;
-            this.mskPhone.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mskPhone_MaskInputRejected);
             // 
             // txtEmail
             // 
@@ -230,7 +226,6 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(184, 26);
             this.txtEmail.TabIndex = 52;
-            this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
             // label3
             // 
@@ -242,7 +237,6 @@
             this.label3.Size = new System.Drawing.Size(49, 19);
             this.label3.TabIndex = 51;
             this.label3.Text = "Email";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label8
             // 
@@ -254,7 +248,6 @@
             this.label8.Size = new System.Drawing.Size(80, 19);
             this.label8.TabIndex = 50;
             this.label8.Text = "Điện thoại";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // txtHoTen
             // 
@@ -265,7 +258,6 @@
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.Size = new System.Drawing.Size(184, 26);
             this.txtHoTen.TabIndex = 49;
-            this.txtHoTen.TextChanged += new System.EventHandler(this.txtHoTen_TextChanged);
             // 
             // label9
             // 
@@ -277,7 +269,6 @@
             this.label9.Size = new System.Drawing.Size(73, 19);
             this.label9.TabIndex = 48;
             this.label9.Text = "Họ và tên";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // button3
             // 
@@ -287,7 +278,7 @@
             this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(265, 369);
+            this.button3.Location = new System.Drawing.Point(262, 306);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(177, 42);
@@ -303,14 +294,13 @@
             this.button4.ForeColor = System.Drawing.Color.White;
             this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(36, 369);
+            this.button4.Location = new System.Drawing.Point(33, 306);
             this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(177, 42);
             this.button4.TabIndex = 88;
             this.button4.Text = "Thêm mới";
             this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button2
             // 
@@ -320,7 +310,7 @@
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(724, 369);
+            this.button2.Location = new System.Drawing.Point(721, 306);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(177, 42);
@@ -336,7 +326,7 @@
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(495, 369);
+            this.button1.Location = new System.Drawing.Point(492, 306);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(177, 42);
@@ -449,42 +439,6 @@
             this.label17.TabIndex = 48;
             this.label17.Text = "Họ và tên cha";
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.textBox9);
-            this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.ForeColor = System.Drawing.Color.Black;
-            this.groupBox2.Location = new System.Drawing.Point(20, 296);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(896, 58);
-            this.groupBox2.TabIndex = 95;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Xếp lớp cho học sinh";
-            // 
-            // textBox9
-            // 
-            this.textBox9.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.ForeColor = System.Drawing.Color.Black;
-            this.textBox9.Location = new System.Drawing.Point(364, 23);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(277, 26);
-            this.textBox9.TabIndex = 49;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.Black;
-            this.label16.Location = new System.Drawing.Point(228, 30);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(71, 19);
-            this.label16.TabIndex = 48;
-            this.label16.Text = "Chọn lớp";
-            // 
             // groupBox3
             // 
             this.groupBox3.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -502,7 +456,7 @@
             // 
             this.groupDS.Controls.Add(this.dgvHS);
             this.groupDS.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupDS.Location = new System.Drawing.Point(20, 416);
+            this.groupDS.Location = new System.Drawing.Point(20, 357);
             this.groupDS.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupDS.Name = "groupDS";
             this.groupDS.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -518,29 +472,16 @@
             this.dgvHS.Location = new System.Drawing.Point(5, 17);
             this.dgvHS.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvHS.Name = "dgvHS";
-            this.dgvHS.Size = new System.Drawing.Size(885, 133);
+            this.dgvHS.Size = new System.Drawing.Size(885, 142);
             this.dgvHS.TabIndex = 0;
-            // 
-            // dtpNgSinh
-            // 
-            this.dtpNgSinh.CustomFormat = "dd-MM-yyyy";
-            this.dtpNgSinh.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpNgSinh.Location = new System.Drawing.Point(156, 93);
-            this.dtpNgSinh.MaxDate = new System.DateTime(2018, 12, 31, 0, 0, 0, 0);
-            this.dtpNgSinh.MinDate = new System.DateTime(1999, 1, 1, 0, 0, 0, 0);
-            this.dtpNgSinh.Name = "dtpNgSinh";
-            this.dtpNgSinh.Size = new System.Drawing.Size(184, 26);
-            this.dtpNgSinh.TabIndex = 65;
-            this.dtpNgSinh.Value = new System.DateTime(2018, 12, 2, 0, 0, 0, 0);
             // 
             // frmHocSinh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(932, 586);
+            this.ClientSize = new System.Drawing.Size(932, 521);
             this.Controls.Add(this.groupDS);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
@@ -551,13 +492,10 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmHocSinh";
             this.Text = "Thông Tin Học Sinh";
-            this.Load += new System.EventHandler(this.frmHocSinh_Load);
             this.groupBoxTTCT.ResumeLayout(false);
             this.groupBoxTTCT.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupDS.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHS)).EndInit();
             this.ResumeLayout(false);
@@ -584,6 +522,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox textBox3;
@@ -594,12 +533,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupDS;
         private System.Windows.Forms.DataGridView dgvHS;
-        private System.Windows.Forms.DateTimePicker dtpNgSinh;
     }
 }

@@ -8,17 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SMS
-{
-    public partial class frmDoiMatKhau : Form
-    {
-        public frmDoiMatKhau()
-        {
+namespace SMS {
+    public partial class frmDoiMatKhau : Form {
+        public frmDoiMatKhau() {
             InitializeComponent();
         }
 
-        private void btnThoat_Click(object sender, EventArgs e)
-        {
+        private void btnThoat_Click(object sender, EventArgs e) {
             this.Close();
         }
 
@@ -38,7 +34,7 @@ namespace SMS
                     MessageBox.Show("Thay đổi thành công");
             }
             else
-                MessageBox.Show("Không đúng tên tài khoản hoặc mật khẩu"); 
+                MessageBox.Show("Không đúng tên tài khoản hoặc mật khẩu");
         }
 
         private void frmDoiMatKhau_Load(object sender, EventArgs e) {

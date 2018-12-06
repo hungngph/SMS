@@ -18,7 +18,7 @@ namespace SMS
             Application.SetCompatibleTextRenderingDefault(false);
             
             //Form Main
-            Application.Run(new frmHocSinh());
+            Application.Run(new frmMain());
             
             //Form Login
             //Application.Run(new frmLogin());

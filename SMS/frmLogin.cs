@@ -8,12 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SMS
-{
-    public partial class frmLogin : Form
-    {
-        public frmLogin()
-        {
+namespace SMS {
+    public partial class frmLogin : Form {
+        public frmLogin() {
             InitializeComponent();
         }
         private void btnDangNhap_Click(object sender, EventArgs e) {

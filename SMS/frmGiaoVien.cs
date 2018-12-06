@@ -8,17 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SMS
-{
-    public partial class frmGiaoVien : Form
-    {
-        public frmGiaoVien()
-        {
+namespace SMS {
+    public partial class frmGiaoVien : Form {
+        public frmGiaoVien() {
             InitializeComponent();
         }
 
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
+        private void btnXoa_Click(object sender, EventArgs e) {
             this.Close();
         }
 
@@ -33,7 +29,7 @@ namespace SMS
         void FillDataGridView() {
             string query = "SELECT * " +
                 "FROM GIAOVIEN";
-            dgvMH.DataSource = DatabaseConnection.GetDataTable(query);
+            dgvGV.DataSource = DatabaseConnection.GetDataTable(query);
             // adapter.Dispose();
         }
 

@@ -30,15 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGiaoVien));
             this.groupDS = new System.Windows.Forms.GroupBox();
-            this.dgvMH = new System.Windows.Forms.DataGridView();
+            this.dgvGV = new System.Windows.Forms.DataGridView();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox9 = new System.Windows.Forms.TextBox();
@@ -63,16 +61,16 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.groupDS.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGV)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBoxTTCT.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupDS
             // 
-            this.groupDS.Controls.Add(this.dgvMH);
+            this.groupDS.Controls.Add(this.dgvGV);
             this.groupDS.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupDS.Location = new System.Drawing.Point(18, 414);
+            this.groupDS.Location = new System.Drawing.Point(18, 399);
             this.groupDS.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupDS.Name = "groupDS";
             this.groupDS.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -81,15 +79,15 @@
             this.groupDS.TabStop = false;
             this.groupDS.Text = "Danh sách giáo viên";
             // 
-            // dgvMH
+            // dgvGV
             // 
-            this.dgvMH.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dgvMH.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMH.Location = new System.Drawing.Point(5, 17);
-            this.dgvMH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dgvMH.Name = "dgvMH";
-            this.dgvMH.Size = new System.Drawing.Size(885, 133);
-            this.dgvMH.TabIndex = 0;
+            this.dgvGV.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvGV.Location = new System.Drawing.Point(5, 17);
+            this.dgvGV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvGV.Name = "dgvGV";
+            this.dgvGV.Size = new System.Drawing.Size(885, 133);
+            this.dgvGV.TabIndex = 0;
             // 
             // textBox1
             // 
@@ -120,7 +118,7 @@
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(492, 367);
+            this.button1.Location = new System.Drawing.Point(490, 342);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(177, 42);
@@ -132,8 +130,6 @@
             // 
             this.groupBox2.Controls.Add(this.textBox4);
             this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.textBox2);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.textBox9);
@@ -144,7 +140,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(896, 150);
+            this.groupBox2.Size = new System.Drawing.Size(896, 127);
             this.groupBox2.TabIndex = 104;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Chuyên môn";
@@ -166,30 +162,9 @@
             this.label11.ForeColor = System.Drawing.Color.Black;
             this.label11.Location = new System.Drawing.Point(228, 23);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(66, 19);
+            this.label11.Size = new System.Drawing.Size(64, 19);
             this.label11.TabIndex = 54;
-            this.label11.Text = "Trình độ";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.ForeColor = System.Drawing.Color.Black;
-            this.textBox3.Location = new System.Drawing.Point(375, 118);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(277, 26);
-            this.textBox3.TabIndex = 53;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(228, 121);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(103, 19);
-            this.label5.TabIndex = 52;
-            this.label5.Text = "Lớp giảng dạy";
+            this.label11.Text = "Chức vụ";
             // 
             // textBox2
             // 
@@ -254,7 +229,7 @@
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(721, 367);
+            this.button2.Location = new System.Drawing.Point(719, 342);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(177, 42);
@@ -451,7 +426,7 @@
             this.button4.ForeColor = System.Drawing.Color.White;
             this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(33, 367);
+            this.button4.Location = new System.Drawing.Point(31, 342);
             this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(177, 42);
@@ -467,7 +442,7 @@
             this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(262, 367);
+            this.button3.Location = new System.Drawing.Point(260, 342);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(177, 42);
@@ -492,9 +467,8 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmGiaoVien";
             this.Text = "Thông Tin Giáo Viên";
-            this.Load += new System.EventHandler(this.frmGiaoVien_Load);
             this.groupDS.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGV)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBoxTTCT.ResumeLayout(false);
@@ -506,13 +480,11 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupDS;
-        private System.Windows.Forms.DataGridView dgvMH;
+        private System.Windows.Forms.DataGridView dgvGV;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox9;
