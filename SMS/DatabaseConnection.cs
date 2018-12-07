@@ -60,7 +60,8 @@ namespace SMS {
             try {
                 cmd.ExecuteNonQuery();
             }
-            catch {
+            catch (Exception e){
+                MessageBox.Show(e.Message);
                 cmd.Dispose();
                 return false;
             }

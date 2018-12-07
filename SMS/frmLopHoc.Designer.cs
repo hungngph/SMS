@@ -37,7 +37,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtSiSo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtTenGV = new System.Windows.Forms.TextBox();
+            this.txtMaGV = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.groupDS = new System.Windows.Forms.GroupBox();
             this.dgvLH = new System.Windows.Forms.DataGridView();
@@ -69,7 +69,7 @@
             this.groupBoxTTCT.Controls.Add(this.label7);
             this.groupBoxTTCT.Controls.Add(this.txtSiSo);
             this.groupBoxTTCT.Controls.Add(this.label3);
-            this.groupBoxTTCT.Controls.Add(this.txtTenGV);
+            this.groupBoxTTCT.Controls.Add(this.txtMaGV);
             this.groupBoxTTCT.Controls.Add(this.label9);
             this.groupBoxTTCT.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxTTCT.ForeColor = System.Drawing.Color.Black;
@@ -145,15 +145,15 @@
             this.label3.TabIndex = 51;
             this.label3.Text = "Sỉ số";
             // 
-            // txtTenGV
+            // txtMaGV
             // 
-            this.txtTenGV.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenGV.ForeColor = System.Drawing.Color.Black;
-            this.txtTenGV.Location = new System.Drawing.Point(173, 20);
-            this.txtTenGV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTenGV.Name = "txtTenGV";
-            this.txtTenGV.Size = new System.Drawing.Size(303, 26);
-            this.txtTenGV.TabIndex = 49;
+            this.txtMaGV.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaGV.ForeColor = System.Drawing.Color.Black;
+            this.txtMaGV.Location = new System.Drawing.Point(173, 20);
+            this.txtMaGV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtMaGV.Name = "txtMaGV";
+            this.txtMaGV.Size = new System.Drawing.Size(303, 26);
+            this.txtMaGV.TabIndex = 49;
             // 
             // label9
             // 
@@ -285,7 +285,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtSiSo;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtTenGV;
+        private System.Windows.Forms.TextBox txtMaGV;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupDS;
         private System.Windows.Forms.DataGridView dgvLH;

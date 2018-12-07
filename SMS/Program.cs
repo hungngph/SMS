@@ -18,7 +18,7 @@ namespace SMS
             Application.SetCompatibleTextRenderingDefault(false);
             
             //Form Main
-            Application.Run(new frmMain());
+            Application.Run(new frmGiaoVien());
             
             //Form Login
             //Application.Run(new frmLogin());

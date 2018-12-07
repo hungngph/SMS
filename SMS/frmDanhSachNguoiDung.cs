@@ -20,13 +20,16 @@ namespace SMS {
                 string query1 = "SELECT * " +
                     "FROM TAIKHOAN " +
                     "WHERE TENDANGNHAP='" + txtTaikhoan.Text + "'";
-                if (DatabaseConnection.CheckExist(query1))
+                if (!DatabaseConnection.CheckExist(query1))
                     MessageBox.Show("Không có tài khoản này", "Thông báo");
                 else {
                     string query2 = "UPDATE TAIKHOAN SET " +
-                        "MATKHAU='" + txtMK.Text + "' " +
-                        "QUYENTRUYCAP='" + cboQuyen.Text + "' " +
+                        "MATKHAU='" + txtMK.Text + "', " +   
+                        "QUYENTRUYCAP=N'" + cboQuyen.Text + "' " +
                         "WHERE TENDANGNHAP='" + txtTaikhoan.Text + "'";
+                    MessageBox.Show(query2);
+                    if (DatabaseConnection.ExcuteSql(query2))
+                        MessageBox.Show("Sửa thành công", "Thông báo");
                     FillDataGridView();
                 }
             }
@@ -62,6 +65,11 @@ namespace SMS {
             }
             else
             if (GeneralCheck()) {
+                query = "SELECT * FROM TAIKHOAN WHERE TENDANGNHAP ='" + txtTaikhoan.Text + "'";
+                if (!DatabaseConnection.CheckExist(query)) {
+                    MessageBox.Show("Không tồn tại tài khoản này");
+                    return;
+                }
                 query = "DELETE FROM TAIKHOAN WHERE TENDANGNHAP='" + txtTaikhoan.Text + "'";
                 if (DatabaseConnection.ExcuteSql(query))
                     MessageBox.Show("Xóa dữ liệu thành công", "Thông báo!");
@@ -113,6 +121,13 @@ namespace SMS {
             txtMK.Text = "";
             txtXacNhanMk.Text = "";
             cboQuyen.Text = "";
+        }
+
+        private void dgvDSND_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e) {
+            txtTaikhoan.Text = dgvDSND.CurrentRow.Cells[0].Value.ToString();
+            txtMK.Text = dgvDSND.CurrentRow.Cells[1].Value.ToString();
+            txtXacNhanMk.Text = txtMK.Text;
+            cboQuyen.Text = dgvDSND.CurrentRow.Cells[2].Value.ToString();
         }
     }
 }
