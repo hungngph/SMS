@@ -137,4 +137,10 @@ namespace SMS {
             FillDataGridView();
         }
     }
+    /*public bool ContainsUnicodeCharacter(string input)
+    {
+        const int MaxAnsiCode = 255;
+
+        return input.ToCharArray().Any(c => c > MaxAnsiCode);
+    }*/
 }

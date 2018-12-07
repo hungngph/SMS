@@ -28,68 +28,52 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmXemDiem));
             this.groupDS = new System.Windows.Forms.GroupBox();
-            this.dgrLH = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvDSXD = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBoxTTCT = new System.Windows.Forms.GroupBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtMaMon = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtMaLop = new System.Windows.Forms.TextBox();
+            this.txtNamHoc = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtHocKy = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnTimKiem = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupDS.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgrLH)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDSXD)).BeginInit();
             this.groupBoxTTCT.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupDS
             // 
-            this.groupDS.Controls.Add(this.dgrLH);
+            this.groupDS.Controls.Add(this.dgvDSXD);
             this.groupDS.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupDS.Location = new System.Drawing.Point(29, 330);
+            this.groupDS.Location = new System.Drawing.Point(29, 188);
             this.groupDS.Name = "groupDS";
             this.groupDS.Size = new System.Drawing.Size(1025, 289);
             this.groupDS.TabIndex = 72;
             this.groupDS.TabStop = false;
             this.groupDS.Text = "Danh sách";
             // 
-            // dgrLH
+            // dgvDSXD
             // 
-            this.dgrLH.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dgrLH.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgrLH.Location = new System.Drawing.Point(6, 21);
-            this.dgrLH.Name = "dgrLH";
-            this.dgrLH.Size = new System.Drawing.Size(1013, 262);
-            this.dgrLH.TabIndex = 0;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.dataGridView1);
-            this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(29, 184);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1025, 122);
-            this.groupBox1.TabIndex = 74;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Thông tin lớp học";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 21);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1013, 95);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvDSXD.AllowUserToAddRows = false;
+            this.dgvDSXD.AllowUserToDeleteRows = false;
+            this.dgvDSXD.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDSXD.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvDSXD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDSXD.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDSXD.Location = new System.Drawing.Point(3, 26);
+            this.dgvDSXD.Name = "dgvDSXD";
+            this.dgvDSXD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDSXD.Size = new System.Drawing.Size(1019, 260);
+            this.dgvDSXD.TabIndex = 0;
             // 
             // button1
             // 
@@ -108,12 +92,12 @@
             // 
             // groupBoxTTCT
             // 
-            this.groupBoxTTCT.Controls.Add(this.textBox4);
+            this.groupBoxTTCT.Controls.Add(this.txtMaMon);
             this.groupBoxTTCT.Controls.Add(this.label3);
-            this.groupBoxTTCT.Controls.Add(this.textBox3);
-            this.groupBoxTTCT.Controls.Add(this.textBox1);
+            this.groupBoxTTCT.Controls.Add(this.txtMaLop);
+            this.groupBoxTTCT.Controls.Add(this.txtNamHoc);
             this.groupBoxTTCT.Controls.Add(this.label2);
-            this.groupBoxTTCT.Controls.Add(this.textBox2);
+            this.groupBoxTTCT.Controls.Add(this.txtHocKy);
             this.groupBoxTTCT.Controls.Add(this.label1);
             this.groupBoxTTCT.Controls.Add(this.label7);
             this.groupBoxTTCT.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -125,14 +109,14 @@
             this.groupBoxTTCT.TabStop = false;
             this.groupBoxTTCT.Text = "Thông tin chi tiết";
             // 
-            // textBox4
+            // txtMaMon
             // 
-            this.textBox4.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.ForeColor = System.Drawing.Color.Black;
-            this.textBox4.Location = new System.Drawing.Point(135, 72);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(198, 30);
-            this.textBox4.TabIndex = 62;
+            this.txtMaMon.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaMon.ForeColor = System.Drawing.Color.Black;
+            this.txtMaMon.Location = new System.Drawing.Point(135, 72);
+            this.txtMaMon.Name = "txtMaMon";
+            this.txtMaMon.Size = new System.Drawing.Size(198, 30);
+            this.txtMaMon.TabIndex = 62;
             // 
             // label3
             // 
@@ -145,23 +129,23 @@
             this.label3.TabIndex = 61;
             this.label3.Text = "Môn";
             // 
-            // textBox3
+            // txtMaLop
             // 
-            this.textBox3.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.ForeColor = System.Drawing.Color.Black;
-            this.textBox3.Location = new System.Drawing.Point(135, 31);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(198, 30);
-            this.textBox3.TabIndex = 60;
+            this.txtMaLop.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaLop.ForeColor = System.Drawing.Color.Black;
+            this.txtMaLop.Location = new System.Drawing.Point(135, 31);
+            this.txtMaLop.Name = "txtMaLop";
+            this.txtMaLop.Size = new System.Drawing.Size(198, 30);
+            this.txtMaLop.TabIndex = 60;
             // 
-            // textBox1
+            // txtNamHoc
             // 
-            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.Black;
-            this.textBox1.Location = new System.Drawing.Point(448, 77);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(198, 30);
-            this.textBox1.TabIndex = 59;
+            this.txtNamHoc.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNamHoc.ForeColor = System.Drawing.Color.Black;
+            this.txtNamHoc.Location = new System.Drawing.Point(448, 72);
+            this.txtNamHoc.Name = "txtNamHoc";
+            this.txtNamHoc.Size = new System.Drawing.Size(198, 30);
+            this.txtNamHoc.TabIndex = 59;
             // 
             // label2
             // 
@@ -174,14 +158,14 @@
             this.label2.TabIndex = 58;
             this.label2.Text = "Năm học";
             // 
-            // textBox2
+            // txtHocKy
             // 
-            this.textBox2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.Color.Black;
-            this.textBox2.Location = new System.Drawing.Point(448, 31);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(198, 30);
-            this.textBox2.TabIndex = 57;
+            this.txtHocKy.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHocKy.ForeColor = System.Drawing.Color.Black;
+            this.txtHocKy.Location = new System.Drawing.Point(448, 31);
+            this.txtHocKy.Name = "txtHocKy";
+            this.txtHocKy.Size = new System.Drawing.Size(198, 30);
+            this.txtHocKy.TabIndex = 57;
             // 
             // label1
             // 
@@ -205,59 +189,62 @@
             this.label7.TabIndex = 54;
             this.label7.Text = "Tên lớp";
             // 
-            // button3
+            // btnTimKiem
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button3.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(794, 36);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(232, 53);
-            this.button3.TabIndex = 102;
-            this.button3.Text = "Tìm kiếm";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnTimKiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.btnTimKiem.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnTimKiem.Font = new System.Drawing.Font("Times New Roman", 10F);
+            this.btnTimKiem.ForeColor = System.Drawing.Color.White;
+            this.btnTimKiem.Image = ((System.Drawing.Image)(resources.GetObject("btnTimKiem.Image")));
+            this.btnTimKiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTimKiem.Location = new System.Drawing.Point(794, 36);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(232, 53);
+            this.btnTimKiem.TabIndex = 102;
+            this.btnTimKiem.Text = "Tìm kiếm";
+            this.btnTimKiem.UseVisualStyleBackColor = false;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // frmXemDiem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1071, 638);
-            this.Controls.Add(this.button3);
+            this.ClientSize = new System.Drawing.Size(1071, 493);
+            this.Controls.Add(this.btnTimKiem);
             this.Controls.Add(this.groupBoxTTCT);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupDS);
-            this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "frmXemDiem";
             this.Text = "Xem điểm lớp quản lý";
+            this.Load += new System.EventHandler(this.frmXemDiem_Load);
             this.groupDS.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgrLH)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDSXD)).EndInit();
             this.groupBoxTTCT.ResumeLayout(false);
             this.groupBoxTTCT.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.GroupBox groupDS;
-        private System.Windows.Forms.DataGridView dgrLH;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvDSXD;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBoxTTCT;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtMaMon;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtMaLop;
+        private System.Windows.Forms.TextBox txtNamHoc;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtHocKy;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnTimKiem;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
