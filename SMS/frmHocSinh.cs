@@ -283,8 +283,8 @@ namespace SMS {
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            string s1 = "Select * From HOCSINH Where ";
-            string strSelect = "Select * From HOCSINH Where ";
+            string s1 = "Set dateformat dmy Select * From HOCSINH Where ";
+            string strSelect = "Set dateformat dmy Select * From HOCSINH Where ";
             if (txtMSHS.Text != "")
                 strSelect += "MAHS = '" + txtMSHS.Text + "'and ";
             if (txtHoTen.Text != "") 
@@ -292,7 +292,7 @@ namespace SMS {
             if (cboGioiTinh.Text != "") 
                 strSelect += "GIOITINH = N'" + cboGioiTinh.Text + "' and ";
             if (txtNgaySinh.Text != "") 
-                strSelect += "NGAYSINH = '" + dtpNgaySinh.Text + "' and ";
+                strSelect += "NGAYSINH = '" + txtNgaySinh.Text + "' and ";
             if (txtKhoa.Text != "") 
                 strSelect += "KHOAHOC = " + txtKhoa.Text + " and ";
             if (txtMaLop.Text != "")
