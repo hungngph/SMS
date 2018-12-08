@@ -16,6 +16,7 @@ namespace SMS {
 
         private void frmHocSinh_Load(object sender, EventArgs e)
         {
+            
             DatabaseConnection.Connected();
             if (!DatabaseConnection.IsConnect())
             {
@@ -94,7 +95,7 @@ namespace SMS {
                 {
                     string strUpdate = "Set Dateformat dmy Update HOCSINH Set HOTEN = N'" + txtHoTen.Text + "', ";
                     strUpdate += "GIOITINH = N'" + cboGioiTinh.Text + "', ";
-                    strUpdate += "NGAYSINH = '" + dtpNgaySinh.Text + "', ";
+                    strUpdate += "NGAYSINH = '" + txtNgaySinh.Text + "', ";
                     strUpdate += "KHOAHOC = " + txtKhoa.Text + ", ";
                     strUpdate += "MALOP = '" + txtMaLop.Text + "', ";
                     strUpdate += "DANTOC = N'" + txtDanToc.Text + "', ";
@@ -169,6 +170,7 @@ namespace SMS {
             // Làm trắng lại các ô textbox
             txtHoTen.Text = "";
             cboGioiTinh.Text = "";
+            txtNgaySinh.Text = "";
             txtKhoa.Text = "";
             txtMaLop.Text = "";
             txtMSHS.Text = "";
@@ -176,8 +178,8 @@ namespace SMS {
             txtDiaChi.Text = "";
             mtxSDT.Text = "";
             txtEmail.Text = "";
-            txtHoTenCha.Text = "";
             txtHoTenMe.Text = "";
+            txtHoTenCha.Text = "";
             mtxSDTCha.Text = "";
             mtxSDTMe.Text = "";
             txtHoTen.Focus();
@@ -187,7 +189,6 @@ namespace SMS {
         {
             string query = "SELECT * FROM HOCSINH";
             dgvHS.DataSource = DatabaseConnection.GetDataTable(query);
-
             //// Chỉnh sửa kích thước các cột
             dgvHS.Columns[0].Width = dgvHS.Width / 14;
             dgvHS.Columns[1].Width = dgvHS.Width / 14 * 5/2;
@@ -218,6 +219,12 @@ namespace SMS {
             if (cboGioiTinh.Text == "")
             {
                 cboGioiTinh.Focus();
+                flag = false;
+                //provider
+            }
+            if (txtNgaySinh.Text == "")
+            {
+                txtNgaySinh.Focus();
                 flag = false;
                 //provider
             }
@@ -260,7 +267,7 @@ namespace SMS {
             txtHoTen.Text = dgvHS.CurrentRow.Cells[1].Value.ToString();
             txtMaLop.Text = dgvHS.CurrentRow.Cells[2].Value.ToString();
             txtKhoa.Text = dgvHS.CurrentRow.Cells[3].Value.ToString();
-            dtpNgaySinh.Text = dgvHS.CurrentRow.Cells[4].Value.ToString();
+            txtNgaySinh.Text = dgvHS.CurrentRow.Cells[4].Value.ToString();
             cboGioiTinh.Text = dgvHS.CurrentRow.Cells[5].Value.ToString();
             txtDiaChi.Text = dgvHS.CurrentRow.Cells[6].Value.ToString();
             txtHoTenCha.Text = dgvHS.CurrentRow.Cells[7].Value.ToString();
@@ -276,41 +283,51 @@ namespace SMS {
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            string s1 = "Select * From HOCSINH";
-            string strSelect = "Select * From HOCSINH";
-            if(txtHoTen.Text!="")
-                strSelect += "Where HOTEN = N'" + txtHoTen.Text + "', ";
-            strSelect += "GIOITINH = N'" + cboGioiTinh.Text + "', ";
-            strSelect += "NGAYSINH = '" + dtpNgaySinh.Text + "', ";
-            strSelect += "KHOAHOC = " + txtKhoa.Text + ", ";
-            strSelect += "MALOP = '" + txtMaLop.Text + "', ";
-            strSelect += "DANTOC = N'" + txtDanToc.Text + "', ";
-            strSelect += "DIACHI = N'" + txtDiaChi.Text + "', ";
-            if (mtxSDT.Text != "")
-                strSelect += "DIENTHOAI = '" + mtxSDT.Text + "', ";
-            else
-                strSelect += "DIENTHOAI = NULL, ";
+            string s1 = "Select * From HOCSINH Where ";
+            string strSelect = "Select * From HOCSINH Where ";
+            if (txtMSHS.Text != "")
+                strSelect += "MAHS = '" + txtMSHS.Text + "'and ";
+            if (txtHoTen.Text != "") 
+                strSelect += "HOTEN = N'" + txtHoTen.Text + "' and ";
+            if (cboGioiTinh.Text != "") 
+                strSelect += "GIOITINH = N'" + cboGioiTinh.Text + "' and ";
+            if (txtNgaySinh.Text != "") 
+                strSelect += "NGAYSINH = '" + dtpNgaySinh.Text + "' and ";
+            if (txtKhoa.Text != "") 
+                strSelect += "KHOAHOC = " + txtKhoa.Text + " and ";
+            if (txtMaLop.Text != "")
+                strSelect += "MALOP = '" + txtMaLop.Text + "' and ";
+            if (txtDanToc.Text != "")
+                strSelect += "DANTOC = N'" + txtDanToc.Text + "' and ";
+            if (txtDiaChi.Text != "")
+                strSelect += "DIACHI = N'" + txtDiaChi.Text + "' and ";
+            if (mtxSDT.Text != "         ")
+                strSelect += "DIENTHOAI = '" + mtxSDT.Text + "' and ";
             if (txtEmail.Text != "")
-                strSelect += "EMAIL = '" + txtEmail.Text + "', ";
-            else
-                strSelect += "EMAIL = NULL, ";
+                strSelect += "EMAIL = '" + txtEmail.Text + "' and ";
             if (txtHoTenCha.Text != "")
-                strSelect += "HOTENCHA = N'" + txtHoTenCha.Text + "', ";
-            else
-                strSelect += "HOTENCHA = NULL, ";
+                strSelect += "HOTENCHA = N'" + txtHoTenCha.Text + "' and ";
             if (txtHoTenMe.Text != "")
-                strSelect += "HOTENME = N'" + txtHoTenMe.Text + "', ";
+                strSelect += "HOTENME = N'" + txtHoTenMe.Text + "' and ";
+            if (mtxSDTCha.Text != "         ")
+                strSelect += "SDTCHA = '" + mtxSDTCha.Text + "' and ";
+            if (mtxSDTMe.Text != "         ")
+                strSelect += "SDTME = '" + mtxSDTMe.Text + "' and";      
+            if (s1 == strSelect) 
+                MessageBox.Show("Chưa nhập thông tin cần tìm kiếm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             else
-                strSelect += "HOTENME = NULL, ";
-            if (mtxSDTCha.Text != "")
-                strSelect += "SDTCHA = '" + mtxSDTCha.Text + "', ";
-            else
-                strSelect += "SDTCHA = NULL, ";
-            if (mtxSDTMe.Text != "")
-                strSelect += "SDTME = '" + mtxSDTMe.Text + "' ";
-            else
-                strSelect += "SDTME = NULL, ";
+            {
+                strSelect = strSelect.Substring(0, strSelect.Length - 4);
+                if (DatabaseConnection.GetDataTable(strSelect).Rows.Count == 0)
+                    MessageBox.Show("Không tìm thấy kết quả!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    dgvHS.DataSource = DatabaseConnection.GetDataTable(strSelect);
+            }
+        }
 
+        private void dtpNgaySinh_ValueChanged(object sender, EventArgs e)
+        {
+            txtNgaySinh.Text = dtpNgaySinh.Text;
         }
     }
 }

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHocSinh));
             this.groupBoxTTCT = new System.Windows.Forms.GroupBox();
+            this.txtNgaySinh = new System.Windows.Forms.TextBox();
             this.dtpNgaySinh = new System.Windows.Forms.DateTimePicker();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -75,6 +76,7 @@
             // 
             // groupBoxTTCT
             // 
+            this.groupBoxTTCT.Controls.Add(this.txtNgaySinh);
             this.groupBoxTTCT.Controls.Add(this.dtpNgaySinh);
             this.groupBoxTTCT.Controls.Add(this.txtEmail);
             this.groupBoxTTCT.Controls.Add(this.label12);
@@ -106,13 +108,21 @@
             this.groupBoxTTCT.TabStop = false;
             this.groupBoxTTCT.Text = "Thông tin học sinh";
             // 
+            // txtNgaySinh
+            // 
+            this.txtNgaySinh.Location = new System.Drawing.Point(156, 91);
+            this.txtNgaySinh.Name = "txtNgaySinh";
+            this.txtNgaySinh.Size = new System.Drawing.Size(165, 26);
+            this.txtNgaySinh.TabIndex = 2;
+            // 
             // dtpNgaySinh
             // 
             this.dtpNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpNgaySinh.Location = new System.Drawing.Point(156, 91);
+            this.dtpNgaySinh.Location = new System.Drawing.Point(319, 91);
             this.dtpNgaySinh.Name = "dtpNgaySinh";
-            this.dtpNgaySinh.Size = new System.Drawing.Size(185, 26);
+            this.dtpNgaySinh.Size = new System.Drawing.Size(22, 26);
             this.dtpNgaySinh.TabIndex = 2;
+            this.dtpNgaySinh.ValueChanged += new System.EventHandler(this.dtpNgaySinh_ValueChanged);
             // 
             // txtEmail
             // 
@@ -515,7 +525,7 @@
             this.groupDS.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupDS.Name = "groupDS";
             this.groupDS.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupDS.Size = new System.Drawing.Size(1300, 174);
+            this.groupDS.Size = new System.Drawing.Size(1300, 240);
             this.groupDS.TabIndex = 97;
             this.groupDS.TabStop = false;
             this.groupDS.Text = "Danh sách học sinh";
@@ -533,7 +543,7 @@
             this.dgvHS.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvHS.Name = "dgvHS";
             this.dgvHS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHS.Size = new System.Drawing.Size(1294, 151);
+            this.dgvHS.Size = new System.Drawing.Size(1294, 217);
             this.dgvHS.TabIndex = 0;
             this.dgvHS.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvHS_CellMouseClick);
             // 
@@ -558,7 +568,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1332, 565);
+            this.ClientSize = new System.Drawing.Size(1332, 631);
             this.Controls.Add(this.btnTimKiem);
             this.Controls.Add(this.groupDS);
             this.Controls.Add(this.groupBox3);
@@ -571,7 +581,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmHocSinh";
-            this.Text = "Thông Tin Học Sinh";
             this.Load += new System.EventHandler(this.frmHocSinh_Load);
             this.groupBoxTTCT.ResumeLayout(false);
             this.groupBoxTTCT.PerformLayout();
@@ -622,5 +631,6 @@
         private System.Windows.Forms.MaskedTextBox mtxSDTMe;
         private System.Windows.Forms.DateTimePicker dtpNgaySinh;
         private System.Windows.Forms.Button btnTimKiem;
+        private System.Windows.Forms.TextBox txtNgaySinh;
     }
 }
