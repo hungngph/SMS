@@ -20,15 +20,15 @@ namespace SMS {
 
         private void btnOk_Click(object sender, EventArgs e) {
             string query = "SELECT * FROM " +
-                "TAIKHOAN='" + txtTaikhoan.Text + "'" +
-                "MATKHAU='" + txtMKcu + "'";
+                "TAIKHOAN WHERE TENDANGNHAP='" + txtTaikhoan.Text + "' AND " +
+                "MATKHAU='" + txtMKcu.Text + "'";
             if (txtMKmoi.Text != txtXacNhanMk.Text) {
                 //provider
                 return;
             }
             if (DatabaseConnection.CheckExist(query)) {
                 query = "UPDATE TAIKHOAN SET " +
-                        "MATKHAU='" + txtMKmoi + "' " +
+                        "MATKHAU='" + txtMKmoi.Text + "' " +
                         "WHERE TENDANGNHAP='" + txtTaikhoan.Text + "'";
                 if (DatabaseConnection.ExcuteSql(query))
                     MessageBox.Show("Thay đổi thành công");
@@ -41,7 +41,6 @@ namespace SMS {
             DatabaseConnection.Connected();
             if (!DatabaseConnection.IsConnect()) {
                 MessageBox.Show("Không kết nối được dữ liệu");
-                return;
             }
         }
 
@@ -50,6 +49,30 @@ namespace SMS {
             txtMKcu.Text = "";
             txtMKmoi.Text = "";
             txtXacNhanMk.Text = "";
+        }
+
+        bool GeneralCheck() {
+            bool flag = true;
+            if (txtTaikhoan.Text == "") {
+                txtTaikhoan.Focus();
+                flag = false;
+                // Provider
+            }
+            else if (txtMKcu.Text == "") {
+                txtMKcu.Focus();
+                flag = false;
+                //Provider
+            }
+            else if (txtMKmoi.Text == "") {
+                flag = false;
+                //Provider
+            }
+            else if (txtXacNhanMk.Text != txtMKmoi.Text) {
+                txtXacNhanMk.Focus();
+                flag = false;
+                //Provider;
+            }
+            return flag;
         }
     }
 }

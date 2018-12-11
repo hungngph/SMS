@@ -35,8 +35,9 @@
             this.txtMatKhau = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnOk = new System.Windows.Forms.Button();
+            this.btnHuyBo = new System.Windows.Forms.Button();
+            this.btnDangNhap = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -63,19 +64,23 @@
             // 
             // txtTaiKhoan
             // 
+            this.txtTaiKhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTaiKhoan.Location = new System.Drawing.Point(52, 206);
             this.txtTaiKhoan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTaiKhoan.Multiline = true;
             this.txtTaiKhoan.Name = "txtTaiKhoan";
             this.txtTaiKhoan.Size = new System.Drawing.Size(394, 39);
             this.txtTaiKhoan.TabIndex = 5;
+            this.txtTaiKhoan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTaiKhoan_KeyPress);
             // 
             // txtMatKhau
             // 
+            this.txtMatKhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMatKhau.Location = new System.Drawing.Point(52, 287);
             this.txtMatKhau.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMatKhau.Multiline = true;
             this.txtMatKhau.Name = "txtMatKhau";
+            this.txtMatKhau.PasswordChar = '*';
             this.txtMatKhau.Size = new System.Drawing.Size(394, 39);
             this.txtMatKhau.TabIndex = 6;
             // 
@@ -101,45 +106,61 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Mật khẩu";
             // 
-            // button1
+            // btnHuyBo
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(251, 368);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(197, 67);
-            this.button1.TabIndex = 89;
-            this.button1.Text = "Hủy Bỏ";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnHuyBo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.btnHuyBo.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnHuyBo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnHuyBo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHuyBo.ForeColor = System.Drawing.Color.White;
+            this.btnHuyBo.Image = ((System.Drawing.Image)(resources.GetObject("btnHuyBo.Image")));
+            this.btnHuyBo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHuyBo.Location = new System.Drawing.Point(255, 436);
+            this.btnHuyBo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnHuyBo.Name = "btnHuyBo";
+            this.btnHuyBo.Size = new System.Drawing.Size(191, 55);
+            this.btnHuyBo.TabIndex = 89;
+            this.btnHuyBo.Text = "Hủy Bỏ";
+            this.btnHuyBo.UseVisualStyleBackColor = false;
+            this.btnHuyBo.Click += new System.EventHandler(this.btnHuyBo_Click);
             // 
-            // btnOk
+            // btnDangNhap
             // 
-            this.btnOk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.btnOk.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnOk.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnOk.ForeColor = System.Drawing.Color.White;
-            this.btnOk.Image = ((System.Drawing.Image)(resources.GetObject("btnOk.Image")));
-            this.btnOk.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOk.Location = new System.Drawing.Point(52, 368);
-            this.btnOk.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(180, 67);
-            this.btnOk.TabIndex = 88;
-            this.btnOk.Text = "Đăng Nhập";
-            this.btnOk.UseVisualStyleBackColor = false;
+            this.btnDangNhap.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.btnDangNhap.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDangNhap.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.btnDangNhap.ForeColor = System.Drawing.Color.White;
+            this.btnDangNhap.Image = ((System.Drawing.Image)(resources.GetObject("btnDangNhap.Image")));
+            this.btnDangNhap.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDangNhap.Location = new System.Drawing.Point(52, 436);
+            this.btnDangNhap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDangNhap.Name = "btnDangNhap";
+            this.btnDangNhap.Size = new System.Drawing.Size(191, 55);
+            this.btnDangNhap.TabIndex = 88;
+            this.btnDangNhap.Text = "Đăng Nhập";
+            this.btnDangNhap.UseVisualStyleBackColor = false;
+            this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
+            // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(52, 353);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(394, 31);
+            this.label6.TabIndex = 91;
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // frmLogin
             // 
+            this.AcceptButton = this.btnDangNhap;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 482);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnOk);
+            this.CancelButton = this.btnHuyBo;
+            this.ClientSize = new System.Drawing.Size(500, 571);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.btnHuyBo);
+            this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtMatKhau);
@@ -150,6 +171,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmLogin";
             this.Text = "Đăng Nhập";
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,7 +185,8 @@
         private System.Windows.Forms.TextBox txtMatKhau;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnOk;
+        private System.Windows.Forms.Button btnHuyBo;
+        private System.Windows.Forms.Button btnDangNhap;
+        private System.Windows.Forms.Label label6;
     }
 }

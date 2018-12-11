@@ -44,6 +44,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.btnTimKiem = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSND)).BeginInit();
@@ -165,13 +166,18 @@
             // 
             // dgvDSND
             // 
+            this.dgvDSND.AllowUserToAddRows = false;
+            this.dgvDSND.AllowUserToDeleteRows = false;
+            this.dgvDSND.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDSND.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvDSND.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSND.Location = new System.Drawing.Point(5, 17);
             this.dgvDSND.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvDSND.Name = "dgvDSND";
+            this.dgvDSND.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDSND.Size = new System.Drawing.Size(900, 210);
             this.dgvDSND.TabIndex = 0;
+            this.dgvDSND.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDSND_CellMouseClick);
             // 
             // button1
             // 
@@ -188,6 +194,7 @@
             this.button1.TabIndex = 83;
             this.button1.Text = "Xóa";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // button3
             // 
@@ -204,6 +211,7 @@
             this.button3.TabIndex = 81;
             this.button3.Text = "Sửa";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // button4
             // 
@@ -220,6 +228,7 @@
             this.button4.TabIndex = 80;
             this.button4.Text = "Thêm mới";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.btnThemMoi_Click);
             // 
             // button2
             // 
@@ -236,12 +245,30 @@
             this.button2.TabIndex = 82;
             this.button2.Text = "Làm mới";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.btnLamMoi_Click);
+            // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.btnTimKiem.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnTimKiem.Font = new System.Drawing.Font("Times New Roman", 10F);
+            this.btnTimKiem.ForeColor = System.Drawing.Color.White;
+            this.btnTimKiem.Image = ((System.Drawing.Image)(resources.GetObject("btnTimKiem.Image")));
+            this.btnTimKiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTimKiem.Location = new System.Drawing.Point(740, 163);
+            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(177, 42);
+            this.btnTimKiem.TabIndex = 103;
+            this.btnTimKiem.Text = "Tìm kiếm";
+            this.btnTimKiem.UseVisualStyleBackColor = false;
             // 
             // frmDanhSachNguoiDung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(945, 458);
+            this.Controls.Add(this.btnTimKiem);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button3);
@@ -252,6 +279,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmDanhSachNguoiDung";
             this.Text = "Quản Lý Người Dùng";
+            this.Load += new System.EventHandler(this.frmDanhSachNguoiDung_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -276,5 +304,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnTimKiem;
     }
 }

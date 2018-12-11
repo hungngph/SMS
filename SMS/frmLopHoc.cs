@@ -14,121 +14,176 @@ namespace SMS {
             InitializeComponent();
         }
 
-        private void btnThoat_Click(object sender, EventArgs e) {
-            this.Close();
-        }
-
-        private void txtTenGV_TextChanged(object sender, EventArgs e) {
-
-        }
-
-        private void frmLopHoc_Load(object sender, EventArgs e) {
+        private void frmLopHoc_Load(object sender, EventArgs e)
+        {
             DatabaseConnection.Connected();
-            if (!DatabaseConnection.IsConnect()) {
+            if (!DatabaseConnection.IsConnect())
+            {
                 MessageBox.Show("Không kết nối được dữ liệu");
                 return;
             }
             FillDataGridView();
-        }
-        void FillDataGridView() {
-            string query = "SELECT * " +
-                "FROM LOP ";
-            dgvLH.DataSource = DatabaseConnection.GetDataTable(query);
-            // adapter.Dispose();
+            Load_combobox();
         }
 
-        private void btnThemmoi_Click(object sender, EventArgs e)
+        private void btnThemMoi_Click(object sender, EventArgs e)
         {
-            //string query = "SELECT * " +
-            //    "FROM LOP " +
-            //    "WHERE MALOP='" + txtMaLop.Text + "'";
-            //if (GeneralCheck())
-            //    if (DatabaseConnection.CheckExist(query)) {
-            //        MessageBox.Show("Mã lớp đã tồn tại", "Thông báo");
-            //        txtMaLop.Focus();
-            //    }
-            //    else {
-            //        query = "INSERT INTO LOP(MALOP, TENLOP, MAGVCN, SISO) " +
-            //            "VALUES('" + txtMaLop.Text + "',N'" + txtTenLop.Text + "','" + txtMaGV.Text + "'," + txtSiSo.Text + ")";
-            //        if (DatabaseConnection.ExcuteSql(query))
-            //            MessageBox.Show("Thêm mới lớp thành công", "Thông báo");
-            //        else
-            //            MessageBox.Show("Thêm mới lớp thất bại", "Thông báo");
-            //        FillDataGridView();
-            //    }
-        }
-        bool GeneralCheck()
-        {
-            //bool flag = true;
-            //if (txtMaLop.Text == "") {
-            //    txtMaLop.Focus();
-            //    flag = false;
-            //    // Provider
-            //}
-            //else if (txtMaGV.Text == "") {
-            //    txtMaGV.Focus();
-            //    flag = false;
-            //    //Provider
-            //}
-            //else if (txtTenLop.Text == "") {
-            //    txtTenLop.Focus();
-            //    flag = false;
-            //    //Provider;
-            //}
-            //else if (txtSiSo.Text == "") {
-            //    txtSiSo.Focus();
-            //    flag = false;
-            //    //Provider
-            //}
-            //return flag;
-            return true;
+            // Câu lệnh truy vấn Table LOP
+            string strSelect = "Select * From LOP Where MALOP = '" + txtMaLop.Text + "'";
+            if (GeneralCheck())
+            {
+                if (DatabaseConnection.CheckExist(strSelect))
+                {
+                    MessageBox.Show("Mã lớp đã tồn tại. Xin vui lòng kiểm tra lại!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtMaLop.Focus();
+                    txtMaLop.SelectAll();
+                }
+                else
+                {
+                    // Câu lệnh insert dữ liệu
+                    string strInsert = "Insert into LOP values ('";
+                    strInsert += txtMaLop.Text + "', N'";
+                    strInsert += txtTenLop.Text + "', '";
+                    strInsert += cboMAGVCN.Text + "', ";
+                    strInsert += txtSiSo.Text + ")";
+                    //
+                    if (DatabaseConnection.ExcuteSql(strInsert))
+                    {
+                        MessageBox.Show("Thêm Lớp học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtMaLop.ReadOnly = true;
+                    }
+                    else
+                        MessageBox.Show("Thêm Lớp học thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    FillDataGridView();
+                }
+            }
         }
 
-        private void btnXoa_Click(object sender, EventArgs e) {
-            string query = "DELETE FROM LOP WHERE MALOP='";
-            if (dgvLH.SelectedRows.Count > 0) {
-                for (int i = 0; i < dgvLH.SelectedRows.Count; i++) {
-                    if (!DatabaseConnection.ExcuteSql(query + dgvLH.SelectedRows[i].Cells[0].Value + "'")) {
-                        MessageBox.Show("Xóa không thành công " + dgvLH.SelectedRows[i].Cells[0].Value);
-                        return;
+        
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            if (dgvLH.SelectedRows.Count > 0)
+            {
+                if (GeneralCheck())
+                {
+                    string strUpdate = "Update LOP Set TENLOP = N'" + txtTenLop.Text + "', ";
+                    strUpdate += "MAGVCN = '" + cboMAGVCN.Text + "', ";
+                    strUpdate += "SISO = " + txtSiSo.Text + " ";
+                    strUpdate += "Where MALOP = '" + txtMaLop.Text + "'";
+                    if (DatabaseConnection.ExcuteSql(strUpdate))
+                        MessageBox.Show("Chỉnh sửa Lớp học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show("Chỉnh sửa Lớp học thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    FillDataGridView();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bạn chưa chọn Học sinh cần sửa!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (dgvLH.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Thông Báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    string strDelete = "Delete from LOP Where MALOP = '";
+                    {
+                        for (int i = 0; i < dgvLH.SelectedRows.Count; i++)
+                            if (!DatabaseConnection.ExcuteSql(strDelete + dgvLH.SelectedRows[i].Cells[0].Value + "'"))
+                            {
+                                MessageBox.Show("Không thể xóa Lop hoc có Mã lớp " + dgvLH.SelectedRows[i].Cells[0].Value, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                continue;
+                            }
+                        FillDataGridView();
+                        MessageBox.Show("Xóa lớp học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
             else
-            if (GeneralCheck()) {
-                query = "DELETE FROM LOP WHERE MALOP='" + txtMaLop.Text + "'";
-                if (DatabaseConnection.ExcuteSql(query))
-                    MessageBox.Show("Xóa dữ liệu thành công", "Thông báo!");
-                else
-                    MessageBox.Show("Lỗi", "Thông báo");
+            {
+                MessageBox.Show("Bạn chưa chọn Lớp học cần xóa!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            FillDataGridView();
         }
 
-        private void btnSua_Click(object sender, EventArgs e) {
-            //if (GeneralCheck()) {
-            //    string query1 = "SELECT * " +
-            //        "FROM TAIKHOAN " +
-            //        "WHERE MALOP='" + txtMaLop.Text + "'";
-            //    if (DatabaseConnection.CheckExist(query1))
-            //        MessageBox.Show("Không có tài khoản này", "Thông báo");
-            //    else {
-            //        string query2 = "UPDATE LOP SET " +
-            //            "TENLOP='" + txtTenLop.Text + "' " +
-            //            "MAGVCN='" + txtMaGV.Text + "' " +
-            //            "SISO='" + txtSiSo.Text + "' " +
-            //            "WHERE MALOP='" + txtMaLop.Text + "'";
-            //        FillDataGridView();
-            //    }
-            //}
-        }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void btnLamMoi_Click(object sender, EventArgs e)
         {
-            //txtMaLop.Text = "";
-            //txtTenLop.Text = "";
-            //txtMaGV.Text = "";
-            //txtSiSo.Text = "";
+            txtMaLop.ReadOnly = false;
+            txtMaLop.Text = "";
+            txtTenLop.Text = "";
+            cboMAGVCN.Text = "";
+            txtSiSo.Text = "";
+        }
+
+        private void FillDataGridView()
+        {
+            string query = "SELECT * FROM LOP";
+            dgvLH.DataSource = DatabaseConnection.GetDataTable(query);
+            //// Chỉnh sửa kích thước các cột
+            dgvLH.Columns[0].Width = dgvLH.Width / 4;
+            dgvLH.Columns[1].Width = dgvLH.Width / 4;
+            dgvLH.Columns[2].Width = dgvLH.Width / 4;
+            dgvLH.Columns[3].Width = dgvLH.Width / 4;
+            // adapter.Dispose();
+        }
+
+        bool GeneralCheck()
+        {
+            bool flag = true;
+            if (txtMaLop.Text == "")
+            {
+                txtMaLop.Focus();
+                flag = false;
+                // Provider
+            }
+            else if (cboMAGVCN.Text == "")
+            {
+                cboMAGVCN.Focus();
+                flag = false;
+                //Provider
+            }
+            else if (txtTenLop.Text == "")
+            {
+                txtTenLop.Focus();
+                flag = false;
+                //Provider;
+            }
+            else if (txtSiSo.Text == "")
+            {
+                txtSiSo.Focus();
+                flag = false;
+                //Provider
+            }
+            return flag;
+        }
+
+        private void dgvLH_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            txtMaLop.Text = dgvLH.CurrentRow.Cells[0].Value.ToString();
+            txtTenLop.Text = dgvLH.CurrentRow.Cells[1].Value.ToString();
+            cboMAGVCN.Text = dgvLH.CurrentRow.Cells[2].Value.ToString();
+            txtSiSo.Text = dgvLH.CurrentRow.Cells[3].Value.ToString();
+            txtMaLop.ReadOnly = true; // Không cho phép sửa Mã Lớp học
+        }
+
+        void Load_combobox()
+        {
+            string query = "SELECT * FROM GIAOVIEN";
+            DataTable dt = DatabaseConnection.GetDataTable(query);
+            cboMAGVCN.DisplayMember = "MAGV";
+            cboMAGVCN.DataSource = dt;
+            cboMAGVCN.Text = "";
+            txtTenGVCN.Text = "";
+        }
+
+        private void cboMAGVCN_SelectedIndexChanged(object sender, EventArgs e)
+        {           
+            string query = "SELECT HOTEN FROM GIAOVIEN WHERE MAGV = '" + cboMAGVCN.Text + "'";
+            DataTable dt = DatabaseConnection.GetDataTable(query);
+            txtTenGVCN.Text = dt.Rows[0][0].ToString();
         }
     }
 }

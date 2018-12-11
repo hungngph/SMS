@@ -8,15 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SMS {
-    public partial class frmHocSinh : Form {
-        public frmHocSinh() {
+namespace SMS
+{
+    public partial class frmHocSinh : Form
+    {
+        public frmHocSinh()
+        {
             InitializeComponent();
         }
 
         private void frmHocSinh_Load(object sender, EventArgs e)
         {
-            
+
             DatabaseConnection.Connected();
             if (!DatabaseConnection.IsConnect())
             {
@@ -24,6 +27,8 @@ namespace SMS {
                 return;
             }
             FillDataGridView();
+            // Load dữ liệu MALOP vào cboMALOP
+            Load_combobox();
         }
 
         private void btnThemMoi_Click(object sender, EventArgs e)
@@ -44,7 +49,7 @@ namespace SMS {
                     string strInsert = "Set Dateformat dmy Insert into HOCSINH values ('";
                     strInsert += txtMSHS.Text + "', N'";
                     strInsert += txtHoTen.Text + "', '";
-                    strInsert += txtMaLop.Text + "', ";
+                    strInsert += cboMaLop.Text + "', ";
                     strInsert += txtKhoa.Text + ", '";
                     strInsert += dtpNgaySinh.Text + "', N'";
                     strInsert += cboGioiTinh.Text + "', N'";
@@ -97,10 +102,10 @@ namespace SMS {
                     strUpdate += "GIOITINH = N'" + cboGioiTinh.Text + "', ";
                     strUpdate += "NGAYSINH = '" + txtNgaySinh.Text + "', ";
                     strUpdate += "KHOAHOC = " + txtKhoa.Text + ", ";
-                    strUpdate += "MALOP = '" + txtMaLop.Text + "', ";
+                    strUpdate += "MALOP = '" + cboMaLop.Text + "', ";
                     strUpdate += "DANTOC = N'" + txtDanToc.Text + "', ";
-                    strUpdate += "DIACHI = N'" + txtDiaChi.Text + "', ";  
-                    if(mtxSDT.Text != "")
+                    strUpdate += "DIACHI = N'" + txtDiaChi.Text + "', ";
+                    if (mtxSDT.Text != "")
                         strUpdate += "DIENTHOAI = '" + mtxSDT.Text + "', ";
                     else
                         strUpdate += "DIENTHOAI = NULL, ";
@@ -154,7 +159,7 @@ namespace SMS {
                                 continue;
                             }
                         FillDataGridView();
-                        MessageBox.Show("Xóa Học sinh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Xóa học sinh thành công ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
@@ -172,7 +177,7 @@ namespace SMS {
             cboGioiTinh.Text = "";
             txtNgaySinh.Text = "";
             txtKhoa.Text = "";
-            txtMaLop.Text = "";
+            cboMaLop.Text = "";
             txtMSHS.Text = "";
             txtDanToc.Text = "";
             txtDiaChi.Text = "";
@@ -185,13 +190,60 @@ namespace SMS {
             txtHoTen.Focus();
         }
 
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            string s1 = "Set dateformat dmy Select * From HOCSINH Where ";
+            string strSelect = "Set dateformat dmy Select * From HOCSINH Where ";
+            if (txtMSHS.Text != "")
+                strSelect += "MAHS = '" + txtMSHS.Text + "'and ";
+            if (txtHoTen.Text != "")
+                strSelect += "HOTEN LIKE N'%" + txtHoTen.Text + "' and ";
+            if (cboGioiTinh.Text != "")
+                strSelect += "GIOITINH = N'" + cboGioiTinh.Text + "' and ";
+            if (txtNgaySinh.Text != "")
+                strSelect += "NGAYSINH = '" + txtNgaySinh.Text + "' and ";
+            if (txtKhoa.Text != "")
+                strSelect += "KHOAHOC = " + txtKhoa.Text + " and ";
+            if (cboMaLop.Text != "")
+                strSelect += "MALOP = '" + cboMaLop.Text + "' and ";
+            if (txtDanToc.Text != "")
+                strSelect += "DANTOC = N'" + txtDanToc.Text + "' and ";
+            if (txtDiaChi.Text != "")
+                strSelect += "DIACHI = N'" + txtDiaChi.Text + "' and ";
+            if (mtxSDT.Text != "         ")
+                strSelect += "DIENTHOAI = '" + mtxSDT.Text + "' and ";
+            if (txtEmail.Text != "")
+                strSelect += "EMAIL = '" + txtEmail.Text + "' and ";
+            if (txtHoTenCha.Text != "")
+                strSelect += "HOTENCHA = N'" + txtHoTenCha.Text + "' and ";
+            if (txtHoTenMe.Text != "")
+                strSelect += "HOTENME = N'" + txtHoTenMe.Text + "' and ";
+            if (mtxSDTCha.Text != "         ")
+                strSelect += "SDTCHA = '" + mtxSDTCha.Text + "' and ";
+            if (mtxSDTMe.Text != "         ")
+                strSelect += "SDTME = '" + mtxSDTMe.Text + "' and";
+            if (s1 == strSelect)
+            {
+                MessageBox.Show("Chưa nhập thông tin cần tìm kiếm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                FillDataGridView();
+            }
+            else
+            {
+                strSelect = strSelect.Substring(0, strSelect.Length - 4);
+                if (DatabaseConnection.GetDataTable(strSelect).Rows.Count == 0)
+                    MessageBox.Show("Không tìm thấy kết quả!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    dgvHS.DataSource = DatabaseConnection.GetDataTable(strSelect);
+            }
+        }
+
         private void FillDataGridView()
         {
             string query = "SELECT * FROM HOCSINH";
             dgvHS.DataSource = DatabaseConnection.GetDataTable(query);
             //// Chỉnh sửa kích thước các cột
             dgvHS.Columns[0].Width = dgvHS.Width / 14;
-            dgvHS.Columns[1].Width = dgvHS.Width / 14 * 5/2;
+            dgvHS.Columns[1].Width = dgvHS.Width / 14 * 5 / 2;
             dgvHS.Columns[2].Width = dgvHS.Width / 14;
             dgvHS.Columns[3].Width = dgvHS.Width / 14;
             dgvHS.Columns[4].Width = dgvHS.Width / 14 * 3 / 2;
@@ -234,9 +286,9 @@ namespace SMS {
                 flag = false;
                 //provider
             }
-            if (txtMaLop.Text == "")
+            if (cboMaLop.Text == "")
             {
-                txtMaLop.Focus();
+                cboMaLop.Focus();
                 flag = false;
                 //provider
             }
@@ -265,7 +317,7 @@ namespace SMS {
         {
             txtMSHS.Text = dgvHS.CurrentRow.Cells[0].Value.ToString();
             txtHoTen.Text = dgvHS.CurrentRow.Cells[1].Value.ToString();
-            txtMaLop.Text = dgvHS.CurrentRow.Cells[2].Value.ToString();
+            cboMaLop.Text = dgvHS.CurrentRow.Cells[2].Value.ToString();
             txtKhoa.Text = dgvHS.CurrentRow.Cells[3].Value.ToString();
             txtNgaySinh.Text = dgvHS.CurrentRow.Cells[4].Value.ToString();
             cboGioiTinh.Text = dgvHS.CurrentRow.Cells[5].Value.ToString();
@@ -281,53 +333,17 @@ namespace SMS {
             txtMSHS.Visible = true;
         }
 
-        private void btnTimKiem_Click(object sender, EventArgs e)
-        {
-            string s1 = "Set dateformat dmy Select * From HOCSINH Where ";
-            string strSelect = "Set dateformat dmy Select * From HOCSINH Where ";
-            if (txtMSHS.Text != "")
-                strSelect += "MAHS = '" + txtMSHS.Text + "'and ";
-            if (txtHoTen.Text != "") 
-                strSelect += "HOTEN = N'" + txtHoTen.Text + "' and ";
-            if (cboGioiTinh.Text != "") 
-                strSelect += "GIOITINH = N'" + cboGioiTinh.Text + "' and ";
-            if (txtNgaySinh.Text != "") 
-                strSelect += "NGAYSINH = '" + txtNgaySinh.Text + "' and ";
-            if (txtKhoa.Text != "") 
-                strSelect += "KHOAHOC = " + txtKhoa.Text + " and ";
-            if (txtMaLop.Text != "")
-                strSelect += "MALOP = '" + txtMaLop.Text + "' and ";
-            if (txtDanToc.Text != "")
-                strSelect += "DANTOC = N'" + txtDanToc.Text + "' and ";
-            if (txtDiaChi.Text != "")
-                strSelect += "DIACHI = N'" + txtDiaChi.Text + "' and ";
-            if (mtxSDT.Text != "         ")
-                strSelect += "DIENTHOAI = '" + mtxSDT.Text + "' and ";
-            if (txtEmail.Text != "")
-                strSelect += "EMAIL = '" + txtEmail.Text + "' and ";
-            if (txtHoTenCha.Text != "")
-                strSelect += "HOTENCHA = N'" + txtHoTenCha.Text + "' and ";
-            if (txtHoTenMe.Text != "")
-                strSelect += "HOTENME = N'" + txtHoTenMe.Text + "' and ";
-            if (mtxSDTCha.Text != "         ")
-                strSelect += "SDTCHA = '" + mtxSDTCha.Text + "' and ";
-            if (mtxSDTMe.Text != "         ")
-                strSelect += "SDTME = '" + mtxSDTMe.Text + "' and";      
-            if (s1 == strSelect) 
-                MessageBox.Show("Chưa nhập thông tin cần tìm kiếm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            else
-            {
-                strSelect = strSelect.Substring(0, strSelect.Length - 4);
-                if (DatabaseConnection.GetDataTable(strSelect).Rows.Count == 0)
-                    MessageBox.Show("Không tìm thấy kết quả!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                else
-                    dgvHS.DataSource = DatabaseConnection.GetDataTable(strSelect);
-            }
-        }
-
         private void dtpNgaySinh_ValueChanged(object sender, EventArgs e)
         {
             txtNgaySinh.Text = dtpNgaySinh.Text;
+        }
+        void Load_combobox()
+        {
+            string query = "SELECT * FROM LOP";
+            DataTable dt = DatabaseConnection.GetDataTable(query);
+            cboMaLop.DisplayMember = "MALOP";
+            cboMaLop.DataSource = dt;
+            cboMaLop.Text = "";
         }
     }
 }

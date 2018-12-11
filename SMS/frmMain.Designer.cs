@@ -32,17 +32,17 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.pnlGroup4 = new System.Windows.Forms.Panel();
             this.flowLayoutPanelFunction = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnGroup1 = new System.Windows.Forms.Button();
-            this.btn11 = new System.Windows.Forms.Button();
-            this.btn12 = new System.Windows.Forms.Button();
-            this.btnGroup2 = new System.Windows.Forms.Button();
-            this.btn21 = new System.Windows.Forms.Button();
-            this.btn22 = new System.Windows.Forms.Button();
-            this.btn23 = new System.Windows.Forms.Button();
-            this.btnGroup3 = new System.Windows.Forms.Button();
-            this.btn31 = new System.Windows.Forms.Button();
-            this.btn32 = new System.Windows.Forms.Button();
-            this.btnGroup7 = new System.Windows.Forms.Button();
+            this.btnQuanLyTaiKhoan = new System.Windows.Forms.Button();
+            this.btnDoiMatKhau = new System.Windows.Forms.Button();
+            this.btnCSDSNguoiDung = new System.Windows.Forms.Button();
+            this.btnCapNhapThongTin = new System.Windows.Forms.Button();
+            this.btnThongTinHS = new System.Windows.Forms.Button();
+            this.btnThongTinGiaoVien = new System.Windows.Forms.Button();
+            this.btnThongTinLopHoc = new System.Windows.Forms.Button();
+            this.btnQLDiem = new System.Windows.Forms.Button();
+            this.btnNhapDiem = new System.Windows.Forms.Button();
+            this.btnXemDiem = new System.Windows.Forms.Button();
+            this.btnGioiThieu = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,7 +50,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.groupBoxGioiThieu = new System.Windows.Forms.GroupBox();
+            this.grpGioiThieu = new System.Windows.Forms.GroupBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -71,7 +71,7 @@
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.groupBoxGioiThieu.SuspendLayout();
+            this.grpGioiThieu.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -109,17 +109,17 @@
             // flowLayoutPanelFunction
             // 
             this.flowLayoutPanelFunction.AutoScroll = true;
-            this.flowLayoutPanelFunction.Controls.Add(this.btnGroup1);
-            this.flowLayoutPanelFunction.Controls.Add(this.btn11);
-            this.flowLayoutPanelFunction.Controls.Add(this.btn12);
-            this.flowLayoutPanelFunction.Controls.Add(this.btnGroup2);
-            this.flowLayoutPanelFunction.Controls.Add(this.btn21);
-            this.flowLayoutPanelFunction.Controls.Add(this.btn22);
-            this.flowLayoutPanelFunction.Controls.Add(this.btn23);
-            this.flowLayoutPanelFunction.Controls.Add(this.btnGroup3);
-            this.flowLayoutPanelFunction.Controls.Add(this.btn31);
-            this.flowLayoutPanelFunction.Controls.Add(this.btn32);
-            this.flowLayoutPanelFunction.Controls.Add(this.btnGroup7);
+            this.flowLayoutPanelFunction.Controls.Add(this.btnQuanLyTaiKhoan);
+            this.flowLayoutPanelFunction.Controls.Add(this.btnDoiMatKhau);
+            this.flowLayoutPanelFunction.Controls.Add(this.btnCSDSNguoiDung);
+            this.flowLayoutPanelFunction.Controls.Add(this.btnCapNhapThongTin);
+            this.flowLayoutPanelFunction.Controls.Add(this.btnThongTinHS);
+            this.flowLayoutPanelFunction.Controls.Add(this.btnThongTinGiaoVien);
+            this.flowLayoutPanelFunction.Controls.Add(this.btnThongTinLopHoc);
+            this.flowLayoutPanelFunction.Controls.Add(this.btnQLDiem);
+            this.flowLayoutPanelFunction.Controls.Add(this.btnNhapDiem);
+            this.flowLayoutPanelFunction.Controls.Add(this.btnXemDiem);
+            this.flowLayoutPanelFunction.Controls.Add(this.btnGioiThieu);
             this.flowLayoutPanelFunction.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanelFunction.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanelFunction.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -127,173 +127,173 @@
             this.flowLayoutPanelFunction.Size = new System.Drawing.Size(260, 676);
             this.flowLayoutPanelFunction.TabIndex = 9;
             // 
-            // btnGroup1
+            // btnQuanLyTaiKhoan
             // 
-            this.btnGroup1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.btnGroup1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGroup1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGroup1.Location = new System.Drawing.Point(3, 2);
-            this.btnGroup1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnGroup1.Name = "btnGroup1";
-            this.btnGroup1.Size = new System.Drawing.Size(233, 53);
-            this.btnGroup1.TabIndex = 1;
-            this.btnGroup1.Text = "Quản lý tài khoản";
-            this.btnGroup1.UseVisualStyleBackColor = false;
-            this.btnGroup1.Click += new System.EventHandler(this.btnGroup1_Click);
+            this.btnQuanLyTaiKhoan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.btnQuanLyTaiKhoan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQuanLyTaiKhoan.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuanLyTaiKhoan.Location = new System.Drawing.Point(3, 2);
+            this.btnQuanLyTaiKhoan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnQuanLyTaiKhoan.Name = "btnQuanLyTaiKhoan";
+            this.btnQuanLyTaiKhoan.Size = new System.Drawing.Size(233, 53);
+            this.btnQuanLyTaiKhoan.TabIndex = 1;
+            this.btnQuanLyTaiKhoan.Text = "Quản lý tài khoản";
+            this.btnQuanLyTaiKhoan.UseVisualStyleBackColor = false;
+            this.btnQuanLyTaiKhoan.Click += new System.EventHandler(this.btnQuanLyTaiKhoan_Click);
             // 
-            // btn11
+            // btnDoiMatKhau
             // 
-            this.btn11.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btn11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn11.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btn11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.btn11.Location = new System.Drawing.Point(3, 59);
-            this.btn11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn11.Name = "btn11";
-            this.btn11.Size = new System.Drawing.Size(233, 53);
-            this.btn11.TabIndex = 2;
-            this.btn11.Text = "Đổi mật khẩu";
-            this.btn11.UseVisualStyleBackColor = false;
-            this.btn11.Visible = false;
-            this.btn11.Click += new System.EventHandler(this.btn11_Click);
+            this.btnDoiMatKhau.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnDoiMatKhau.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDoiMatKhau.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.btnDoiMatKhau.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.btnDoiMatKhau.Location = new System.Drawing.Point(3, 59);
+            this.btnDoiMatKhau.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDoiMatKhau.Name = "btnDoiMatKhau";
+            this.btnDoiMatKhau.Size = new System.Drawing.Size(233, 53);
+            this.btnDoiMatKhau.TabIndex = 2;
+            this.btnDoiMatKhau.Text = "Đổi mật khẩu";
+            this.btnDoiMatKhau.UseVisualStyleBackColor = false;
+            this.btnDoiMatKhau.Visible = false;
+            this.btnDoiMatKhau.Click += new System.EventHandler(this.btnDoiMatKhau_Click);
             // 
-            // btn12
+            // btnCSDSNguoiDung
             // 
-            this.btn12.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btn12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn12.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btn12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.btn12.Location = new System.Drawing.Point(3, 116);
-            this.btn12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn12.Name = "btn12";
-            this.btn12.Size = new System.Drawing.Size(233, 64);
-            this.btn12.TabIndex = 3;
-            this.btn12.Text = "Chỉnh sửa danh sách người dùng";
-            this.btn12.UseVisualStyleBackColor = false;
-            this.btn12.Visible = false;
-            this.btn12.Click += new System.EventHandler(this.btn12_Click);
+            this.btnCSDSNguoiDung.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCSDSNguoiDung.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCSDSNguoiDung.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.btnCSDSNguoiDung.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.btnCSDSNguoiDung.Location = new System.Drawing.Point(3, 116);
+            this.btnCSDSNguoiDung.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCSDSNguoiDung.Name = "btnCSDSNguoiDung";
+            this.btnCSDSNguoiDung.Size = new System.Drawing.Size(233, 64);
+            this.btnCSDSNguoiDung.TabIndex = 3;
+            this.btnCSDSNguoiDung.Text = "Chỉnh sửa danh sách người dùng";
+            this.btnCSDSNguoiDung.UseVisualStyleBackColor = false;
+            this.btnCSDSNguoiDung.Visible = false;
+            this.btnCSDSNguoiDung.Click += new System.EventHandler(this.btnCSDSNguoiDung_Click);
             // 
-            // btnGroup2
+            // btnCapNhapThongTin
             // 
-            this.btnGroup2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.btnGroup2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGroup2.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnGroup2.Location = new System.Drawing.Point(3, 184);
-            this.btnGroup2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnGroup2.Name = "btnGroup2";
-            this.btnGroup2.Size = new System.Drawing.Size(233, 53);
-            this.btnGroup2.TabIndex = 1;
-            this.btnGroup2.Text = "Cập nhật thông tin ";
-            this.btnGroup2.UseVisualStyleBackColor = false;
-            this.btnGroup2.Click += new System.EventHandler(this.btnGroup2_Click);
+            this.btnCapNhapThongTin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.btnCapNhapThongTin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCapNhapThongTin.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.btnCapNhapThongTin.Location = new System.Drawing.Point(3, 184);
+            this.btnCapNhapThongTin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCapNhapThongTin.Name = "btnCapNhapThongTin";
+            this.btnCapNhapThongTin.Size = new System.Drawing.Size(233, 53);
+            this.btnCapNhapThongTin.TabIndex = 1;
+            this.btnCapNhapThongTin.Text = "Cập nhật thông tin ";
+            this.btnCapNhapThongTin.UseVisualStyleBackColor = false;
+            this.btnCapNhapThongTin.Click += new System.EventHandler(this.btnCapNhapThongTin_Click);
             // 
-            // btn21
+            // btnThongTinHS
             // 
-            this.btn21.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btn21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn21.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btn21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.btn21.Location = new System.Drawing.Point(3, 241);
-            this.btn21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn21.Name = "btn21";
-            this.btn21.Size = new System.Drawing.Size(233, 58);
-            this.btn21.TabIndex = 4;
-            this.btn21.Text = "Thông tin học sinh";
-            this.btn21.UseVisualStyleBackColor = false;
-            this.btn21.Visible = false;
-            this.btn21.Click += new System.EventHandler(this.btn21_Click);
+            this.btnThongTinHS.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnThongTinHS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnThongTinHS.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.btnThongTinHS.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.btnThongTinHS.Location = new System.Drawing.Point(3, 241);
+            this.btnThongTinHS.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnThongTinHS.Name = "btnThongTinHS";
+            this.btnThongTinHS.Size = new System.Drawing.Size(233, 70);
+            this.btnThongTinHS.TabIndex = 4;
+            this.btnThongTinHS.Text = "Thông tin học sinh";
+            this.btnThongTinHS.UseVisualStyleBackColor = false;
+            this.btnThongTinHS.Visible = false;
+            this.btnThongTinHS.Click += new System.EventHandler(this.btnThongTinHS_Click);
             // 
-            // btn22
+            // btnThongTinGiaoVien
             // 
-            this.btn22.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btn22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn22.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btn22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.btn22.Location = new System.Drawing.Point(3, 303);
-            this.btn22.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn22.Name = "btn22";
-            this.btn22.Size = new System.Drawing.Size(233, 53);
-            this.btn22.TabIndex = 5;
-            this.btn22.Text = "Thông tin giáo viên";
-            this.btn22.UseVisualStyleBackColor = false;
-            this.btn22.Visible = false;
-            this.btn22.Click += new System.EventHandler(this.btn22_Click);
+            this.btnThongTinGiaoVien.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnThongTinGiaoVien.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnThongTinGiaoVien.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.btnThongTinGiaoVien.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.btnThongTinGiaoVien.Location = new System.Drawing.Point(3, 315);
+            this.btnThongTinGiaoVien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnThongTinGiaoVien.Name = "btnThongTinGiaoVien";
+            this.btnThongTinGiaoVien.Size = new System.Drawing.Size(233, 53);
+            this.btnThongTinGiaoVien.TabIndex = 5;
+            this.btnThongTinGiaoVien.Text = "Thông tin giáo viên";
+            this.btnThongTinGiaoVien.UseVisualStyleBackColor = false;
+            this.btnThongTinGiaoVien.Visible = false;
+            this.btnThongTinGiaoVien.Click += new System.EventHandler(this.btnThongTinGiaoVien_Click);
             // 
-            // btn23
+            // btnThongTinLopHoc
             // 
-            this.btn23.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btn23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn23.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btn23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.btn23.Location = new System.Drawing.Point(3, 360);
-            this.btn23.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn23.Name = "btn23";
-            this.btn23.Size = new System.Drawing.Size(233, 53);
-            this.btn23.TabIndex = 6;
-            this.btn23.Text = "Thông tin lớp học";
-            this.btn23.UseVisualStyleBackColor = false;
-            this.btn23.Visible = false;
-            this.btn23.Click += new System.EventHandler(this.btn23_Click);
+            this.btnThongTinLopHoc.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnThongTinLopHoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnThongTinLopHoc.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.btnThongTinLopHoc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.btnThongTinLopHoc.Location = new System.Drawing.Point(3, 372);
+            this.btnThongTinLopHoc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnThongTinLopHoc.Name = "btnThongTinLopHoc";
+            this.btnThongTinLopHoc.Size = new System.Drawing.Size(233, 53);
+            this.btnThongTinLopHoc.TabIndex = 6;
+            this.btnThongTinLopHoc.Text = "Thông tin lớp học";
+            this.btnThongTinLopHoc.UseVisualStyleBackColor = false;
+            this.btnThongTinLopHoc.Visible = false;
+            this.btnThongTinLopHoc.Click += new System.EventHandler(this.btnThongTinLopHoc_Click);
             // 
-            // btnGroup3
+            // btnQLDiem
             // 
-            this.btnGroup3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.btnGroup3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGroup3.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnGroup3.Location = new System.Drawing.Point(3, 417);
-            this.btnGroup3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnGroup3.Name = "btnGroup3";
-            this.btnGroup3.Size = new System.Drawing.Size(233, 64);
-            this.btnGroup3.TabIndex = 1;
-            this.btnGroup3.Text = "Quản lý điểm lớp học";
-            this.btnGroup3.UseVisualStyleBackColor = false;
-            this.btnGroup3.Click += new System.EventHandler(this.btnGroup3_Click);
+            this.btnQLDiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.btnQLDiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQLDiem.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.btnQLDiem.Location = new System.Drawing.Point(3, 429);
+            this.btnQLDiem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnQLDiem.Name = "btnQLDiem";
+            this.btnQLDiem.Size = new System.Drawing.Size(233, 64);
+            this.btnQLDiem.TabIndex = 1;
+            this.btnQLDiem.Text = "Quản lý điểm lớp học";
+            this.btnQLDiem.UseVisualStyleBackColor = false;
+            this.btnQLDiem.Click += new System.EventHandler(this.btnQLDiem_Click);
             // 
-            // btn31
+            // btnNhapDiem
             // 
-            this.btn31.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btn31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn31.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btn31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.btn31.Location = new System.Drawing.Point(3, 485);
-            this.btn31.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn31.Name = "btn31";
-            this.btn31.Size = new System.Drawing.Size(233, 53);
-            this.btn31.TabIndex = 4;
-            this.btn31.Text = "Nhập điểm";
-            this.btn31.UseVisualStyleBackColor = false;
-            this.btn31.Visible = false;
-            this.btn31.Click += new System.EventHandler(this.btn31_Click);
+            this.btnNhapDiem.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnNhapDiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNhapDiem.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.btnNhapDiem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.btnNhapDiem.Location = new System.Drawing.Point(3, 497);
+            this.btnNhapDiem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnNhapDiem.Name = "btnNhapDiem";
+            this.btnNhapDiem.Size = new System.Drawing.Size(233, 53);
+            this.btnNhapDiem.TabIndex = 4;
+            this.btnNhapDiem.Text = "Nhập điểm";
+            this.btnNhapDiem.UseVisualStyleBackColor = false;
+            this.btnNhapDiem.Visible = false;
+            this.btnNhapDiem.Click += new System.EventHandler(this.btnNhapDiem_Click);
             // 
-            // btn32
+            // btnXemDiem
             // 
-            this.btn32.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btn32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn32.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btn32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.btn32.Location = new System.Drawing.Point(3, 542);
-            this.btn32.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn32.Name = "btn32";
-            this.btn32.Size = new System.Drawing.Size(233, 53);
-            this.btn32.TabIndex = 5;
-            this.btn32.Text = "Xem điểm";
-            this.btn32.UseVisualStyleBackColor = false;
-            this.btn32.Visible = false;
-            this.btn32.Click += new System.EventHandler(this.btn32_Click);
+            this.btnXemDiem.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnXemDiem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnXemDiem.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.btnXemDiem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.btnXemDiem.Location = new System.Drawing.Point(3, 554);
+            this.btnXemDiem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnXemDiem.Name = "btnXemDiem";
+            this.btnXemDiem.Size = new System.Drawing.Size(233, 53);
+            this.btnXemDiem.TabIndex = 5;
+            this.btnXemDiem.Text = "Xem điểm";
+            this.btnXemDiem.UseVisualStyleBackColor = false;
+            this.btnXemDiem.Visible = false;
+            this.btnXemDiem.Click += new System.EventHandler(this.btnXemDiem_Click);
             // 
-            // btnGroup7
+            // btnGioiThieu
             // 
-            this.btnGroup7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.btnGroup7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGroup7.Font = new System.Drawing.Font("Times New Roman", 12F);
-            this.btnGroup7.Location = new System.Drawing.Point(3, 599);
-            this.btnGroup7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnGroup7.Name = "btnGroup7";
-            this.btnGroup7.Size = new System.Drawing.Size(233, 64);
-            this.btnGroup7.TabIndex = 18;
-            this.btnGroup7.Text = "Giới thiệu";
-            this.btnGroup7.UseVisualStyleBackColor = false;
-            this.btnGroup7.Click += new System.EventHandler(this.btnGroup7_Click);
+            this.btnGioiThieu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.btnGioiThieu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGioiThieu.Font = new System.Drawing.Font("Times New Roman", 12F);
+            this.btnGioiThieu.Location = new System.Drawing.Point(3, 611);
+            this.btnGioiThieu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnGioiThieu.Name = "btnGioiThieu";
+            this.btnGioiThieu.Size = new System.Drawing.Size(233, 64);
+            this.btnGioiThieu.TabIndex = 18;
+            this.btnGioiThieu.Text = "Giới thiệu";
+            this.btnGioiThieu.UseVisualStyleBackColor = false;
+            this.btnGioiThieu.Click += new System.EventHandler(this.btnGioiThieu_Click);
             // 
             // panel4
             // 
@@ -361,38 +361,38 @@
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.groupBoxGioiThieu);
+            this.panel6.Controls.Add(this.grpGioiThieu);
             this.panel6.Location = new System.Drawing.Point(260, 63);
             this.panel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(1335, 782);
             this.panel6.TabIndex = 2;
             // 
-            // groupBoxGioiThieu
+            // grpGioiThieu
             // 
-            this.groupBoxGioiThieu.Controls.Add(this.label15);
-            this.groupBoxGioiThieu.Controls.Add(this.label14);
-            this.groupBoxGioiThieu.Controls.Add(this.label13);
-            this.groupBoxGioiThieu.Controls.Add(this.label12);
-            this.groupBoxGioiThieu.Controls.Add(this.label9);
-            this.groupBoxGioiThieu.Controls.Add(this.label8);
-            this.groupBoxGioiThieu.Controls.Add(this.label6);
-            this.groupBoxGioiThieu.Controls.Add(this.label4);
-            this.groupBoxGioiThieu.Controls.Add(this.label5);
-            this.groupBoxGioiThieu.Controls.Add(this.label7);
-            this.groupBoxGioiThieu.Controls.Add(this.label10);
-            this.groupBoxGioiThieu.Controls.Add(this.label11);
-            this.groupBoxGioiThieu.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxGioiThieu.ForeColor = System.Drawing.Color.Black;
-            this.groupBoxGioiThieu.Location = new System.Drawing.Point(5, 5);
-            this.groupBoxGioiThieu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBoxGioiThieu.Name = "groupBoxGioiThieu";
-            this.groupBoxGioiThieu.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBoxGioiThieu.Size = new System.Drawing.Size(982, 483);
-            this.groupBoxGioiThieu.TabIndex = 88;
-            this.groupBoxGioiThieu.TabStop = false;
-            this.groupBoxGioiThieu.Text = "Thông tin chi tiết";
-            this.groupBoxGioiThieu.Visible = false;
+            this.grpGioiThieu.Controls.Add(this.label15);
+            this.grpGioiThieu.Controls.Add(this.label14);
+            this.grpGioiThieu.Controls.Add(this.label13);
+            this.grpGioiThieu.Controls.Add(this.label12);
+            this.grpGioiThieu.Controls.Add(this.label9);
+            this.grpGioiThieu.Controls.Add(this.label8);
+            this.grpGioiThieu.Controls.Add(this.label6);
+            this.grpGioiThieu.Controls.Add(this.label4);
+            this.grpGioiThieu.Controls.Add(this.label5);
+            this.grpGioiThieu.Controls.Add(this.label7);
+            this.grpGioiThieu.Controls.Add(this.label10);
+            this.grpGioiThieu.Controls.Add(this.label11);
+            this.grpGioiThieu.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpGioiThieu.ForeColor = System.Drawing.Color.Black;
+            this.grpGioiThieu.Location = new System.Drawing.Point(5, 5);
+            this.grpGioiThieu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grpGioiThieu.Name = "grpGioiThieu";
+            this.grpGioiThieu.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grpGioiThieu.Size = new System.Drawing.Size(982, 483);
+            this.grpGioiThieu.TabIndex = 88;
+            this.grpGioiThieu.TabStop = false;
+            this.grpGioiThieu.Text = "Thông tin chi tiết";
+            this.grpGioiThieu.Visible = false;
             // 
             // label15
             // 
@@ -549,8 +549,8 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel6.ResumeLayout(false);
-            this.groupBoxGioiThieu.ResumeLayout(false);
-            this.groupBoxGioiThieu.PerformLayout();
+            this.grpGioiThieu.ResumeLayout(false);
+            this.grpGioiThieu.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -558,28 +558,28 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnGroup2;
-        private System.Windows.Forms.Button btnGroup1;
+        private System.Windows.Forms.Button btnCapNhapThongTin;
+        private System.Windows.Forms.Button btnQuanLyTaiKhoan;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btn23;
-        private System.Windows.Forms.Button btn22;
-        private System.Windows.Forms.Button btn21;
-        private System.Windows.Forms.Button btn12;
-        private System.Windows.Forms.Button btn11;
-        private System.Windows.Forms.Button btnGroup3;
-        private System.Windows.Forms.Button btn31;
-        private System.Windows.Forms.Button btn32;
+        private System.Windows.Forms.Button btnThongTinLopHoc;
+        private System.Windows.Forms.Button btnThongTinGiaoVien;
+        private System.Windows.Forms.Button btnThongTinHS;
+        private System.Windows.Forms.Button btnCSDSNguoiDung;
+        private System.Windows.Forms.Button btnDoiMatKhau;
+        private System.Windows.Forms.Button btnQLDiem;
+        private System.Windows.Forms.Button btnNhapDiem;
+        private System.Windows.Forms.Button btnXemDiem;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelFunction;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel pnlGroup4;
-        private System.Windows.Forms.Button btnGroup7;
+        private System.Windows.Forms.Button btnGioiThieu;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.GroupBox groupBoxGioiThieu;
+        private System.Windows.Forms.GroupBox grpGioiThieu;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label6;
