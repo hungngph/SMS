@@ -8,51 +8,41 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SMS
-{
-    public partial class frmNhapDiem : Form
-    {
-        public frmNhapDiem()
-        {
+namespace SMS {
+    public partial class frmNhapDiem : Form {
+        public frmNhapDiem() {
             InitializeComponent();
         }
-        bool GeneralCheck()
-        {
+        bool GeneralCheck() {
             bool flag = true;
-            if (txtMaLop.Text == "")
-            {
+            if (txtMaLop.Text == "") {
                 txtMaLop.Focus();
                 flag = false;
                 // Provider
             }
-            else if (txtMaMon.Text == "")
-            {
+            else if (txtMaMon.Text == "") {
                 txtMaMon.Focus();
                 flag = false;
                 //Provider
             }
-            else if (txtHocKy.Text == "")
-            {
+            else if (txtHocKy.Text == "") {
                 txtHocKy.Focus();
                 flag = false;
                 //Provider
             }
-            else if (txtNamHoc.Text == "")
-            {
+            else if (txtNamHoc.Text == "") {
                 txtNamHoc.Focus();
                 flag = false;
                 //Provider
             }
             return flag;
         }
-        private void btnTimKiem(object sender, EventArgs e)
-        {
+        private void btnTimKiem(object sender, EventArgs e) {
             validateMaLop();
             validateMaMon();
             validateHocKy();
             validateNamHoc();
-            if (GeneralCheck())
-            {
+            if (GeneralCheck()) {
                 string query = "SELECT dbo.DIEM.MAHS, dbo.DIEM.TENHOCSINH, DIEMMIENG1, DIEMMIENG2, DIEMMIENG3, DIEM15P1, DIEM15P2, DIEM1TIET, DIEMCUOIKY, DIEMTONGKET " +
                             "FROM dbo.DIEM, dbo.HOCSINH, dbo.MONHOC " +
                             "WHERE " +
@@ -66,19 +56,16 @@ namespace SMS
             }
         }
 
-        private void frmNhapDiem_Load(object sender, EventArgs e)
-        {
+        private void frmNhapDiem_Load(object sender, EventArgs e) {
             DatabaseConnection.Connected();
-            if (!DatabaseConnection.IsConnect())
-            {
+            if (!DatabaseConnection.IsConnect()) {
                 MessageBox.Show("Không kết nối được dữ liệu");
                 return;
             }
         }
 
         //Xử lí sự kiện click chuột vào phần tử trong DataGridView
-        private void dgvDSNDi_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+        private void dgvDSNDi_CellContentClick(object sender, DataGridViewCellEventArgs e) {
             txtMaHS.Text = dgvDSNDi.CurrentRow.Cells[0].Value.ToString();
             txtTenHS.Text = dgvDSNDi.CurrentRow.Cells[1].Value.ToString();
             txtDM1.Text = dgvDSNDi.CurrentRow.Cells[2].Value.ToString();
@@ -92,11 +79,9 @@ namespace SMS
         }
 
         //Xác thực đã nhập text
-        protected bool validateMaLop()
-        {
+        protected bool validateMaLop() {
             bool flag = false;
-            if (txtMaLop.Text == "")
-            {
+            if (txtMaLop.Text == "") {
                 errorProvider1.SetError(txtMaLop, "Chưa nhập mã lớp");
                 flag = true;
             }
@@ -104,11 +89,9 @@ namespace SMS
             return flag;
 
         }
-        protected bool validateMaMon()
-        {
+        protected bool validateMaMon() {
             bool flag = false;
-            if (txtMaMon.Text == "")
-            {
+            if (txtMaMon.Text == "") {
                 errorProvider1.SetError(txtMaMon, "Chưa nhập mã lớp");
                 flag = true;
             }
@@ -116,22 +99,18 @@ namespace SMS
             return flag;
 
         }
-        protected bool validateNamHoc()
-        {
+        protected bool validateNamHoc() {
             bool flag = false;
-            if (txtNamHoc.Text == "")
-            {
+            if (txtNamHoc.Text == "") {
                 errorProvider1.SetError(txtNamHoc, "Chưa nhập năm học");
                 flag = true;
             }
             else errorProvider1.SetError(txtNamHoc, "");
             return flag;
         }
-        protected bool validateHocKy()
-        {
+        protected bool validateHocKy() {
             bool flag = false;
-            if (txtHocKy.Text == "")
-            {
+            if (txtHocKy.Text == "") {
                 errorProvider1.SetError(txtHocKy, "Chưa nhập học kỳ");
                 flag = true;
             }
@@ -140,8 +119,7 @@ namespace SMS
         }//
 
         //Nút làm  mới
-        private void btnLamMoi_Click(object sender, EventArgs e)
-        {
+        private void btnLamMoi_Click(object sender, EventArgs e) {
             txtMaLop.Text = "";
             txtMaMon.Text = "";
             txtHocKy.Text = "";
@@ -149,8 +127,7 @@ namespace SMS
         }
 
         //Nút lưu điểm
-        private void btnLuu_Click(object sender, EventArgs e)
-        {
+        private void btnLuu_Click(object sender, EventArgs e) {
             string query = "UPDATE dbo.DIEM SET " +
                      "DIEMMIENG1=" + txtDM1.Text + ", " +
                      "DIEMMIENG2=" + txtDM2.Text + ", " +
@@ -165,9 +142,9 @@ namespace SMS
                                 //"AND dbo.HOCSINH.MALOP='" + txtMaLop.Text + "' " +
                                 "AND dbo.DIEM.NAMHOC='" + txtNamHoc.Text + "' " +
                                 "AND dbo.DIEM.HOCKY='" + txtHocKy.Text + "'";
-                                   //"AND dbo.MONHOC.MAMH = '" + txtMaMon.Text + "'";
+            //"AND dbo.MONHOC.MAMH = '" + txtMaMon.Text + "'";
             if (DatabaseConnection.ExcuteSql(query))
-                    MessageBox.Show("Lưu điểm thành công");
+                MessageBox.Show("Lưu điểm thành công");
 
             string query2 = "SELECT dbo.DIEM.MAHS, dbo.DIEM.TENHOCSINH, DIEMMIENG1, DIEMMIENG2, DIEMMIENG3, DIEM15P1, DIEM15P2, DIEM1TIET, DIEMCUOIKY, DIEMTONGKET " +
                             "FROM dbo.DIEM, dbo.HOCSINH, dbo.MONHOC " +

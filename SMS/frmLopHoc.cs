@@ -18,10 +18,6 @@ namespace SMS {
             this.Close();
         }
 
-        private void txtTenGV_TextChanged(object sender, EventArgs e) {
-
-        }
-
         private void frmLopHoc_Load(object sender, EventArgs e) {
             DatabaseConnection.Connected();
             if (!DatabaseConnection.IsConnect()) {
@@ -31,13 +27,14 @@ namespace SMS {
             FillDataGridView();
         }
         void FillDataGridView() {
-            string query = "SELECT * " +
-                "FROM LOP ";
+            string query = "SELECT LOP.*, GIAOVIEN.HOTEN AS TENGIAOVIEN " +
+                "FROM LOP, GIAOVIEN " +
+                "WHERE LOP.MAGVCN = GIAOVIEN.MAGV";
             dgvLH.DataSource = DatabaseConnection.GetDataTable(query);
             // adapter.Dispose();
         }
 
-        private void btnThemmoi_Click(object sender, EventArgs e) {
+        private void btnThemMoi_Click(object sender, EventArgs e) {
             string query = "SELECT * " +
                 "FROM LOP " +
                 "WHERE MALOP='" + txtMaLop.Text + "'";
@@ -120,11 +117,20 @@ namespace SMS {
             }
         }
 
-        private void button2_Click(object sender, EventArgs e) {
+        private void btnLamMoi_Click(object sender, EventArgs e) {
             txtMaLop.Text = "";
             txtTenLop.Text = "";
-            txtMaGV.Text = "";
+            txtTenGV.Text = "";
             txtSiSo.Text = "";
+            txtMaGV.Text = "";
+        }
+
+        private void dgvLH_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e) {
+            txtMaLop.Text = dgvLH.CurrentRow.Cells[0].Value.ToString();
+            txtTenLop.Text = dgvLH.CurrentRow.Cells[1].Value.ToString();
+            txtMaGV.Text = dgvLH.CurrentRow.Cells[2].Value.ToString();
+            txtSiSo.Text = dgvLH.CurrentRow.Cells[3].Value.ToString();
+            txtTenGV.Text = dgvLH.CurrentRow.Cells[4].Value.ToString();
         }
     }
 }
