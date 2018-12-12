@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHocSinh));
             this.dgvHS = new System.Windows.Forms.DataGridView();
             this.groupDS = new System.Windows.Forms.GroupBox();
@@ -68,10 +69,12 @@
             this.mtxSDTMe = new System.Windows.Forms.MaskedTextBox();
             this.mtxSDTCha = new System.Windows.Forms.MaskedTextBox();
             this.btnTimKiem = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHS)).BeginInit();
             this.groupDS.SuspendLayout();
             this.groupBoxTTCT.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvHS
@@ -130,7 +133,7 @@
             this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(177, 42);
-            this.btnXoa.TabIndex = 93;
+            this.btnXoa.TabIndex = 2;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = false;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
@@ -147,7 +150,7 @@
             this.btnLamMoi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLamMoi.Name = "btnLamMoi";
             this.btnLamMoi.Size = new System.Drawing.Size(177, 42);
-            this.btnLamMoi.TabIndex = 92;
+            this.btnLamMoi.TabIndex = 3;
             this.btnLamMoi.Text = "Làm mới";
             this.btnLamMoi.UseVisualStyleBackColor = false;
             this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
@@ -164,7 +167,7 @@
             this.btnThemMoi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThemMoi.Name = "btnThemMoi";
             this.btnThemMoi.Size = new System.Drawing.Size(177, 42);
-            this.btnThemMoi.TabIndex = 88;
+            this.btnThemMoi.TabIndex = 0;
             this.btnThemMoi.Text = "Thêm mới";
             this.btnThemMoi.UseVisualStyleBackColor = false;
             this.btnThemMoi.Click += new System.EventHandler(this.btnThemMoi_Click);
@@ -181,7 +184,7 @@
             this.btnSua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(177, 42);
-            this.btnSua.TabIndex = 89;
+            this.btnSua.TabIndex = 1;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = false;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
@@ -205,7 +208,7 @@
             this.txtHoTen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.Size = new System.Drawing.Size(184, 26);
-            this.txtHoTen.TabIndex = 49;
+            this.txtHoTen.TabIndex = 0;
             // 
             // label8
             // 
@@ -238,7 +241,7 @@
             this.mtxSDT.Mask = "9999 000 000";
             this.mtxSDT.Name = "mtxSDT";
             this.mtxSDT.Size = new System.Drawing.Size(184, 26);
-            this.mtxSDT.TabIndex = 53;
+            this.mtxSDT.TabIndex = 8;
             // 
             // label7
             // 
@@ -263,7 +266,7 @@
             this.cboGioiTinh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboGioiTinh.Name = "cboGioiTinh";
             this.cboGioiTinh.Size = new System.Drawing.Size(184, 27);
-            this.cboGioiTinh.TabIndex = 55;
+            this.cboGioiTinh.TabIndex = 1;
             // 
             // label10
             // 
@@ -284,7 +287,7 @@
             this.txtDiaChi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(184, 26);
-            this.txtDiaChi.TabIndex = 57;
+            this.txtDiaChi.TabIndex = 7;
             // 
             // label1
             // 
@@ -305,7 +308,7 @@
             this.txtMSHS.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMSHS.Name = "txtMSHS";
             this.txtMSHS.Size = new System.Drawing.Size(184, 26);
-            this.txtMSHS.TabIndex = 59;
+            this.txtMSHS.TabIndex = 5;
             // 
             // label4
             // 
@@ -326,7 +329,7 @@
             this.txtDanToc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDanToc.Name = "txtDanToc";
             this.txtDanToc.Size = new System.Drawing.Size(184, 26);
-            this.txtDanToc.TabIndex = 63;
+            this.txtDanToc.TabIndex = 6;
             // 
             // label6
             // 
@@ -347,7 +350,7 @@
             this.txtNgaySinh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNgaySinh.Name = "txtNgaySinh";
             this.txtNgaySinh.Size = new System.Drawing.Size(165, 26);
-            this.txtNgaySinh.TabIndex = 65;
+            this.txtNgaySinh.TabIndex = 2;
             // 
             // groupBoxTTCT
             // 
@@ -389,7 +392,7 @@
             this.cboMaLop.Location = new System.Drawing.Point(156, 160);
             this.cboMaLop.Name = "cboMaLop";
             this.cboMaLop.Size = new System.Drawing.Size(184, 27);
-            this.cboMaLop.TabIndex = 99;
+            this.cboMaLop.TabIndex = 4;
             // 
             // dtpNgaySinh
             // 
@@ -419,7 +422,7 @@
             this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(184, 26);
-            this.txtEmail.TabIndex = 67;
+            this.txtEmail.TabIndex = 9;
             // 
             // label5
             // 
@@ -440,7 +443,7 @@
             this.txtKhoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtKhoa.Name = "txtKhoa";
             this.txtKhoa.Size = new System.Drawing.Size(184, 26);
-            this.txtKhoa.TabIndex = 52;
+            this.txtKhoa.TabIndex = 3;
             // 
             // label17
             // 
@@ -461,7 +464,7 @@
             this.txtHoTenCha.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtHoTenCha.Name = "txtHoTenCha";
             this.txtHoTenCha.Size = new System.Drawing.Size(184, 26);
-            this.txtHoTenCha.TabIndex = 49;
+            this.txtHoTenCha.TabIndex = 0;
             // 
             // label2
             // 
@@ -493,7 +496,7 @@
             this.txtHoTenMe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtHoTenMe.Name = "txtHoTenMe";
             this.txtHoTenMe.Size = new System.Drawing.Size(184, 26);
-            this.txtHoTenMe.TabIndex = 67;
+            this.txtHoTenMe.TabIndex = 2;
             // 
             // label11
             // 
@@ -533,7 +536,7 @@
             this.mtxSDTMe.Mask = "9999 000 000";
             this.mtxSDTMe.Name = "mtxSDTMe";
             this.mtxSDTMe.Size = new System.Drawing.Size(184, 26);
-            this.mtxSDTMe.TabIndex = 73;
+            this.mtxSDTMe.TabIndex = 3;
             // 
             // mtxSDTCha
             // 
@@ -541,7 +544,7 @@
             this.mtxSDTCha.Mask = "9999 000 000";
             this.mtxSDTCha.Name = "mtxSDTCha";
             this.mtxSDTCha.Size = new System.Drawing.Size(184, 26);
-            this.mtxSDTCha.TabIndex = 72;
+            this.mtxSDTCha.TabIndex = 1;
             // 
             // btnTimKiem
             // 
@@ -555,10 +558,14 @@
             this.btnTimKiem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(181, 42);
-            this.btnTimKiem.TabIndex = 107;
+            this.btnTimKiem.TabIndex = 4;
             this.btnTimKiem.Text = "Tìm kiếm";
             this.btnTimKiem.UseVisualStyleBackColor = false;
             this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // frmHocSinh
             // 
@@ -585,6 +592,7 @@
             this.groupBoxTTCT.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -630,5 +638,6 @@
         private System.Windows.Forms.ComboBox cboMaLop;
         private System.Windows.Forms.TextBox txtKhoa;
         private System.Windows.Forms.Button btnTimKiem;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

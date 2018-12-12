@@ -19,7 +19,6 @@ namespace SMS
 
         private void frmHocSinh_Load(object sender, EventArgs e)
         {
-
             DatabaseConnection.Connected();
             if (!DatabaseConnection.IsConnect())
             {
@@ -33,6 +32,14 @@ namespace SMS
 
         private void btnThemMoi_Click(object sender, EventArgs e)
         {
+            validateHoTen();
+            validateGioiTinh();
+            validateNgaySinh();
+            validateKhoa();
+            validateMaLop();
+            validateMSHS();
+            validateDanToc();
+            validateDiaChi();
             // Câu lệnh truy vấn Table HOCSINH
             string strSelect = "Select * From HOCSINH Where MAHS = '" + txtMSHS.Text + "'";
             if (GeneralCheck())
@@ -76,7 +83,7 @@ namespace SMS
                     else
                         strInsert += "NULL, ";
                     if (mtxSDT.Text != "")
-                        strInsert += "'" + mtxSDTMe.Text + "') ";
+                        strInsert += "'" + mtxSDT.Text + "') ";
                     else
                         strInsert += "NULL)";
                     //
@@ -96,6 +103,14 @@ namespace SMS
         {
             if (dgvHS.SelectedRows.Count > 0)
             {
+                validateHoTen();
+                validateGioiTinh();
+                validateNgaySinh();
+                validateKhoa();
+                validateMaLop();
+                validateMSHS();
+                validateDanToc();
+                validateDiaChi();
                 if (GeneralCheck())
                 {
                     string strUpdate = "Set Dateformat dmy Update HOCSINH Set HOTEN = N'" + txtHoTen.Text + "', ";
@@ -185,8 +200,8 @@ namespace SMS
             txtEmail.Text = "";
             txtHoTenMe.Text = "";
             txtHoTenCha.Text = "";
-            mtxSDTCha.Text = "";
-            mtxSDTMe.Text = "";
+            mtxSDTCha.Text = "         ";
+            mtxSDTMe.Text = "         ";
             txtHoTen.Focus();
         }
 
@@ -346,5 +361,101 @@ namespace SMS
             cboMaLop.DataSource = dt;
             cboMaLop.Text = "";
         }
+
+        //Xác thực đã nhập text
+        protected bool validateMSHS()
+        {
+            bool flag = false;
+            if (txtMSHS.Text == "")
+            {
+                errorProvider1.SetError(txtMSHS, "Chưa nhập MSHS");
+                flag = true;
+            }
+            else
+                errorProvider1.SetError(txtMSHS, "");
+            return flag;
+
+        }
+        protected bool validateHoTen()
+        {
+            bool flag = false;
+            if (txtHoTen.Text == "")
+            {
+                errorProvider1.SetError(txtHoTen, "Chưa nhập họ tên");
+                flag = true;
+            }
+            else
+                errorProvider1.SetError(txtHoTen, "");
+            return flag;
+        }
+        protected bool validateGioiTinh()
+        {
+            bool flag = false;
+            if (cboGioiTinh.Text == "")
+            {
+                errorProvider1.SetError(cboGioiTinh, "Chưa nhập giới tính");
+                flag = true;
+            }
+            else errorProvider1.SetError(cboGioiTinh, "");
+            return flag;
+        }
+        protected bool validateNgaySinh()
+        {
+            bool flag = false;
+            if (txtNgaySinh.Text == "")
+            {
+                errorProvider1.SetError(txtNgaySinh, "Chưa nhập ngày sinh");
+                flag = true;
+            }
+            else errorProvider1.SetError(txtNgaySinh, "");
+            return flag;
+        }//
+        protected bool validateKhoa()
+        {
+            bool flag = false;
+            if (txtKhoa.Text == "")
+            {
+                errorProvider1.SetError(txtKhoa, "Chưa nhập khóa");
+                flag = true;
+            }
+            else
+                errorProvider1.SetError(txtKhoa, "");
+            return flag;
+
+        }
+        protected bool validateMaLop()
+        {
+            bool flag = false;
+            if (cboMaLop.Text == "")
+            {
+                errorProvider1.SetError(cboMaLop, "Chưa nhập mã lớp");
+                flag = true;
+            }
+            else
+                errorProvider1.SetError(cboMaLop, "");
+            return flag;
+        }
+        protected bool validateDanToc()
+        {
+            bool flag = false;
+            if (txtDanToc.Text == "")
+            {
+                errorProvider1.SetError(txtDanToc, "Chưa nhập dân tộc");
+                flag = true;
+            }
+            else errorProvider1.SetError(txtDanToc, "");
+            return flag;
+        }
+        protected bool validateDiaChi()
+        {
+            bool flag = false;
+            if (txtDiaChi.Text == "")
+            {
+                errorProvider1.SetError(txtDiaChi, "Chưa nhập địa chỉ");
+                flag = true;
+            }
+            else errorProvider1.SetError(txtDiaChi, "");
+            return flag;
+        }//
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -38,6 +39,8 @@
             this.btnHuyBo = new System.Windows.Forms.Button();
             this.btnDangNhap = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -70,7 +73,7 @@
             this.txtTaiKhoan.Multiline = true;
             this.txtTaiKhoan.Name = "txtTaiKhoan";
             this.txtTaiKhoan.Size = new System.Drawing.Size(394, 39);
-            this.txtTaiKhoan.TabIndex = 5;
+            this.txtTaiKhoan.TabIndex = 0;
             this.txtTaiKhoan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTaiKhoan_KeyPress);
             // 
             // txtMatKhau
@@ -82,7 +85,7 @@
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.PasswordChar = '*';
             this.txtMatKhau.Size = new System.Drawing.Size(394, 39);
-            this.txtMatKhau.TabIndex = 6;
+            this.txtMatKhau.TabIndex = 1;
             // 
             // label2
             // 
@@ -119,7 +122,7 @@
             this.btnHuyBo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnHuyBo.Name = "btnHuyBo";
             this.btnHuyBo.Size = new System.Drawing.Size(191, 55);
-            this.btnHuyBo.TabIndex = 89;
+            this.btnHuyBo.TabIndex = 3;
             this.btnHuyBo.Text = "Hủy Bỏ";
             this.btnHuyBo.UseVisualStyleBackColor = false;
             this.btnHuyBo.Click += new System.EventHandler(this.btnHuyBo_Click);
@@ -136,7 +139,7 @@
             this.btnDangNhap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(191, 55);
-            this.btnDangNhap.TabIndex = 88;
+            this.btnDangNhap.TabIndex = 2;
             this.btnDangNhap.Text = "Đăng Nhập";
             this.btnDangNhap.UseVisualStyleBackColor = false;
             this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
@@ -150,6 +153,10 @@
             this.label6.Size = new System.Drawing.Size(394, 31);
             this.label6.TabIndex = 91;
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // frmLogin
             // 
@@ -172,6 +179,7 @@
             this.Name = "frmLogin";
             this.Text = "Đăng Nhập";
             this.Load += new System.EventHandler(this.frmLogin_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -188,5 +196,6 @@
         private System.Windows.Forms.Button btnHuyBo;
         private System.Windows.Forms.Button btnDangNhap;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

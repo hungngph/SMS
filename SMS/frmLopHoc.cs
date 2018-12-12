@@ -28,6 +28,10 @@ namespace SMS {
 
         private void btnThemMoi_Click(object sender, EventArgs e)
         {
+            validateMaLop();
+            validateTenLop();
+            validateMaGVCN();
+            validateSiSo();
             // Câu lệnh truy vấn Table LOP
             string strSelect = "Select * From LOP Where MALOP = '" + txtMaLop.Text + "'";
             if (GeneralCheck())
@@ -63,8 +67,13 @@ namespace SMS {
 
         private void btnSua_Click(object sender, EventArgs e)
         {
+            
             if (dgvLH.SelectedRows.Count > 0)
             {
+                validateMaLop();
+                validateTenLop();
+                validateMaGVCN();
+                validateSiSo();
                 if (GeneralCheck())
                 {
                     string strUpdate = "Update LOP Set TENLOP = N'" + txtTenLop.Text + "', ";
@@ -115,6 +124,7 @@ namespace SMS {
             txtMaLop.Text = "";
             txtTenLop.Text = "";
             cboMAGVCN.Text = "";
+            txtTenGVCN.Text = "";
             txtSiSo.Text = "";
         }
 
@@ -176,14 +186,67 @@ namespace SMS {
             cboMAGVCN.DisplayMember = "MAGV";
             cboMAGVCN.DataSource = dt;
             cboMAGVCN.Text = "";
-            txtTenGVCN.Text = "";
         }
 
-        private void cboMAGVCN_SelectedIndexChanged(object sender, EventArgs e)
-        {           
+        private void cboMAGVCN_TextChanged(object sender, EventArgs e)
+        {
             string query = "SELECT HOTEN FROM GIAOVIEN WHERE MAGV = '" + cboMAGVCN.Text + "'";
             DataTable dt = DatabaseConnection.GetDataTable(query);
-            txtTenGVCN.Text = dt.Rows[0][0].ToString();
+            
+            if (cboMAGVCN.Text == "")
+                txtTenGVCN.Text = "";
+            else
+                txtTenGVCN.Text = dt.Rows[0][0].ToString();
         }
+
+
+        //Xác thực đã nhập text
+        protected bool validateMaLop()
+        {
+            bool flag = false;
+            if (txtMaLop.Text == "")
+            {
+                errorProvider1.SetError(txtMaLop, "Chưa nhập mã lớp");
+                flag = true;
+            }
+            else
+                errorProvider1.SetError(txtMaLop, "");
+            return flag;
+
+        }
+        protected bool validateTenLop()
+        {
+            bool flag = false;
+            if (txtTenLop.Text == "")
+            {
+                errorProvider1.SetError(txtTenLop, "Chưa nhập tên lớp");
+                flag = true;
+            }
+            else
+                errorProvider1.SetError(txtTenLop, "");
+            return flag;
+        }
+        protected bool validateMaGVCN()
+        {
+            bool flag = false;
+            if (cboMAGVCN.Text == "")
+            {
+                errorProvider1.SetError(cboMAGVCN, "Chưa nhập GVCN");
+                flag = true;
+            }
+            else errorProvider1.SetError(cboMAGVCN, "");
+            return flag;
+        }
+        protected bool validateSiSo()
+        {
+            bool flag = false;
+            if (txtSiSo.Text == "")
+            {
+                errorProvider1.SetError(txtSiSo, "Chưa nhập sĩ số");
+                flag = true;
+            }
+            else errorProvider1.SetError(txtSiSo, "");
+            return flag;
+        }//
     }
 }

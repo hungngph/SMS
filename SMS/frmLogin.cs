@@ -28,6 +28,8 @@ namespace SMS {
 
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
+            validateTenDangNhap();
+            validateMatKhau();
             string query = "SELECT * FROM TAIKHOAN WHERE" +
                 " TENDANGNHAP = '" + txtTaiKhoan.Text +
                 "' AND MATKHAU = '" + txtMatKhau.Text;
@@ -61,6 +63,33 @@ namespace SMS {
         private void txtTaiKhoan_KeyPress(object sender, KeyPressEventArgs e)
         {
             label6.Text = "";
+        }
+
+        //Xác thực đã nhập text
+        protected bool validateTenDangNhap()
+        {
+            bool flag = false;
+            if (txtTaiKhoan.Text == "")
+            {
+                errorProvider1.SetError(txtTaiKhoan, "Chưa nhập tên tài khoản");
+                flag = true;
+            }
+            else
+                errorProvider1.SetError(txtTaiKhoan, "");
+            return flag;
+
+        }
+        protected bool validateMatKhau()
+        {
+            bool flag = false;
+            if (txtMatKhau.Text == "")
+            {
+                errorProvider1.SetError(txtMatKhau, "Chưa nhập mật khẩu");
+                flag = true;
+            }
+            else
+                errorProvider1.SetError(txtMatKhau, "");
+            return flag;
         }
     }
 }

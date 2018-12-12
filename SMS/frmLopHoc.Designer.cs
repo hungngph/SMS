@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLopHoc));
             this.label5 = new System.Windows.Forms.Label();
             this.groupBoxTTCT = new System.Windows.Forms.GroupBox();
@@ -47,9 +48,11 @@
             this.btnThemMoi = new System.Windows.Forms.Button();
             this.btnLamMoi = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBoxTTCT.SuspendLayout();
             this.groupDS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label5
@@ -106,7 +109,7 @@
             this.txtTenGVCN.Name = "txtTenGVCN";
             this.txtTenGVCN.ReadOnly = true;
             this.txtTenGVCN.Size = new System.Drawing.Size(303, 26);
-            this.txtTenGVCN.TabIndex = 61;
+            this.txtTenGVCN.TabIndex = 3;
             // 
             // cboMAGVCN
             // 
@@ -114,8 +117,8 @@
             this.cboMAGVCN.Location = new System.Drawing.Point(175, 83);
             this.cboMAGVCN.Name = "cboMAGVCN";
             this.cboMAGVCN.Size = new System.Drawing.Size(78, 27);
-            this.cboMAGVCN.TabIndex = 60;
-            this.cboMAGVCN.SelectedIndexChanged += new System.EventHandler(this.cboMAGVCN_SelectedIndexChanged);
+            this.cboMAGVCN.TabIndex = 2;
+            this.cboMAGVCN.TextChanged += new System.EventHandler(this.cboMAGVCN_TextChanged);
             // 
             // txtTenLop
             // 
@@ -125,7 +128,7 @@
             this.txtTenLop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTenLop.Name = "txtTenLop";
             this.txtTenLop.Size = new System.Drawing.Size(303, 26);
-            this.txtTenLop.TabIndex = 57;
+            this.txtTenLop.TabIndex = 1;
             // 
             // txtSiSo
             // 
@@ -135,7 +138,7 @@
             this.txtSiSo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSiSo.Name = "txtSiSo";
             this.txtSiSo.Size = new System.Drawing.Size(303, 26);
-            this.txtSiSo.TabIndex = 52;
+            this.txtSiSo.TabIndex = 4;
             // 
             // label3
             // 
@@ -189,7 +192,7 @@
             this.txtMaLop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMaLop.Name = "txtMaLop";
             this.txtMaLop.Size = new System.Drawing.Size(303, 26);
-            this.txtMaLop.TabIndex = 55;
+            this.txtMaLop.TabIndex = 0;
             // 
             // groupDS
             // 
@@ -234,7 +237,7 @@
             this.btnSua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(177, 42);
-            this.btnSua.TabIndex = 53;
+            this.btnSua.TabIndex = 1;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = false;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
@@ -251,7 +254,7 @@
             this.btnThemMoi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThemMoi.Name = "btnThemMoi";
             this.btnThemMoi.Size = new System.Drawing.Size(177, 42);
-            this.btnThemMoi.TabIndex = 52;
+            this.btnThemMoi.TabIndex = 0;
             this.btnThemMoi.Text = "Thêm mới";
             this.btnThemMoi.UseVisualStyleBackColor = false;
             this.btnThemMoi.Click += new System.EventHandler(this.btnThemMoi_Click);
@@ -268,7 +271,7 @@
             this.btnLamMoi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLamMoi.Name = "btnLamMoi";
             this.btnLamMoi.Size = new System.Drawing.Size(177, 42);
-            this.btnLamMoi.TabIndex = 83;
+            this.btnLamMoi.TabIndex = 3;
             this.btnLamMoi.Text = "Làm mới";
             this.btnLamMoi.UseVisualStyleBackColor = false;
             this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
@@ -285,10 +288,14 @@
             this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(177, 42);
-            this.btnXoa.TabIndex = 84;
+            this.btnXoa.TabIndex = 2;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = false;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // frmLopHoc
             // 
@@ -310,6 +317,7 @@
             this.groupBoxTTCT.PerformLayout();
             this.groupDS.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -335,5 +343,6 @@
         private System.Windows.Forms.ComboBox cboMAGVCN;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtTenGVCN;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

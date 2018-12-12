@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDoiMatKhau));
             this.label1 = new System.Windows.Forms.Label();
             this.groupBoxThongTin = new System.Windows.Forms.GroupBox();
@@ -40,8 +41,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnOk = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnThoat = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBoxThongTin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -79,24 +83,27 @@
             this.txtMKcu.Location = new System.Drawing.Point(215, 47);
             this.txtMKcu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMKcu.Name = "txtMKcu";
+            this.txtMKcu.PasswordChar = '*';
             this.txtMKcu.Size = new System.Drawing.Size(162, 22);
-            this.txtMKcu.TabIndex = 16;
+            this.txtMKcu.TabIndex = 1;
             // 
             // txtXacNhanMk
             // 
             this.txtXacNhanMk.Location = new System.Drawing.Point(215, 110);
             this.txtXacNhanMk.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtXacNhanMk.Name = "txtXacNhanMk";
+            this.txtXacNhanMk.PasswordChar = '*';
             this.txtXacNhanMk.Size = new System.Drawing.Size(162, 22);
-            this.txtXacNhanMk.TabIndex = 15;
+            this.txtXacNhanMk.TabIndex = 3;
             // 
             // txtMKmoi
             // 
             this.txtMKmoi.Location = new System.Drawing.Point(215, 79);
             this.txtMKmoi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMKmoi.Name = "txtMKmoi";
+            this.txtMKmoi.PasswordChar = '*';
             this.txtMKmoi.Size = new System.Drawing.Size(162, 22);
-            this.txtMKmoi.TabIndex = 14;
+            this.txtMKmoi.TabIndex = 2;
             // 
             // txtTaikhoan
             // 
@@ -104,7 +111,7 @@
             this.txtTaikhoan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTaikhoan.Name = "txtTaikhoan";
             this.txtTaikhoan.Size = new System.Drawing.Size(162, 22);
-            this.txtTaikhoan.TabIndex = 13;
+            this.txtTaikhoan.TabIndex = 0;
             // 
             // label5
             // 
@@ -150,38 +157,53 @@
             this.btnOk.ForeColor = System.Drawing.Color.White;
             this.btnOk.Image = ((System.Drawing.Image)(resources.GetObject("btnOk.Image")));
             this.btnOk.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOk.Location = new System.Drawing.Point(145, 255);
+            this.btnOk.Location = new System.Drawing.Point(130, 281);
             this.btnOk.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(160, 42);
-            this.btnOk.TabIndex = 17;
+            this.btnOk.TabIndex = 0;
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = false;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
-            // button1
+            // btnThoat
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 10F);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(344, 255);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(177, 42);
-            this.button1.TabIndex = 87;
-            this.button1.Text = "Thoát";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.btnThoat_Click);
+            this.btnThoat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.btnThoat.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnThoat.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnThoat.Font = new System.Drawing.Font("Times New Roman", 10F);
+            this.btnThoat.ForeColor = System.Drawing.Color.White;
+            this.btnThoat.Image = ((System.Drawing.Image)(resources.GetObject("btnThoat.Image")));
+            this.btnThoat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThoat.Location = new System.Drawing.Point(332, 281);
+            this.btnThoat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(177, 42);
+            this.btnThoat.TabIndex = 1;
+            this.btnThoat.Text = "Thoát";
+            this.btnThoat.UseVisualStyleBackColor = false;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(152, 238);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(357, 28);
+            this.label6.TabIndex = 8;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // frmDoiMatKhau
             // 
+            this.AcceptButton = this.btnOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(633, 339);
-            this.Controls.Add(this.button1);
+            this.CancelButton = this.btnThoat;
+            this.ClientSize = new System.Drawing.Size(633, 385);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.groupBoxThongTin);
             this.Controls.Add(this.label1);
@@ -192,6 +214,7 @@
             this.Load += new System.EventHandler(this.frmDoiMatKhau_Load);
             this.groupBoxThongTin.ResumeLayout(false);
             this.groupBoxThongTin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,6 +233,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnOk;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnThoat;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
