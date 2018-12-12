@@ -10,6 +10,7 @@ using System.Data;
 
 namespace SMS {
     class DatabaseConnection {
+        public static bool isAdmin = false;
         // Thành phần kết nối
         static SqlConnection sqlConnection;
 

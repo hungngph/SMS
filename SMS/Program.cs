@@ -22,9 +22,9 @@ namespace SMS
             //Application.Run(new frmNhapDiem());
 
             //Application.Run(new frmHocSinh());
-            Application.Run(new frmLopHoc());
+            //Application.Run(new frmLopHoc());
             //Application.Run(new frmLogin());
-            
+            Application.Run(new frmGiaoVien());
             //Form Login
             //Application.Run(new frmLogin());
         }

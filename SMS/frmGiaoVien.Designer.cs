@@ -38,7 +38,6 @@
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.txtChucVu = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtLop = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtMon = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -61,6 +60,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.btnThemMoi = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
+            this.dtpNgaySinh = new System.Windows.Forms.DateTimePicker();
+            this.cboLop = new System.Windows.Forms.ComboBox();
+            this.cboMon = new System.Windows.Forms.ComboBox();
             this.groupDS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGV)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -96,6 +98,7 @@
             this.dgvGV.Location = new System.Drawing.Point(5, 17);
             this.dgvGV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvGV.Name = "dgvGV";
+            this.dgvGV.ReadOnly = true;
             this.dgvGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvGV.Size = new System.Drawing.Size(885, 133);
             this.dgvGV.TabIndex = 0;
@@ -108,7 +111,7 @@
             this.txtNgSinh.Location = new System.Drawing.Point(156, 92);
             this.txtNgSinh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNgSinh.Name = "txtNgSinh";
-            this.txtNgSinh.Size = new System.Drawing.Size(184, 26);
+            this.txtNgSinh.Size = new System.Drawing.Size(163, 26);
             this.txtNgSinh.TabIndex = 65;
             // 
             // label6
@@ -143,10 +146,11 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.cboMon);
+            this.groupBox2.Controls.Add(this.cboLop);
             this.groupBox2.Controls.Add(this.btnTimKiem);
             this.groupBox2.Controls.Add(this.txtChucVu);
             this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.txtLop);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.txtMon);
             this.groupBox2.Controls.Add(this.label16);
@@ -193,29 +197,18 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(228, 23);
+            this.label11.Location = new System.Drawing.Point(228, 28);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(64, 19);
             this.label11.TabIndex = 54;
             this.label11.Text = "Chức vụ";
-            // 
-            // txtLop
-            // 
-            this.txtLop.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLop.ForeColor = System.Drawing.Color.Black;
-            this.txtLop.Location = new System.Drawing.Point(375, 87);
-            this.txtLop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtLop.Name = "txtLop";
-            this.txtLop.ReadOnly = true;
-            this.txtLop.Size = new System.Drawing.Size(277, 26);
-            this.txtLop.TabIndex = 51;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(228, 90);
+            this.label2.Location = new System.Drawing.Point(228, 95);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(110, 19);
             this.label2.TabIndex = 50;
@@ -225,10 +218,10 @@
             // 
             this.txtMon.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMon.ForeColor = System.Drawing.Color.Black;
-            this.txtMon.Location = new System.Drawing.Point(375, 54);
+            this.txtMon.Location = new System.Drawing.Point(452, 54);
             this.txtMon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMon.Name = "txtMon";
-            this.txtMon.Size = new System.Drawing.Size(277, 26);
+            this.txtMon.Size = new System.Drawing.Size(200, 26);
             this.txtMon.TabIndex = 49;
             // 
             // label16
@@ -236,7 +229,7 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.Black;
-            this.label16.Location = new System.Drawing.Point(228, 56);
+            this.label16.Location = new System.Drawing.Point(228, 61);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(108, 19);
             this.label16.TabIndex = 48;
@@ -276,6 +269,7 @@
             // 
             this.groupBoxTTCT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxTTCT.Controls.Add(this.dtpNgaySinh);
             this.groupBoxTTCT.Controls.Add(this.txtNgSinh);
             this.groupBoxTTCT.Controls.Add(this.label6);
             this.groupBoxTTCT.Controls.Add(this.txtDanToc);
@@ -374,7 +368,7 @@
             this.cboGioiTinh.Items.AddRange(new object[] {
             "Nam",
             "Nữ"});
-            this.cboGioiTinh.Location = new System.Drawing.Point(156, 58);
+            this.cboGioiTinh.Location = new System.Drawing.Point(156, 60);
             this.cboGioiTinh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboGioiTinh.Name = "cboGioiTinh";
             this.cboGioiTinh.Size = new System.Drawing.Size(184, 27);
@@ -406,7 +400,7 @@
             // 
             this.txtEmail.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.ForeColor = System.Drawing.Color.Black;
-            this.txtEmail.Location = new System.Drawing.Point(156, 126);
+            this.txtEmail.Location = new System.Drawing.Point(156, 123);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(184, 26);
@@ -417,7 +411,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(31, 128);
+            this.label3.Location = new System.Drawing.Point(31, 129);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 19);
             this.label3.TabIndex = 51;
@@ -489,6 +483,31 @@
             this.btnSua.UseVisualStyleBackColor = false;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
+            // dtpNgaySinh
+            // 
+            this.dtpNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpNgaySinh.Location = new System.Drawing.Point(318, 92);
+            this.dtpNgaySinh.Name = "dtpNgaySinh";
+            this.dtpNgaySinh.Size = new System.Drawing.Size(22, 26);
+            this.dtpNgaySinh.TabIndex = 107;
+            // 
+            // cboLop
+            // 
+            this.cboLop.FormattingEnabled = true;
+            this.cboLop.Location = new System.Drawing.Point(375, 85);
+            this.cboLop.Name = "cboLop";
+            this.cboLop.Size = new System.Drawing.Size(138, 27);
+            this.cboLop.TabIndex = 107;
+            // 
+            // cboMon
+            // 
+            this.cboMon.FormattingEnabled = true;
+            this.cboMon.Location = new System.Drawing.Point(375, 53);
+            this.cboMon.Name = "cboMon";
+            this.cboMon.Size = new System.Drawing.Size(77, 27);
+            this.cboMon.TabIndex = 108;
+            this.cboMon.SelectedIndexChanged += new System.EventHandler(this.cboMon_SelectedIndexChanged);
+            // 
             // frmGiaoVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -524,7 +543,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox txtLop;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtMon;
         private System.Windows.Forms.Label label16;
@@ -550,5 +568,8 @@
         private System.Windows.Forms.TextBox txtChucVu;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btnTimKiem;
+        private System.Windows.Forms.DateTimePicker dtpNgaySinh;
+        private System.Windows.Forms.ComboBox cboLop;
+        private System.Windows.Forms.ComboBox cboMon;
     }
 }

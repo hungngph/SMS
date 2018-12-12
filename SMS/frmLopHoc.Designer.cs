@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLopHoc));
             this.label5 = new System.Windows.Forms.Label();
             this.groupBoxTTCT = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtTenGVCN = new System.Windows.Forms.TextBox();
             this.cboMAGVCN = new System.Windows.Forms.ComboBox();
             this.txtTenLop = new System.Windows.Forms.TextBox();
             this.txtSiSo = new System.Windows.Forms.TextBox();
@@ -45,8 +47,6 @@
             this.btnThemMoi = new System.Windows.Forms.Button();
             this.btnLamMoi = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
-            this.txtTenGVCN = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBoxTTCT.SuspendLayout();
             this.groupDS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLH)).BeginInit();
@@ -85,6 +85,28 @@
             this.groupBoxTTCT.TabIndex = 45;
             this.groupBoxTTCT.TabStop = false;
             this.groupBoxTTCT.Text = "Thông tin lớp học";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(17, 118);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(84, 19);
+            this.label2.TabIndex = 62;
+            this.label2.Text = "Tên GVCN";
+            // 
+            // txtTenGVCN
+            // 
+            this.txtTenGVCN.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTenGVCN.ForeColor = System.Drawing.Color.Black;
+            this.txtTenGVCN.Location = new System.Drawing.Point(175, 115);
+            this.txtTenGVCN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTenGVCN.Name = "txtTenGVCN";
+            this.txtTenGVCN.ReadOnly = true;
+            this.txtTenGVCN.Size = new System.Drawing.Size(303, 26);
+            this.txtTenGVCN.TabIndex = 61;
             // 
             // cboMAGVCN
             // 
@@ -194,6 +216,7 @@
             this.dgvLH.Location = new System.Drawing.Point(3, 21);
             this.dgvLH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvLH.Name = "dgvLH";
+            this.dgvLH.ReadOnly = true;
             this.dgvLH.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLH.Size = new System.Drawing.Size(916, 208);
             this.dgvLH.TabIndex = 0;
@@ -266,28 +289,6 @@
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = false;
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-            // 
-            // txtTenGVCN
-            // 
-            this.txtTenGVCN.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenGVCN.ForeColor = System.Drawing.Color.Black;
-            this.txtTenGVCN.Location = new System.Drawing.Point(175, 115);
-            this.txtTenGVCN.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTenGVCN.Name = "txtTenGVCN";
-            this.txtTenGVCN.ReadOnly = true;
-            this.txtTenGVCN.Size = new System.Drawing.Size(303, 26);
-            this.txtTenGVCN.TabIndex = 61;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(17, 118);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 19);
-            this.label2.TabIndex = 62;
-            this.label2.Text = "Tên GVCN";
             // 
             // frmLopHoc
             // 

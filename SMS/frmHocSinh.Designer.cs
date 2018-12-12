@@ -52,10 +52,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtNgaySinh = new System.Windows.Forms.TextBox();
             this.groupBoxTTCT = new System.Windows.Forms.GroupBox();
+            this.cboMaLop = new System.Windows.Forms.ComboBox();
             this.dtpNgaySinh = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.txtKhoa = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.txtHoTenCha = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -65,8 +67,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.mtxSDTMe = new System.Windows.Forms.MaskedTextBox();
             this.mtxSDTCha = new System.Windows.Forms.MaskedTextBox();
-            this.cboMaLop = new System.Windows.Forms.ComboBox();
-            this.txtKhoa = new System.Windows.Forms.TextBox();
             this.btnTimKiem = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHS)).BeginInit();
             this.groupDS.SuspendLayout();
@@ -86,6 +86,7 @@
             this.dgvHS.Location = new System.Drawing.Point(3, 21);
             this.dgvHS.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvHS.Name = "dgvHS";
+            this.dgvHS.ReadOnly = true;
             this.dgvHS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHS.Size = new System.Drawing.Size(1115, 198);
             this.dgvHS.TabIndex = 0;
@@ -382,6 +383,14 @@
             this.groupBoxTTCT.TabStop = false;
             this.groupBoxTTCT.Text = "Thông tin học sinh";
             // 
+            // cboMaLop
+            // 
+            this.cboMaLop.FormattingEnabled = true;
+            this.cboMaLop.Location = new System.Drawing.Point(156, 160);
+            this.cboMaLop.Name = "cboMaLop";
+            this.cboMaLop.Size = new System.Drawing.Size(184, 27);
+            this.cboMaLop.TabIndex = 99;
+            // 
             // dtpNgaySinh
             // 
             this.dtpNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -422,6 +431,16 @@
             this.label5.Size = new System.Drawing.Size(49, 19);
             this.label5.TabIndex = 66;
             this.label5.Text = "Email";
+            // 
+            // txtKhoa
+            // 
+            this.txtKhoa.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKhoa.ForeColor = System.Drawing.Color.Black;
+            this.txtKhoa.Location = new System.Drawing.Point(156, 126);
+            this.txtKhoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtKhoa.Name = "txtKhoa";
+            this.txtKhoa.Size = new System.Drawing.Size(184, 26);
+            this.txtKhoa.TabIndex = 52;
             // 
             // label17
             // 
@@ -523,24 +542,6 @@
             this.mtxSDTCha.Name = "mtxSDTCha";
             this.mtxSDTCha.Size = new System.Drawing.Size(184, 26);
             this.mtxSDTCha.TabIndex = 72;
-            // 
-            // cboMaLop
-            // 
-            this.cboMaLop.FormattingEnabled = true;
-            this.cboMaLop.Location = new System.Drawing.Point(156, 160);
-            this.cboMaLop.Name = "cboMaLop";
-            this.cboMaLop.Size = new System.Drawing.Size(184, 27);
-            this.cboMaLop.TabIndex = 99;
-            // 
-            // txtKhoa
-            // 
-            this.txtKhoa.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKhoa.ForeColor = System.Drawing.Color.Black;
-            this.txtKhoa.Location = new System.Drawing.Point(156, 126);
-            this.txtKhoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtKhoa.Name = "txtKhoa";
-            this.txtKhoa.Size = new System.Drawing.Size(184, 26);
-            this.txtKhoa.TabIndex = 52;
             // 
             // btnTimKiem
             // 

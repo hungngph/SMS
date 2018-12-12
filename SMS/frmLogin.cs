@@ -35,6 +35,7 @@ namespace SMS {
             string teacher = "' AND QUYENTRUYCAP = N'Giáo viên'";
             if (DatabaseConnection.CheckExist(query + admin))
             {
+                DatabaseConnection.isAdmin = true;
                 this.Hide();
                 frmMain frm = new frmMain();
                 frm.Show();
@@ -42,10 +43,10 @@ namespace SMS {
             }
             if (DatabaseConnection.CheckExist(query + teacher))
             {
+                DatabaseConnection.isAdmin = false;
                 this.Hide();
                 frmMain frm = new frmMain();
                 frm.Show();
-                
                 return;
             }
             label6.Text = "Sai tên đăng nhập hoặc mật khẩu";

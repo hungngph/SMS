@@ -337,6 +337,7 @@ namespace SMS
         {
             txtNgaySinh.Text = dtpNgaySinh.Text;
         }
+
         void Load_combobox()
         {
             string query = "SELECT * FROM LOP";

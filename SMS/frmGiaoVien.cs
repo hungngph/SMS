@@ -8,12 +8,90 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SMS {
-    public partial class frmGiaoVien : Form {
-        public frmGiaoVien() {
+namespace SMS
+{
+    public partial class frmGiaoVien : Form
+    {
+        public frmGiaoVien()
+        {
             InitializeComponent();
         }
-        private void btnXoa_Click(object sender, EventArgs e) {
+
+        private void frmGiaoVien_Load(object sender, EventArgs e)
+        {
+            DatabaseConnection.Connected();
+            if (!DatabaseConnection.IsConnect())
+            {
+                MessageBox.Show("Không kết nối được dữ liệu");
+            }
+            else
+                FillDataGridView();
+            Load_combobox();
+        }
+
+        private void btnThemMoi_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT * FROM GIAOVIEN WHERE MAGV='" + txtMaGV.Text + "'";
+            if (!GeneralCheck())
+                return;
+            if (DatabaseConnection.CheckExist(query))
+            {
+                MessageBox.Show("Mã giáo viên đã tồn tại");
+                return;
+            }
+            query = "INSERT INTO GIAOVIEN " +
+                "VALUES('" + txtMaGV.Text + "'," +
+                "N'" + txtHoTen.Text + "'," +
+                "N'" + cboGioiTinh.Text + "'," +
+                "'" + txtNgSinh.Text + "'," +
+                "'" + mtxPhone.Text + "'," +
+                "N'" + txtDiaChi.Text + "'," +
+                "N'" + txtDanToc.Text + "'," +
+                "'" + txtEmail.Text + "'," +
+                "N'" + txtChucVu.Text + "'," +
+                "'" + txtMon.Text + "')";
+            if (DatabaseConnection.ExcuteSql(query))
+            {
+                MessageBox.Show("Thêm thành công", "Thông báo");
+                FillDataGridView();
+            }
+            else
+            {
+                MessageBox.Show("Thêm thất bại", "Thông báo");
+            }
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT * " +
+                    "FROM GIAOVIEN " +
+                    "WHERE MAGV='" + txtMaGV.Text + "'";
+            if (GeneralCheck())
+            {
+                if (!DatabaseConnection.CheckExist(query))
+                    MessageBox.Show("Không có giáo viên này", "Thông báo");
+                else
+                {
+                    query = "UPDATE GIAOVIEN SET " +
+                        "HOTEN=N'" + txtHoTen.Text + "'," +
+                        "GIOITINH=N'" + cboGioiTinh.Text + "'," +
+                        "NGAYSINH='" + txtNgSinh.Text + "'," +
+                        "SODIENTHOAI='" + mtxPhone.Text + "'," +
+                        "DIACHI=N'" + txtDiaChi.Text + "'," +
+                        "DANTOC=N'" + txtDanToc.Text + "'," +
+                        "EMAIL='" + txtEmail.Text + "'," +
+                        "CHUCVU=N'" + txtChucVu.Text + "'," +
+                        "MONGIANGDAY='" + txtMon.Text + "' " +
+                        "WHERE MAGV='" + txtMaGV.Text + "'";
+                    if (DatabaseConnection.ExcuteSql(query))
+                        MessageBox.Show("Sửa thành công", "Thông báo");
+                    FillDataGridView();
+                }
+            }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
             string query = "DELETE FROM GIAOVIEN WHERE MAGV='";
             if (dgvGV.SelectedRows.Count > 0) {
                 for (int i = 0; i < dgvGV.SelectedRows.Count; i++) {
@@ -38,48 +116,56 @@ namespace SMS {
             }
             FillDataGridView();
         }
-        private void frmGiaoVien_Load(object sender, EventArgs e) {
-            DatabaseConnection.Connected();
-            if (!DatabaseConnection.IsConnect()) {
-                MessageBox.Show("Không kết nối được dữ liệu");
-            }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT GIAOVIEN.*, LOP.TENLOP AS TENLOP " +
+            "FROM GIAOVIEN LEFT JOIN LOP " +
+            "ON GIAOVIEN.MAGV = LOP.MAGVCN " +
+            "WHERE ";
+            string query2 = "SELECT GIAOVIEN.*, LOP.TENLOP AS TENLOP " +
+            "FROM GIAOVIEN LEFT JOIN LOP " +
+            "ON GIAOVIEN.MAGV = LOP.MAGVCN " +
+            "WHERE ";
+            if (txtMaGV.Text != "")
+                query += "MAGV='" + txtMaGV.Text + "' AND ";
+            if (txtHoTen.Text != "")
+                query += "HOTEN=N'" + txtHoTen.Text + "' AND ";
+            if (cboGioiTinh.Text != "")
+                query += "GIOITINH=N'" + cboGioiTinh.Text + "' AND ";
+            if (txtNgSinh.Text != "")
+                query += "NGAYSINH='" + txtNgSinh.Text + "' AND ";
+            //if (mtxPhone.Text != "            ")
+            //    query += "SODIENTHOAI='" + mtxPhone.Text + "' AND ";
+            if (txtDiaChi.Text != "")
+                query += "DIACHI=N'" + txtDiaChi.Text + "' AND ";
+            if (txtDanToc.Text != "")
+                query += "DANTOC=N'" + txtDanToc.Text + "' AND ";
+            if (txtEmail.Text != "")
+                query += "EMAIL='" + txtEmail.Text + "' AND ";
+            if (txtMon.Text != "")
+                query += "MONGIANGDAY='" + txtMon.Text + "' AND ";
+            if (txtChucVu.Text != "")
+                query += "CHUCVU=N'" + txtChucVu.Text + "' AND ";
             else
-                FillDataGridView();
+                query += "CHUCVU LIKE '%'";
+            if (query2 == query)
+                return;
+            dgvGV.DataSource = null;
+            dgvGV.DataSource = DatabaseConnection.GetDataTable(query);
         }
-        void FillDataGridView() {
+
+
+        void FillDataGridView()
+        {
             string query = "SELECT GIAOVIEN.*, LOP.TENLOP AS TENLOP " +
             "FROM GIAOVIEN LEFT JOIN LOP " +
             "ON GIAOVIEN.MAGV = LOP.MAGVCN";
             dgvGV.DataSource = DatabaseConnection.GetDataTable(query);
         }
-        private void btnThemMoi_Click(object sender, EventArgs e) {
-            string query = "SELECT * FROM GIAOVIEN WHERE MAGV='" + txtMaGV.Text + "'";
-            if (!GeneralCheck())
-                return;
-            if (DatabaseConnection.CheckExist(query)) {
-                MessageBox.Show("Mã giáo viên đã tồn tại");
-                return;
-            }
-            query = "INSERT INTO GIAOVIEN " +
-                "VALUES('" + txtMaGV.Text + "'," +
-                "N'" + txtHoTen.Text + "'," +
-                "N'" + cboGioiTinh.Text + "'," +
-                "'" + txtNgSinh.Text + "'," +
-                "'" + mtxPhone.Text + "'," +
-                "N'" + txtDiaChi.Text + "'," +
-                "N'" + txtDanToc.Text + "'," +
-                "'" + txtEmail.Text + "'," +
-                "N'" + txtChucVu.Text + "'," +
-                "'" + txtMon.Text + "')";
-            if (DatabaseConnection.ExcuteSql(query)) {
-                MessageBox.Show("Thêm thành công", "Thông báo");
-                FillDataGridView();
-            }
-            else {
-                MessageBox.Show("Thêm thất bại", "Thông báo");
-            }
-        }
-        bool GeneralCheck() {
+        
+        bool GeneralCheck()
+        {
             bool flag = true;
             if (txtHoTen.Text == "") {
                 flag = false;
@@ -108,38 +194,15 @@ namespace SMS {
             else if (txtChucVu.Text == "") {
                 flag = false;
             }
-            else if (txtMon.Text == "") {
+            else if (cboMon.Text == "") {
                 flag = false;
             }
             return flag;
         }
 
-        private void btnSua_Click(object sender, EventArgs e) {
-            string query = "SELECT * " +
-                    "FROM GIAOVIEN " +
-                    "WHERE MAGV='" + txtMaGV.Text + "'";
-            if (GeneralCheck()) {
-                if (!DatabaseConnection.CheckExist(query))
-                    MessageBox.Show("Không có giáo viên này", "Thông báo");
-                else {
-                    query = "UPDATE GIAOVIEN SET " +
-                        "HOTEN=N'" + txtHoTen.Text + "'," +
-                        "GIOITINH=N'" + cboGioiTinh.Text + "'," +
-                        "NGAYSINH='" + txtNgSinh.Text + "'," +
-                        "SODIENTHOAI='" + mtxPhone.Text + "'," +
-                        "DIACHI=N'" + txtDiaChi.Text + "'," +
-                        "DANTOC=N'" + txtDanToc.Text + "'," +
-                        "EMAIL='" + txtEmail.Text + "'," +
-                        "CHUCVU=N'" + txtChucVu.Text + "'," +
-                        "MONGIANGDAY='" + txtMon.Text + "' " +
-                        "WHERE MAGV='" + txtMaGV.Text + "'";
-                    if (DatabaseConnection.ExcuteSql(query))
-                        MessageBox.Show("Sửa thành công", "Thông báo");
-                    FillDataGridView();
-                }
-            }
-        }
-        private void dgvGV_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e) {
+        
+        private void dgvGV_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
             txtMaGV.Text = dgvGV.CurrentRow.Cells[0].Value.ToString();
             txtHoTen.Text = dgvGV.CurrentRow.Cells[1].Value.ToString();
             cboGioiTinh.Text = dgvGV.CurrentRow.Cells[2].Value.ToString();
@@ -149,11 +212,12 @@ namespace SMS {
             txtDanToc.Text = dgvGV.CurrentRow.Cells[6].Value.ToString();
             txtEmail.Text = dgvGV.CurrentRow.Cells[7].Value.ToString();
             txtChucVu.Text = dgvGV.CurrentRow.Cells[8].Value.ToString();
-            txtMon.Text = dgvGV.CurrentRow.Cells[9].Value.ToString();
-            txtLop.Text = dgvGV.CurrentRow.Cells[10].Value.ToString();
+            cboMon.Text = dgvGV.CurrentRow.Cells[9].Value.ToString();
+            cboLop.Text = dgvGV.CurrentRow.Cells[10].Value.ToString();
         }
 
-        private void btnLamMoi_Click(object sender, EventArgs e) {
+        private void btnLamMoi_Click(object sender, EventArgs e)
+        {
             txtMaGV.Text = "";
             txtHoTen.Text = "";
             cboGioiTinh.Text = "";
@@ -163,45 +227,28 @@ namespace SMS {
             txtDanToc.Text = "";
             txtEmail.Text = "";
             txtChucVu.Text = "";
-            txtMon.Text = "";
-            txtLop.Text = "";
+            cboMon.Text = "";
+            cboLop.Text = "";
+        }
+        void Load_combobox()
+        {
+            string query = "SELECT * FROM LOP";
+            DataTable dt = DatabaseConnection.GetDataTable(query);
+            cboLop.DisplayMember = "MALOP";
+            cboLop.DataSource = dt;
+            cboLop.Text = "";
+            query = "SELECT * FROM MONHOC";
+            dt = DatabaseConnection.GetDataTable(query);
+            cboMon.DisplayMember = "MAMH";
+            cboMon.DataSource = dt;
+            cboMon.Text = "";
         }
 
-        private void btnTimKiem_Click(object sender, EventArgs e) {
-            string query = "SELECT GIAOVIEN.*, LOP.TENLOP AS TENLOP " +
-            "FROM GIAOVIEN LEFT JOIN LOP " +
-            "ON GIAOVIEN.MAGV = LOP.MAGVCN " +
-            "WHERE ";
-            string query2 = "SELECT GIAOVIEN.*, LOP.TENLOP AS TENLOP " +
-            "FROM GIAOVIEN LEFT JOIN LOP " +
-            "ON GIAOVIEN.MAGV = LOP.MAGVCN " +
-            "WHERE ";
-            if (txtMaGV.Text != "") 
-                query += "MAGV='" + txtMaGV.Text + "' AND ";
-            if (txtHoTen.Text != "")
-                query += "HOTEN=N'" + txtHoTen.Text + "' AND ";
-            if (cboGioiTinh.Text != "")
-                query += "GIOITINH=N'" + cboGioiTinh.Text + "' AND ";
-            if (txtNgSinh.Text != "")
-                query += "NGAYSINH='" + txtNgSinh.Text + "' AND ";
-            //if (mtxPhone.Text != "            ")
-            //    query += "SODIENTHOAI='" + mtxPhone.Text + "' AND ";
-            if (txtDiaChi.Text != "")
-                query += "DIACHI=N'" + txtDiaChi.Text + "' AND ";
-            if (txtDanToc.Text != "")
-                query += "DANTOC=N'" + txtDanToc.Text + "' AND ";
-            if (txtEmail.Text != "")
-                query += "EMAIL='" + txtEmail.Text + "' AND ";
-            if (txtMon.Text != "")
-                query += "MONGIANGDAY='" + txtMon.Text + "' AND ";
-            if (txtChucVu.Text != "")
-                query += "CHUCVU=N'" + txtChucVu.Text + "' AND ";
-            else
-                query += "CHUCVU LIKE '%'";   
-            if (query2 == query)
-                return;
-            dgvGV.DataSource = null;
-            dgvGV.DataSource = DatabaseConnection.GetDataTable(query);
+        private void cboMon_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string query = "SELECT TENMH FROM GIAOVIEN WHERE MAMH = '" + cboMon.Text + "'";
+            DataTable dt = DatabaseConnection.GetDataTable(query);
+            txtMon.Text = dt.Rows[0][0].ToString();
         }
     }
 }
