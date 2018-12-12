@@ -43,10 +43,10 @@
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.topbar = new System.Windows.Forms.Panel();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.gioiThieu1 = new SMS.GioiThieu();
             this.quanLyDiemLopHoc1 = new SMS.QuanLyDiemLopHoc();
             this.capNhatThongTin1 = new SMS.CapNhatThongTin();
             this.quanLyTaiKhoan1 = new SMS.QuanLyTaiKhoan();
-            this.gioiThieu1 = new SMS.GioiThieu();
             ((System.ComponentModel.ISupportInitialize)(this.btnDangXuat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
@@ -316,6 +316,15 @@
             this.bunifuElipse1.ElipseRadius = 5;
             this.bunifuElipse1.TargetControl = this;
             // 
+            // gioiThieu1
+            // 
+            this.gioiThieu1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(18)))), ((int)(((byte)(23)))));
+            this.gioiThieu1.Location = new System.Drawing.Point(319, 92);
+            this.gioiThieu1.Name = "gioiThieu1";
+            this.gioiThieu1.Size = new System.Drawing.Size(1240, 790);
+            this.gioiThieu1.TabIndex = 8;
+            this.gioiThieu1.Visible = false;
+            // 
             // quanLyDiemLopHoc1
             // 
             this.quanLyDiemLopHoc1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(18)))), ((int)(((byte)(23)))));
@@ -343,15 +352,6 @@
             this.quanLyTaiKhoan1.TabIndex = 5;
             this.quanLyTaiKhoan1.Visible = false;
             // 
-            // gioiThieu1
-            // 
-            this.gioiThieu1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(18)))), ((int)(((byte)(23)))));
-            this.gioiThieu1.Location = new System.Drawing.Point(319, 92);
-            this.gioiThieu1.Name = "gioiThieu1";
-            this.gioiThieu1.Size = new System.Drawing.Size(1240, 790);
-            this.gioiThieu1.TabIndex = 8;
-            this.gioiThieu1.Visible = false;
-            // 
             // frmChucNang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -368,6 +368,7 @@
             this.Name = "frmChucNang";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmChucNang_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.btnDangXuat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDong)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).EndInit();

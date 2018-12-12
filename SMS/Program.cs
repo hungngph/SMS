@@ -17,6 +17,8 @@ namespace SMS
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmChucNang());
+            //Application.Run(new frmDoiMatKhau());
+            //Application.Run(new frmDangNhap());
         }
     }
 }
