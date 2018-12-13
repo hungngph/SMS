@@ -137,11 +137,11 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(175, 258);
+            this.label3.Location = new System.Drawing.Point(162, 258);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 25);
+            this.label3.Size = new System.Drawing.Size(56, 25);
             this.label3.TabIndex = 123;
-            this.label3.Text = "Sỉ số lớp";
+            this.label3.Text = "Sĩ số";
             // 
             // bunifuMaterialTextbox2
             // 
@@ -172,7 +172,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(175, 207);
+            this.label1.Location = new System.Drawing.Point(162, 207);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(225, 25);
             this.label1.TabIndex = 121;
@@ -207,7 +207,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(175, 96);
+            this.label13.Location = new System.Drawing.Point(162, 96);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(78, 25);
             this.label13.TabIndex = 119;
@@ -218,7 +218,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(175, 157);
+            this.label4.Location = new System.Drawing.Point(162, 157);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(218, 25);
             this.label4.TabIndex = 106;
@@ -253,7 +253,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(175, 45);
+            this.label2.Location = new System.Drawing.Point(162, 45);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 25);
             this.label2.TabIndex = 95;

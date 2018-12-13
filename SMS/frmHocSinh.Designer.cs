@@ -37,7 +37,6 @@
             this.bunifuMaterialTextbox7 = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.bunifuMaterialTextbox6 = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label7 = new System.Windows.Forms.Label();
             this.bunifuMaterialTextbox5 = new Bunifu.Framework.UI.BunifuMaterialTextbox();
@@ -54,7 +53,6 @@
             this.bunifuMaterialTextbox1 = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.bunifuMaterialTextbox9 = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.bunifuMaterialTextbox10 = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.bunifuMaterialTextbox11 = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label14 = new System.Windows.Forms.Label();
@@ -65,11 +63,14 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.bunifuFlatButton4 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton3 = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.bunifuFlatButton2 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton6 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.bunifuFlatButton5 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.dgvDSND = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.bunifuFlatButton2 = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.bunifuMaterialTextbox9 = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.bunifuMaterialTextbox12 = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnDong)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -105,12 +106,13 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
+            this.groupBox1.Controls.Add(this.bunifuMaterialTextbox12);
+            this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.bunifuMaterialTextbox8);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.bunifuMaterialTextbox7);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.bunifuMaterialTextbox6);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.bunifuMaterialTextbox5);
@@ -215,22 +217,6 @@
             this.label8.Size = new System.Drawing.Size(71, 25);
             this.label8.TabIndex = 114;
             this.label8.Text = "Mã lớp";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.ForeColor = System.Drawing.Color.White;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Nam",
-            "Nữ"});
-            this.comboBox1.Location = new System.Drawing.Point(125, 246);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(274, 33);
-            this.comboBox1.TabIndex = 113;
             // 
             // bunifuMaterialTextbox6
             // 
@@ -366,7 +352,7 @@
             // 
             // bunifuDatepicker1
             // 
-            this.bunifuDatepicker1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
+            this.bunifuDatepicker1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
             this.bunifuDatepicker1.BorderRadius = 0;
             this.bunifuDatepicker1.ForeColor = System.Drawing.Color.White;
             this.bunifuDatepicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -503,30 +489,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin gia đình";
             // 
-            // bunifuMaterialTextbox9
-            // 
-            this.bunifuMaterialTextbox9.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-            this.bunifuMaterialTextbox9.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.bunifuMaterialTextbox9.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.bunifuMaterialTextbox9.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.bunifuMaterialTextbox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuMaterialTextbox9.ForeColor = System.Drawing.Color.White;
-            this.bunifuMaterialTextbox9.HintForeColor = System.Drawing.Color.White;
-            this.bunifuMaterialTextbox9.HintText = "";
-            this.bunifuMaterialTextbox9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.bunifuMaterialTextbox9.isPassword = false;
-            this.bunifuMaterialTextbox9.LineFocusedColor = System.Drawing.Color.Gray;
-            this.bunifuMaterialTextbox9.LineIdleColor = System.Drawing.Color.Gray;
-            this.bunifuMaterialTextbox9.LineMouseHoverColor = System.Drawing.Color.Gray;
-            this.bunifuMaterialTextbox9.LineThickness = 2;
-            this.bunifuMaterialTextbox9.Location = new System.Drawing.Point(603, 92);
-            this.bunifuMaterialTextbox9.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.bunifuMaterialTextbox9.MaxLength = 32767;
-            this.bunifuMaterialTextbox9.Name = "bunifuMaterialTextbox9";
-            this.bunifuMaterialTextbox9.Size = new System.Drawing.Size(249, 37);
-            this.bunifuMaterialTextbox9.TabIndex = 124;
-            this.bunifuMaterialTextbox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
             // bunifuMaterialTextbox10
             // 
             this.bunifuMaterialTextbox10.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
@@ -567,11 +529,11 @@
             this.bunifuMaterialTextbox11.LineIdleColor = System.Drawing.Color.Gray;
             this.bunifuMaterialTextbox11.LineMouseHoverColor = System.Drawing.Color.Gray;
             this.bunifuMaterialTextbox11.LineThickness = 2;
-            this.bunifuMaterialTextbox11.Location = new System.Drawing.Point(168, 92);
+            this.bunifuMaterialTextbox11.Location = new System.Drawing.Point(195, 92);
             this.bunifuMaterialTextbox11.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.bunifuMaterialTextbox11.MaxLength = 32767;
             this.bunifuMaterialTextbox11.Name = "bunifuMaterialTextbox11";
-            this.bunifuMaterialTextbox11.Size = new System.Drawing.Size(249, 37);
+            this.bunifuMaterialTextbox11.Size = new System.Drawing.Size(222, 37);
             this.bunifuMaterialTextbox11.TabIndex = 122;
             this.bunifuMaterialTextbox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
@@ -727,42 +689,6 @@
             this.bunifuFlatButton3.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton3.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
-            // bunifuFlatButton2
-            // 
-            this.bunifuFlatButton2.Active = false;
-            this.bunifuFlatButton2.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.bunifuFlatButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.bunifuFlatButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuFlatButton2.BorderRadius = 7;
-            this.bunifuFlatButton2.ButtonText = "Thêm mới";
-            this.bunifuFlatButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuFlatButton2.DisabledColor = System.Drawing.Color.Gray;
-            this.bunifuFlatButton2.Iconcolor = System.Drawing.Color.Transparent;
-            this.bunifuFlatButton2.Iconimage = ((System.Drawing.Image)(resources.GetObject("bunifuFlatButton2.Iconimage")));
-            this.bunifuFlatButton2.Iconimage_right = null;
-            this.bunifuFlatButton2.Iconimage_right_Selected = null;
-            this.bunifuFlatButton2.Iconimage_Selected = null;
-            this.bunifuFlatButton2.IconMarginLeft = 0;
-            this.bunifuFlatButton2.IconMarginRight = 0;
-            this.bunifuFlatButton2.IconRightVisible = true;
-            this.bunifuFlatButton2.IconRightZoom = 0D;
-            this.bunifuFlatButton2.IconVisible = true;
-            this.bunifuFlatButton2.IconZoom = 70D;
-            this.bunifuFlatButton2.IsTab = false;
-            this.bunifuFlatButton2.Location = new System.Drawing.Point(1123, 461);
-            this.bunifuFlatButton2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.bunifuFlatButton2.Name = "bunifuFlatButton2";
-            this.bunifuFlatButton2.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
-            this.bunifuFlatButton2.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(81)))), ((int)(((byte)(90)))));
-            this.bunifuFlatButton2.OnHoverTextColor = System.Drawing.Color.White;
-            this.bunifuFlatButton2.selected = false;
-            this.bunifuFlatButton2.Size = new System.Drawing.Size(170, 56);
-            this.bunifuFlatButton2.TabIndex = 127;
-            this.bunifuFlatButton2.Text = "Thêm mới";
-            this.bunifuFlatButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bunifuFlatButton2.Textcolor = System.Drawing.Color.White;
-            this.bunifuFlatButton2.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // 
             // bunifuFlatButton6
             // 
             this.bunifuFlatButton6.Active = false;
@@ -861,18 +787,118 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Danh sách";
             // 
+            // bunifuFlatButton2
+            // 
+            this.bunifuFlatButton2.Active = false;
+            this.bunifuFlatButton2.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            this.bunifuFlatButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            this.bunifuFlatButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuFlatButton2.BorderRadius = 7;
+            this.bunifuFlatButton2.ButtonText = "   Xóa";
+            this.bunifuFlatButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bunifuFlatButton2.DisabledColor = System.Drawing.Color.Gray;
+            this.bunifuFlatButton2.Iconcolor = System.Drawing.Color.Transparent;
+            this.bunifuFlatButton2.Iconimage = ((System.Drawing.Image)(resources.GetObject("bunifuFlatButton2.Iconimage")));
+            this.bunifuFlatButton2.Iconimage_right = null;
+            this.bunifuFlatButton2.Iconimage_right_Selected = null;
+            this.bunifuFlatButton2.Iconimage_Selected = null;
+            this.bunifuFlatButton2.IconMarginLeft = 0;
+            this.bunifuFlatButton2.IconMarginRight = 0;
+            this.bunifuFlatButton2.IconRightVisible = true;
+            this.bunifuFlatButton2.IconRightZoom = 0D;
+            this.bunifuFlatButton2.IconVisible = true;
+            this.bunifuFlatButton2.IconZoom = 70D;
+            this.bunifuFlatButton2.IsTab = false;
+            this.bunifuFlatButton2.Location = new System.Drawing.Point(1123, 461);
+            this.bunifuFlatButton2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.bunifuFlatButton2.Name = "bunifuFlatButton2";
+            this.bunifuFlatButton2.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            this.bunifuFlatButton2.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(81)))), ((int)(((byte)(90)))));
+            this.bunifuFlatButton2.OnHoverTextColor = System.Drawing.Color.White;
+            this.bunifuFlatButton2.selected = false;
+            this.bunifuFlatButton2.Size = new System.Drawing.Size(170, 56);
+            this.bunifuFlatButton2.TabIndex = 133;
+            this.bunifuFlatButton2.Text = "   Xóa";
+            this.bunifuFlatButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bunifuFlatButton2.Textcolor = System.Drawing.Color.White;
+            this.bunifuFlatButton2.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
+            // bunifuMaterialTextbox9
+            // 
+            this.bunifuMaterialTextbox9.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.bunifuMaterialTextbox9.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.bunifuMaterialTextbox9.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.bunifuMaterialTextbox9.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.bunifuMaterialTextbox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuMaterialTextbox9.ForeColor = System.Drawing.Color.White;
+            this.bunifuMaterialTextbox9.HintForeColor = System.Drawing.Color.White;
+            this.bunifuMaterialTextbox9.HintText = "";
+            this.bunifuMaterialTextbox9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.bunifuMaterialTextbox9.isPassword = false;
+            this.bunifuMaterialTextbox9.LineFocusedColor = System.Drawing.Color.Gray;
+            this.bunifuMaterialTextbox9.LineIdleColor = System.Drawing.Color.Gray;
+            this.bunifuMaterialTextbox9.LineMouseHoverColor = System.Drawing.Color.Gray;
+            this.bunifuMaterialTextbox9.LineThickness = 2;
+            this.bunifuMaterialTextbox9.Location = new System.Drawing.Point(630, 92);
+            this.bunifuMaterialTextbox9.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.bunifuMaterialTextbox9.MaxLength = 32767;
+            this.bunifuMaterialTextbox9.Name = "bunifuMaterialTextbox9";
+            this.bunifuMaterialTextbox9.Size = new System.Drawing.Size(222, 37);
+            this.bunifuMaterialTextbox9.TabIndex = 124;
+            this.bunifuMaterialTextbox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // bunifuMaterialTextbox12
+            // 
+            this.bunifuMaterialTextbox12.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.bunifuMaterialTextbox12.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.bunifuMaterialTextbox12.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.bunifuMaterialTextbox12.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.bunifuMaterialTextbox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuMaterialTextbox12.ForeColor = System.Drawing.Color.White;
+            this.bunifuMaterialTextbox12.HintForeColor = System.Drawing.Color.White;
+            this.bunifuMaterialTextbox12.HintText = "";
+            this.bunifuMaterialTextbox12.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.bunifuMaterialTextbox12.isPassword = false;
+            this.bunifuMaterialTextbox12.LineFocusedColor = System.Drawing.Color.Gray;
+            this.bunifuMaterialTextbox12.LineIdleColor = System.Drawing.Color.Gray;
+            this.bunifuMaterialTextbox12.LineMouseHoverColor = System.Drawing.Color.Gray;
+            this.bunifuMaterialTextbox12.LineThickness = 2;
+            this.bunifuMaterialTextbox12.Location = new System.Drawing.Point(235, 243);
+            this.bunifuMaterialTextbox12.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.bunifuMaterialTextbox12.MaxLength = 32767;
+            this.bunifuMaterialTextbox12.Name = "bunifuMaterialTextbox12";
+            this.bunifuMaterialTextbox12.Size = new System.Drawing.Size(166, 37);
+            this.bunifuMaterialTextbox12.TabIndex = 125;
+            this.bunifuMaterialTextbox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.ForeColor = System.Drawing.Color.White;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Nam",
+            "Nữ"});
+            this.comboBox1.Location = new System.Drawing.Point(125, 243);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(101, 33);
+            this.comboBox1.TabIndex = 124;
+            // 
             // frmHocSinh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
             this.ClientSize = new System.Drawing.Size(1311, 955);
+            this.Controls.Add(this.bunifuFlatButton2);
             this.Controls.Add(this.dgvDSND);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.bunifuFlatButton5);
             this.Controls.Add(this.bunifuFlatButton4);
             this.Controls.Add(this.bunifuFlatButton3);
-            this.Controls.Add(this.bunifuFlatButton2);
             this.Controls.Add(this.bunifuFlatButton6);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -913,7 +939,6 @@
         private Bunifu.Framework.UI.BunifuMaterialTextbox bunifuMaterialTextbox7;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox comboBox1;
         private Bunifu.Framework.UI.BunifuMaterialTextbox bunifuMaterialTextbox6;
         private System.Windows.Forms.Label label7;
         private Bunifu.Framework.UI.BunifuMaterialTextbox bunifuMaterialTextbox5;
@@ -923,7 +948,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cboQuyen;
         private System.Windows.Forms.GroupBox groupBox2;
-        private Bunifu.Framework.UI.BunifuMaterialTextbox bunifuMaterialTextbox9;
         private Bunifu.Framework.UI.BunifuMaterialTextbox bunifuMaterialTextbox10;
         private Bunifu.Framework.UI.BunifuMaterialTextbox bunifuMaterialTextbox11;
         private System.Windows.Forms.Label label14;
@@ -934,10 +958,13 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton4;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton3;
-        private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton2;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton6;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton5;
         private System.Windows.Forms.DataGridView dgvDSND;
         private System.Windows.Forms.GroupBox groupBox4;
+        private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton2;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox bunifuMaterialTextbox9;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox bunifuMaterialTextbox12;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

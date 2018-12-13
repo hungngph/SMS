@@ -265,7 +265,7 @@
             this.bunifuFlatButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
             this.bunifuFlatButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bunifuFlatButton2.BorderRadius = 7;
-            this.bunifuFlatButton2.ButtonText = "Thêm mới";
+            this.bunifuFlatButton2.ButtonText = "   Xóa";
             this.bunifuFlatButton2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bunifuFlatButton2.DisabledColor = System.Drawing.Color.Gray;
             this.bunifuFlatButton2.Iconcolor = System.Drawing.Color.Transparent;
@@ -289,7 +289,7 @@
             this.bunifuFlatButton2.selected = false;
             this.bunifuFlatButton2.Size = new System.Drawing.Size(183, 56);
             this.bunifuFlatButton2.TabIndex = 106;
-            this.bunifuFlatButton2.Text = "Thêm mới";
+            this.bunifuFlatButton2.Text = "   Xóa";
             this.bunifuFlatButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bunifuFlatButton2.Textcolor = System.Drawing.Color.White;
             this.bunifuFlatButton2.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

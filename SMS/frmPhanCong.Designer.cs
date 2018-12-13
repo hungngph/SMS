@@ -252,7 +252,7 @@
             this.bunifuMaterialTextbox3.LineIdleColor = System.Drawing.Color.Gray;
             this.bunifuMaterialTextbox3.LineMouseHoverColor = System.Drawing.Color.Gray;
             this.bunifuMaterialTextbox3.LineThickness = 2;
-            this.bunifuMaterialTextbox3.Location = new System.Drawing.Point(412, 94);
+            this.bunifuMaterialTextbox3.Location = new System.Drawing.Point(412, 97);
             this.bunifuMaterialTextbox3.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.bunifuMaterialTextbox3.MaxLength = 32767;
             this.bunifuMaterialTextbox3.Name = "bunifuMaterialTextbox3";
@@ -303,7 +303,7 @@
             this.bunifuMaterialTextbox4.LineIdleColor = System.Drawing.Color.Gray;
             this.bunifuMaterialTextbox4.LineMouseHoverColor = System.Drawing.Color.Gray;
             this.bunifuMaterialTextbox4.LineThickness = 2;
-            this.bunifuMaterialTextbox4.Location = new System.Drawing.Point(412, 33);
+            this.bunifuMaterialTextbox4.Location = new System.Drawing.Point(412, 36);
             this.bunifuMaterialTextbox4.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.bunifuMaterialTextbox4.MaxLength = 32767;
             this.bunifuMaterialTextbox4.Name = "bunifuMaterialTextbox4";
