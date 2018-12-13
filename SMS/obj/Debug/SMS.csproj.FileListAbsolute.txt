@@ -33,3 +33,9 @@ C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.csproj.CopyComplete
 C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.exe
 C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.pdb
 C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmDoiMatKhau.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmDanhSachNguoiDung.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmHocSinh.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmGiaoVien.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmLopHoc.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmNhapDiem.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmXemDiem.resources
