@@ -29,76 +29,101 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CapNhatThongTin));
-            this.btnDanhSachNguoiDung = new Bunifu.Framework.UI.BunifuTileButton();
-            this.btnDoiMatKhau = new Bunifu.Framework.UI.BunifuTileButton();
-            this.bunifuTileButton1 = new Bunifu.Framework.UI.BunifuTileButton();
+            this.btnQuanLyGiaoVien = new Bunifu.Framework.UI.BunifuTileButton();
+            this.btnQuanLyHocSinh = new Bunifu.Framework.UI.BunifuTileButton();
+            this.btnQuanLyLopHoc = new Bunifu.Framework.UI.BunifuTileButton();
+            this.btnQuanLyGiangDay = new Bunifu.Framework.UI.BunifuTileButton();
             this.SuspendLayout();
             // 
-            // btnDanhSachNguoiDung
+            // btnQuanLyGiaoVien
             // 
-            this.btnDanhSachNguoiDung.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(42)))), ((int)(((byte)(86)))));
-            this.btnDanhSachNguoiDung.color = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(42)))), ((int)(((byte)(86)))));
-            this.btnDanhSachNguoiDung.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(60)))), ((int)(((byte)(117)))));
-            this.btnDanhSachNguoiDung.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDanhSachNguoiDung.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDanhSachNguoiDung.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(244)))));
-            this.btnDanhSachNguoiDung.Image = ((System.Drawing.Image)(resources.GetObject("btnDanhSachNguoiDung.Image")));
-            this.btnDanhSachNguoiDung.ImagePosition = 19;
-            this.btnDanhSachNguoiDung.ImageZoom = 40;
-            this.btnDanhSachNguoiDung.LabelPosition = 39;
-            this.btnDanhSachNguoiDung.LabelText = "Quản lý giáo viên";
-            this.btnDanhSachNguoiDung.Location = new System.Drawing.Point(675, 94);
-            this.btnDanhSachNguoiDung.Margin = new System.Windows.Forms.Padding(8);
-            this.btnDanhSachNguoiDung.Name = "btnDanhSachNguoiDung";
-            this.btnDanhSachNguoiDung.Size = new System.Drawing.Size(343, 237);
-            this.btnDanhSachNguoiDung.TabIndex = 10;
+            this.btnQuanLyGiaoVien.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(42)))), ((int)(((byte)(86)))));
+            this.btnQuanLyGiaoVien.color = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(42)))), ((int)(((byte)(86)))));
+            this.btnQuanLyGiaoVien.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(60)))), ((int)(((byte)(117)))));
+            this.btnQuanLyGiaoVien.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnQuanLyGiaoVien.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuanLyGiaoVien.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(244)))));
+            this.btnQuanLyGiaoVien.Image = ((System.Drawing.Image)(resources.GetObject("btnQuanLyGiaoVien.Image")));
+            this.btnQuanLyGiaoVien.ImagePosition = 19;
+            this.btnQuanLyGiaoVien.ImageZoom = 40;
+            this.btnQuanLyGiaoVien.LabelPosition = 39;
+            this.btnQuanLyGiaoVien.LabelText = "Quản lý giáo viên";
+            this.btnQuanLyGiaoVien.Location = new System.Drawing.Point(675, 94);
+            this.btnQuanLyGiaoVien.Margin = new System.Windows.Forms.Padding(8);
+            this.btnQuanLyGiaoVien.Name = "btnQuanLyGiaoVien";
+            this.btnQuanLyGiaoVien.Size = new System.Drawing.Size(343, 237);
+            this.btnQuanLyGiaoVien.TabIndex = 10;
+            this.btnQuanLyGiaoVien.Click += new System.EventHandler(this.btnQuanLyGiaoVien_Click);
             // 
-            // btnDoiMatKhau
+            // btnQuanLyHocSinh
             // 
-            this.btnDoiMatKhau.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(42)))), ((int)(((byte)(86)))));
-            this.btnDoiMatKhau.color = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(42)))), ((int)(((byte)(86)))));
-            this.btnDoiMatKhau.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(60)))), ((int)(((byte)(117)))));
-            this.btnDoiMatKhau.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDoiMatKhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDoiMatKhau.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(182)))), ((int)(((byte)(172)))));
-            this.btnDoiMatKhau.Image = ((System.Drawing.Image)(resources.GetObject("btnDoiMatKhau.Image")));
-            this.btnDoiMatKhau.ImagePosition = 19;
-            this.btnDoiMatKhau.ImageZoom = 40;
-            this.btnDoiMatKhau.LabelPosition = 39;
-            this.btnDoiMatKhau.LabelText = "Quản lý học sinh";
-            this.btnDoiMatKhau.Location = new System.Drawing.Point(216, 94);
-            this.btnDoiMatKhau.Margin = new System.Windows.Forms.Padding(8);
-            this.btnDoiMatKhau.Name = "btnDoiMatKhau";
-            this.btnDoiMatKhau.Size = new System.Drawing.Size(343, 237);
-            this.btnDoiMatKhau.TabIndex = 9;
+            this.btnQuanLyHocSinh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(42)))), ((int)(((byte)(86)))));
+            this.btnQuanLyHocSinh.color = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(42)))), ((int)(((byte)(86)))));
+            this.btnQuanLyHocSinh.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(60)))), ((int)(((byte)(117)))));
+            this.btnQuanLyHocSinh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnQuanLyHocSinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuanLyHocSinh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(182)))), ((int)(((byte)(172)))));
+            this.btnQuanLyHocSinh.Image = ((System.Drawing.Image)(resources.GetObject("btnQuanLyHocSinh.Image")));
+            this.btnQuanLyHocSinh.ImagePosition = 19;
+            this.btnQuanLyHocSinh.ImageZoom = 40;
+            this.btnQuanLyHocSinh.LabelPosition = 39;
+            this.btnQuanLyHocSinh.LabelText = "Quản lý học sinh";
+            this.btnQuanLyHocSinh.Location = new System.Drawing.Point(216, 94);
+            this.btnQuanLyHocSinh.Margin = new System.Windows.Forms.Padding(8);
+            this.btnQuanLyHocSinh.Name = "btnQuanLyHocSinh";
+            this.btnQuanLyHocSinh.Size = new System.Drawing.Size(343, 237);
+            this.btnQuanLyHocSinh.TabIndex = 9;
+            this.btnQuanLyHocSinh.Click += new System.EventHandler(this.btnQuanLyHocSinh_Click);
             // 
-            // bunifuTileButton1
+            // btnQuanLyLopHoc
             // 
-            this.bunifuTileButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(42)))), ((int)(((byte)(86)))));
-            this.bunifuTileButton1.color = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(42)))), ((int)(((byte)(86)))));
-            this.bunifuTileButton1.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(60)))), ((int)(((byte)(117)))));
-            this.bunifuTileButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bunifuTileButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuTileButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(61)))), ((int)(((byte)(4)))));
-            this.bunifuTileButton1.Image = ((System.Drawing.Image)(resources.GetObject("bunifuTileButton1.Image")));
-            this.bunifuTileButton1.ImagePosition = 19;
-            this.bunifuTileButton1.ImageZoom = 40;
-            this.bunifuTileButton1.LabelPosition = 39;
-            this.bunifuTileButton1.LabelText = "Quản lý lớp học";
-            this.bunifuTileButton1.Location = new System.Drawing.Point(216, 426);
-            this.bunifuTileButton1.Margin = new System.Windows.Forms.Padding(8);
-            this.bunifuTileButton1.Name = "bunifuTileButton1";
-            this.bunifuTileButton1.Size = new System.Drawing.Size(343, 237);
-            this.bunifuTileButton1.TabIndex = 11;
+            this.btnQuanLyLopHoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(42)))), ((int)(((byte)(86)))));
+            this.btnQuanLyLopHoc.color = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(42)))), ((int)(((byte)(86)))));
+            this.btnQuanLyLopHoc.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(60)))), ((int)(((byte)(117)))));
+            this.btnQuanLyLopHoc.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnQuanLyLopHoc.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuanLyLopHoc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(61)))), ((int)(((byte)(4)))));
+            this.btnQuanLyLopHoc.Image = ((System.Drawing.Image)(resources.GetObject("btnQuanLyLopHoc.Image")));
+            this.btnQuanLyLopHoc.ImagePosition = 19;
+            this.btnQuanLyLopHoc.ImageZoom = 40;
+            this.btnQuanLyLopHoc.LabelPosition = 39;
+            this.btnQuanLyLopHoc.LabelText = "Quản lý lớp học";
+            this.btnQuanLyLopHoc.Location = new System.Drawing.Point(216, 426);
+            this.btnQuanLyLopHoc.Margin = new System.Windows.Forms.Padding(8);
+            this.btnQuanLyLopHoc.Name = "btnQuanLyLopHoc";
+            this.btnQuanLyLopHoc.Size = new System.Drawing.Size(343, 237);
+            this.btnQuanLyLopHoc.TabIndex = 11;
+            this.btnQuanLyLopHoc.Click += new System.EventHandler(this.btnQuanLyLopHoc_Click);
+            // 
+            // btnQuanLyGiangDay
+            // 
+            this.btnQuanLyGiangDay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(42)))), ((int)(((byte)(86)))));
+            this.btnQuanLyGiangDay.color = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(42)))), ((int)(((byte)(86)))));
+            this.btnQuanLyGiangDay.colorActive = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(60)))), ((int)(((byte)(117)))));
+            this.btnQuanLyGiangDay.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnQuanLyGiangDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuanLyGiangDay.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(235)))), ((int)(((byte)(242)))));
+            this.btnQuanLyGiangDay.Image = ((System.Drawing.Image)(resources.GetObject("btnQuanLyGiangDay.Image")));
+            this.btnQuanLyGiangDay.ImagePosition = 19;
+            this.btnQuanLyGiangDay.ImageZoom = 40;
+            this.btnQuanLyGiangDay.LabelPosition = 39;
+            this.btnQuanLyGiangDay.LabelText = "Quản lý giảng dạy";
+            this.btnQuanLyGiangDay.Location = new System.Drawing.Point(675, 426);
+            this.btnQuanLyGiangDay.Margin = new System.Windows.Forms.Padding(8);
+            this.btnQuanLyGiangDay.Name = "btnQuanLyGiangDay";
+            this.btnQuanLyGiangDay.Size = new System.Drawing.Size(343, 237);
+            this.btnQuanLyGiangDay.TabIndex = 12;
+            this.btnQuanLyGiangDay.Click += new System.EventHandler(this.btnQuanLyGiangDay_Click);
             // 
             // CapNhatThongTin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(18)))), ((int)(((byte)(23)))));
-            this.Controls.Add(this.bunifuTileButton1);
-            this.Controls.Add(this.btnDanhSachNguoiDung);
-            this.Controls.Add(this.btnDoiMatKhau);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.Controls.Add(this.btnQuanLyGiangDay);
+            this.Controls.Add(this.btnQuanLyLopHoc);
+            this.Controls.Add(this.btnQuanLyGiaoVien);
+            this.Controls.Add(this.btnQuanLyHocSinh);
             this.Name = "CapNhatThongTin";
             this.Size = new System.Drawing.Size(1240, 790);
             this.ResumeLayout(false);
@@ -107,8 +132,9 @@
 
         #endregion
 
-        private Bunifu.Framework.UI.BunifuTileButton btnDanhSachNguoiDung;
-        private Bunifu.Framework.UI.BunifuTileButton btnDoiMatKhau;
-        private Bunifu.Framework.UI.BunifuTileButton bunifuTileButton1;
+        private Bunifu.Framework.UI.BunifuTileButton btnQuanLyGiaoVien;
+        private Bunifu.Framework.UI.BunifuTileButton btnQuanLyHocSinh;
+        private Bunifu.Framework.UI.BunifuTileButton btnQuanLyLopHoc;
+        private Bunifu.Framework.UI.BunifuTileButton btnQuanLyGiangDay;
     }
 }

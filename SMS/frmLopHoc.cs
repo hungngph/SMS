@@ -44,5 +44,9 @@ namespace SMS
             this.Close();
         }
 
+        private void frmLopHoc_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+        }
     }
 }

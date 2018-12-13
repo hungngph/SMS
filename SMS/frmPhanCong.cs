@@ -11,13 +11,12 @@ using System.Runtime.InteropServices;
 
 namespace SMS
 {
-    public partial class frmDoiMatKhau : Form
+    public partial class frmPhanCong : Form
     {
-        public frmDoiMatKhau()
+        public frmPhanCong()
         {
             InitializeComponent();
         }
-
         //Sử dụng thư viện
         //using System.Runtime.InteropServices;
         //để di chuyển frm
@@ -29,7 +28,7 @@ namespace SMS
         [DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
 
-        private void frmDoiMatKhau_MouseDown(object sender, MouseEventArgs e)
+        private void frmPhanCong_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -44,7 +43,7 @@ namespace SMS
             this.Close();
         }
 
-        private void frmDoiMatKhau_Load(object sender, EventArgs e)
+        private void frmPhanCong_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Normal;
         }

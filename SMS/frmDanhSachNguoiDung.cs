@@ -42,5 +42,10 @@ namespace SMS
         {
             this.Close();
         }
+
+        private void frmDanhSachNguoiDung_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+        }
     }
 }

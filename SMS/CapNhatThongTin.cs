@@ -16,5 +16,31 @@ namespace SMS
         {
             InitializeComponent();
         }
+
+        private void btnQuanLyHocSinh_Click(object sender, EventArgs e)
+        {
+            frmHocSinh hs = new frmHocSinh();
+            hs.Show();
+        }
+
+        private void btnQuanLyGiaoVien_Click(object sender, EventArgs e)
+        {
+            frmGiaoVien gv = new frmGiaoVien();
+            gv.Show();
+
+        }
+
+        private void btnQuanLyLopHoc_Click(object sender, EventArgs e)
+        {
+            frmLopHoc lh = new frmLopHoc();
+            lh.Show();
+        }
+
+        private void btnQuanLyGiangDay_Click(object sender, EventArgs e)
+        {
+            frmPhanCong pc = new frmPhanCong();
+            pc.Show();
+
+        }
     }
 }

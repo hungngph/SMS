@@ -39,3 +39,4 @@ C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmGiaoVien.resources
 C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmLopHoc.resources
 C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmNhapDiem.resources
 C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmXemDiem.resources
+C:\Users\PhiHung\Desktop\SMS\SMS\obj\Debug\SMS.frmPhanCong.resources

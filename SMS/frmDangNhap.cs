@@ -43,5 +43,9 @@ namespace SMS
             this.Close();
         }
 
+        private void frmDangNhap_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+        }
     }
 }

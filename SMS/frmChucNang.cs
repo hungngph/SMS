@@ -76,5 +76,9 @@ namespace SMS
             quanLyTaiKhoan1.Visible = false;
         }
 
+        private void frmChucNang_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+        }
     }
 }

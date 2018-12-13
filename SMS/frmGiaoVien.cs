@@ -44,5 +44,9 @@ namespace SMS
 
         }
 
+        private void frmGiaoVien_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+        }
     }
 }

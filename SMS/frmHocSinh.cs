@@ -42,5 +42,10 @@ namespace SMS
         {
             this.Close();
         }
+
+        private void frmHocSinh_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+        }
     }
 }

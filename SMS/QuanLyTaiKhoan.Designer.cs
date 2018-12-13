@@ -51,6 +51,7 @@
             this.btnDanhSachNguoiDung.Name = "btnDanhSachNguoiDung";
             this.btnDanhSachNguoiDung.Size = new System.Drawing.Size(343, 237);
             this.btnDanhSachNguoiDung.TabIndex = 8;
+            this.btnDanhSachNguoiDung.Click += new System.EventHandler(this.btnDanhSachNguoiDung_Click);
             // 
             // btnDoiMatKhau
             // 
@@ -70,12 +71,13 @@
             this.btnDoiMatKhau.Name = "btnDoiMatKhau";
             this.btnDoiMatKhau.Size = new System.Drawing.Size(343, 237);
             this.btnDoiMatKhau.TabIndex = 7;
+            this.btnDoiMatKhau.Click += new System.EventHandler(this.btnDoiMatKhau_Click);
             // 
             // QuanLyTaiKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(18)))), ((int)(((byte)(23)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.Controls.Add(this.btnDanhSachNguoiDung);
             this.Controls.Add(this.btnDoiMatKhau);
             this.Location = new System.Drawing.Point(319, 90);

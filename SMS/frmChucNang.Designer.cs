@@ -43,9 +43,9 @@
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.topbar = new System.Windows.Forms.Panel();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.capNhatThongTin1 = new SMS.CapNhatThongTin();
             this.gioiThieu1 = new SMS.GioiThieu();
             this.quanLyDiemLopHoc1 = new SMS.QuanLyDiemLopHoc();
-            this.capNhatThongTin1 = new SMS.CapNhatThongTin();
             this.quanLyTaiKhoan1 = new SMS.QuanLyTaiKhoan();
             ((System.ComponentModel.ISupportInitialize)(this.btnDangXuat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDong)).BeginInit();
@@ -133,6 +133,7 @@
             // 
             // btnDangXuat
             // 
+            this.btnDangXuat.AccessibleDescription = "";
             this.btnDangXuat.BackColor = System.Drawing.Color.Transparent;
             this.btnDangXuat.Image = ((System.Drawing.Image)(resources.GetObject("btnDangXuat.Image")));
             this.btnDangXuat.ImageActive = null;
@@ -143,6 +144,7 @@
             this.btnDangXuat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnDangXuat.TabIndex = 4;
             this.btnDangXuat.TabStop = false;
+            this.btnDangXuat.Tag = "";
             this.btnDangXuat.Zoom = 10;
             // 
             // btnDong
@@ -150,7 +152,7 @@
             this.btnDong.BackColor = System.Drawing.Color.White;
             this.btnDong.Image = ((System.Drawing.Image)(resources.GetObject("btnDong.Image")));
             this.btnDong.ImageActive = null;
-            this.btnDong.Location = new System.Drawing.Point(1476, 14);
+            this.btnDong.Location = new System.Drawing.Point(1484, 15);
             this.btnDong.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(60, 52);
@@ -316,37 +318,37 @@
             this.bunifuElipse1.ElipseRadius = 5;
             this.bunifuElipse1.TargetControl = this;
             // 
+            // capNhatThongTin1
+            // 
+            this.capNhatThongTin1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.capNhatThongTin1.Location = new System.Drawing.Point(319, 93);
+            this.capNhatThongTin1.Name = "capNhatThongTin1";
+            this.capNhatThongTin1.Size = new System.Drawing.Size(1240, 790);
+            this.capNhatThongTin1.TabIndex = 8;
+            this.capNhatThongTin1.Visible = false;
+            // 
             // gioiThieu1
             // 
-            this.gioiThieu1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(18)))), ((int)(((byte)(23)))));
-            this.gioiThieu1.Location = new System.Drawing.Point(319, 92);
+            this.gioiThieu1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.gioiThieu1.Location = new System.Drawing.Point(319, 93);
             this.gioiThieu1.Name = "gioiThieu1";
             this.gioiThieu1.Size = new System.Drawing.Size(1240, 790);
-            this.gioiThieu1.TabIndex = 8;
+            this.gioiThieu1.TabIndex = 7;
             this.gioiThieu1.Visible = false;
             // 
             // quanLyDiemLopHoc1
             // 
-            this.quanLyDiemLopHoc1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(18)))), ((int)(((byte)(23)))));
+            this.quanLyDiemLopHoc1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.quanLyDiemLopHoc1.Location = new System.Drawing.Point(319, 93);
             this.quanLyDiemLopHoc1.Name = "quanLyDiemLopHoc1";
             this.quanLyDiemLopHoc1.Size = new System.Drawing.Size(1240, 790);
-            this.quanLyDiemLopHoc1.TabIndex = 7;
+            this.quanLyDiemLopHoc1.TabIndex = 6;
             this.quanLyDiemLopHoc1.Visible = false;
-            // 
-            // capNhatThongTin1
-            // 
-            this.capNhatThongTin1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(18)))), ((int)(((byte)(23)))));
-            this.capNhatThongTin1.Location = new System.Drawing.Point(319, 93);
-            this.capNhatThongTin1.Name = "capNhatThongTin1";
-            this.capNhatThongTin1.Size = new System.Drawing.Size(1240, 790);
-            this.capNhatThongTin1.TabIndex = 6;
-            this.capNhatThongTin1.Visible = false;
             // 
             // quanLyTaiKhoan1
             // 
-            this.quanLyTaiKhoan1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(18)))), ((int)(((byte)(23)))));
-            this.quanLyTaiKhoan1.Location = new System.Drawing.Point(319, 92);
+            this.quanLyTaiKhoan1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.quanLyTaiKhoan1.Location = new System.Drawing.Point(319, 93);
             this.quanLyTaiKhoan1.Name = "quanLyTaiKhoan1";
             this.quanLyTaiKhoan1.Size = new System.Drawing.Size(1240, 790);
             this.quanLyTaiKhoan1.TabIndex = 5;
@@ -356,11 +358,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(18)))), ((int)(((byte)(23)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.ClientSize = new System.Drawing.Size(1562, 883);
+            this.Controls.Add(this.capNhatThongTin1);
             this.Controls.Add(this.gioiThieu1);
             this.Controls.Add(this.quanLyDiemLopHoc1);
-            this.Controls.Add(this.capNhatThongTin1);
             this.Controls.Add(this.quanLyTaiKhoan1);
             this.Controls.Add(this.MenuBar);
             this.Controls.Add(this.topbar);
@@ -368,6 +370,7 @@
             this.Name = "frmChucNang";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            this.Load += new System.EventHandler(this.frmChucNang_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmChucNang_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.btnDangXuat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDong)).EndInit();
@@ -394,10 +397,10 @@
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
         private System.Windows.Forms.Panel topbar;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
+        private GioiThieu gioiThieu1;
+        private QuanLyDiemLopHoc quanLyDiemLopHoc1;
         private QuanLyTaiKhoan quanLyTaiKhoan1;
         private CapNhatThongTin capNhatThongTin1;
-        private QuanLyDiemLopHoc quanLyDiemLopHoc1;
-        private GioiThieu gioiThieu1;
     }
 }
 

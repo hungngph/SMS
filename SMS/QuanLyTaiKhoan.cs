@@ -16,5 +16,17 @@ namespace SMS
         {
             InitializeComponent();
         }
+
+        private void btnDoiMatKhau_Click(object sender, EventArgs e)
+        {
+            frmDoiMatKhau dmk = new frmDoiMatKhau();
+            dmk.Show();
+        }
+
+        private void btnDanhSachNguoiDung_Click(object sender, EventArgs e)
+        {
+            frmDanhSachNguoiDung csdsng = new frmDanhSachNguoiDung();
+            csdsng.Show();
+        }
     }
 }
