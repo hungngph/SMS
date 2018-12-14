@@ -55,6 +55,9 @@ namespace SMS
                 btnQuanLyGiangDay.Visible = false;
                 btnQuanLyLopHoc.Visible = false;
             }
+            string query = "Select MAGVCN from LOP where MAGVCN = '" + DatabaseConnection.MaGV + "'";
+            if (DatabaseConnection.GetDataTable(query).Rows.Count == 0)
+                btnQuanLyHocSinh.Visible = false;
         }
     }
 }
