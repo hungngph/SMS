@@ -15,7 +15,7 @@ namespace SMS
         public static bool isAdmin = false;
         public static string MaGV;
         // Thành phần kết nối
-        static SqlConnection sqlConnection;
+        public static SqlConnection sqlConnection;
 
         // Hàm kiểm tra kết nối sql có thành công hay không
         public static bool IsConnect()
@@ -77,6 +77,23 @@ namespace SMS
                 return false;
             }
             return true;
+        }
+        public static void SaveAction(string action, string table)
+        {
+            string query = "INSERT INTO HOATDONG VALUES(GETDATE(), " +
+                "'" + MaGV + "', " +
+                "N'" + action + "', " +
+                "'" + table + "')";
+            SqlCommand cmd = new SqlCommand(query, sqlConnection);
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                cmd.Dispose();
+            }
         }
     }
 }

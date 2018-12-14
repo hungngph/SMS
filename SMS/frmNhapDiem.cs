@@ -198,45 +198,55 @@ namespace SMS
 
         void Load_combobox()
         {
-            string query = "SELECT * FROM LOP";
-            DataTable d = DatabaseConnection.GetDataTable(query);
-            cboMaLop.DisplayMember = "MALOP";
-            cboMaLop.DataSource = d;
-            cboMaLop.Text = "";
-            query = "SELECT * FROM MONHOC";
-            d = DatabaseConnection.GetDataTable(query);
             cboMaMon.DisplayMember = "MAMH";
+            cboMaMon.ValueMember = "MAMH";
+            cboMaLop.DisplayMember = "MALOP";
+            cboMaLop.ValueMember = "MALOP";
+            string query = "SELECT MALOP FROM LOP";
+            DataTable d = DatabaseConnection.GetDataTable(query);
+            cboMaLop.DataSource = d;
+            query = "SELECT MAMH FROM MONHOC";
+            d = DatabaseConnection.GetDataTable(query);
             cboMaMon.DataSource = d;
+            cboMaLop.Text = "";
             cboMaMon.Text = "";
             if (DatabaseConnection.isAdmin == false)
             {
                 query = "select MALOP FROM PHANCONG where MAGV = '" + DatabaseConnection.MaGV
                              + "' UNION select MALOP from LOP where MAGVCN = '" + DatabaseConnection.MaGV + "'";
                 DataTable dt = DatabaseConnection.GetDataTable(query);
-                cboMaLop.DisplayMember = "MALOP";
                 cboMaLop.DataSource = dt;
+            }
+            UpdateCbo();
+        }
+        void UpdateCbo()
+        {
+            string query = "SELECT MAMH FROM MONHOC";
+            var d = DatabaseConnection.GetDataTable(query);
+            if (DatabaseConnection.isAdmin == false)
+            {
                 // nếu cbo.MALOP khác lớp chủ nhiệm -> cbo.MAMH = MAMH giáo viên đó dạy
                 string query1 = "select MALOP from LOP where MAGVCN = '" + DatabaseConnection.MaGV + "'";
                 string query2 = "select Distinct MAMH FROM PHANCONG where MAGV = '" + DatabaseConnection.MaGV + "'";
                 DataTable dt1 = DatabaseConnection.GetDataTable(query1);
                 DataTable dt2 = DatabaseConnection.GetDataTable(query2);
-                //if (cboMaLop.Text != dt1.Rows[0][0].ToString())
-                //{
-                //    cboMaMon.DataSource = DatabaseConnection.GetDataTable(query2);
-                //}
-                //else
-                //{
-                //    cboMaMon.DataSource = d;
-                //}
-                //cboMaMon.DisplayMember = "MAMH";
-                //cboMaMon.Text = "";
-            }   
+                if (dt1.Rows != null && cboMaLop.SelectedValue.ToString() != dt1.Rows[0][0].ToString())
+                {
+                    cboMaMon.DataSource = DatabaseConnection.GetDataTable(query2);
+                }
+                else
+                {
+                    cboMaMon.DataSource = d;
+                }
+                cboMaMon.Text = "";
+            }
         }
-
 
         private void cboMaMon_TextChanged(object sender, EventArgs e)
         {
-            string query = "SELECT TENMH FROM MONHOC WHERE MAMH = '" + cboMaMon.Text + "'";
+            if (cboMaMon.SelectedValue == null)
+                return;
+            string query = "SELECT TENMH FROM MONHOC WHERE MAMH = '" + cboMaMon.SelectedValue.ToString() + "'";
             DataTable dt = DatabaseConnection.GetDataTable(query);
             if (cboMaMon.Text == "")
                 txtTenMon.Text = "";
@@ -246,7 +256,9 @@ namespace SMS
 
         private void cboMaLop_TextChanged(object sender, EventArgs e)
         {
-            string query = "SELECT TENLOP FROM LOP WHERE MALOP = '" + cboMaLop.Text + "'";
+            if (cboMaLop.SelectedValue == null)
+                return;
+            string query = "SELECT TENLOP FROM LOP WHERE MALOP = '" + cboMaLop.SelectedValue.ToString() + "'";
             DataTable dt = DatabaseConnection.GetDataTable(query);
             if (cboMaLop.Text == "")
                 txtTenLop.Text = "";
@@ -254,6 +266,7 @@ namespace SMS
             {
                 txtTenLop.Text = dt.Rows[0][0].ToString();
             }
+            UpdateCbo();
         }
     }
 }

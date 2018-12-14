@@ -168,7 +168,7 @@
             this.txtHocKy.LineIdleColor = System.Drawing.Color.Gray;
             this.txtHocKy.LineMouseHoverColor = System.Drawing.Color.Gray;
             this.txtHocKy.LineThickness = 2;
-            this.txtHocKy.Location = new System.Drawing.Point(262, 118);
+            this.txtHocKy.Location = new System.Drawing.Point(262, 126);
             this.txtHocKy.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtHocKy.MaxLength = 32767;
             this.txtHocKy.Name = "txtHocKy";
@@ -181,7 +181,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(160, 128);
+            this.label7.Location = new System.Drawing.Point(162, 136);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(61, 20);
             this.label7.TabIndex = 111;
@@ -251,7 +251,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(160, 42);
+            this.label4.Location = new System.Drawing.Point(162, 50);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 20);
             this.label4.TabIndex = 106;
@@ -272,7 +272,7 @@
             this.cboMaLop.Name = "cboMaLop";
             this.cboMaLop.Size = new System.Drawing.Size(97, 28);
             this.cboMaLop.TabIndex = 105;
-            this.cboMaLop.TextChanged += new System.EventHandler(this.cboMaLop_TextChanged);
+            this.cboMaLop.SelectionChangeCommitted += new System.EventHandler(this.cboMaLop_TextChanged);
             // 
             // label15
             // 
@@ -770,14 +770,14 @@
             this.cboMaMon.Name = "cboMaMon";
             this.cboMaMon.Size = new System.Drawing.Size(97, 28);
             this.cboMaMon.TabIndex = 122;
-            this.cboMaMon.TextChanged += new System.EventHandler(this.cboMaMon_TextChanged);
+            this.cboMaMon.SelectionChangeCommitted += new System.EventHandler(this.cboMaMon_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(160, 86);
+            this.label2.Location = new System.Drawing.Point(160, 97);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 20);
             this.label2.TabIndex = 120;

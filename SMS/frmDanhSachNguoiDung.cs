@@ -58,7 +58,6 @@ namespace SMS
 
         private void btnThemMoi_Click(object sender, EventArgs e)
         {
-
             // Câu lệnh truy vấn Table TAIKHOAN
             string strSelect = "Select * From TAIKHOAN Where TENDANGNHAP = '" + txtTaiKhoan.Text + "'";
             if (GeneralCheck())
@@ -81,6 +80,7 @@ namespace SMS
                     {
                         txtTaiKhoan.Enabled = false;
                         MessageBox.Show("Thêm tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DatabaseConnection.SaveAction("Them", "TAIKHOAN");
                     }
                     else
                         MessageBox.Show("Thêm tài khoản thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -100,9 +100,13 @@ namespace SMS
                     strUpdate += "QUYENTRUYCAP = N'" + cboQuyen.Text + "' ";
                     strUpdate += "Where TENDANGNHAP = '" + txtTaiKhoan.Text + "'";
                     if (DatabaseConnection.ExcuteSql(strUpdate))
+                    {
                         MessageBox.Show("Chỉnh sửa tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DatabaseConnection.SaveAction("Sua", "TAIKHOAN");
+                    }
                     else
                         MessageBox.Show("Chỉnh sửa tài khoản thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    DatabaseConnection.SaveAction("ChinhSua", "TAIKHOAN");
                     FillDataGridView();
                 }
             }
@@ -128,6 +132,7 @@ namespace SMS
                             }
                         FillDataGridView();
                         MessageBox.Show("Xóa tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DatabaseConnection.SaveAction("Xoa", "TAIKHOAN");
                     }
                 }
             }
@@ -171,7 +176,9 @@ namespace SMS
                 if (DatabaseConnection.GetDataTable(strSelect).Rows.Count == 0)
                     MessageBox.Show("Không tìm thấy kết quả!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
+                {
                     dgvDSND.DataSource = DatabaseConnection.GetDataTable(strSelect);
+                }
             }
         }
 
