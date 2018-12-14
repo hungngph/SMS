@@ -64,7 +64,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnLamMoi = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnChinhSua = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnThemMoi = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -78,6 +77,9 @@
             this.quanLyHocSinhDataSet = new SMS.QuanLyHocSinhDataSet();
             this.quanLyHocSinhDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.hOCSINHTableAdapter = new SMS.QuanLyHocSinhDataSet1TableAdapters.HOCSINHTableAdapter();
+            this.btnChonAnh = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.ptbAnh = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnDong)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -88,6 +90,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quanLyHocSinhDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.quanLyHocSinhDataSetBindingSource)).BeginInit();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbAnh)).BeginInit();
             this.SuspendLayout();
             // 
             // label12
@@ -416,7 +420,7 @@
             this.dtpNgaySinh.Location = new System.Drawing.Point(324, 108);
             this.dtpNgaySinh.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtpNgaySinh.Name = "dtpNgaySinh";
-            this.dtpNgaySinh.Size = new System.Drawing.Size(33, 30);
+            this.dtpNgaySinh.Size = new System.Drawing.Size(32, 30);
             this.dtpNgaySinh.TabIndex = 104;
             this.dtpNgaySinh.Value = new System.DateTime(2018, 12, 13, 14, 44, 21, 160);
             this.dtpNgaySinh.onValueChanged += new System.EventHandler(this.dtpNgaySinh_onValueChanged);
@@ -688,20 +692,6 @@
             this.label20.TabIndex = 97;
             this.label20.Text = "Họ và tên mẹ";
             // 
-            // groupBox3
-            // 
-            this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.ForeColor = System.Drawing.Color.White;
-            this.groupBox3.Location = new System.Drawing.Point(886, 67);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Size = new System.Drawing.Size(178, 200);
-            this.groupBox3.TabIndex = 125;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Hình";
-            // 
             // btnLamMoi
             // 
             this.btnLamMoi.Active = false;
@@ -949,19 +939,80 @@
             // 
             this.hOCSINHTableAdapter.ClearBeforeFill = true;
             // 
+            // btnChonAnh
+            // 
+            this.btnChonAnh.Active = false;
+            this.btnChonAnh.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            this.btnChonAnh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            this.btnChonAnh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnChonAnh.BorderRadius = 7;
+            this.btnChonAnh.ButtonText = "Chọn ảnh";
+            this.btnChonAnh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnChonAnh.DisabledColor = System.Drawing.Color.Gray;
+            this.btnChonAnh.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnChonAnh.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnChonAnh.Iconimage")));
+            this.btnChonAnh.Iconimage_right = null;
+            this.btnChonAnh.Iconimage_right_Selected = null;
+            this.btnChonAnh.Iconimage_Selected = null;
+            this.btnChonAnh.IconMarginLeft = 0;
+            this.btnChonAnh.IconMarginRight = 0;
+            this.btnChonAnh.IconRightVisible = true;
+            this.btnChonAnh.IconRightZoom = 0D;
+            this.btnChonAnh.IconVisible = true;
+            this.btnChonAnh.IconZoom = 70D;
+            this.btnChonAnh.IsTab = false;
+            this.btnChonAnh.Location = new System.Drawing.Point(902, 11);
+            this.btnChonAnh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnChonAnh.Name = "btnChonAnh";
+            this.btnChonAnh.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            this.btnChonAnh.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(81)))), ((int)(((byte)(90)))));
+            this.btnChonAnh.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnChonAnh.selected = false;
+            this.btnChonAnh.Size = new System.Drawing.Size(163, 45);
+            this.btnChonAnh.TabIndex = 136;
+            this.btnChonAnh.Text = "Chọn ảnh";
+            this.btnChonAnh.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnChonAnh.Textcolor = System.Drawing.Color.White;
+            this.btnChonAnh.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
+            this.groupBox5.Controls.Add(this.ptbAnh);
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.ForeColor = System.Drawing.Color.White;
+            this.groupBox5.Location = new System.Drawing.Point(896, 53);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox5.Size = new System.Drawing.Size(178, 222);
+            this.groupBox5.TabIndex = 135;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Hình";
+            // 
+            // ptbAnh
+            // 
+            this.ptbAnh.Location = new System.Drawing.Point(6, 20);
+            this.ptbAnh.Name = "ptbAnh";
+            this.ptbAnh.Size = new System.Drawing.Size(166, 197);
+            this.ptbAnh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbAnh.TabIndex = 0;
+            this.ptbAnh.TabStop = false;
+            // 
             // frmHocSinh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
             this.ClientSize = new System.Drawing.Size(1409, 764);
+            this.Controls.Add(this.btnChonAnh);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.btnTimKiem);
             this.Controls.Add(this.btnLamMoi);
             this.Controls.Add(this.btnChinhSua);
             this.Controls.Add(this.btnThemMoi);
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label12);
@@ -985,6 +1036,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quanLyHocSinhDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.quanLyHocSinhDataSetBindingSource)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ptbAnh)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1023,7 +1076,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.GroupBox groupBox3;
         private Bunifu.Framework.UI.BunifuFlatButton btnLamMoi;
         private Bunifu.Framework.UI.BunifuFlatButton btnChinhSua;
         private Bunifu.Framework.UI.BunifuFlatButton btnThemMoi;
@@ -1040,5 +1092,8 @@
         private QuanLyHocSinhDataSet1 quanLyHocSinhDataSet1;
         private System.Windows.Forms.BindingSource hOCSINHBindingSource;
         private QuanLyHocSinhDataSet1TableAdapters.HOCSINHTableAdapter hOCSINHTableAdapter;
+        private Bunifu.Framework.UI.BunifuFlatButton btnChonAnh;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.PictureBox ptbAnh;
     }
 }

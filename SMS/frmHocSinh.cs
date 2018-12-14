@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Data.SqlClient;
+using System.IO;
 
 namespace SMS
 {
@@ -17,6 +19,7 @@ namespace SMS
         {
             InitializeComponent();
         }
+        string imgTest;
         //Sử dụng thư viện
         //using System.Runtime.InteropServices;
         //để di chuyển frm
@@ -47,7 +50,7 @@ namespace SMS
         {
             // TODO: This line of code loads data into the 'quanLyHocSinhDataSet1.HOCSINH' table. You can move, or remove it, as needed.
 
-            
+
             this.WindowState = FormWindowState.Normal;
             DatabaseConnection.Connected();
             if (!DatabaseConnection.IsConnect())
@@ -66,7 +69,8 @@ namespace SMS
                 cboMaLop.Text = dt.Rows[0][0].ToString();
                 cboMaLop.Enabled = false;
                 string strSelect = "SELECT * FROM HOCSINH where MALOP = '" + cboMaLop.Text + "'";
-                dgvHS.DataSource = DatabaseConnection.GetDataTable(strSelect); 
+                dgvHS.DataSource = DatabaseConnection.GetDataTable(strSelect);
+
             }
         }
 
@@ -85,7 +89,7 @@ namespace SMS
                 else
                 {
                     // Câu lệnh insert dữ liệu
-                    string strInsert = "Set Dateformat dmy Insert into HOCSINH values ('";
+                    string strInsert = "Declare @img varbinary(MAX) Set Dateformat dmy Insert into HOCSINH values ('";
                     strInsert += txtMSHS.Text + "', N'";
                     strInsert += txtHoTen.Text + "', '";
                     strInsert += cboMaLop.Text + "', ";
@@ -115,13 +119,22 @@ namespace SMS
                     else
                         strInsert += "NULL, ";
                     if (txtSDT.Text != "")
-                        strInsert += "'" + txtSDT.Text + "') ";
+                        strInsert += "'" + txtSDT.Text + "', @img";
                     else
-                        strInsert += "NULL)";
+                        strInsert += "NULL, @img)";
                     //
+                    //byte[] img = null;
+                    //FileStream fs = new FileStream(imgTest, FileMode.Open, FileAccess.Read);
+                    //BinaryReader br = new BinaryReader(fs);
+                    //img =  .ReadBytes((int)fs.Length);
+                    //DatabaseConnection.Connected();
+                    //SqlCommand cmd = new SqlCommand(strInsert, DatabaseConnection.sqlConnection);
+                    //cmd.Parameters.AddWithValue(new SqlParameter("@img", img));
+
                     if (DatabaseConnection.ExcuteSql(strInsert))
                     {
                         MessageBox.Show("Thêm Học sinh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DatabaseConnection.SaveAction("Them", "HOCSINH");
                         txtMSHS.Enabled = false;
                     }
                     else
@@ -171,7 +184,10 @@ namespace SMS
                     strUpdate += "Where MAHS = '" + txtMSHS.Text + "'";
                     //
                     if (DatabaseConnection.ExcuteSql(strUpdate))
+                    {
                         MessageBox.Show("Chỉnh sửa Học sinh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DatabaseConnection.SaveAction("Sua", "HOCSINH");
+                    }
                     else
                         MessageBox.Show("Chỉnh sửa Học sinh thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     FillDataGridView();
@@ -199,6 +215,7 @@ namespace SMS
                             }
                         FillDataGridView();
                         MessageBox.Show("Xóa học sinh thành công ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DatabaseConnection.SaveAction("Xoa", "HOCSINH");
                     }
                 }
             }
@@ -316,12 +333,12 @@ namespace SMS
             txtDanToc.Text = dgvHS.CurrentRow.Cells[11].Value.ToString();
             txtEmail.Text = dgvHS.CurrentRow.Cells[12].Value.ToString();
             txtSDT.Text = dgvHS.CurrentRow.Cells[13].Value.ToString();
-            txtMSHS.Enabled = false; // Không cho phép sửa Mã học sinh
+            //txtMSHS.Enabled = false; // Không cho phép sửa Mã học sinh
         }
 
         private void dtpNgaySinh_onValueChanged(object sender, EventArgs e)
-        {         
-            txtNgaySinh.Text = dtpNgaySinh.Text;
+        {
+            txtNgaySinh.Text = dtpNgaySinh.Value.ToString();
         }
 
         void Load_combobox()
@@ -404,6 +421,27 @@ namespace SMS
                 errorProvider1.SetError(txtDiaChi, "Không được bỏ trống vùng này");
             }
             return flag;
+        }
+
+        private void btnChonAnh_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog dlg = new OpenFileDialog();
+                dlg.Filter = "All File(.)|*.*";
+                dlg.Title = "Select Employee Picture...";
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    imgTest = dlg.FileName.ToString();
+                    ptbAnh.ImageLocation = imgTest;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ex.Message");
+
+            }
         }
     }
 }
