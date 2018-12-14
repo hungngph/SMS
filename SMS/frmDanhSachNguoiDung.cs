@@ -99,12 +99,14 @@ namespace SMS
                     string strUpdate = "Update TAIKHOAN Set MATKHAU = '" + txtMK.Text + "', ";
                     strUpdate += "QUYENTRUYCAP = N'" + cboQuyen.Text + "' ";
                     strUpdate += "Where TENDANGNHAP = '" + txtTaiKhoan.Text + "'";
-                    if (DatabaseConnection.ExcuteSql(strUpdate)) {
+                    if (DatabaseConnection.ExcuteSql(strUpdate))
+                    {
                         MessageBox.Show("Chỉnh sửa tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         DatabaseConnection.SaveAction("Sua", "TAIKHOAN");
                     }
                     else
                         MessageBox.Show("Chỉnh sửa tài khoản thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    DatabaseConnection.SaveAction("ChinhSua", "TAIKHOAN");
                     FillDataGridView();
                 }
             }
@@ -174,7 +176,9 @@ namespace SMS
                 if (DatabaseConnection.GetDataTable(strSelect).Rows.Count == 0)
                     MessageBox.Show("Không tìm thấy kết quả!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
+                {
                     dgvDSND.DataSource = DatabaseConnection.GetDataTable(strSelect);
+                }
             }
         }
 

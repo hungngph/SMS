@@ -65,11 +65,9 @@ namespace SMS
                     string strUpdate = "Update PHANCONG Set MALOP = '" + cboMaLop.Text + "', ";
                     strUpdate += "MAMH = '" + cboMaMon.Text + "', ";
                     strUpdate += "MAGV = '" + cboMaGV.Text + "' ";
-                    strUpdate += "Where MALOP = '" + cboMaLop.Text + "' and MAMH = '" + cboMaMon.Text + "' and MAGV = '" + cboMaGV.Text + "'";
-                    if (DatabaseConnection.ExcuteSql(strUpdate)) {
+                    strUpdate += "Where MALOP = '" + cboMaLop.Text + "' and MAMH = '" + cboMaMon.Text + "'";
+                    if (DatabaseConnection.ExcuteSql(strUpdate))
                         MessageBox.Show("Chỉnh sửa phân công thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        DatabaseConnection.SaveAction("Luu", "PHANCONG");
-                    }
                     else
                         MessageBox.Show("Chỉnh sửa phân công thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     FillDataGridView();

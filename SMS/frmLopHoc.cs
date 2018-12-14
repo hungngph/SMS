@@ -81,7 +81,6 @@ namespace SMS
                     if (DatabaseConnection.ExcuteSql(strInsert))
                     {
                         MessageBox.Show("Thêm Lớp học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        DatabaseConnection.SaveAction("Them", "LOP");
                         txtMaLop.Enabled = false;
                     }
                     else
@@ -104,10 +103,8 @@ namespace SMS
                     strUpdate += "MAGVCN = '" + cboMAGVCN.Text + "', ";
                     strUpdate += "SISO = " + txtSiSo.Text + " ";
                     strUpdate += "Where MALOP = '" + txtMaLop.Text + "'";
-                    if (DatabaseConnection.ExcuteSql(strUpdate)) {
+                    if (DatabaseConnection.ExcuteSql(strUpdate))
                         MessageBox.Show("Chỉnh sửa Lớp học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        DatabaseConnection.SaveAction("Sua", "LOP");
-                    }
                     else
                         MessageBox.Show("Chỉnh sửa Lớp học thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     FillDataGridView();
@@ -135,7 +132,6 @@ namespace SMS
                             }
                         FillDataGridView();
                         MessageBox.Show("Xóa lớp học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        DatabaseConnection.SaveAction("Xoa", "LOP");
                     }
                 }
             }

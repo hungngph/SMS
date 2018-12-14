@@ -8,11 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.IO;
+using System.Data.SqlClient;
 
 namespace SMS
 {
     public partial class frmGiaoVien : Form
     {
+
+        string imgTest;
         public frmGiaoVien()
         {
             InitializeComponent();
@@ -51,10 +55,22 @@ namespace SMS
             if (!DatabaseConnection.IsConnect())
             {
                 MessageBox.Show("Không kết nối được dữ liệu");
+                return;
             }
-            else
-                FillDataGridView();
-            Load_combobox();
+            FillDataGridView();
+            if (DatabaseConnection.isAdmin == false)
+            {
+                btnThemMoi.Enabled = false;
+                btnXoa.Enabled = false;
+                btnTimKiem.Enabled = false;
+                string query = "set dateformat dmy SELECT MAGV AS [Mã GV], HOTEN AS [Họ tên], GIOITINH AS [Giới tính], NGAYSINH AS [Ngày sinh], "
+            + "SODIENTHOAI AS [Số điện thoại], DIACHI AS [Địa chỉ], DANTOC AS [Dân tộc], EMAIL AS [Email], "
+            + "CHUCVU AS [Chức vụ], LOP.TENLOP AS [Lớp Chủ Nhiệm] " +
+            "FROM GIAOVIEN LEFT JOIN LOP " +
+            "ON GIAOVIEN.MAGV = LOP.MAGVCN WHERE MAGV = '" + DatabaseConnection.MaGV + "'";
+                dgvGV.DataSource = DatabaseConnection.GetDataTable(query);
+                //dgvGV.SelectAll();
+            }
         }
 
         private void btnThemMoi_Click(object sender, EventArgs e)
@@ -84,10 +100,17 @@ namespace SMS
                     strInsert += txtChucVu.Text + "')";
                     MessageBox.Show(strInsert);
                     //
-                    if (DatabaseConnection.ExcuteSql(strInsert))
+                    byte[] img = null;
+                    FileStream fs = new FileStream(imgTest, FileMode.Open, FileAccess.Read);
+                    BinaryReader br = new BinaryReader(fs);
+                    img = br.ReadBytes((int)fs.Length);
+                    DatabaseConnection.Connected();
+                    SqlCommand cmd = new SqlCommand(strInsert, DatabaseConnection.sqlConnection);
+                    cmd.Parameters.Add(new SqlParameter("@img2", img));
+
+                    if (DatabaseConnection.ExcuteSql(cmd))
                     {
                         MessageBox.Show("Thêm Giáo viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        DatabaseConnection.SaveAction("Them", "GIAOVIEN");
                         txtMaGV.Enabled = false;
                     }
                     else
@@ -115,10 +138,8 @@ namespace SMS
                     strUpdate += "CHUCVU = N'" + txtChucVu.Text + "' ";
                     strUpdate += "Where MAGV = '" + txtMaGV.Text + "'";
                     //
-                    if (DatabaseConnection.ExcuteSql(strUpdate)) {
+                    if (DatabaseConnection.ExcuteSql(strUpdate))
                         MessageBox.Show("Chỉnh sửa Giáo viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        DatabaseConnection.SaveAction("Sua", "GIAOVIEN");
-                    }
                     else
                         MessageBox.Show("Chỉnh sửa Giáo viên thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     FillDataGridView();
@@ -146,7 +167,6 @@ namespace SMS
                             }
                         FillDataGridView();
                         MessageBox.Show("Xóa giáo viên thành công ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        DatabaseConnection.SaveAction("Xoa", "GIAOVIEN");
                     }
                 }
             }
@@ -170,7 +190,6 @@ namespace SMS
             txtEmail.Text = "";
             txtChucVu.Text = "";
             txtLop.Text = "";
-            txtMon.Text = "";
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
@@ -243,25 +262,15 @@ namespace SMS
             txtChucVu.Text = dgvGV.CurrentRow.Cells[8].Value.ToString();
             txtLop.Text = dgvGV.CurrentRow.Cells[9].Value.ToString();
             txtMaGV.Enabled = false;
-        }
-
-        void Load_combobox()
-        {
-            string query = "SELECT * FROM MONHOC";
-            DataTable dt = DatabaseConnection.GetDataTable(query);
-            cboMon.DisplayMember = "MAMH";
-            cboMon.DataSource = dt;
-            cboMon.Text = "";
-        }
-
-        private void cboMon_TextChanged(object sender, EventArgs e)
-        {
-            string query = "SELECT TENMH FROM MONHOC WHERE MAMH = '" + cboMon.Text + "'";
-            DataTable dt = DatabaseConnection.GetDataTable(query);
-            if (cboMon.Text == "")
-                txtMon.Text = "";
-            else
-                txtMon.Text = dt.Rows[0][0].ToString();
+            if (string.IsNullOrEmpty(dgvGV.CurrentRow.Cells[10].Value.ToString()))
+                return;
+            byte[] img = (byte[])dgvGV.CurrentRow.Cells[14].Value;
+            if (img == null)
+                ptbAnh.Image = null;
+            else {
+                MemoryStream ms = new MemoryStream(img);
+                ptbAnh.Image = Image.FromStream(ms);
+            }
         }
 
         private void dtpNgaySinh_onValueChanged(object sender, EventArgs e)
@@ -338,6 +347,23 @@ namespace SMS
                 errorProvider1.SetError(txtChucVu, "Không được bỏ trống vùng này");
             }
             return flag;
+        }
+
+        private void btnChonAnh_Click(object sender, EventArgs e) {
+            try {
+                OpenFileDialog dlg = new OpenFileDialog();
+                dlg.Filter = "All File(.)|*.*";
+                dlg.Title = "Select Employee Picture...";
+                if (dlg.ShowDialog() == DialogResult.OK) {
+                    imgTest = dlg.FileName.ToString();
+                    ptbAnh.ImageLocation = imgTest;
+                }
+
+            }
+            catch (Exception ex) {
+                MessageBox.Show("ex.Message");
+
+            }
         }
     }
 }

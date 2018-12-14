@@ -31,7 +31,7 @@ namespace SMS
 
             //
             //Application.Run(new frmNhapDiem());
-            //Application.Run(new frmChucNang());
+
             // frmHocSinh
             //Application.Run(new frmHocSinh());
             //Application.Run(new frmLopHoc());

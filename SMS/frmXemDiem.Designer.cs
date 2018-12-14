@@ -105,6 +105,7 @@
             this.cboMaMon.Name = "cboMaMon";
             this.cboMaMon.Size = new System.Drawing.Size(97, 28);
             this.cboMaMon.TabIndex = 122;
+            this.cboMaMon.SelectionChangeCommitted += new System.EventHandler(this.cboMaMon_TextChanged);
             // 
             // label2
             // 
@@ -261,6 +262,7 @@
             this.cboMaLop.Name = "cboMaLop";
             this.cboMaLop.Size = new System.Drawing.Size(97, 28);
             this.cboMaLop.TabIndex = 105;
+            this.cboMaLop.SelectionChangeCommitted += new System.EventHandler(this.cboMaLop_TextChanged);
             // 
             // btnDong
             // 

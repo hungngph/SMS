@@ -66,7 +66,6 @@ namespace SMS
                 if (DatabaseConnection.CheckExist(query + admin))
                 {
                     DatabaseConnection.isAdmin = true;
-                    DatabaseConnection.MaGV = "admin";
                     this.Hide();
                     frmChucNang frm = new frmChucNang();
                     frm.Show();

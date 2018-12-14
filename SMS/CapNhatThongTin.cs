@@ -45,9 +45,20 @@ namespace SMS
         private void CapNhatThongTin_Load(object sender, EventArgs e)
         {
             if (DatabaseConnection.isAdmin == true)
+            {
                 btnQuanLyGiangDay.Visible = true;
+                btnQuanLyLopHoc.Visible = true;
+            }
             else
+            {
+                btnQuanLyGiaoVien.LabelText = "Thông Tin Giáo Viên";
                 btnQuanLyGiangDay.Visible = false;
+                btnQuanLyLopHoc.Visible = false;
+                string query = "Select MAGVCN from LOP where MAGVCN = '" + DatabaseConnection.MaGV + "'";
+                if (DatabaseConnection.GetDataTable(query).Rows.Count == 0)
+                    btnQuanLyHocSinh.Visible = false;
+            }
+            
         }
     }
 }
