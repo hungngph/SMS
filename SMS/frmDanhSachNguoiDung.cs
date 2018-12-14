@@ -64,11 +64,7 @@ namespace SMS
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            validateTenTK();
-            validateMatKhau();
-            validateXacNhanMK();
-            validateQuyenTruyCap();
-            if (dgvDSND.SelectedRows.Count > 0)
+            if (dgvDSND.SelectedRows.Count == 1)
             {
                 if (GeneralCheck())
                 {
@@ -116,10 +112,13 @@ namespace SMS
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
             txtTaikhoan.ReadOnly = false;
+            errorProvider1.Clear();
+            txtTaikhoan.ReadOnly = false;
             txtTaikhoan.Text = "";
             txtMK.Text = "";
             txtXacNhanMk.Text = "";
             cboQuyen.Text = "";
+            errorProvider1.Clear();
         }
 
 
@@ -148,44 +147,15 @@ namespace SMS
             }
         }
 
-
-        bool GeneralCheck()
-        {
-            bool flag = true;
-            if (txtTaikhoan.Text == "")
-            {
-                txtTaikhoan.Focus();
-                flag = false;
-                // Provider
-            }
-            else if (txtMK.Text == "")
-            {
-                txtMK.Focus();
-                flag = false;
-                //Provider
-            }
-            else if (txtMK.Text != txtXacNhanMk.Text)
-            {
-                txtXacNhanMk.Focus();
-                flag = false;
-                //Provider;
-            }
-            else if (cboQuyen.Text == "") {
-                flag = false;
-                //Provider
-            }
-            return flag;
-        }
-
         private void dgvDSND_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            errorProvider1.Clear();
             txtTaikhoan.Text = dgvDSND.CurrentRow.Cells[0].Value.ToString();
             txtMK.Text = dgvDSND.CurrentRow.Cells[1].Value.ToString();
             txtXacNhanMk.Text = txtMK.Text;
             cboQuyen.Text = dgvDSND.CurrentRow.Cells[2].Value.ToString();
             txtTaikhoan.ReadOnly = true;
         }
-
 
         void FillDataGridView()
         {
@@ -195,52 +165,37 @@ namespace SMS
             // adapter.Dispose();
         }
 
-        //Xác thực đã nhập text
-        protected bool validateTenTK()
+        bool GeneralCheck()
         {
-            bool flag = false;
+            errorProvider1.Clear();
+            bool flag = true;
             if (txtTaikhoan.Text == "")
             {
+                txtTaikhoan.Focus();
                 errorProvider1.SetError(txtTaikhoan, "Không được bỏ trống vùng này");
-                flag = true;
+                flag = false;
             }
-            else
-                errorProvider1.SetError(txtTaikhoan, "");
-            return flag;
-
-        }
-        protected bool validateMatKhau()
-        {
-            bool flag = false;
             if (txtMK.Text == "")
             {
+                txtMK.Focus();
                 errorProvider1.SetError(txtMK, "Không được bỏ trống vùng này");
-                flag = true;
+                flag = false;
+                //Provider
             }
-            else
-                errorProvider1.SetError(txtMK, "");
-            return flag;
-        }
-        protected bool validateXacNhanMK()
-        {
-            bool flag = false;
-            if (txtXacNhanMk.Text == "")
+            if (txtMK.Text != txtXacNhanMk.Text)
             {
-                errorProvider1.SetError(txtXacNhanMk, "Không được bỏ trống vùng này");
-                flag = true;
+                txtXacNhanMk.Focus();
+                errorProvider1.SetError(txtXacNhanMk, "Không khớp mật khẩu");
+                flag = false;
+                //Provider;
             }
-            else errorProvider1.SetError(txtXacNhanMk, "");
-            return flag;
-        }//
-        protected bool validateQuyenTruyCap()
-        {
-            bool flag = false;
             if (cboQuyen.Text == "")
             {
-                errorProvider1.SetError(cboQuyen, "Chưa nhập quyền truy cập");
-                flag = true;
+                cboQuyen.Focus();
+                flag = false;
+                errorProvider1.SetError(cboQuyen, "Không được bỏ trống vùng này");
+                //Provider
             }
-            else errorProvider1.SetError(cboQuyen, "");
             return flag;
         }
     }

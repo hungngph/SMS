@@ -31,16 +31,6 @@ namespace SMS
 
         private void btnThemMoi_Click(object sender, EventArgs e)
         {
-            validateHoTen();
-            validateGioiTinh();
-            validateNgaySinh();
-            validateEmail();
-            validateMaGV();
-            validateDanToc();
-            validateDiaChi();
-            validateDienThoai();
-            validateChucVu();
-            validateMonDay();
             // Câu lệnh truy vấn Table HOCSINH
             string strSelect = "Select * From GIAOVIEN Where MAGV = '" + txtMaGV.Text + "'";
             if (GeneralCheck())
@@ -63,8 +53,7 @@ namespace SMS
                     strInsert += txtDiaChi.Text + "', N'";
                     strInsert += txtDanToc.Text + "', '";
                     strInsert += txtEmail.Text + "', N'";
-                    strInsert += txtChucVu.Text + "', '";
-                    strInsert += cboMon.Text + "')";
+                    strInsert += txtChucVu.Text + "')";
                     MessageBox.Show(strInsert);
                     //
                     if (DatabaseConnection.ExcuteSql(strInsert))
@@ -83,18 +72,8 @@ namespace SMS
         private void btnSua_Click(object sender, EventArgs e)
         {
 
-            if (dgvGV.SelectedRows.Count > 0)
+            if (dgvGV.SelectedRows.Count == 1)
             {
-                validateHoTen();
-                validateGioiTinh();
-                validateNgaySinh();
-                validateEmail();
-                validateMaGV();
-                validateDanToc();
-                validateDiaChi();
-                validateDienThoai();
-                validateChucVu();
-                validateMonDay();
                 if (GeneralCheck())
                 {
                     string strUpdate = "Set Dateformat dmy Update GIAOVIEN Set HOTEN = N'" + txtHoTen.Text + "', ";
@@ -104,8 +83,7 @@ namespace SMS
                     strUpdate += "DANTOC = N'" + txtDanToc.Text + "', ";
                     strUpdate += "DIACHI = N'" + txtDiaChi.Text + "', ";
                     strUpdate += "SODIENTHOAI = '" + mtxSDT.Text + "', ";
-                    strUpdate += "CHUCVU = N'" + txtChucVu.Text + "', ";
-                    strUpdate += "MONGIANGDAY = '" + cboMon.Text + "' ";
+                    strUpdate += "CHUCVU = N'" + txtChucVu.Text + "' ";
                     strUpdate += "Where MAGV = '" + txtMaGV.Text + "'";
                     //
                     if (DatabaseConnection.ExcuteSql(strUpdate))
@@ -148,6 +126,9 @@ namespace SMS
 
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
+
+            errorProvider1.Clear();
+            txtMaGV.ReadOnly = false;
             txtMaGV.Text = "";
             txtHoTen.Text = "";
             cboGioiTinh.Text = "";
@@ -157,7 +138,6 @@ namespace SMS
             txtDanToc.Text = "";
             txtEmail.Text = "";
             txtChucVu.Text = "";
-            cboMon.Text = "";
             txtLop.Text = "";
             txtMon.Text = "";
         }
@@ -188,8 +168,6 @@ namespace SMS
                 query += "DANTOC=N'" + txtDanToc.Text + "' AND ";
             if (txtEmail.Text != "")
                 query += "EMAIL='" + txtEmail.Text + "' AND ";
-            if (txtMon.Text != "")
-                query += "MONGIANGDAY='" + cboMon.Text + "' AND ";
             if (txtChucVu.Text != "")
                 query += "CHUCVU = N'" + txtChucVu.Text + "' AND ";      
             if (query2 == query)
@@ -208,7 +186,6 @@ namespace SMS
             }
         }
 
-
         void FillDataGridView()
         {
             string query = "SELECT GIAOVIEN.*, LOP.TENLOP AS LOPCHUNHIEM " +
@@ -216,66 +193,11 @@ namespace SMS
             "ON GIAOVIEN.MAGV = LOP.MAGVCN";
             dgvGV.DataSource = DatabaseConnection.GetDataTable(query);
         }
-        
-        bool GeneralCheck()
-        {
-            bool flag = true;
-            if (txtHoTen.Text == "")
-            {
-                txtHoTen.Focus();
-                flag = false;
-            }
-            else if (cboGioiTinh.Text == "")
-            {
-                cboGioiTinh.Focus();
-                flag = false;
-            }
-            else if (txtNgaySinh.Text == "")
-            {
-                txtNgaySinh.Focus();
-                flag = false;
-            }
-            else if (txtEmail.Text == "")
-            {
-                txtEmail.Focus();
-                flag = false;
-            }
-            else if (txtMaGV.Text == "")
-            {
-                txtMaGV.Focus();
-                flag = false;
-            }
-            else if (txtDanToc.Text == "")
-            {
-                txtDanToc.Focus();
-                flag = false;
-            }
-            else if (txtDiaChi.Text == "")
-            {
-                txtDiaChi.Focus();
-                flag = false;
-            }
-            else if (mtxSDT.Text == "         ")
-            {
-                mtxSDT.Focus();
-                flag = false;
-            }
-            else if (txtChucVu.Text == "")
-            {
-                txtChucVu.Focus();
-                flag = false;
-            }
-            else if (cboMon.Text == "")
-            {
-                cboMon.Focus();
-                flag = false;
-            }
-            return flag;
-        }
 
         
         private void dgvGV_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            errorProvider1.Clear();
             txtMaGV.Text = dgvGV.CurrentRow.Cells[0].Value.ToString();
             txtHoTen.Text = dgvGV.CurrentRow.Cells[1].Value.ToString();
             cboGioiTinh.Text = dgvGV.CurrentRow.Cells[2].Value.ToString();
@@ -285,8 +207,8 @@ namespace SMS
             txtDanToc.Text = dgvGV.CurrentRow.Cells[6].Value.ToString();
             txtEmail.Text = dgvGV.CurrentRow.Cells[7].Value.ToString();
             txtChucVu.Text = dgvGV.CurrentRow.Cells[8].Value.ToString();
-            cboMon.Text = dgvGV.CurrentRow.Cells[9].Value.ToString();
-            txtLop.Text = dgvGV.CurrentRow.Cells[10].Value.ToString();
+            txtLop.Text = dgvGV.CurrentRow.Cells[9].Value.ToString();
+            txtMaGV.ReadOnly = true;
         }
 
         void Load_combobox()
@@ -313,124 +235,74 @@ namespace SMS
             txtNgaySinh.Text = dtpNgaySinh.Text;
         }
 
-        //Xác thực đã nhập text
-        protected bool validateMaGV()
+        bool GeneralCheck()
         {
-            bool flag = false;
-            if (txtMaGV.Text == "")
-            {
-                errorProvider1.SetError(txtMaGV, "Chưa nhập mã GV");
-                flag = true;
-            }
-            else
-                errorProvider1.SetError(txtMaGV, "");
-            return flag;
-
-        }
-        protected bool validateHoTen()
-        {
-            bool flag = false;
+            errorProvider1.Clear();
+            bool flag = true;
             if (txtHoTen.Text == "")
             {
-                errorProvider1.SetError(txtHoTen, "Chưa nhập họ tên");
-                flag = true;
+                txtHoTen.Focus();
+                flag = false;
+                // Provider
+                errorProvider1.SetError(txtHoTen, "Không được bỏ trống vùng này");
             }
-            else
-                errorProvider1.SetError(txtHoTen, "");
-            return flag;
-        }
-        protected bool validateGioiTinh()
-        {
-            bool flag = false;
             if (cboGioiTinh.Text == "")
             {
-                errorProvider1.SetError(cboGioiTinh, "Chưa nhập giới tính");
-                flag = true;
+                cboGioiTinh.Focus();
+                flag = false;
+                // provider
+                errorProvider1.SetError(cboGioiTinh, "Không được bỏ trống vùng này");
             }
-            else errorProvider1.SetError(cboGioiTinh, "");
-            return flag;
-        }
-        protected bool validateNgaySinh()
-        {
-            bool flag = false;
             if (txtNgaySinh.Text == "")
             {
-                errorProvider1.SetError(txtNgaySinh, "Chưa nhập ngày sinh");
-                flag = true;
+                txtNgaySinh.Focus();
+                flag = false;
+                // provider
+                errorProvider1.SetError(dtpNgaySinh, "Không được bỏ trống vùng này");
             }
-            else errorProvider1.SetError(txtNgaySinh, "");
-            return flag;
-        }//
-        protected bool validateEmail()
-        {
-            bool flag = false;
             if (txtEmail.Text == "")
             {
-                errorProvider1.SetError(txtEmail, "Chưa nhập email");
-                flag = true;
+                txtEmail.Focus();
+                flag = false;
+                // provider
+                errorProvider1.SetError(txtEmail, "Không được bỏ trống vùng này");
             }
-            else
-                errorProvider1.SetError(txtEmail, "");
-            return flag;
-        }
-        protected bool validateDanToc()
-        {
-            bool flag = false;
+            if (txtMaGV.Text == "")
+            {
+                txtMaGV.Focus();
+                flag = false;
+                // provider
+                errorProvider1.SetError(txtMaGV, "Không được bỏ trống vùng này");
+            }
             if (txtDanToc.Text == "")
             {
-                errorProvider1.SetError(txtDanToc, "Chưa nhập dân tộc");
-                flag = true;
+                txtDanToc.Focus();
+                flag = false;
+                // provider
+                errorProvider1.SetError(txtDanToc, "Không được bỏ trống vùng này");
             }
-            else errorProvider1.SetError(txtDanToc, "");
-            return flag;
-        }
-        protected bool validateDiaChi()
-        {
-            bool flag = false;
             if (txtDiaChi.Text == "")
             {
-                errorProvider1.SetError(txtDiaChi, "Chưa nhập địa chỉ");
-                flag = true;
+                txtDiaChi.Focus();
+                flag = false;
+                // provider
+                errorProvider1.SetError(txtDiaChi, "Không được bỏ trống vùng này");
             }
-            else errorProvider1.SetError(txtDiaChi, "");
-            return flag;
-        }//
-        protected bool validateDienThoai()
-        {
-            bool flag = false;
             if (mtxSDT.Text == "         ")
             {
-                errorProvider1.SetError(mtxSDT, "Chưa nhập số điện thoại");
-                flag = true;
+                mtxSDT.Focus();
+                flag = false;
+                // provider
+                errorProvider1.SetError(mtxSDT, "Không được bỏ trống vùng này");
             }
-            else
-                errorProvider1.SetError(mtxSDT, "");
-            return flag;
-        }
-        protected bool validateChucVu()
-        {
-            bool flag = false;
-            if (txtHoTen.Text == "")
+            if (txtChucVu.Text == "")
             {
-                errorProvider1.SetError(txtChucVu, "Chưa nhập chức vụ");
-                flag = true;
+                txtChucVu.Focus();
+                flag = false;
+                // provider
+                errorProvider1.SetError(txtChucVu, "Không được bỏ trống vùng này");
             }
-            else
-                errorProvider1.SetError(txtChucVu, "");
             return flag;
-        }
-        protected bool validateMonDay()
-        {
-            bool flag = false;
-            if (cboMon.Text == "")
-            {
-                errorProvider1.SetError(txtMon, "Chưa nhập môn dạy");
-                flag = true;
-            }
-            else
-                errorProvider1.SetError(txtMon, "");
-            return flag;
-
         }
         
     }

@@ -32,14 +32,6 @@ namespace SMS
 
         private void btnThemMoi_Click(object sender, EventArgs e)
         {
-            validateHoTen();
-            validateGioiTinh();
-            validateNgaySinh();
-            validateKhoa();
-            validateMaLop();
-            validateMSHS();
-            validateDanToc();
-            validateDiaChi();
             // Câu lệnh truy vấn Table HOCSINH
             string strSelect = "Select * From HOCSINH Where MAHS = '" + txtMSHS.Text + "'";
             if (GeneralCheck())
@@ -101,16 +93,8 @@ namespace SMS
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (dgvHS.SelectedRows.Count > 0)
+            if (dgvHS.SelectedRows.Count == 1)
             {
-                validateHoTen();
-                validateGioiTinh();
-                validateNgaySinh();
-                validateKhoa();
-                validateMaLop();
-                validateMSHS();
-                validateDanToc();
-                validateDiaChi();
                 if (GeneralCheck())
                 {
                     string strUpdate = "Set Dateformat dmy Update HOCSINH Set HOTEN = N'" + txtHoTen.Text + "', ";
@@ -186,6 +170,7 @@ namespace SMS
 
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
+            errorProvider1.Clear();
             txtMSHS.ReadOnly = false;
             // Làm trắng lại các ô textbox
             txtHoTen.Text = "";
@@ -274,62 +259,9 @@ namespace SMS
             // adapter.Dispose();
         }
 
-        bool GeneralCheck()
-        {
-            bool flag = true;
-            if (txtHoTen.Text == "")
-            {
-                txtHoTen.Focus();
-                flag = false;
-                //provider
-            }
-            if (cboGioiTinh.Text == "")
-            {
-                cboGioiTinh.Focus();
-                flag = false;
-                //provider
-            }
-            if (txtNgaySinh.Text == "")
-            {
-                txtNgaySinh.Focus();
-                flag = false;
-                //provider
-            }
-            if (txtKhoa.Text == "")
-            {
-                txtKhoa.Focus();
-                flag = false;
-                //provider
-            }
-            if (cboMaLop.Text == "")
-            {
-                cboMaLop.Focus();
-                flag = false;
-                //provider
-            }
-            if (txtMSHS.Text == "")
-            {
-                txtMSHS.Focus();
-                flag = false;
-                //provider
-            }
-            if (txtDanToc.Text == "")
-            {
-                txtDanToc.Focus();
-                flag = false;
-                //provider
-            }
-            if (txtDiaChi.Text == "")
-            {
-                txtDiaChi.Focus();
-                flag = false;
-                //provider
-            }
-            return flag;
-        }
-
         private void dgvHS_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            errorProvider1.Clear();
             txtMSHS.Text = dgvHS.CurrentRow.Cells[0].Value.ToString();
             txtHoTen.Text = dgvHS.CurrentRow.Cells[1].Value.ToString();
             cboMaLop.Text = dgvHS.CurrentRow.Cells[2].Value.ToString();
@@ -362,100 +294,67 @@ namespace SMS
             cboMaLop.Text = "";
         }
 
-        //Xác thực đã nhập text
-        protected bool validateMSHS()
+        bool GeneralCheck()
         {
-            bool flag = false;
-            if (txtMSHS.Text == "")
-            {
-                errorProvider1.SetError(txtMSHS, "Chưa nhập MSHS");
-                flag = true;
-            }
-            else
-                errorProvider1.SetError(txtMSHS, "");
-            return flag;
-
-        }
-        protected bool validateHoTen()
-        {
-            bool flag = false;
+            errorProvider1.Clear();
+            bool flag = true;
             if (txtHoTen.Text == "")
             {
-                errorProvider1.SetError(txtHoTen, "Chưa nhập họ tên");
-                flag = true;
+                txtHoTen.Focus();
+                flag = false;
+                //provider
+                errorProvider1.SetError(txtHoTen, "Không được bỏ trống vùng này");
             }
-            else
-                errorProvider1.SetError(txtHoTen, "");
-            return flag;
-        }
-        protected bool validateGioiTinh()
-        {
-            bool flag = false;
             if (cboGioiTinh.Text == "")
             {
-                errorProvider1.SetError(cboGioiTinh, "Chưa nhập giới tính");
-                flag = true;
+                cboGioiTinh.Focus();
+                flag = false;
+                //provider
+                errorProvider1.SetError(cboGioiTinh, "Không được bỏ trống vùng này");
             }
-            else errorProvider1.SetError(cboGioiTinh, "");
-            return flag;
-        }
-        protected bool validateNgaySinh()
-        {
-            bool flag = false;
             if (txtNgaySinh.Text == "")
             {
-                errorProvider1.SetError(txtNgaySinh, "Chưa nhập ngày sinh");
-                flag = true;
+                txtNgaySinh.Focus();
+                flag = false;
+                //provider
+                errorProvider1.SetError(dtpNgaySinh, "Không được bỏ trống vùng này");
             }
-            else errorProvider1.SetError(txtNgaySinh, "");
-            return flag;
-        }//
-        protected bool validateKhoa()
-        {
-            bool flag = false;
             if (txtKhoa.Text == "")
             {
-                errorProvider1.SetError(txtKhoa, "Chưa nhập khóa");
-                flag = true;
+                txtKhoa.Focus();
+                flag = false;
+                //provider
+                errorProvider1.SetError(txtKhoa, "Không được bỏ trống vùng này");
             }
-            else
-                errorProvider1.SetError(txtKhoa, "");
-            return flag;
-
-        }
-        protected bool validateMaLop()
-        {
-            bool flag = false;
             if (cboMaLop.Text == "")
             {
-                errorProvider1.SetError(cboMaLop, "Chưa nhập mã lớp");
-                flag = true;
+                cboMaLop.Focus();
+                flag = false;
+                //provider
+                errorProvider1.SetError(cboMaLop, "Không được bỏ trống vùng này");
             }
-            else
-                errorProvider1.SetError(cboMaLop, "");
-            return flag;
-        }
-        protected bool validateDanToc()
-        {
-            bool flag = false;
+            if (txtMSHS.Text == "")
+            {
+                txtMSHS.Focus();
+                flag = false;
+                //provider
+                errorProvider1.SetError(txtMSHS, "Không được bỏ trống vùng này");
+            }
             if (txtDanToc.Text == "")
             {
-                errorProvider1.SetError(txtDanToc, "Chưa nhập dân tộc");
-                flag = true;
+                txtDanToc.Focus();
+                flag = false;
+                //provider
+                errorProvider1.SetError(txtDanToc, "Không được bỏ trống vùng này");
             }
-            else errorProvider1.SetError(txtDanToc, "");
-            return flag;
-        }
-        protected bool validateDiaChi()
-        {
-            bool flag = false;
             if (txtDiaChi.Text == "")
             {
-                errorProvider1.SetError(txtDiaChi, "Chưa nhập địa chỉ");
-                flag = true;
+                txtDiaChi.Focus();
+                flag = false;
+                //provider
+                errorProvider1.SetError(txtDiaChi, "Không được bỏ trống vùng này");
             }
-            else errorProvider1.SetError(txtDiaChi, "");
             return flag;
-        }//
+        }
     }
 }

@@ -30,107 +30,70 @@ namespace SMS {
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            validateTenTK();
-            validateMatKhauCu();
-            validateMatKhauMoi();
-            validateXacNhanMK();
-            string query = "SELECT * FROM " +
-                "TAIKHOAN WHERE TENDANGNHAP='" + txtTaikhoan.Text + "' AND " +
-                "MATKHAU='" + txtMKcu.Text + "'";
-            if (txtMKmoi.Text != txtXacNhanMk.Text) {
-                //provider
-                return;
-            }
-            if (DatabaseConnection.CheckExist(query))
+            if (GeneralCheck())
             {
-                query = "UPDATE TAIKHOAN SET " +
-                        "MATKHAU='" + txtMKmoi.Text + "' " +
-                        "WHERE TENDANGNHAP='" + txtTaikhoan.Text + "'";
-                if (DatabaseConnection.ExcuteSql(query))
-                    MessageBox.Show("Thay đổi thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string query = "SELECT * FROM " +
+                    "TAIKHOAN WHERE TENDANGNHAP='" + txtTaikhoan.Text + "' AND " +
+                    "MATKHAU='" + txtMKcu.Text + "'";
+                if (txtMKmoi.Text != txtXacNhanMk.Text)
+                {
+                    //provider
+                    return;
+                }
+                if (DatabaseConnection.CheckExist(query))
+                {
+                    query = "UPDATE TAIKHOAN SET " +
+                            "MATKHAU='" + txtMKmoi.Text + "' " +
+                            "WHERE TENDANGNHAP='" + txtTaikhoan.Text + "'";
+                    if (DatabaseConnection.ExcuteSql(query))
+                        MessageBox.Show("Thay đổi thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                    MessageBox.Show("Không đúng tên tài khoản hoặc mật khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            else
-                MessageBox.Show("Không đúng tên tài khoản hoặc mật khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
-        private void btnLamMoi_Click(object sender, EventArgs e) {
+        private void btnLamMoi_Click(object sender, EventArgs e)
+        {
+            errorProvider1.Clear();
             txtTaikhoan.Text = "";
             txtMKcu.Text = "";
             txtMKmoi.Text = "";
             txtXacNhanMk.Text = "";
         }
 
-        bool GeneralCheck() {
+        bool GeneralCheck()
+        {
+            errorProvider1.Clear();
             bool flag = true;
-            if (txtTaikhoan.Text == "") {
+            if (txtTaikhoan.Text == "")
+            {
                 txtTaikhoan.Focus();
                 flag = false;
                 // Provider
+                errorProvider1.SetError(txtTaikhoan, "Không được bỏ trống vùng này");
             }
-            else if (txtMKcu.Text == "") {
+            if (txtMKcu.Text == "")
+            {
                 txtMKcu.Focus();
                 flag = false;
                 //Provider
+                errorProvider1.SetError(txtMKcu, "Không được bỏ trống vùng này");
             }
-            else if (txtMKmoi.Text == "") {
+            if (txtMKmoi.Text == "")
+            {
+                txtMKmoi.Focus();
                 flag = false;
                 //Provider
+                errorProvider1.SetError(txtMKmoi, "Không được bỏ trống vùng này");
             }
-            else if (txtXacNhanMk.Text != txtMKmoi.Text) {
+            if (txtXacNhanMk.Text != txtMKmoi.Text) {
                 txtXacNhanMk.Focus();
                 flag = false;
+                errorProvider1.SetError(txtXacNhanMk, "Không khớp mật khẩu");
                 //Provider;
             }
             return flag;
         }
-
-        //Xác thực đã nhập text
-        protected bool validateTenTK()
-        {
-            bool flag = false;
-            if (txtTaikhoan.Text == "")
-            {
-                errorProvider1.SetError(txtTaikhoan, "Chưa nhập tên tài khoản");
-                flag = true;
-            }
-            else
-                errorProvider1.SetError(txtTaikhoan, "");
-            return flag;
-
-        }
-        protected bool validateMatKhauCu()
-        {
-            bool flag = false;
-            if (txtMKcu.Text == "")
-            {
-                errorProvider1.SetError(txtMKcu, "Không được bỏ trống vùng này");
-                flag = true;
-            }
-            else
-                errorProvider1.SetError(txtMKcu, "");
-            return flag;
-        }
-        protected bool validateMatKhauMoi()
-        {
-            bool flag = false;
-            if (txtMKmoi.Text == "")
-            {
-                errorProvider1.SetError(txtXacNhanMk, "Không được bỏ trống vùng này");
-                flag = true;
-            }
-            else errorProvider1.SetError(txtMKmoi, "");
-            return flag;
-        }
-        protected bool validateXacNhanMK()
-        {
-            bool flag = false;
-            if (txtXacNhanMk.Text == "")
-            {
-                errorProvider1.SetError(txtXacNhanMk, "Chưa xác nhận mật khẩu");
-                flag = true;
-            }
-            else errorProvider1.SetError(txtXacNhanMk, "");
-            return flag;
-        }//
     }
 }

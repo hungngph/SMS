@@ -38,7 +38,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnHuyBo = new System.Windows.Forms.Button();
             this.btnDangNhap = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblKiemTra = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -144,15 +144,15 @@
             this.btnDangNhap.UseVisualStyleBackColor = false;
             this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
             // 
-            // label6
+            // lblKiemTra
             // 
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(52, 353);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(394, 31);
-            this.label6.TabIndex = 91;
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblKiemTra.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblKiemTra.ForeColor = System.Drawing.Color.Red;
+            this.lblKiemTra.Location = new System.Drawing.Point(52, 353);
+            this.lblKiemTra.Name = "lblKiemTra";
+            this.lblKiemTra.Size = new System.Drawing.Size(394, 31);
+            this.lblKiemTra.TabIndex = 91;
+            this.lblKiemTra.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // errorProvider1
             // 
@@ -165,7 +165,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnHuyBo;
             this.ClientSize = new System.Drawing.Size(500, 571);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lblKiemTra);
             this.Controls.Add(this.btnHuyBo);
             this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.label4);
@@ -195,7 +195,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnHuyBo;
         private System.Windows.Forms.Button btnDangNhap;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblKiemTra;
         private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

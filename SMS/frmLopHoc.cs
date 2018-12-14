@@ -28,10 +28,6 @@ namespace SMS {
 
         private void btnThemMoi_Click(object sender, EventArgs e)
         {
-            validateMaLop();
-            validateTenLop();
-            validateMaGVCN();
-            validateSiSo();
             // Câu lệnh truy vấn Table LOP
             string strSelect = "Select * From LOP Where MALOP = '" + txtMaLop.Text + "'";
             if (GeneralCheck())
@@ -68,12 +64,8 @@ namespace SMS {
         private void btnSua_Click(object sender, EventArgs e)
         {
             
-            if (dgvLH.SelectedRows.Count > 0)
+            if (dgvLH.SelectedRows.Count == 1)
             {
-                validateMaLop();
-                validateTenLop();
-                validateMaGVCN();
-                validateSiSo();
                 if (GeneralCheck())
                 {
                     string strUpdate = "Update LOP Set TENLOP = N'" + txtTenLop.Text + "', ";
@@ -120,6 +112,7 @@ namespace SMS {
 
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
+            errorProvider1.Clear();
             txtMaLop.ReadOnly = false;
             txtMaLop.Text = "";
             txtTenLop.Text = "";
@@ -140,38 +133,9 @@ namespace SMS {
             // adapter.Dispose();
         }
 
-        bool GeneralCheck()
-        {
-            bool flag = true;
-            if (txtMaLop.Text == "")
-            {
-                txtMaLop.Focus();
-                flag = false;
-                // Provider
-            }
-            else if (cboMAGVCN.Text == "")
-            {
-                cboMAGVCN.Focus();
-                flag = false;
-                //Provider
-            }
-            else if (txtTenLop.Text == "")
-            {
-                txtTenLop.Focus();
-                flag = false;
-                //Provider;
-            }
-            else if (txtSiSo.Text == "")
-            {
-                txtSiSo.Focus();
-                flag = false;
-                //Provider
-            }
-            return flag;
-        }
-
         private void dgvLH_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            errorProvider1.Clear();
             txtMaLop.Text = dgvLH.CurrentRow.Cells[0].Value.ToString();
             txtTenLop.Text = dgvLH.CurrentRow.Cells[1].Value.ToString();
             cboMAGVCN.Text = dgvLH.CurrentRow.Cells[2].Value.ToString();
@@ -199,54 +163,39 @@ namespace SMS {
                 txtTenGVCN.Text = dt.Rows[0][0].ToString();
         }
 
-
-        //Xác thực đã nhập text
-        protected bool validateMaLop()
+        bool GeneralCheck()
         {
-            bool flag = false;
+            errorProvider1.Clear();
+            bool flag = true;
             if (txtMaLop.Text == "")
             {
-                errorProvider1.SetError(txtMaLop, "Chưa nhập mã lớp");
-                flag = true;
+                txtMaLop.Focus();
+                flag = false;
+                // Provider
+                errorProvider1.SetError(txtMaLop, "Không được bỏ trống vùng này");
             }
-            else
-                errorProvider1.SetError(txtMaLop, "");
-            return flag;
-
-        }
-        protected bool validateTenLop()
-        {
-            bool flag = false;
-            if (txtTenLop.Text == "")
-            {
-                errorProvider1.SetError(txtTenLop, "Chưa nhập tên lớp");
-                flag = true;
-            }
-            else
-                errorProvider1.SetError(txtTenLop, "");
-            return flag;
-        }
-        protected bool validateMaGVCN()
-        {
-            bool flag = false;
             if (cboMAGVCN.Text == "")
             {
-                errorProvider1.SetError(cboMAGVCN, "Chưa nhập GVCN");
-                flag = true;
+                cboMAGVCN.Focus();
+                flag = false;
+                //Provider
+                errorProvider1.SetError(cboMAGVCN, "Không được bỏ trống vùng này");
             }
-            else errorProvider1.SetError(cboMAGVCN, "");
-            return flag;
-        }
-        protected bool validateSiSo()
-        {
-            bool flag = false;
+            if (txtTenLop.Text == "")
+            {
+                txtTenLop.Focus();
+                flag = false;
+                //Provider;
+                errorProvider1.SetError(txtTenLop, "Không được bỏ trống vùng này");
+            }
             if (txtSiSo.Text == "")
             {
-                errorProvider1.SetError(txtSiSo, "Chưa nhập sĩ số");
-                flag = true;
+                txtSiSo.Focus();
+                flag = false;
+                //Provider
+                errorProvider1.SetError(txtSiSo, "Không được bỏ trống vùng này");
             }
-            else errorProvider1.SetError(txtSiSo, "");
             return flag;
-        }//
+        }
     }
 }

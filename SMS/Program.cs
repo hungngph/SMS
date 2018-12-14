@@ -20,15 +20,14 @@ namespace SMS
             //Form Main
             //Application.Run(new frmMain());
             //Application.Run(new frmNhapDiem());
-
-            //Application.Run(new frmHocSinh());
+            Application.Run(new frmHocSinh());
             //Application.Run(new frmLopHoc());
             //Application.Run(new frmLogin());
             //Application.Run(new frmGiaoVien());
             //Application.Run(new frmDoiMatKhau());
             //Application.Run(new frmDanhSachNguoiDung());
             //Application.Run(new frmNhapDiem());
-            Application.Run(new frmXemDiem());
+            //Application.Run(new frmXemDiem());
             //Form Login
             //Application.Run(new frmLogin());
         }

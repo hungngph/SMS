@@ -32,9 +32,7 @@ namespace SMS
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            validateMaLop();
-            validateNamHoc();
-            validateHocKy();
+
             if (GeneralCheck())
             {
                 string query = null;
@@ -74,10 +72,12 @@ namespace SMS
                                       "AND DIEM.HOCKY='" + txtHocKy.Text + "' " +
                             "GROUP BY MONHOC.TENMH, DIEM.MAHS, DIEM.TENHOCSINH, DIEM.DIEMTONGKET";
                 }
-                dgvDSXD.DataSource = DatabaseConnection.GetDataTable(query);
+                if (DatabaseConnection.GetDataTable(query).Rows.Count == 0)
+                    MessageBox.Show("Không tìm thấy kết quả!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    dgvDSXD.DataSource = DatabaseConnection.GetDataTable(query);
             }
         }
-
 
         private void btnXuat_Click(object sender, EventArgs e)
         {
@@ -183,43 +183,6 @@ namespace SMS
             MessageBox.Show("Xuất dữ liệu thành công", "Thông báo", MessageBoxButtons.OK);
         }
 
-        //Xác thực đã nhập text
-        protected bool validateMaLop()
-        {
-            bool flag = false;
-            if (cboMaLop.Text == "")
-            {
-                errorProvider1.SetError(cboMaLop, "Chưa nhập mã lớp");
-                flag = true;
-            }
-            else errorProvider1.SetError(cboMaLop, "");
-            return flag;
-
-        }
-
-        protected bool validateNamHoc()
-        {
-            bool flag = false;
-            if (txtNamHoc.Text == "")
-            {
-                errorProvider1.SetError(txtNamHoc, "Chưa nhập năm học");
-                flag = true;
-            }
-            else errorProvider1.SetError(txtNamHoc, "");
-            return flag;
-        }
-        protected bool validateHocKy()
-        {
-            bool flag = false;
-            if (txtHocKy.Text == "")
-            {
-                errorProvider1.SetError(txtHocKy, "Chưa nhập học kỳ");
-                flag = true;
-            }
-            else errorProvider1.SetError(txtHocKy, "");
-            return flag;
-        }
-
         private void reOject(object obj)
         {
             try
@@ -240,24 +203,28 @@ namespace SMS
 
         bool GeneralCheck()
         {
+            errorProvider1.Clear();
             bool flag = true;
             if (cboMaLop.Text == "")
             {
                 cboMaLop.Focus();
                 flag = false;
                 // Provider
+                errorProvider1.SetError(cboMaLop, "Không được bỏ trống vùng này");
             }
-            else if (txtHocKy.Text == "")
+            if (txtHocKy.Text == "")
             {
                 txtHocKy.Focus();
                 flag = false;
                 //Provider
+                errorProvider1.SetError(txtHocKy, "Không được bỏ trống vùng này");
             }
-            else if (txtNamHoc.Text == "")
+            if (txtNamHoc.Text == "")
             {
                 txtNamHoc.Focus();
                 flag = false;
                 //Provider
+                errorProvider1.SetError(txtNamHoc, "Không được bỏ trống vùng này");
             }
             return flag;
         }

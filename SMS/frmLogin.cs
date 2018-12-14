@@ -28,31 +28,32 @@ namespace SMS {
 
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
-            validateTenDangNhap();
-            validateMatKhau();
-            string query = "SELECT * FROM TAIKHOAN WHERE" +
-                " TENDANGNHAP = '" + txtTaiKhoan.Text +
-                "' AND MATKHAU = '" + txtMatKhau.Text;
-            string admin = "' AND QUYENTRUYCAP = 'Admin'";
-            string teacher = "' AND QUYENTRUYCAP = N'Giáo viên'";
-            if (DatabaseConnection.CheckExist(query + admin))
+            if (GeneralCheck())
             {
-                DatabaseConnection.isAdmin = true;
-                this.Hide();
-                frmMain frm = new frmMain();
-                frm.Show();
-                return;
+                string query = "SELECT * FROM TAIKHOAN WHERE" +
+                    " TENDANGNHAP = '" + txtTaiKhoan.Text +
+                    "' AND MATKHAU = '" + txtMatKhau.Text;
+                string admin = "' AND QUYENTRUYCAP = 'Admin'";
+                string teacher = "' AND QUYENTRUYCAP = N'Giáo viên'";
+                if (DatabaseConnection.CheckExist(query + admin))
+                {
+                    DatabaseConnection.isAdmin = true;
+                    this.Hide();
+                    frmMain frm = new frmMain();
+                    frm.Show();
+                    return;
+                }
+                if (DatabaseConnection.CheckExist(query + teacher))
+                {
+                    DatabaseConnection.isAdmin = false;
+                    this.Hide();
+                    frmMain frm = new frmMain();
+                    frm.Show();
+                    return;
+                }
+                lblKiemTra.Text = "Sai tên đăng nhập hoặc mật khẩu";
+                txtMatKhau.Text = "";
             }
-            if (DatabaseConnection.CheckExist(query + teacher))
-            {
-                DatabaseConnection.isAdmin = false;
-                this.Hide();
-                frmMain frm = new frmMain();
-                frm.Show();
-                return;
-            }
-            label6.Text = "Sai tên đăng nhập hoặc mật khẩu";
-            txtMatKhau.Text = "";
         }
 
         private void btnHuyBo_Click(object sender, EventArgs e)
@@ -62,33 +63,27 @@ namespace SMS {
 
         private void txtTaiKhoan_KeyPress(object sender, KeyPressEventArgs e)
         {
-            label6.Text = "";
+            lblKiemTra.Text = "";
         }
 
-        //Xác thực đã nhập text
-        protected bool validateTenDangNhap()
+
+        bool GeneralCheck()
         {
-            bool flag = false;
+            bool flag = true;
             if (txtTaiKhoan.Text == "")
             {
-                errorProvider1.SetError(txtTaiKhoan, "Chưa nhập tên tài khoản");
-                flag = true;
+                txtTaiKhoan.Focus();
+                flag = false;
+                // Provider
+                errorProvider1.SetError(txtTaiKhoan, "Không được bỏ trống vùng này");
             }
-            else
-                errorProvider1.SetError(txtTaiKhoan, "");
-            return flag;
-
-        }
-        protected bool validateMatKhau()
-        {
-            bool flag = false;
             if (txtMatKhau.Text == "")
             {
-                errorProvider1.SetError(txtMatKhau, "Chưa nhập mật khẩu");
-                flag = true;
+                txtMatKhau.Focus();
+                flag = false;
+                //Provider
+                errorProvider1.SetError(txtMatKhau, "Không được bỏ trống vùng này");
             }
-            else
-                errorProvider1.SetError(txtMatKhau, "");
             return flag;
         }
     }

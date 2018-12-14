@@ -90,6 +90,7 @@
             this.dgvHS.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvHS.Name = "dgvHS";
             this.dgvHS.ReadOnly = true;
+            this.dgvHS.RowHeadersVisible = false;
             this.dgvHS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHS.Size = new System.Drawing.Size(1115, 198);
             this.dgvHS.TabIndex = 0;

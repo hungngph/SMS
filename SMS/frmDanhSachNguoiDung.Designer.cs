@@ -174,11 +174,12 @@
             this.dgvDSND.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDSND.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvDSND.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDSND.Location = new System.Drawing.Point(5, 17);
+            this.dgvDSND.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDSND.Location = new System.Drawing.Point(3, 21);
             this.dgvDSND.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvDSND.Name = "dgvDSND";
             this.dgvDSND.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDSND.Size = new System.Drawing.Size(900, 210);
+            this.dgvDSND.Size = new System.Drawing.Size(905, 208);
             this.dgvDSND.TabIndex = 0;
             this.dgvDSND.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDSND_CellMouseClick);
             // 
