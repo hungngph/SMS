@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace SMS
@@ -17,9 +18,36 @@ namespace SMS
         {
             InitializeComponent();
         }
+        //Sử dụng thư viện
+        //using System.Runtime.InteropServices;
+        //để di chuyển frm
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+        private void frmXemDiem_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+
+        }
+
+        private void btnDong_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
 
         private void frmXemDiem_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Normal;
             DatabaseConnection.Connected();
             if (!DatabaseConnection.IsConnect())
             {
@@ -229,7 +257,6 @@ namespace SMS
             return flag;
         }
 
-
         void Load_combobox()
         {
             string query = "SELECT * FROM LOP";
@@ -252,6 +279,16 @@ namespace SMS
                 txtTenMon.Text = "";
             else
                 txtTenMon.Text = dt.Rows[0][0].ToString();
+        }
+
+        private void cboMaLop_TextChanged(object sender, EventArgs e)
+        {
+            string query = "SELECT TENLOP FROM LOP WHERE MALOP = '" + cboMaLop.Text + "'";
+            DataTable dt = DatabaseConnection.GetDataTable(query);
+            if (cboMaLop.Text == "")
+                txtTenLop.Text = "";
+            else
+                txtTenLop.Text = dt.Rows[0][0].ToString();
         }
     }
 }

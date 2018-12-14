@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace SMS
 {
@@ -16,9 +17,36 @@ namespace SMS
         {
             InitializeComponent();
         }
+        //Sử dụng thư viện
+        //using System.Runtime.InteropServices;
+        //để di chuyển frm
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+
+        private void frmDanhSachNguoiDung_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+
+        }
+
+        private void btnDong_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
         private void frmDanhSachNguoiDung_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'quanLyHocSinhDataSet.TAIKHOAN' table. You can move, or remove it, as needed.           
+            this.WindowState = FormWindowState.Normal;
             DatabaseConnection.Connected();
             if (!DatabaseConnection.IsConnect())
             {
@@ -30,28 +58,28 @@ namespace SMS
 
         private void btnThemMoi_Click(object sender, EventArgs e)
         {
-            
+
             // Câu lệnh truy vấn Table TAIKHOAN
-            string strSelect = "Select * From TAIKHOAN Where TENDANGNHAP = '" + txtTaikhoan.Text + "'";
+            string strSelect = "Select * From TAIKHOAN Where TENDANGNHAP = '" + txtTaiKhoan.Text + "'";
             if (GeneralCheck())
             {
                 if (DatabaseConnection.CheckExist(strSelect))
                 {
                     MessageBox.Show("Tên tài khoản đã tồn tại!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    txtTaikhoan.Focus();
-                    txtTaikhoan.SelectAll();
+                    txtTaiKhoan.Focus();
+                    //txtTaiKhoan.Select();
                 }
                 else
                 {
                     // Câu lệnh insert dữ liệu
                     string strInsert = "Insert into TAIKHOAN values ('";
-                    strInsert += txtTaikhoan.Text + "', N'";
+                    strInsert += txtTaiKhoan.Text + "', N'";
                     strInsert += txtMK.Text + "', N'";
                     strInsert += cboQuyen.Text + "')";
                     //
                     if (DatabaseConnection.ExcuteSql(strInsert))
                     {
-                        txtTaikhoan.ReadOnly = true;
+                        txtTaiKhoan.Enabled = false;
                         MessageBox.Show("Thêm tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
@@ -62,7 +90,7 @@ namespace SMS
         }
 
 
-        private void btnSua_Click(object sender, EventArgs e)
+        private void btnChinhSua_Click(object sender, EventArgs e)
         {
             if (dgvDSND.SelectedRows.Count == 1)
             {
@@ -70,7 +98,7 @@ namespace SMS
                 {
                     string strUpdate = "Update TAIKHOAN Set MATKHAU = '" + txtMK.Text + "', ";
                     strUpdate += "QUYENTRUYCAP = N'" + cboQuyen.Text + "' ";
-                    strUpdate += "Where TENDANGNHAP = '" + txtTaikhoan.Text + "'";
+                    strUpdate += "Where TENDANGNHAP = '" + txtTaiKhoan.Text + "'";
                     if (DatabaseConnection.ExcuteSql(strUpdate))
                         MessageBox.Show("Chỉnh sửa tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
@@ -83,7 +111,7 @@ namespace SMS
                 MessageBox.Show("Bạn chưa chọn tài khoản cần sửa!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
-        
+
         private void btnXoa_Click(object sender, EventArgs e)
         {
             if (dgvDSND.SelectedRows.Count > 0)
@@ -111,10 +139,10 @@ namespace SMS
 
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
-            txtTaikhoan.ReadOnly = false;
+            txtTaiKhoan.Enabled = true;
             errorProvider1.Clear();
-            txtTaikhoan.ReadOnly = false;
-            txtTaikhoan.Text = "";
+            txtTaiKhoan.Enabled = true;
+            txtTaiKhoan.Text = "";
             txtMK.Text = "";
             txtXacNhanMk.Text = "";
             cboQuyen.Text = "";
@@ -126,8 +154,8 @@ namespace SMS
         {
             string s1 = "Select * From TAIKHOAN Where ";
             string strSelect = "Select * From TAIKHOAN Where ";
-            if (txtTaikhoan.Text != "")
-                strSelect += "TENDANGNHAP = '" + txtTaikhoan.Text + "'and ";
+            if (txtTaiKhoan.Text != "")
+                strSelect += "TENDANGNHAP = '" + txtTaiKhoan.Text + "'and ";
             if (txtMK.Text != "")
                 strSelect += "MATKHAU = '" + txtMK.Text + "' and ";
             if (cboQuyen.Text != "")
@@ -150,11 +178,11 @@ namespace SMS
         private void dgvDSND_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             errorProvider1.Clear();
-            txtTaikhoan.Text = dgvDSND.CurrentRow.Cells[0].Value.ToString();
+            txtTaiKhoan.Text = dgvDSND.CurrentRow.Cells[0].Value.ToString();
             txtMK.Text = dgvDSND.CurrentRow.Cells[1].Value.ToString();
             txtXacNhanMk.Text = txtMK.Text;
             cboQuyen.Text = dgvDSND.CurrentRow.Cells[2].Value.ToString();
-            txtTaikhoan.ReadOnly = true;
+            txtTaiKhoan.Enabled = false;
         }
 
         void FillDataGridView()
@@ -169,10 +197,10 @@ namespace SMS
         {
             errorProvider1.Clear();
             bool flag = true;
-            if (txtTaikhoan.Text == "")
+            if (txtTaiKhoan.Text == "")
             {
-                txtTaikhoan.Focus();
-                errorProvider1.SetError(txtTaikhoan, "Không được bỏ trống vùng này");
+                txtTaiKhoan.Focus();
+                errorProvider1.SetError(txtTaiKhoan, "Không được bỏ trống vùng này");
                 flag = false;
             }
             if (txtMK.Text == "")

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace SMS
 {
@@ -16,9 +17,36 @@ namespace SMS
         {
             InitializeComponent();
         }
+        //Sử dụng thư viện
+        //using System.Runtime.InteropServices;
+        //để di chuyển frm
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+        private void frmGiaoVien_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+
+        }
+
+        private void btnDong_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+        }
 
         private void frmGiaoVien_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Normal;
             DatabaseConnection.Connected();
             if (!DatabaseConnection.IsConnect())
             {
@@ -39,7 +67,7 @@ namespace SMS
                 {
                     MessageBox.Show("Mã GV đã tồn tại. Xin vui lòng kiểm tra lại!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     txtMaGV.Focus();
-                    txtMaGV.SelectAll();
+                    //txtMaGV.Select();
                 }
                 else
                 {
@@ -49,7 +77,7 @@ namespace SMS
                     strInsert += txtHoTen.Text + "', N'";
                     strInsert += cboGioiTinh.Text + "', '";
                     strInsert += dtpNgaySinh.Text + "', '";
-                    strInsert += mtxSDT.Text + "', N'";
+                    strInsert += txtSDT.Text + "', N'";
                     strInsert += txtDiaChi.Text + "', N'";
                     strInsert += txtDanToc.Text + "', '";
                     strInsert += txtEmail.Text + "', N'";
@@ -59,7 +87,7 @@ namespace SMS
                     if (DatabaseConnection.ExcuteSql(strInsert))
                     {
                         MessageBox.Show("Thêm Giáo viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtMaGV.ReadOnly = true;
+                        txtMaGV.Enabled = false;
                     }
                     else
                         MessageBox.Show("Thêm Giáo viên thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -69,7 +97,7 @@ namespace SMS
 
         }
 
-        private void btnSua_Click(object sender, EventArgs e)
+        private void btnChinhSua_Click(object sender, EventArgs e)
         {
 
             if (dgvGV.SelectedRows.Count == 1)
@@ -82,7 +110,7 @@ namespace SMS
                     strUpdate += "EMAIL = '" + txtEmail.Text + "', ";
                     strUpdate += "DANTOC = N'" + txtDanToc.Text + "', ";
                     strUpdate += "DIACHI = N'" + txtDiaChi.Text + "', ";
-                    strUpdate += "SODIENTHOAI = '" + mtxSDT.Text + "', ";
+                    strUpdate += "SODIENTHOAI = '" + txtSDT.Text + "', ";
                     strUpdate += "CHUCVU = N'" + txtChucVu.Text + "' ";
                     strUpdate += "Where MAGV = '" + txtMaGV.Text + "'";
                     //
@@ -126,14 +154,13 @@ namespace SMS
 
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
-
             errorProvider1.Clear();
-            txtMaGV.ReadOnly = false;
+            txtMaGV.Enabled = true;
             txtMaGV.Text = "";
             txtHoTen.Text = "";
             cboGioiTinh.Text = "";
             txtNgaySinh.Text = "";
-            mtxSDT.Text = "";
+            txtSDT.Text = "";
             txtDiaChi.Text = "";
             txtDanToc.Text = "";
             txtEmail.Text = "";
@@ -145,11 +172,11 @@ namespace SMS
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             string query = "set dateformat dmy SELECT GIAOVIEN.*, LOP.TENLOP AS TENLOP " +
-            "FROM GIAOVIEN JOIN LOP " +
+            "FROM GIAOVIEN LEFT JOIN LOP " +
             "ON GIAOVIEN.MAGV = LOP.MAGVCN " +
             "WHERE ";
             string query2 = "set dateformat dmy SELECT GIAOVIEN.*, LOP.TENLOP AS TENLOP " +
-            "FROM GIAOVIEN JOIN LOP " +
+            "FROM GIAOVIEN LEFT JOIN LOP " +
             "ON GIAOVIEN.MAGV = LOP.MAGVCN " +
             "WHERE ";
             if (txtMaGV.Text != "")
@@ -160,8 +187,8 @@ namespace SMS
                 query += "GIOITINH= N'" + cboGioiTinh.Text + "' AND ";
             if (txtNgaySinh.Text != "")
                 query += "NGAYSINH='" + txtNgaySinh.Text + "' AND ";
-            if (mtxSDT.Text != "         ")
-                query += "SODIENTHOAI='" + mtxSDT.Text + "' AND ";
+            if (txtSDT.Text != "")
+                query += "SODIENTHOAI='" + txtSDT.Text + "' AND ";
             if (txtDiaChi.Text != "")
                 query += "DIACHI=N'" + txtDiaChi.Text + "' AND ";
             if (txtDanToc.Text != "")
@@ -169,7 +196,7 @@ namespace SMS
             if (txtEmail.Text != "")
                 query += "EMAIL='" + txtEmail.Text + "' AND ";
             if (txtChucVu.Text != "")
-                query += "CHUCVU = N'" + txtChucVu.Text + "' AND ";      
+                query += "CHUCVU = N'" + txtChucVu.Text + "' AND ";
             if (query2 == query)
             {
                 MessageBox.Show("Chưa nhập thông tin cần tìm kiếm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -188,13 +215,16 @@ namespace SMS
 
         void FillDataGridView()
         {
-            string query = "SELECT GIAOVIEN.*, LOP.TENLOP AS LOPCHUNHIEM " +
+            string query = "SELECT MAGV AS [Mã GV], HOTEN AS [Họ tên], GIOITINH AS [Giới tính], NGAYSINH AS [Ngày sinh], "
+            + "SODIENTHOAI AS [Số điện thoại], DIACHI AS [Địa chỉ], DANTOC AS [Dân tộc], EMAIL AS [Email], "
+            + "CHUCVU AS [Chức vụ], LOP.TENLOP AS [Lớp Chủ Nhiệm] " +
             "FROM GIAOVIEN LEFT JOIN LOP " +
             "ON GIAOVIEN.MAGV = LOP.MAGVCN";
             dgvGV.DataSource = DatabaseConnection.GetDataTable(query);
+            // Chỉnh sửa kích thước các cột
         }
 
-        
+
         private void dgvGV_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             errorProvider1.Clear();
@@ -202,13 +232,13 @@ namespace SMS
             txtHoTen.Text = dgvGV.CurrentRow.Cells[1].Value.ToString();
             cboGioiTinh.Text = dgvGV.CurrentRow.Cells[2].Value.ToString();
             txtNgaySinh.Text = dgvGV.CurrentRow.Cells[3].Value.ToString();
-            mtxSDT.Text = dgvGV.CurrentRow.Cells[4].Value.ToString();
+            txtSDT.Text = dgvGV.CurrentRow.Cells[4].Value.ToString();
             txtDiaChi.Text = dgvGV.CurrentRow.Cells[5].Value.ToString();
             txtDanToc.Text = dgvGV.CurrentRow.Cells[6].Value.ToString();
             txtEmail.Text = dgvGV.CurrentRow.Cells[7].Value.ToString();
             txtChucVu.Text = dgvGV.CurrentRow.Cells[8].Value.ToString();
             txtLop.Text = dgvGV.CurrentRow.Cells[9].Value.ToString();
-            txtMaGV.ReadOnly = true;
+            txtMaGV.Enabled = false;
         }
 
         void Load_combobox()
@@ -230,8 +260,9 @@ namespace SMS
                 txtMon.Text = dt.Rows[0][0].ToString();
         }
 
-        private void dtpNgaySinh_ValueChanged(object sender, EventArgs e)
+        private void dtpNgaySinh_onValueChanged(object sender, EventArgs e)
         {
+            
             txtNgaySinh.Text = dtpNgaySinh.Text;
         }
 
@@ -288,12 +319,12 @@ namespace SMS
                 // provider
                 errorProvider1.SetError(txtDiaChi, "Không được bỏ trống vùng này");
             }
-            if (mtxSDT.Text == "         ")
+            if (txtSDT.Text == "")
             {
-                mtxSDT.Focus();
+                txtSDT.Focus();
                 flag = false;
                 // provider
-                errorProvider1.SetError(mtxSDT, "Không được bỏ trống vùng này");
+                errorProvider1.SetError(txtSDT, "Không được bỏ trống vùng này");
             }
             if (txtChucVu.Text == "")
             {
@@ -304,6 +335,5 @@ namespace SMS
             }
             return flag;
         }
-        
     }
 }

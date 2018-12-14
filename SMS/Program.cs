@@ -17,19 +17,29 @@ namespace SMS
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //Form Main
-            //Application.Run(new frmMain());
-            //Application.Run(new frmNhapDiem());
-            Application.Run(new frmHocSinh());
-            //Application.Run(new frmLopHoc());
-            //Application.Run(new frmLogin());
-            //Application.Run(new frmGiaoVien());
-            //Application.Run(new frmDoiMatKhau());
+            // frmChucNang
+            //Application.Run(new frmChucNang());
+
+            // frmDanhSachNguoiDung
             //Application.Run(new frmDanhSachNguoiDung());
+
+            // frmDoiMatKhau
+            //Application.Run(new frmDoiMatKhau());
+
+            // frmGiaoVien
+            //Application.Run(new frmGiaoVien());
+
+            //
+            //Application.Run(new frmNhapDiem());
+
+            // frmHocSinh
+            //Application.Run(new frmHocSinh());
+            //Application.Run(new frmLopHoc());
+            Application.Run(new frmDangNhap());
+            //Application.Run(new frmDoiMatKhau());
             //Application.Run(new frmNhapDiem());
             //Application.Run(new frmXemDiem());
-            //Form Login
-            //Application.Run(new frmLogin());
+            //Application.Run(new frmPhanCong());
         }
     }
 }

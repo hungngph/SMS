@@ -7,17 +7,46 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
-namespace SMS {
+namespace SMS
+{
     public partial class frmNhapDiem : Form
     {
         public frmNhapDiem()
         {
             InitializeComponent();
         }
+        //Sử dụng thư viện
+        //using System.Runtime.InteropServices;
+        //để di chuyển frm
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+        private void frmNhapDiem_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+
+        }
+
+        private void btnDong_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
 
         private void frmNhapDiem_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Normal;
             DatabaseConnection.Connected();
             if (!DatabaseConnection.IsConnect())
             {
@@ -28,7 +57,7 @@ namespace SMS {
             Load_combobox();
         }
 
-        private void btnTimKiem(object sender, EventArgs e)
+        private void btnTimKem_Click(object sender, EventArgs e)
         {
 
             if (GeneralCheck())
@@ -53,7 +82,7 @@ namespace SMS {
         private void btnLuu_Click(object sender, EventArgs e)
         {
             string query = "UPDATE dbo.DIEM SET " +
-                     "DIEMMIENG1=" + txtDM1.Text.Replace(",",".") + ", " +
+                     "DIEMMIENG1=" + txtDM1.Text.Replace(",", ".") + ", " +
                      "DIEMMIENG2=" + txtDM2.Text.Replace(",", ".") + ", " +
                      "DIEMMIENG3=" + txtDM3.Text.Replace(",", ".") + ", " +
                      "DIEM15P1=" + txt15P1.Text.Replace(",", ".") + ", " +
@@ -92,7 +121,7 @@ namespace SMS {
             txtTongKet.Text = "";
         }
 
-        
+
         bool GeneralCheck()
         {
             errorProvider1.Clear();
@@ -102,14 +131,14 @@ namespace SMS {
                 cboMaLop.Focus();
                 flag = false;
                 // Provider
-                errorProvider1.SetError(cboMaLop, "Không được bỏ trống vùng này");
+                errorProvider1.SetError(txtTenLop, "Không được bỏ trống vùng này");
             }
             if (cboMaMon.Text == "")
             {
                 cboMaMon.Focus();
                 flag = false;
                 //Provider
-                errorProvider1.SetError(cboMaMon, "Không được bỏ trống vùng này");
+                errorProvider1.SetError(txtTenMon, "Không được bỏ trống vùng này");
             }
             if (txtHocKy.Text == "")
             {
@@ -129,8 +158,8 @@ namespace SMS {
         }
 
         //Xử lí sự kiện click chuột vào phần tử trong DataGridView
-        private void dgvDSNDi_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+        private void dgvDSNDi_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        { 
             errorProvider1.Clear();
             txtMaHS.Text = dgvDSNDi.CurrentRow.Cells[0].Value.ToString();
             txtTenHS.Text = dgvDSNDi.CurrentRow.Cells[1].Value.ToString();
@@ -142,6 +171,16 @@ namespace SMS {
             txt45P.Text = dgvDSNDi.CurrentRow.Cells[7].Value.ToString();
             txtCuoiKy.Text = dgvDSNDi.CurrentRow.Cells[8].Value.ToString();
             txtTongKet.Text = dgvDSNDi.CurrentRow.Cells[9].Value.ToString();
+        }
+
+        private void FillDataGridView()
+        {
+            string query = "SELECT dbo.DIEM.MAHS, dbo.DIEM.TENHOCSINH, DIEMMIENG1, DIEMMIENG2, DIEMMIENG3, DIEM15P1, DIEM15P2, DIEM1TIET, DIEMCUOIKY, DIEMTONGKET " +
+                            "FROM dbo.DIEM, dbo.HOCSINH, dbo.MONHOC " +
+                            "WHERE " +
+                                   "dbo.DIEM.MAHS=dbo.HOCSINH.MAHS " +
+                                   "AND dbo.DIEM.MAMH=dbo.MONHOC.MAMH ";
+            dgvDSNDi.DataSource = DatabaseConnection.GetDataTable(query);
         }
 
         void Load_combobox()
@@ -158,15 +197,6 @@ namespace SMS {
             cboMaMon.Text = "";
         }
 
-        private void FillDataGridView()
-        {
-            string query = "SELECT dbo.DIEM.MAHS, dbo.DIEM.TENHOCSINH, DIEMMIENG1, DIEMMIENG2, DIEMMIENG3, DIEM15P1, DIEM15P2, DIEM1TIET, DIEMCUOIKY, DIEMTONGKET " +
-                            "FROM dbo.DIEM, dbo.HOCSINH, dbo.MONHOC " +
-                            "WHERE " +
-                                   "dbo.DIEM.MAHS=dbo.HOCSINH.MAHS " +
-                                   "AND dbo.DIEM.MAMH=dbo.MONHOC.MAMH ";
-            dgvDSNDi.DataSource = DatabaseConnection.GetDataTable(query);
-        }
 
         private void cboMaMon_TextChanged(object sender, EventArgs e)
         {
@@ -176,6 +206,16 @@ namespace SMS {
                 txtTenMon.Text = "";
             else
                 txtTenMon.Text = dt.Rows[0][0].ToString();
+        }
+
+        private void cboMaLop_TextChanged(object sender, EventArgs e)
+        {
+            string query = "SELECT TENLOP FROM LOP WHERE MALOP = '" + cboMaLop.Text + "'";
+            DataTable dt = DatabaseConnection.GetDataTable(query);
+            if (cboMaLop.Text == "")
+                txtTenLop.Text = "";
+            else
+                txtTenLop.Text = dt.Rows[0][0].ToString();
         }
     }
 }

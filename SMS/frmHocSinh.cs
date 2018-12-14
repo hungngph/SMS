@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace SMS
 {
@@ -16,18 +17,57 @@ namespace SMS
         {
             InitializeComponent();
         }
+        //Sử dụng thư viện
+        //using System.Runtime.InteropServices;
+        //để di chuyển frm
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+        private void frmHocSinh_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+
+        }
+
+        private void btnDong_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
         private void frmHocSinh_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'quanLyHocSinhDataSet1.HOCSINH' table. You can move, or remove it, as needed.
+
+            
+            this.WindowState = FormWindowState.Normal;
             DatabaseConnection.Connected();
             if (!DatabaseConnection.IsConnect())
             {
                 MessageBox.Show("Không kết nối được dữ liệu");
                 return;
             }
-            FillDataGridView();
             // Load dữ liệu MALOP vào cboMALOP
             Load_combobox();
+            if (DatabaseConnection.isAdmin == true)
+                FillDataGridView();
+            else
+            {
+                string query = "Select MALOP from LOP Where MAGVCN = '" + DatabaseConnection.MaGV + "'";
+                DataTable dt = DatabaseConnection.GetDataTable(query);
+                cboMaLop.Text = dt.Rows[0][0].ToString();
+                cboMaLop.Enabled = false;
+                string strSelect = "SELECT * FROM HOCSINH where MALOP = '" + cboMaLop.Text + "'";
+                dgvHS.DataSource = DatabaseConnection.GetDataTable(strSelect); 
+            }
         }
 
         private void btnThemMoi_Click(object sender, EventArgs e)
@@ -40,7 +80,7 @@ namespace SMS
                 {
                     MessageBox.Show("MSHS đã tồn tại. Xin vui lòng kiểm tra lại!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     txtMSHS.Focus();
-                    txtMSHS.SelectAll();
+                    //txtMSHS.SelectAll();
                 }
                 else
                 {
@@ -61,12 +101,12 @@ namespace SMS
                         strInsert += "N'" + txtHoTenMe.Text + "', ";
                     else
                         strInsert += "NULL, ";
-                    if (mtxSDTCha.Text != "")
-                        strInsert += "'" + mtxSDTCha.Text + "', ";
+                    if (txtSDTCha.Text != "")
+                        strInsert += "'" + txtSDTCha.Text + "', ";
                     else
                         strInsert += "NULL, ";
-                    if (mtxSDTMe.Text != "")
-                        strInsert += "'" + mtxSDTMe.Text + "', ";
+                    if (txtSDTMe.Text != "")
+                        strInsert += "'" + txtSDTMe.Text + "', ";
                     else
                         strInsert += "NULL, ";
                     strInsert += "N'" + txtDanToc.Text + "', ";
@@ -74,15 +114,15 @@ namespace SMS
                         strInsert += "'" + txtEmail.Text + "', ";
                     else
                         strInsert += "NULL, ";
-                    if (mtxSDT.Text != "")
-                        strInsert += "'" + mtxSDT.Text + "') ";
+                    if (txtSDT.Text != "")
+                        strInsert += "'" + txtSDT.Text + "') ";
                     else
                         strInsert += "NULL)";
                     //
                     if (DatabaseConnection.ExcuteSql(strInsert))
                     {
                         MessageBox.Show("Thêm Học sinh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtMSHS.ReadOnly = true;
+                        txtMSHS.Enabled = false;
                     }
                     else
                         MessageBox.Show("Thêm Học sinh thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -91,7 +131,7 @@ namespace SMS
             }
         }
 
-        private void btnSua_Click(object sender, EventArgs e)
+        private void btnChinhSua_Click(object sender, EventArgs e)
         {
             if (dgvHS.SelectedRows.Count == 1)
             {
@@ -104,8 +144,8 @@ namespace SMS
                     strUpdate += "MALOP = '" + cboMaLop.Text + "', ";
                     strUpdate += "DANTOC = N'" + txtDanToc.Text + "', ";
                     strUpdate += "DIACHI = N'" + txtDiaChi.Text + "', ";
-                    if (mtxSDT.Text != "")
-                        strUpdate += "DIENTHOAI = '" + mtxSDT.Text + "', ";
+                    if (txtSDT.Text != "")
+                        strUpdate += "DIENTHOAI = '" + txtSDT.Text + "', ";
                     else
                         strUpdate += "DIENTHOAI = NULL, ";
                     if (txtEmail.Text != "")
@@ -120,12 +160,12 @@ namespace SMS
                         strUpdate += "HOTENME = N'" + txtHoTenMe.Text + "', ";
                     else
                         strUpdate += "HOTENME = NULL, ";
-                    if (mtxSDTCha.Text != "")
-                        strUpdate += "SDTCHA = '" + mtxSDTCha.Text + "', ";
+                    if (txtSDTCha.Text != "")
+                        strUpdate += "SDTCHA = '" + txtSDTCha.Text + "', ";
                     else
                         strUpdate += "SDTCHA = NULL, ";
-                    if (mtxSDTMe.Text != "")
-                        strUpdate += "SDTME = '" + mtxSDTMe.Text + "' ";
+                    if (txtSDTMe.Text != "")
+                        strUpdate += "SDTME = '" + txtSDTMe.Text + "' ";
                     else
                         strUpdate += "SDTME = NULL, ";
                     strUpdate += "Where MAHS = '" + txtMSHS.Text + "'";
@@ -171,7 +211,7 @@ namespace SMS
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
             errorProvider1.Clear();
-            txtMSHS.ReadOnly = false;
+            txtMSHS.Enabled = true;
             // Làm trắng lại các ô textbox
             txtHoTen.Text = "";
             cboGioiTinh.Text = "";
@@ -181,12 +221,12 @@ namespace SMS
             txtMSHS.Text = "";
             txtDanToc.Text = "";
             txtDiaChi.Text = "";
-            mtxSDT.Text = "";
+            txtSDT.Text = "";
             txtEmail.Text = "";
             txtHoTenMe.Text = "";
             txtHoTenCha.Text = "";
-            mtxSDTCha.Text = "         ";
-            mtxSDTMe.Text = "         ";
+            txtSDTCha.Text = "";
+            txtSDTMe.Text = "";
             txtHoTen.Focus();
         }
 
@@ -210,18 +250,18 @@ namespace SMS
                 strSelect += "DANTOC = N'" + txtDanToc.Text + "' and ";
             if (txtDiaChi.Text != "")
                 strSelect += "DIACHI = N'" + txtDiaChi.Text + "' and ";
-            if (mtxSDT.Text != "         ")
-                strSelect += "DIENTHOAI = '" + mtxSDT.Text + "' and ";
+            if (txtSDT.Text != "")
+                strSelect += "DIENTHOAI = '" + txtSDT.Text + "' and ";
             if (txtEmail.Text != "")
                 strSelect += "EMAIL = '" + txtEmail.Text + "' and ";
             if (txtHoTenCha.Text != "")
                 strSelect += "HOTENCHA = N'" + txtHoTenCha.Text + "' and ";
             if (txtHoTenMe.Text != "")
                 strSelect += "HOTENME = N'" + txtHoTenMe.Text + "' and ";
-            if (mtxSDTCha.Text != "         ")
-                strSelect += "SDTCHA = '" + mtxSDTCha.Text + "' and ";
-            if (mtxSDTMe.Text != "         ")
-                strSelect += "SDTME = '" + mtxSDTMe.Text + "' and";
+            if (txtSDTCha.Text != "")
+                strSelect += "SDTCHA = '" + txtSDTCha.Text + "' and ";
+            if (txtSDTMe.Text != "")
+                strSelect += "SDTME = '" + txtSDTMe.Text + "' and";
             if (s1 == strSelect)
             {
                 MessageBox.Show("Chưa nhập thông tin cần tìm kiếm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -239,8 +279,8 @@ namespace SMS
 
         private void FillDataGridView()
         {
-            string query = "SELECT * FROM HOCSINH";
-            dgvHS.DataSource = DatabaseConnection.GetDataTable(query);
+            string strSelect = "SELECT * FROM HOCSINH";
+            dgvHS.DataSource = DatabaseConnection.GetDataTable(strSelect);
             //// Chỉnh sửa kích thước các cột
             dgvHS.Columns[0].Width = dgvHS.Width / 14;
             dgvHS.Columns[1].Width = dgvHS.Width / 14 * 5 / 2;
@@ -271,17 +311,16 @@ namespace SMS
             txtDiaChi.Text = dgvHS.CurrentRow.Cells[6].Value.ToString();
             txtHoTenCha.Text = dgvHS.CurrentRow.Cells[7].Value.ToString();
             txtHoTenMe.Text = dgvHS.CurrentRow.Cells[8].Value.ToString();
-            mtxSDTCha.Text = dgvHS.CurrentRow.Cells[9].Value.ToString();
-            mtxSDTMe.Text = dgvHS.CurrentRow.Cells[10].Value.ToString();
+            txtSDTCha.Text = dgvHS.CurrentRow.Cells[9].Value.ToString();
+            txtSDTMe.Text = dgvHS.CurrentRow.Cells[10].Value.ToString();
             txtDanToc.Text = dgvHS.CurrentRow.Cells[11].Value.ToString();
             txtEmail.Text = dgvHS.CurrentRow.Cells[12].Value.ToString();
-            mtxSDT.Text = dgvHS.CurrentRow.Cells[13].Value.ToString();
-            txtMSHS.ReadOnly = true; // Không cho phép sửa Mã học sinh
-            txtMSHS.Visible = true;
+            txtSDT.Text = dgvHS.CurrentRow.Cells[13].Value.ToString();
+            txtMSHS.Enabled = false; // Không cho phép sửa Mã học sinh
         }
 
-        private void dtpNgaySinh_ValueChanged(object sender, EventArgs e)
-        {
+        private void dtpNgaySinh_onValueChanged(object sender, EventArgs e)
+        {         
             txtNgaySinh.Text = dtpNgaySinh.Text;
         }
 
@@ -292,6 +331,16 @@ namespace SMS
             cboMaLop.DisplayMember = "MALOP";
             cboMaLop.DataSource = dt;
             cboMaLop.Text = "";
+        }
+
+        private void cboMaLop_TextChanged(object sender, EventArgs e)
+        {
+            string query = "SELECT TENLOP FROM LOP WHERE MALOP = '" + cboMaLop.Text + "'";
+            DataTable dt = DatabaseConnection.GetDataTable(query);
+            if (cboMaLop.Text == "")
+                txtTenLop.Text = "";
+            else
+                txtTenLop.Text = dt.Rows[0][0].ToString();
         }
 
         bool GeneralCheck()
