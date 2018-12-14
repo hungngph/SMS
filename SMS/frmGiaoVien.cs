@@ -51,10 +51,22 @@ namespace SMS
             if (!DatabaseConnection.IsConnect())
             {
                 MessageBox.Show("Không kết nối được dữ liệu");
+                return;
             }
-            else
-                FillDataGridView();
-            Load_combobox();
+            FillDataGridView();
+            if (DatabaseConnection.isAdmin == false)
+            {
+                btnThemMoi.Enabled = false;
+                btnXoa.Enabled = false;
+                btnTimKiem.Enabled = false;
+                string query = "set dateformat dmy SELECT MAGV AS [Mã GV], HOTEN AS [Họ tên], GIOITINH AS [Giới tính], NGAYSINH AS [Ngày sinh], "
+            + "SODIENTHOAI AS [Số điện thoại], DIACHI AS [Địa chỉ], DANTOC AS [Dân tộc], EMAIL AS [Email], "
+            + "CHUCVU AS [Chức vụ], LOP.TENLOP AS [Lớp Chủ Nhiệm] " +
+            "FROM GIAOVIEN LEFT JOIN LOP " +
+            "ON GIAOVIEN.MAGV = LOP.MAGVCN WHERE MAGV = '" + DatabaseConnection.MaGV + "'";
+                dgvGV.DataSource = DatabaseConnection.GetDataTable(query);
+                //dgvGV.SelectAll();
+            }
         }
 
         private void btnThemMoi_Click(object sender, EventArgs e)
@@ -166,7 +178,6 @@ namespace SMS
             txtEmail.Text = "";
             txtChucVu.Text = "";
             txtLop.Text = "";
-            txtMon.Text = "";
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
@@ -239,25 +250,6 @@ namespace SMS
             txtChucVu.Text = dgvGV.CurrentRow.Cells[8].Value.ToString();
             txtLop.Text = dgvGV.CurrentRow.Cells[9].Value.ToString();
             txtMaGV.Enabled = false;
-        }
-
-        void Load_combobox()
-        {
-            string query = "SELECT * FROM MONHOC";
-            DataTable dt = DatabaseConnection.GetDataTable(query);
-            cboMon.DisplayMember = "MAMH";
-            cboMon.DataSource = dt;
-            cboMon.Text = "";
-        }
-
-        private void cboMon_TextChanged(object sender, EventArgs e)
-        {
-            string query = "SELECT TENMH FROM MONHOC WHERE MAMH = '" + cboMon.Text + "'";
-            DataTable dt = DatabaseConnection.GetDataTable(query);
-            if (cboMon.Text == "")
-                txtMon.Text = "";
-            else
-                txtMon.Text = dt.Rows[0][0].ToString();
         }
 
         private void dtpNgaySinh_onValueChanged(object sender, EventArgs e)

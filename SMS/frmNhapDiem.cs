@@ -55,6 +55,19 @@ namespace SMS
             }
             FillDataGridView();
             Load_combobox();
+            if (DatabaseConnection.isAdmin == false)
+            {
+                string query = "select MALOP FROM PHANCONG where MAGV = '" + DatabaseConnection.MaGV
+                             + "' UNION select MALOP from LOP where MAGVCN = '" + DatabaseConnection.MaGV + "'";
+                
+                string strSelect = "SELECT dbo.DIEM.MAHS, dbo.DIEM.TENHOCSINH, DIEMMIENG1, DIEMMIENG2, DIEMMIENG3, DIEM15P1, DIEM15P2, DIEM1TIET, DIEMCUOIKY, DIEMTONGKET " +
+                            "FROM dbo.DIEM, dbo.HOCSINH, dbo.MONHOC " +
+                            "WHERE " +
+                                   "dbo.DIEM.MAHS=dbo.HOCSINH.MAHS " +
+                                   "AND dbo.DIEM.MAMH=dbo.MONHOC.MAMH " +
+                                   "AND HOCSINH.MALOP IN (" + query + ")";
+                dgvDSNDi.DataSource = DatabaseConnection.GetDataTable(strSelect);
+            }
         }
 
         private void btnTimKem_Click(object sender, EventArgs e)
@@ -186,15 +199,38 @@ namespace SMS
         void Load_combobox()
         {
             string query = "SELECT * FROM LOP";
-            DataTable dt = DatabaseConnection.GetDataTable(query);
+            DataTable d = DatabaseConnection.GetDataTable(query);
             cboMaLop.DisplayMember = "MALOP";
-            cboMaLop.DataSource = dt;
+            cboMaLop.DataSource = d;
             cboMaLop.Text = "";
             query = "SELECT * FROM MONHOC";
-            dt = DatabaseConnection.GetDataTable(query);
+            d = DatabaseConnection.GetDataTable(query);
             cboMaMon.DisplayMember = "MAMH";
-            cboMaMon.DataSource = dt;
+            cboMaMon.DataSource = d;
             cboMaMon.Text = "";
+            if (DatabaseConnection.isAdmin == false)
+            {
+                query = "select MALOP FROM PHANCONG where MAGV = '" + DatabaseConnection.MaGV
+                             + "' UNION select MALOP from LOP where MAGVCN = '" + DatabaseConnection.MaGV + "'";
+                DataTable dt = DatabaseConnection.GetDataTable(query);
+                cboMaLop.DisplayMember = "MALOP";
+                cboMaLop.DataSource = dt;
+                // nếu cbo.MALOP khác lớp chủ nhiệm -> cbo.MAMH = MAMH giáo viên đó dạy
+                string query1 = "select MALOP from LOP where MAGVCN = '" + DatabaseConnection.MaGV + "'";
+                string query2 = "select Distinct MAMH FROM PHANCONG where MAGV = '" + DatabaseConnection.MaGV + "'";
+                DataTable dt1 = DatabaseConnection.GetDataTable(query1);
+                DataTable dt2 = DatabaseConnection.GetDataTable(query2);
+                //if (cboMaLop.Text != dt1.Rows[0][0].ToString())
+                //{
+                //    cboMaMon.DataSource = DatabaseConnection.GetDataTable(query2);
+                //}
+                //else
+                //{
+                //    cboMaMon.DataSource = d;
+                //}
+                //cboMaMon.DisplayMember = "MAMH";
+                //cboMaMon.Text = "";
+            }   
         }
 
 
@@ -215,7 +251,9 @@ namespace SMS
             if (cboMaLop.Text == "")
                 txtTenLop.Text = "";
             else
+            {
                 txtTenLop.Text = dt.Rows[0][0].ToString();
+            }
         }
     }
 }

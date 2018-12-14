@@ -54,10 +54,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtLop = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtMon = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.label7 = new System.Windows.Forms.Label();
             this.txtChucVu = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.cboMon = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtHoTen = new Bunifu.Framework.UI.BunifuMaterialTextbox();
@@ -520,10 +517,7 @@
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
             this.groupBox2.Controls.Add(this.txtLop);
             this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.txtMon);
-            this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.txtChucVu);
-            this.groupBox2.Controls.Add(this.cboMon);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.White;
@@ -531,10 +525,10 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(776, 185);
+            this.groupBox2.Size = new System.Drawing.Size(776, 179);
             this.groupBox2.TabIndex = 136;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Thông tin gia đình";
+            this.groupBox2.Text = "Thông tin giáo vụ";
             // 
             // txtLop
             // 
@@ -542,6 +536,7 @@
             this.txtLop.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
             this.txtLop.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtLop.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtLop.Enabled = false;
             this.txtLop.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLop.ForeColor = System.Drawing.Color.White;
             this.txtLop.HintForeColor = System.Drawing.Color.White;
@@ -552,7 +547,7 @@
             this.txtLop.LineIdleColor = System.Drawing.Color.Gray;
             this.txtLop.LineMouseHoverColor = System.Drawing.Color.Gray;
             this.txtLop.LineThickness = 2;
-            this.txtLop.Location = new System.Drawing.Point(308, 112);
+            this.txtLop.Location = new System.Drawing.Point(308, 102);
             this.txtLop.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtLop.MaxLength = 32767;
             this.txtLop.Name = "txtLop";
@@ -565,46 +560,11 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(165, 118);
+            this.label11.Location = new System.Drawing.Point(165, 112);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(119, 20);
             this.label11.TabIndex = 124;
             this.label11.Text = "Lớp chủ nhiệm";
-            // 
-            // txtMon
-            // 
-            this.txtMon.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-            this.txtMon.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.txtMon.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.txtMon.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtMon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMon.ForeColor = System.Drawing.Color.White;
-            this.txtMon.HintForeColor = System.Drawing.Color.White;
-            this.txtMon.HintText = "";
-            this.txtMon.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtMon.isPassword = false;
-            this.txtMon.LineFocusedColor = System.Drawing.Color.Gray;
-            this.txtMon.LineIdleColor = System.Drawing.Color.Gray;
-            this.txtMon.LineMouseHoverColor = System.Drawing.Color.Gray;
-            this.txtMon.LineThickness = 2;
-            this.txtMon.Location = new System.Drawing.Point(405, 65);
-            this.txtMon.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.txtMon.MaxLength = 32767;
-            this.txtMon.Name = "txtMon";
-            this.txtMon.Size = new System.Drawing.Size(188, 30);
-            this.txtMon.TabIndex = 123;
-            this.txtMon.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(165, 67);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(117, 20);
-            this.label7.TabIndex = 122;
-            this.label7.Text = "Môn giảng dạy";
             // 
             // txtChucVu
             // 
@@ -622,7 +582,7 @@
             this.txtChucVu.LineIdleColor = System.Drawing.Color.Gray;
             this.txtChucVu.LineMouseHoverColor = System.Drawing.Color.Gray;
             this.txtChucVu.LineThickness = 2;
-            this.txtChucVu.Location = new System.Drawing.Point(308, 15);
+            this.txtChucVu.Location = new System.Drawing.Point(308, 46);
             this.txtChucVu.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtChucVu.MaxLength = 32767;
             this.txtChucVu.Name = "txtChucVu";
@@ -630,29 +590,12 @@
             this.txtChucVu.TabIndex = 120;
             this.txtChucVu.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
-            // cboMon
-            // 
-            this.cboMon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
-            this.cboMon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cboMon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboMon.ForeColor = System.Drawing.Color.White;
-            this.cboMon.FormattingEnabled = true;
-            this.cboMon.Items.AddRange(new object[] {
-            "Nam",
-            "Nữ"});
-            this.cboMon.Location = new System.Drawing.Point(308, 65);
-            this.cboMon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cboMon.Name = "cboMon";
-            this.cboMon.Size = new System.Drawing.Size(90, 28);
-            this.cboMon.TabIndex = 121;
-            this.cboMon.TextChanged += new System.EventHandler(this.cboMon_TextChanged);
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(165, 25);
+            this.label8.Location = new System.Drawing.Point(165, 56);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(70, 20);
             this.label8.TabIndex = 119;
@@ -888,10 +831,7 @@
         private System.Windows.Forms.Label label12;
         private Bunifu.Framework.UI.BunifuMaterialTextbox txtLop;
         private System.Windows.Forms.Label label11;
-        private Bunifu.Framework.UI.BunifuMaterialTextbox txtMon;
-        private System.Windows.Forms.Label label7;
         private Bunifu.Framework.UI.BunifuMaterialTextbox txtChucVu;
-        private System.Windows.Forms.ComboBox cboMon;
         private System.Windows.Forms.Label label8;
         private Bunifu.Framework.UI.BunifuFlatButton btnXoa;
         private System.Windows.Forms.ErrorProvider errorProvider1;
