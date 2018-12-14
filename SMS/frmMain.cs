@@ -18,70 +18,71 @@ namespace SMS
             InitializeComponent();
         }
 
+
         //Quản lý tài khoản
-        private void btnGroup1_Click(object sender, EventArgs e)
+        private void btnQuanLyTaiKhoan_Click(object sender, EventArgs e)
         {
-            btn11.Visible = !btn11.Visible;
-            btn12.Visible = !btn12.Visible;
+            btnDoiMatKhau.Visible = !btnDoiMatKhau.Visible;
+            btnCSDSNguoiDung.Visible = !btnCSDSNguoiDung.Visible;
         }
 
         //Đổi mật khẩu
-        private void btn11_Click(object sender, EventArgs e)
+        private void btnDoiMatKhau_Click(object sender, EventArgs e)
         {
             frmDoiMatKhau dmk = new frmDoiMatKhau();
             dmk.Show();
         }
 
         //Chỉnh sửa danh sách người dùng
-        private void btn12_Click(object sender, EventArgs e)
+        private void btnCSDSNguoiDung_Click(object sender, EventArgs e)
         {
             frmDanhSachNguoiDung csdsng = new frmDanhSachNguoiDung();
             csdsng.Show();
         }
 
         //Cập nhật thông tin
-        private void btnGroup2_Click(object sender, EventArgs e)
+        private void btnCapNhapThongTin_Click(object sender, EventArgs e)
         {
-            btn21.Visible = !btn21.Visible;
-            btn22.Visible = !btn22.Visible;
-            btn23.Visible = !btn23.Visible;
+            btnThongTinHS.Visible = !btnThongTinHS.Visible;
+            btnThongTinGiaoVien.Visible = !btnThongTinGiaoVien.Visible;
+            btnThongTinLopHoc.Visible = ! btnThongTinLopHoc.Visible;
         }
 
-        //Thông tin sinh viên
-        private void btn21_Click(object sender, EventArgs e)
+        //Thông tin học sinh
+        private void btnThongTinHS_Click(object sender, EventArgs e)
         {
             frmHocSinh hs = new frmHocSinh();
             hs.Show();
         }
 
         //Thông tin giáo viên
-        private void btn22_Click(object sender, EventArgs e)
+        private void btnThongTinGiaoVien_Click(object sender, EventArgs e)
         {
             frmGiaoVien gv = new frmGiaoVien();
             gv.Show();
         }
 
         //Thông tin lớp học
-        private void btn23_Click(object sender, EventArgs e)
+        private void btnThongTinLopHoc_Click(object sender, EventArgs e)
         {
             frmLopHoc lh = new frmLopHoc();
             lh.Show();
         }
 
         //Quản lý điểm lớp học
-        private void btnGroup3_Click(object sender, EventArgs e)
+        private void btnQLDiem_Click(object sender, EventArgs e)
         {
-            btn31.Visible = !btn31.Visible;
-            btn32.Visible = !btn32.Visible;
+            btnNhapDiem.Visible = !btnNhapDiem.Visible;
+            btnXemDiem.Visible = !btnXemDiem.Visible;
         }
         //Nhập điểm
-        private void btn31_Click(object sender, EventArgs e)
+        private void btnNhapDiem_Click(object sender, EventArgs e)
         {
             frmNhapDiem ndiem = new frmNhapDiem();
             ndiem.Show();
         }
         //Xem điểm
-        private void btn32_Click(object sender, EventArgs e)
+        private void btnXemDiem_Click(object sender, EventArgs e)
         {
             frmXemDiem xdiem = new frmXemDiem();
             xdiem.Show();
@@ -89,10 +90,12 @@ namespace SMS
         //
 
         //Giới thiệu
-        private void btnGroup7_Click(object sender, EventArgs e)
+        private void btnGioiThieu_Click(object sender, EventArgs e)
         {
-            groupBoxGioiThieu.Visible = !groupBoxGioiThieu.Visible;
+            grpGioiThieu.Visible = true;
         }
+
+        
         //
     }
 }
