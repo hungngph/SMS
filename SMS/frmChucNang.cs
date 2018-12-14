@@ -41,7 +41,7 @@ namespace SMS
 
         private void btnDong_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void btnQuanLyTaiKhoan_Click(object sender, EventArgs e)
@@ -79,6 +79,13 @@ namespace SMS
         private void frmChucNang_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Normal;
+        }
+
+        private void btnDangXuat_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmDangNhap frm = new frmDangNhap();
+            frm.Show();
         }
     }
 }

@@ -7,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
+using System.Data.SqlClient;
+using System.IO;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace SMS
 {
@@ -16,30 +20,76 @@ namespace SMS
         {
             InitializeComponent();
         }
+        string imgTest;
+        //Sử dụng thư viện
+        //using System.Runtime.InteropServices;
+        //để di chuyển frm
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+        private void frmHocSinh_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+
+        }
+
+        private void btnDong_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
         private void frmHocSinh_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'quanLyHocSinhDataSet1.HOCSINH' table. You can move, or remove it, as needed.
+
+
+            this.WindowState = FormWindowState.Normal;
             DatabaseConnection.Connected();
             if (!DatabaseConnection.IsConnect())
             {
                 MessageBox.Show("Không kết nối được dữ liệu");
                 return;
             }
-            FillDataGridView();
             // Load dữ liệu MALOP vào cboMALOP
             Load_combobox();
+            if (DatabaseConnection.isAdmin == true)
+                FillDataGridView();
+            else
+            {
+                string query = "Select MALOP from LOP Where MAGVCN = '" + DatabaseConnection.MaGV + "'";
+                DataTable dt = DatabaseConnection.GetDataTable(query);
+                cboMaLop.Text = dt.Rows[0][0].ToString();
+                cboMaLop.Enabled = false;
+                string strSelect = "SELECT MAHS AS [Mã học sinh] , " +
+                                          "HOTEN AS [Họ tên], " +
+                                          "MALOP AS [Khóa học], " +
+                                          "NGAYSINH AS [Ngày sinh], "+
+                                          "GIOITINH AS [Giới tính], "+
+                                          "DIACHI AS[Địa chỉ], "+
+                                          "HOTENCHA AS[Họ tên Cha], "+
+                                          "HOTENME AS[Họ tên Mẹ], "+
+                                          "SDTCHA AS[SĐT Cha], "+
+                                          "SDTME AS[SĐT Mẹ], "+
+                                          "DANTOC AS[Dân tộc], "+
+                                          "EMAIL AS[Email], "+
+                                          "DIENTHOAI AS[Điện thoại] "+
+                                    "FROM HOCSINH where MALOP = '" + cboMaLop.Text + "'";
+                dgvHS.DataSource = DatabaseConnection.GetDataTable(strSelect);
+
+            }
         }
 
         private void btnThemMoi_Click(object sender, EventArgs e)
         {
-            validateHoTen();
-            validateGioiTinh();
-            validateNgaySinh();
-            validateKhoa();
-            validateMaLop();
-            validateMSHS();
-            validateDanToc();
-            validateDiaChi();
             // Câu lệnh truy vấn Table HOCSINH
             string strSelect = "Select * From HOCSINH Where MAHS = '" + txtMSHS.Text + "'";
             if (GeneralCheck())
@@ -48,12 +98,12 @@ namespace SMS
                 {
                     MessageBox.Show("MSHS đã tồn tại. Xin vui lòng kiểm tra lại!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     txtMSHS.Focus();
-                    txtMSHS.SelectAll();
+                    //txtMSHS.SelectAll();
                 }
                 else
                 {
                     // Câu lệnh insert dữ liệu
-                    string strInsert = "Set Dateformat dmy Insert into HOCSINH values ('";
+                    string strInsert = "Declare @img varbinary(MAX) Set Dateformat dmy Insert into HOCSINH values ('";
                     strInsert += txtMSHS.Text + "', N'";
                     strInsert += txtHoTen.Text + "', '";
                     strInsert += cboMaLop.Text + "', ";
@@ -69,12 +119,12 @@ namespace SMS
                         strInsert += "N'" + txtHoTenMe.Text + "', ";
                     else
                         strInsert += "NULL, ";
-                    if (mtxSDTCha.Text != "")
-                        strInsert += "'" + mtxSDTCha.Text + "', ";
+                    if (txtSDTCha.Text != "")
+                        strInsert += "'" + txtSDTCha.Text + "', ";
                     else
                         strInsert += "NULL, ";
-                    if (mtxSDTMe.Text != "")
-                        strInsert += "'" + mtxSDTMe.Text + "', ";
+                    if (txtSDTMe.Text != "")
+                        strInsert += "'" + txtSDTMe.Text + "', ";
                     else
                         strInsert += "NULL, ";
                     strInsert += "N'" + txtDanToc.Text + "', ";
@@ -82,15 +132,24 @@ namespace SMS
                         strInsert += "'" + txtEmail.Text + "', ";
                     else
                         strInsert += "NULL, ";
-                    if (mtxSDT.Text != "")
-                        strInsert += "'" + mtxSDT.Text + "') ";
+                    if (txtSDT.Text != "")
+                        strInsert += "'" + txtSDT.Text + "', @img";
                     else
-                        strInsert += "NULL)";
+                        strInsert += "NULL, @img)";
                     //
+                    //byte[] img = null;
+                    //FileStream fs = new FileStream(imgTest, FileMode.Open, FileAccess.Read);
+                    //BinaryReader br = new BinaryReader(fs);
+                    //img =  .ReadBytes((int)fs.Length);
+                    //DatabaseConnection.Connected();
+                    //SqlCommand cmd = new SqlCommand(strInsert, DatabaseConnection.sqlConnection);
+                    //cmd.Parameters.AddWithValue(new SqlParameter("@img", img));
+
                     if (DatabaseConnection.ExcuteSql(strInsert))
                     {
                         MessageBox.Show("Thêm Học sinh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtMSHS.ReadOnly = true;
+                        DatabaseConnection.SaveAction("Them", "HOCSINH");
+                        txtMSHS.Enabled = false;
                     }
                     else
                         MessageBox.Show("Thêm Học sinh thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -99,18 +158,10 @@ namespace SMS
             }
         }
 
-        private void btnSua_Click(object sender, EventArgs e)
+        private void btnChinhSua_Click(object sender, EventArgs e)
         {
-            if (dgvHS.SelectedRows.Count > 0)
+            if (dgvHS.SelectedRows.Count == 1)
             {
-                validateHoTen();
-                validateGioiTinh();
-                validateNgaySinh();
-                validateKhoa();
-                validateMaLop();
-                validateMSHS();
-                validateDanToc();
-                validateDiaChi();
                 if (GeneralCheck())
                 {
                     string strUpdate = "Set Dateformat dmy Update HOCSINH Set HOTEN = N'" + txtHoTen.Text + "', ";
@@ -120,8 +171,8 @@ namespace SMS
                     strUpdate += "MALOP = '" + cboMaLop.Text + "', ";
                     strUpdate += "DANTOC = N'" + txtDanToc.Text + "', ";
                     strUpdate += "DIACHI = N'" + txtDiaChi.Text + "', ";
-                    if (mtxSDT.Text != "")
-                        strUpdate += "DIENTHOAI = '" + mtxSDT.Text + "', ";
+                    if (txtSDT.Text != "")
+                        strUpdate += "DIENTHOAI = '" + txtSDT.Text + "', ";
                     else
                         strUpdate += "DIENTHOAI = NULL, ";
                     if (txtEmail.Text != "")
@@ -136,18 +187,21 @@ namespace SMS
                         strUpdate += "HOTENME = N'" + txtHoTenMe.Text + "', ";
                     else
                         strUpdate += "HOTENME = NULL, ";
-                    if (mtxSDTCha.Text != "")
-                        strUpdate += "SDTCHA = '" + mtxSDTCha.Text + "', ";
+                    if (txtSDTCha.Text != "")
+                        strUpdate += "SDTCHA = '" + txtSDTCha.Text + "', ";
                     else
                         strUpdate += "SDTCHA = NULL, ";
-                    if (mtxSDTMe.Text != "")
-                        strUpdate += "SDTME = '" + mtxSDTMe.Text + "' ";
+                    if (txtSDTMe.Text != "")
+                        strUpdate += "SDTME = '" + txtSDTMe.Text + "' ";
                     else
                         strUpdate += "SDTME = NULL, ";
                     strUpdate += "Where MAHS = '" + txtMSHS.Text + "'";
                     //
                     if (DatabaseConnection.ExcuteSql(strUpdate))
+                    {
                         MessageBox.Show("Chỉnh sửa Học sinh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DatabaseConnection.SaveAction("Sua", "HOCSINH");
+                    }
                     else
                         MessageBox.Show("Chỉnh sửa Học sinh thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     FillDataGridView();
@@ -175,6 +229,7 @@ namespace SMS
                             }
                         FillDataGridView();
                         MessageBox.Show("Xóa học sinh thành công ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DatabaseConnection.SaveAction("Xoa", "HOCSINH");
                     }
                 }
             }
@@ -186,7 +241,8 @@ namespace SMS
 
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
-            txtMSHS.ReadOnly = false;
+            errorProvider1.Clear();
+            txtMSHS.Enabled = true;
             // Làm trắng lại các ô textbox
             txtHoTen.Text = "";
             cboGioiTinh.Text = "";
@@ -196,12 +252,12 @@ namespace SMS
             txtMSHS.Text = "";
             txtDanToc.Text = "";
             txtDiaChi.Text = "";
-            mtxSDT.Text = "";
+            txtSDT.Text = "";
             txtEmail.Text = "";
             txtHoTenMe.Text = "";
             txtHoTenCha.Text = "";
-            mtxSDTCha.Text = "         ";
-            mtxSDTMe.Text = "         ";
+            txtSDTCha.Text = "";
+            txtSDTMe.Text = "";
             txtHoTen.Focus();
         }
 
@@ -225,18 +281,18 @@ namespace SMS
                 strSelect += "DANTOC = N'" + txtDanToc.Text + "' and ";
             if (txtDiaChi.Text != "")
                 strSelect += "DIACHI = N'" + txtDiaChi.Text + "' and ";
-            if (mtxSDT.Text != "         ")
-                strSelect += "DIENTHOAI = '" + mtxSDT.Text + "' and ";
+            if (txtSDT.Text != "")
+                strSelect += "DIENTHOAI = '" + txtSDT.Text + "' and ";
             if (txtEmail.Text != "")
                 strSelect += "EMAIL = '" + txtEmail.Text + "' and ";
             if (txtHoTenCha.Text != "")
                 strSelect += "HOTENCHA = N'" + txtHoTenCha.Text + "' and ";
             if (txtHoTenMe.Text != "")
                 strSelect += "HOTENME = N'" + txtHoTenMe.Text + "' and ";
-            if (mtxSDTCha.Text != "         ")
-                strSelect += "SDTCHA = '" + mtxSDTCha.Text + "' and ";
-            if (mtxSDTMe.Text != "         ")
-                strSelect += "SDTME = '" + mtxSDTMe.Text + "' and";
+            if (txtSDTCha.Text != "")
+                strSelect += "SDTCHA = '" + txtSDTCha.Text + "' and ";
+            if (txtSDTMe.Text != "")
+                strSelect += "SDTME = '" + txtSDTMe.Text + "' and";
             if (s1 == strSelect)
             {
                 MessageBox.Show("Chưa nhập thông tin cần tìm kiếm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -254,8 +310,22 @@ namespace SMS
 
         private void FillDataGridView()
         {
-            string query = "SELECT * FROM HOCSINH";
-            dgvHS.DataSource = DatabaseConnection.GetDataTable(query);
+            //string strSelect = "SELECT * FROM HOCSINH";
+            string strSelect = "SELECT MAHS AS [Mã học sinh] , " +
+                                          "HOTEN AS [Họ tên], " +
+                                          "MALOP AS [Khóa học], " +
+                                          "NGAYSINH AS [Ngày sinh], " +
+                                          "GIOITINH AS [Giới tính], " +
+                                          "DIACHI AS[Địa chỉ], " +
+                                          "HOTENCHA AS[Họ tên Cha], " +
+                                          "HOTENME AS[Họ tên Mẹ], " +
+                                          "SDTCHA AS[SĐT Cha], " +
+                                          "SDTME AS[SĐT Mẹ], " +
+                                          "DANTOC AS[Dân tộc], " +
+                                          "EMAIL AS[Email], " +
+                                          "DIENTHOAI AS[Điện thoại] " +
+                                "FROM HOCSINH";
+            dgvHS.DataSource = DatabaseConnection.GetDataTable(strSelect);
             //// Chỉnh sửa kích thước các cột
             dgvHS.Columns[0].Width = dgvHS.Width / 14;
             dgvHS.Columns[1].Width = dgvHS.Width / 14 * 5 / 2;
@@ -274,62 +344,10 @@ namespace SMS
             // adapter.Dispose();
         }
 
-        bool GeneralCheck()
-        {
-            bool flag = true;
-            if (txtHoTen.Text == "")
-            {
-                txtHoTen.Focus();
-                flag = false;
-                //provider
-            }
-            if (cboGioiTinh.Text == "")
-            {
-                cboGioiTinh.Focus();
-                flag = false;
-                //provider
-            }
-            if (txtNgaySinh.Text == "")
-            {
-                txtNgaySinh.Focus();
-                flag = false;
-                //provider
-            }
-            if (txtKhoa.Text == "")
-            {
-                txtKhoa.Focus();
-                flag = false;
-                //provider
-            }
-            if (cboMaLop.Text == "")
-            {
-                cboMaLop.Focus();
-                flag = false;
-                //provider
-            }
-            if (txtMSHS.Text == "")
-            {
-                txtMSHS.Focus();
-                flag = false;
-                //provider
-            }
-            if (txtDanToc.Text == "")
-            {
-                txtDanToc.Focus();
-                flag = false;
-                //provider
-            }
-            if (txtDiaChi.Text == "")
-            {
-                txtDiaChi.Focus();
-                flag = false;
-                //provider
-            }
-            return flag;
-        }
-
         private void dgvHS_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            errorProvider1.Clear();
+
             txtMSHS.Text = dgvHS.CurrentRow.Cells[0].Value.ToString();
             txtHoTen.Text = dgvHS.CurrentRow.Cells[1].Value.ToString();
             cboMaLop.Text = dgvHS.CurrentRow.Cells[2].Value.ToString();
@@ -339,18 +357,18 @@ namespace SMS
             txtDiaChi.Text = dgvHS.CurrentRow.Cells[6].Value.ToString();
             txtHoTenCha.Text = dgvHS.CurrentRow.Cells[7].Value.ToString();
             txtHoTenMe.Text = dgvHS.CurrentRow.Cells[8].Value.ToString();
-            mtxSDTCha.Text = dgvHS.CurrentRow.Cells[9].Value.ToString();
-            mtxSDTMe.Text = dgvHS.CurrentRow.Cells[10].Value.ToString();
+            txtSDT.Text = dgvHS.CurrentRow.Cells[9].Value.ToString();
+            txtSDTMe.Text = dgvHS.CurrentRow.Cells[10].Value.ToString();
             txtDanToc.Text = dgvHS.CurrentRow.Cells[11].Value.ToString();
             txtEmail.Text = dgvHS.CurrentRow.Cells[12].Value.ToString();
-            mtxSDT.Text = dgvHS.CurrentRow.Cells[13].Value.ToString();
-            txtMSHS.ReadOnly = true; // Không cho phép sửa Mã học sinh
-            txtMSHS.Visible = true;
+            //txtSDT.Text = dgvHS.CurrentRow.Cells[13].Value.ToString();
+
+            txtMSHS.Enabled = false; // Không cho phép sửa Mã học sinh
         }
 
-        private void dtpNgaySinh_ValueChanged(object sender, EventArgs e)
+        private void dtpNgaySinh_onValueChanged(object sender, EventArgs e)
         {
-            txtNgaySinh.Text = dtpNgaySinh.Text;
+            txtNgaySinh.Text = dtpNgaySinh.Value.ToString();
         }
 
         void Load_combobox()
@@ -362,100 +380,128 @@ namespace SMS
             cboMaLop.Text = "";
         }
 
-        //Xác thực đã nhập text
-        protected bool validateMSHS()
+        private void cboMaLop_TextChanged(object sender, EventArgs e)
         {
-            bool flag = false;
-            if (txtMSHS.Text == "")
-            {
-                errorProvider1.SetError(txtMSHS, "Chưa nhập MSHS");
-                flag = true;
-            }
+            string query = "SELECT TENLOP FROM LOP WHERE MALOP = '" + cboMaLop.Text + "'";
+            DataTable dt = DatabaseConnection.GetDataTable(query);
+            if (cboMaLop.Text == "")
+                txtTenLop.Text = "";
             else
-                errorProvider1.SetError(txtMSHS, "");
-            return flag;
-
+                txtTenLop.Text = dt.Rows[0][0].ToString();
         }
-        protected bool validateHoTen()
+
+        bool GeneralCheck()
         {
-            bool flag = false;
+            errorProvider1.Clear();
+            bool flag = true;
             if (txtHoTen.Text == "")
             {
-                errorProvider1.SetError(txtHoTen, "Chưa nhập họ tên");
-                flag = true;
+                txtHoTen.Focus();
+                flag = false;
+                //provider
+                errorProvider1.SetError(txtHoTen, "Không được bỏ trống vùng này");
             }
-            else
-                errorProvider1.SetError(txtHoTen, "");
-            return flag;
-        }
-        protected bool validateGioiTinh()
-        {
-            bool flag = false;
             if (cboGioiTinh.Text == "")
             {
-                errorProvider1.SetError(cboGioiTinh, "Chưa nhập giới tính");
-                flag = true;
+                cboGioiTinh.Focus();
+                flag = false;
+                //provider
+                errorProvider1.SetError(cboGioiTinh, "Không được bỏ trống vùng này");
             }
-            else errorProvider1.SetError(cboGioiTinh, "");
-            return flag;
-        }
-        protected bool validateNgaySinh()
-        {
-            bool flag = false;
             if (txtNgaySinh.Text == "")
             {
-                errorProvider1.SetError(txtNgaySinh, "Chưa nhập ngày sinh");
-                flag = true;
+                txtNgaySinh.Focus();
+                flag = false;
+                //provider
+                errorProvider1.SetError(dtpNgaySinh, "Không được bỏ trống vùng này");
             }
-            else errorProvider1.SetError(txtNgaySinh, "");
-            return flag;
-        }//
-        protected bool validateKhoa()
-        {
-            bool flag = false;
             if (txtKhoa.Text == "")
             {
-                errorProvider1.SetError(txtKhoa, "Chưa nhập khóa");
-                flag = true;
+                txtKhoa.Focus();
+                flag = false;
+                //provider
+                errorProvider1.SetError(txtKhoa, "Không được bỏ trống vùng này");
             }
-            else
-                errorProvider1.SetError(txtKhoa, "");
-            return flag;
-
-        }
-        protected bool validateMaLop()
-        {
-            bool flag = false;
             if (cboMaLop.Text == "")
             {
-                errorProvider1.SetError(cboMaLop, "Chưa nhập mã lớp");
-                flag = true;
+                cboMaLop.Focus();
+                flag = false;
+                //provider
+                errorProvider1.SetError(cboMaLop, "Không được bỏ trống vùng này");
             }
-            else
-                errorProvider1.SetError(cboMaLop, "");
-            return flag;
-        }
-        protected bool validateDanToc()
-        {
-            bool flag = false;
+            if (txtMSHS.Text == "")
+            {
+                txtMSHS.Focus();
+                flag = false;
+                //provider
+                errorProvider1.SetError(txtMSHS, "Không được bỏ trống vùng này");
+            }
             if (txtDanToc.Text == "")
             {
-                errorProvider1.SetError(txtDanToc, "Chưa nhập dân tộc");
-                flag = true;
+                txtDanToc.Focus();
+                flag = false;
+                //provider
+                errorProvider1.SetError(txtDanToc, "Không được bỏ trống vùng này");
             }
-            else errorProvider1.SetError(txtDanToc, "");
-            return flag;
-        }
-        protected bool validateDiaChi()
-        {
-            bool flag = false;
             if (txtDiaChi.Text == "")
             {
-                errorProvider1.SetError(txtDiaChi, "Chưa nhập địa chỉ");
-                flag = true;
+                txtDiaChi.Focus();
+                flag = false;
+                //provider
+                errorProvider1.SetError(txtDiaChi, "Không được bỏ trống vùng này");
             }
-            else errorProvider1.SetError(txtDiaChi, "");
             return flag;
-        }//
+        }
+
+        private void btnChonAnh_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog dlg = new OpenFileDialog();
+                dlg.Filter = "All File(.)|*.*";
+                dlg.Title = "Select Employee Picture...";
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    imgTest = dlg.FileName.ToString();
+                    ptbAnh.ImageLocation = imgTest;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ex.Message");
+
+            }
+        }
+
+        private void btnXuat_Click(object sender, EventArgs e)
+        {
+            //Tạo FileName
+            SaveFileDialog fsave = new SaveFileDialog();
+            fsave.Filter = "All files|*.*|Excel file|*.xlsx";
+            Excel.Application app = new Excel.Application();
+            Excel.Workbook workbook = app.Workbooks.Add(Type.Missing);
+            Excel.Worksheet worksheet = null;
+
+
+            worksheet = workbook.ActiveSheet;
+            worksheet.Name = "Xuất dữ liệu";
+            //Tạo dữ liệu cho file Excel
+
+            for (int i = 1; i <= dgvHS.Columns.Count; i++)
+            {
+                worksheet.Cells[1, i] = dgvHS.Columns[i - 1].HeaderText;
+            }
+            for (int i = 0; i < dgvHS.Rows.Count; i++)
+                for (int j = 0; j < dgvHS.Columns.Count; j++)
+                    worksheet.Cells[i + 2, j + 1] = dgvHS.Rows[i].Cells[j].Value.ToString();
+            if (fsave.ShowDialog() == DialogResult.OK)
+            {
+                workbook.SaveAs(fsave.FileName, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing);
+            }
+            app.Quit();
+
+            MessageBox.Show("Xuất dữ liệu thành công", "Thông báo", MessageBoxButtons.OK);
+        }
     }
 }

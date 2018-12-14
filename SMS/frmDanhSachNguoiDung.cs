@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 
 namespace SMS
 {
@@ -16,9 +18,76 @@ namespace SMS
         {
             InitializeComponent();
         }
+        //Sử dụng thư viện
+        //using System.Runtime.InteropServices;
+        //để di chuyển frm
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+
+        private void frmDanhSachNguoiDung_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+
+        }
+
+        private void btnDong_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        public static string EnCrypt(string strEnCrypt, string key)
+        {
+            try
+            {
+                byte[] keyArr;
+                byte[] EnCryptArr = UTF8Encoding.UTF8.GetBytes(strEnCrypt);
+                MD5CryptoServiceProvider MD5Hash = new MD5CryptoServiceProvider();
+                keyArr = MD5Hash.ComputeHash(UTF8Encoding.UTF8.GetBytes(key));
+                TripleDESCryptoServiceProvider tripDes = new TripleDESCryptoServiceProvider();
+                tripDes.Key = keyArr;
+                tripDes.Mode = CipherMode.ECB;
+                tripDes.Padding = PaddingMode.PKCS7;
+                ICryptoTransform transform = tripDes.CreateEncryptor();
+                byte[] arrResult = transform.TransformFinalBlock(EnCryptArr, 0, EnCryptArr.Length);
+                return Convert.ToBase64String(arrResult, 0, arrResult.Length);
+            }
+            catch (Exception ex) { }
+            return "";
+        }
+
+        public static string DeCrypt(string strDecypt, string key)
+        {
+            try
+            {
+                byte[] keyArr;
+                byte[] DeCryptArr = Convert.FromBase64String(strDecypt);
+                MD5CryptoServiceProvider MD5Hash = new MD5CryptoServiceProvider();
+                keyArr = MD5Hash.ComputeHash(UTF8Encoding.UTF8.GetBytes(key));
+                TripleDESCryptoServiceProvider tripDes = new TripleDESCryptoServiceProvider();
+                tripDes.Key = keyArr;
+                tripDes.Mode = CipherMode.ECB;
+                tripDes.Padding = PaddingMode.PKCS7;
+                ICryptoTransform transform = tripDes.CreateDecryptor();
+                byte[] arrResult = transform.TransformFinalBlock(DeCryptArr, 0, DeCryptArr.Length);
+                return UTF8Encoding.UTF8.GetString(arrResult);
+            }
+            catch (Exception ex) { }
+            return "";
+        }
 
         private void frmDanhSachNguoiDung_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'quanLyHocSinhDataSet.TAIKHOAN' table. You can move, or remove it, as needed.           
+            this.WindowState = FormWindowState.Normal;
             DatabaseConnection.Connected();
             if (!DatabaseConnection.IsConnect())
             {
@@ -30,29 +99,29 @@ namespace SMS
 
         private void btnThemMoi_Click(object sender, EventArgs e)
         {
-            
             // Câu lệnh truy vấn Table TAIKHOAN
-            string strSelect = "Select * From TAIKHOAN Where TENDANGNHAP = '" + txtTaikhoan.Text + "'";
+            string strSelect = "Select * From TAIKHOAN Where TENDANGNHAP = '" + txtTaiKhoan.Text + "'";
             if (GeneralCheck())
             {
                 if (DatabaseConnection.CheckExist(strSelect))
                 {
                     MessageBox.Show("Tên tài khoản đã tồn tại!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    txtTaikhoan.Focus();
-                    txtTaikhoan.SelectAll();
+                    txtTaiKhoan.Focus();
+                    //txtTaiKhoan.Select();
                 }
                 else
                 {
                     // Câu lệnh insert dữ liệu
                     string strInsert = "Insert into TAIKHOAN values ('";
-                    strInsert += txtTaikhoan.Text + "', N'";
-                    strInsert += txtMK.Text + "', N'";
+                    strInsert += txtTaiKhoan.Text + "', N'";
+                    strInsert += EnCrypt("LTTQ",txtMK.Text) + "', N'";///////////////////////////
                     strInsert += cboQuyen.Text + "')";
                     //
                     if (DatabaseConnection.ExcuteSql(strInsert))
                     {
-                        txtTaikhoan.ReadOnly = true;
+                        txtTaiKhoan.Enabled = false;
                         MessageBox.Show("Thêm tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DatabaseConnection.SaveAction("Them", "TAIKHOAN");
                     }
                     else
                         MessageBox.Show("Thêm tài khoản thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -62,23 +131,23 @@ namespace SMS
         }
 
 
-        private void btnSua_Click(object sender, EventArgs e)
+        private void btnChinhSua_Click(object sender, EventArgs e)
         {
-            validateTenTK();
-            validateMatKhau();
-            validateXacNhanMK();
-            validateQuyenTruyCap();
-            if (dgvDSND.SelectedRows.Count > 0)
+            if (dgvDSND.SelectedRows.Count == 1)
             {
                 if (GeneralCheck())
                 {
-                    string strUpdate = "Update TAIKHOAN Set MATKHAU = '" + txtMK.Text + "', ";
+                    string strUpdate = "Update TAIKHOAN Set MATKHAU = '" + EnCrypt("LTTQ", txtMK.Text) + "', ";
                     strUpdate += "QUYENTRUYCAP = N'" + cboQuyen.Text + "' ";
-                    strUpdate += "Where TENDANGNHAP = '" + txtTaikhoan.Text + "'";
+                    strUpdate += "Where TENDANGNHAP = '" + txtTaiKhoan.Text + "'";
                     if (DatabaseConnection.ExcuteSql(strUpdate))
+                    {
                         MessageBox.Show("Chỉnh sửa tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DatabaseConnection.SaveAction("Sua", "TAIKHOAN");
+                    }
                     else
                         MessageBox.Show("Chỉnh sửa tài khoản thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    DatabaseConnection.SaveAction("ChinhSua", "TAIKHOAN");
                     FillDataGridView();
                 }
             }
@@ -87,7 +156,7 @@ namespace SMS
                 MessageBox.Show("Bạn chưa chọn tài khoản cần sửa!", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
-        
+
         private void btnXoa_Click(object sender, EventArgs e)
         {
             if (dgvDSND.SelectedRows.Count > 0)
@@ -104,6 +173,7 @@ namespace SMS
                             }
                         FillDataGridView();
                         MessageBox.Show("Xóa tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DatabaseConnection.SaveAction("Xoa", "TAIKHOAN");
                     }
                 }
             }
@@ -115,11 +185,14 @@ namespace SMS
 
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
-            txtTaikhoan.ReadOnly = false;
-            txtTaikhoan.Text = "";
+            txtTaiKhoan.Enabled = true;
+            errorProvider1.Clear();
+            txtTaiKhoan.Enabled = true;
+            txtTaiKhoan.Text = "";
             txtMK.Text = "";
             txtXacNhanMk.Text = "";
             cboQuyen.Text = "";
+            errorProvider1.Clear();
         }
 
 
@@ -127,10 +200,10 @@ namespace SMS
         {
             string s1 = "Select * From TAIKHOAN Where ";
             string strSelect = "Select * From TAIKHOAN Where ";
-            if (txtTaikhoan.Text != "")
-                strSelect += "TENDANGNHAP = '" + txtTaikhoan.Text + "'and ";
+            if (txtTaiKhoan.Text != "")
+                strSelect += "TENDANGNHAP = '" + txtTaiKhoan.Text + "'and ";
             if (txtMK.Text != "")
-                strSelect += "MATKHAU = '" + txtMK.Text + "' and ";
+                strSelect += "MATKHAU = '" + EnCrypt("LTTQ", txtMK.Text) + "' and ";
             if (cboQuyen.Text != "")
                 strSelect += "QUYENTRUYCAP = N'" + cboQuyen.Text + "' and ";
             if (s1 == strSelect)
@@ -144,48 +217,21 @@ namespace SMS
                 if (DatabaseConnection.GetDataTable(strSelect).Rows.Count == 0)
                     MessageBox.Show("Không tìm thấy kết quả!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
+                {
                     dgvDSND.DataSource = DatabaseConnection.GetDataTable(strSelect);
+                }
             }
-        }
-
-
-        bool GeneralCheck()
-        {
-            bool flag = true;
-            if (txtTaikhoan.Text == "")
-            {
-                txtTaikhoan.Focus();
-                flag = false;
-                // Provider
-            }
-            else if (txtMK.Text == "")
-            {
-                txtMK.Focus();
-                flag = false;
-                //Provider
-            }
-            else if (txtMK.Text != txtXacNhanMk.Text)
-            {
-                txtXacNhanMk.Focus();
-                flag = false;
-                //Provider;
-            }
-            else if (cboQuyen.Text == "") {
-                flag = false;
-                //Provider
-            }
-            return flag;
         }
 
         private void dgvDSND_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            txtTaikhoan.Text = dgvDSND.CurrentRow.Cells[0].Value.ToString();
+            errorProvider1.Clear();
+            txtTaiKhoan.Text = dgvDSND.CurrentRow.Cells[0].Value.ToString();
             txtMK.Text = dgvDSND.CurrentRow.Cells[1].Value.ToString();
             txtXacNhanMk.Text = txtMK.Text;
             cboQuyen.Text = dgvDSND.CurrentRow.Cells[2].Value.ToString();
-            txtTaikhoan.ReadOnly = true;
+            txtTaiKhoan.Enabled = false;
         }
-
 
         void FillDataGridView()
         {
@@ -195,52 +241,37 @@ namespace SMS
             // adapter.Dispose();
         }
 
-        //Xác thực đã nhập text
-        protected bool validateTenTK()
+        bool GeneralCheck()
         {
-            bool flag = false;
-            if (txtTaikhoan.Text == "")
+            errorProvider1.Clear();
+            bool flag = true;
+            if (txtTaiKhoan.Text == "")
             {
-                errorProvider1.SetError(txtTaikhoan, "Không được bỏ trống vùng này");
-                flag = true;
+                txtTaiKhoan.Focus();
+                errorProvider1.SetError(txtTaiKhoan, "Không được bỏ trống vùng này");
+                flag = false;
             }
-            else
-                errorProvider1.SetError(txtTaikhoan, "");
-            return flag;
-
-        }
-        protected bool validateMatKhau()
-        {
-            bool flag = false;
             if (txtMK.Text == "")
             {
+                txtMK.Focus();
                 errorProvider1.SetError(txtMK, "Không được bỏ trống vùng này");
-                flag = true;
+                flag = false;
+                //Provider
             }
-            else
-                errorProvider1.SetError(txtMK, "");
-            return flag;
-        }
-        protected bool validateXacNhanMK()
-        {
-            bool flag = false;
-            if (txtXacNhanMk.Text == "")
+            if (txtMK.Text != txtXacNhanMk.Text)
             {
-                errorProvider1.SetError(txtXacNhanMk, "Không được bỏ trống vùng này");
-                flag = true;
+                txtXacNhanMk.Focus();
+                errorProvider1.SetError(txtXacNhanMk, "Không khớp mật khẩu");
+                flag = false;
+                //Provider;
             }
-            else errorProvider1.SetError(txtXacNhanMk, "");
-            return flag;
-        }//
-        protected bool validateQuyenTruyCap()
-        {
-            bool flag = false;
             if (cboQuyen.Text == "")
             {
-                errorProvider1.SetError(cboQuyen, "Chưa nhập quyền truy cập");
-                flag = true;
+                cboQuyen.Focus();
+                flag = false;
+                errorProvider1.SetError(cboQuyen, "Không được bỏ trống vùng này");
+                //Provider
             }
-            else errorProvider1.SetError(cboQuyen, "");
             return flag;
         }
     }

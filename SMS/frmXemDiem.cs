@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace SMS
@@ -17,9 +18,36 @@ namespace SMS
         {
             InitializeComponent();
         }
+        //Sử dụng thư viện
+        //using System.Runtime.InteropServices;
+        //để di chuyển frm
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+        private void frmXemDiem_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+
+        }
+
+        private void btnDong_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
 
         private void frmXemDiem_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Normal;
             DatabaseConnection.Connected();
             if (!DatabaseConnection.IsConnect())
             {
@@ -32,9 +60,7 @@ namespace SMS
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            validateMaLop();
-            validateNamHoc();
-            validateHocKy();
+
             if (GeneralCheck())
             {
                 string query = null;
@@ -74,10 +100,12 @@ namespace SMS
                                       "AND DIEM.HOCKY='" + txtHocKy.Text + "' " +
                             "GROUP BY MONHOC.TENMH, DIEM.MAHS, DIEM.TENHOCSINH, DIEM.DIEMTONGKET";
                 }
-                dgvDSXD.DataSource = DatabaseConnection.GetDataTable(query);
+                if (DatabaseConnection.GetDataTable(query).Rows.Count == 0)
+                    MessageBox.Show("Không tìm thấy kết quả!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    dgvDSXD.DataSource = DatabaseConnection.GetDataTable(query);
             }
         }
-
 
         private void btnXuat_Click(object sender, EventArgs e)
         {
@@ -183,43 +211,6 @@ namespace SMS
             MessageBox.Show("Xuất dữ liệu thành công", "Thông báo", MessageBoxButtons.OK);
         }
 
-        //Xác thực đã nhập text
-        protected bool validateMaLop()
-        {
-            bool flag = false;
-            if (cboMaLop.Text == "")
-            {
-                errorProvider1.SetError(cboMaLop, "Chưa nhập mã lớp");
-                flag = true;
-            }
-            else errorProvider1.SetError(cboMaLop, "");
-            return flag;
-
-        }
-
-        protected bool validateNamHoc()
-        {
-            bool flag = false;
-            if (txtNamHoc.Text == "")
-            {
-                errorProvider1.SetError(txtNamHoc, "Chưa nhập năm học");
-                flag = true;
-            }
-            else errorProvider1.SetError(txtNamHoc, "");
-            return flag;
-        }
-        protected bool validateHocKy()
-        {
-            bool flag = false;
-            if (txtHocKy.Text == "")
-            {
-                errorProvider1.SetError(txtHocKy, "Chưa nhập học kỳ");
-                flag = true;
-            }
-            else errorProvider1.SetError(txtHocKy, "");
-            return flag;
-        }
-
         private void reOject(object obj)
         {
             try
@@ -240,51 +231,103 @@ namespace SMS
 
         bool GeneralCheck()
         {
+            errorProvider1.Clear();
             bool flag = true;
             if (cboMaLop.Text == "")
             {
                 cboMaLop.Focus();
                 flag = false;
                 // Provider
+                errorProvider1.SetError(cboMaLop, "Không được bỏ trống vùng này");
             }
-            else if (txtHocKy.Text == "")
+            if (txtHocKy.Text == "")
             {
                 txtHocKy.Focus();
                 flag = false;
                 //Provider
+                errorProvider1.SetError(txtHocKy, "Không được bỏ trống vùng này");
             }
-            else if (txtNamHoc.Text == "")
+            if (txtNamHoc.Text == "")
             {
                 txtNamHoc.Focus();
                 flag = false;
                 //Provider
+                errorProvider1.SetError(txtNamHoc, "Không được bỏ trống vùng này");
             }
             return flag;
         }
 
-
         void Load_combobox()
         {
-            string query = "SELECT * FROM LOP";
-            DataTable dt = DatabaseConnection.GetDataTable(query);
-            cboMaLop.DisplayMember = "MALOP";
-            cboMaLop.DataSource = dt;
-            cboMaLop.Text = "";
-            query = "SELECT * FROM MONHOC";
-            dt = DatabaseConnection.GetDataTable(query);
             cboMaMon.DisplayMember = "MAMH";
-            cboMaMon.DataSource = dt;
+            cboMaMon.ValueMember = "MAMH";
+            cboMaLop.DisplayMember = "MALOP";
+            cboMaLop.ValueMember = "MALOP";
+            string query = "SELECT MALOP FROM LOP";
+            DataTable d = DatabaseConnection.GetDataTable(query);
+            cboMaLop.DataSource = d;
+            query = "SELECT MAMH FROM MONHOC";
+            d = DatabaseConnection.GetDataTable(query);
+            cboMaMon.DataSource = d;
+            cboMaLop.Text = "";
             cboMaMon.Text = "";
+            if (DatabaseConnection.isAdmin == false)
+            {
+                query = "select MALOP FROM PHANCONG where MAGV = '" + DatabaseConnection.MaGV
+                             + "' UNION select MALOP from LOP where MAGVCN = '" + DatabaseConnection.MaGV + "'";
+                DataTable dt = DatabaseConnection.GetDataTable(query);
+                cboMaLop.DataSource = dt;
+            }
+            UpdateCbo();
+        }
+        void UpdateCbo()
+        {
+            string query = "SELECT MAMH FROM MONHOC";
+            var d = DatabaseConnection.GetDataTable(query);
+            if (DatabaseConnection.isAdmin == false)
+            {
+                // nếu cbo.MALOP khác lớp chủ nhiệm -> cbo.MAMH = MAMH giáo viên đó dạy
+                string query1 = "select MALOP from LOP where MAGVCN = '" + DatabaseConnection.MaGV + "'";
+                string query2 = "select Distinct MAMH FROM PHANCONG where MAGV = '" + DatabaseConnection.MaGV + "'";
+                DataTable dt1 = DatabaseConnection.GetDataTable(query1);
+                DataTable dt2 = DatabaseConnection.GetDataTable(query2);
+                if (dt1.Rows != null && cboMaLop.SelectedValue.ToString() != dt1.Rows[0][0].ToString())
+                {
+                    cboMaMon.DataSource = DatabaseConnection.GetDataTable(query2);
+                }
+                else
+                {
+                    cboMaMon.DataSource = d;
+                }
+                cboMaMon.Text = "";
+            }
         }
 
         private void cboMaMon_TextChanged(object sender, EventArgs e)
         {
-            string query = "SELECT TENMH FROM MONHOC WHERE MAMH = '" + cboMaMon.Text + "'";
+            if (cboMaMon.SelectedValue == null)
+                return;
+            string query = "SELECT TENMH FROM MONHOC WHERE MAMH = '" + cboMaMon.SelectedValue.ToString() + "'";
             DataTable dt = DatabaseConnection.GetDataTable(query);
             if (cboMaMon.Text == "")
                 txtTenMon.Text = "";
             else
                 txtTenMon.Text = dt.Rows[0][0].ToString();
+        }
+
+        private void cboMaLop_TextChanged(object sender, EventArgs e)
+        {
+            if (cboMaLop.SelectedValue == null)
+                return;
+            string query = "SELECT TENLOP FROM LOP WHERE MALOP = '" + cboMaLop.SelectedValue.ToString() + "'";
+            DataTable dt = DatabaseConnection.GetDataTable(query);
+            if (cboMaLop.Text == "")
+                txtTenLop.Text = "";
+            else
+            {
+                txtTenLop.Text = dt.Rows[0][0].ToString();
+            }
+            UpdateCbo();
         }
     }
 }

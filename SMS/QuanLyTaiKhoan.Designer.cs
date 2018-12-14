@@ -46,10 +46,10 @@
             this.btnDanhSachNguoiDung.ImageZoom = 40;
             this.btnDanhSachNguoiDung.LabelPosition = 39;
             this.btnDanhSachNguoiDung.LabelText = "Danh sách người dùng";
-            this.btnDanhSachNguoiDung.Location = new System.Drawing.Point(672, 94);
-            this.btnDanhSachNguoiDung.Margin = new System.Windows.Forms.Padding(8);
+            this.btnDanhSachNguoiDung.Location = new System.Drawing.Point(597, 75);
+            this.btnDanhSachNguoiDung.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.btnDanhSachNguoiDung.Name = "btnDanhSachNguoiDung";
-            this.btnDanhSachNguoiDung.Size = new System.Drawing.Size(343, 237);
+            this.btnDanhSachNguoiDung.Size = new System.Drawing.Size(305, 190);
             this.btnDanhSachNguoiDung.TabIndex = 8;
             this.btnDanhSachNguoiDung.Click += new System.EventHandler(this.btnDanhSachNguoiDung_Click);
             // 
@@ -66,23 +66,25 @@
             this.btnDoiMatKhau.ImageZoom = 40;
             this.btnDoiMatKhau.LabelPosition = 39;
             this.btnDoiMatKhau.LabelText = "Đổi mật khẩu";
-            this.btnDoiMatKhau.Location = new System.Drawing.Point(216, 94);
-            this.btnDoiMatKhau.Margin = new System.Windows.Forms.Padding(8);
+            this.btnDoiMatKhau.Location = new System.Drawing.Point(192, 75);
+            this.btnDoiMatKhau.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.btnDoiMatKhau.Name = "btnDoiMatKhau";
-            this.btnDoiMatKhau.Size = new System.Drawing.Size(343, 237);
+            this.btnDoiMatKhau.Size = new System.Drawing.Size(305, 190);
             this.btnDoiMatKhau.TabIndex = 7;
             this.btnDoiMatKhau.Click += new System.EventHandler(this.btnDoiMatKhau_Click);
             // 
             // QuanLyTaiKhoan
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.Controls.Add(this.btnDanhSachNguoiDung);
             this.Controls.Add(this.btnDoiMatKhau);
             this.Location = new System.Drawing.Point(319, 90);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "QuanLyTaiKhoan";
-            this.Size = new System.Drawing.Size(1240, 790);
+            this.Size = new System.Drawing.Size(1102, 632);
+            this.Load += new System.EventHandler(this.QuanLyTaiKhoan_Load);
             this.ResumeLayout(false);
 
         }

@@ -17,6 +17,7 @@ namespace SMS
             InitializeComponent();
         }
 
+
         private void btnDoiMatKhau_Click(object sender, EventArgs e)
         {
             frmDoiMatKhau dmk = new frmDoiMatKhau();
@@ -27,6 +28,14 @@ namespace SMS
         {
             frmDanhSachNguoiDung csdsng = new frmDanhSachNguoiDung();
             csdsng.Show();
+        }
+
+        private void QuanLyTaiKhoan_Load(object sender, EventArgs e)
+        {
+            if (DatabaseConnection.isAdmin == true)
+                btnDanhSachNguoiDung.Visible = true;
+            else
+                btnDanhSachNguoiDung.Visible = false;
         }
     }
 }

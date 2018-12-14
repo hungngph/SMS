@@ -48,10 +48,10 @@
             this.btnQuanLyGiaoVien.ImageZoom = 40;
             this.btnQuanLyGiaoVien.LabelPosition = 39;
             this.btnQuanLyGiaoVien.LabelText = "Quản lý giáo viên";
-            this.btnQuanLyGiaoVien.Location = new System.Drawing.Point(675, 94);
-            this.btnQuanLyGiaoVien.Margin = new System.Windows.Forms.Padding(8);
+            this.btnQuanLyGiaoVien.Location = new System.Drawing.Point(600, 75);
+            this.btnQuanLyGiaoVien.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.btnQuanLyGiaoVien.Name = "btnQuanLyGiaoVien";
-            this.btnQuanLyGiaoVien.Size = new System.Drawing.Size(343, 237);
+            this.btnQuanLyGiaoVien.Size = new System.Drawing.Size(305, 190);
             this.btnQuanLyGiaoVien.TabIndex = 10;
             this.btnQuanLyGiaoVien.Click += new System.EventHandler(this.btnQuanLyGiaoVien_Click);
             // 
@@ -68,10 +68,10 @@
             this.btnQuanLyHocSinh.ImageZoom = 40;
             this.btnQuanLyHocSinh.LabelPosition = 39;
             this.btnQuanLyHocSinh.LabelText = "Quản lý học sinh";
-            this.btnQuanLyHocSinh.Location = new System.Drawing.Point(216, 94);
-            this.btnQuanLyHocSinh.Margin = new System.Windows.Forms.Padding(8);
+            this.btnQuanLyHocSinh.Location = new System.Drawing.Point(192, 75);
+            this.btnQuanLyHocSinh.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.btnQuanLyHocSinh.Name = "btnQuanLyHocSinh";
-            this.btnQuanLyHocSinh.Size = new System.Drawing.Size(343, 237);
+            this.btnQuanLyHocSinh.Size = new System.Drawing.Size(305, 190);
             this.btnQuanLyHocSinh.TabIndex = 9;
             this.btnQuanLyHocSinh.Click += new System.EventHandler(this.btnQuanLyHocSinh_Click);
             // 
@@ -88,10 +88,10 @@
             this.btnQuanLyLopHoc.ImageZoom = 40;
             this.btnQuanLyLopHoc.LabelPosition = 39;
             this.btnQuanLyLopHoc.LabelText = "Quản lý lớp học";
-            this.btnQuanLyLopHoc.Location = new System.Drawing.Point(216, 426);
-            this.btnQuanLyLopHoc.Margin = new System.Windows.Forms.Padding(8);
+            this.btnQuanLyLopHoc.Location = new System.Drawing.Point(192, 341);
+            this.btnQuanLyLopHoc.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.btnQuanLyLopHoc.Name = "btnQuanLyLopHoc";
-            this.btnQuanLyLopHoc.Size = new System.Drawing.Size(343, 237);
+            this.btnQuanLyLopHoc.Size = new System.Drawing.Size(305, 190);
             this.btnQuanLyLopHoc.TabIndex = 11;
             this.btnQuanLyLopHoc.Click += new System.EventHandler(this.btnQuanLyLopHoc_Click);
             // 
@@ -108,24 +108,26 @@
             this.btnQuanLyGiangDay.ImageZoom = 40;
             this.btnQuanLyGiangDay.LabelPosition = 39;
             this.btnQuanLyGiangDay.LabelText = "Quản lý giảng dạy";
-            this.btnQuanLyGiangDay.Location = new System.Drawing.Point(675, 426);
-            this.btnQuanLyGiangDay.Margin = new System.Windows.Forms.Padding(8);
+            this.btnQuanLyGiangDay.Location = new System.Drawing.Point(600, 341);
+            this.btnQuanLyGiangDay.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.btnQuanLyGiangDay.Name = "btnQuanLyGiangDay";
-            this.btnQuanLyGiangDay.Size = new System.Drawing.Size(343, 237);
+            this.btnQuanLyGiangDay.Size = new System.Drawing.Size(305, 190);
             this.btnQuanLyGiangDay.TabIndex = 12;
             this.btnQuanLyGiangDay.Click += new System.EventHandler(this.btnQuanLyGiangDay_Click);
             // 
             // CapNhatThongTin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.Controls.Add(this.btnQuanLyGiangDay);
             this.Controls.Add(this.btnQuanLyLopHoc);
             this.Controls.Add(this.btnQuanLyGiaoVien);
             this.Controls.Add(this.btnQuanLyHocSinh);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "CapNhatThongTin";
-            this.Size = new System.Drawing.Size(1240, 790);
+            this.Size = new System.Drawing.Size(1102, 632);
+            this.Load += new System.EventHandler(this.CapNhatThongTin_Load);
             this.ResumeLayout(false);
 
         }
