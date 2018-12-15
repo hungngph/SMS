@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 
 namespace SMS
 {
@@ -38,9 +39,29 @@ namespace SMS
 
         }
 
+        public static string EnCrypt(string strEnCrypt, string key)
+        {
+            try
+            {
+                byte[] keyArr;
+                byte[] EnCryptArr = UTF8Encoding.UTF8.GetBytes(strEnCrypt);
+                MD5CryptoServiceProvider MD5Hash = new MD5CryptoServiceProvider();
+                keyArr = MD5Hash.ComputeHash(UTF8Encoding.UTF8.GetBytes(key));
+                TripleDESCryptoServiceProvider tripDes = new TripleDESCryptoServiceProvider();
+                tripDes.Key = keyArr;
+                tripDes.Mode = CipherMode.ECB;
+                tripDes.Padding = PaddingMode.PKCS7;
+                ICryptoTransform transform = tripDes.CreateEncryptor();
+                byte[] arrResult = transform.TransformFinalBlock(EnCryptArr, 0, EnCryptArr.Length);
+                return Convert.ToBase64String(arrResult, 0, arrResult.Length);
+            }
+            catch (Exception ex) { }
+            return "";
+        }
+
         private void btnDong_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void frmDangNhap_Load(object sender, EventArgs e)
@@ -60,11 +81,12 @@ namespace SMS
             {
                 string query = "SELECT * FROM TAIKHOAN WHERE" +
                     " TENDANGNHAP = '" + txtTaiKhoan.Text +
-                    "' AND MATKHAU = '" + txtMatKhau.Text;
+                    "' AND MATKHAU = '" + EnCrypt("LTTQ", txtMatKhau.Text);
                 string admin = "' AND QUYENTRUYCAP = 'Admin'";
                 string teacher = "' AND QUYENTRUYCAP = N'Giáo viên'";
                 if (DatabaseConnection.CheckExist(query + admin))
                 {
+                    DatabaseConnection.TenDangNhap = txtTaiKhoan.Text;
                     DatabaseConnection.isAdmin = true;
                     this.Hide();
                     frmChucNang frm = new frmChucNang();
@@ -73,6 +95,7 @@ namespace SMS
                 }
                 if (DatabaseConnection.CheckExist(query + teacher))
                 {
+                    DatabaseConnection.TenDangNhap = txtTaiKhoan.Text;
                     DatabaseConnection.MaGV = txtTaiKhoan.Text;
                     DatabaseConnection.isAdmin = false;
                     this.Hide();
@@ -109,6 +132,17 @@ namespace SMS
                 errorProvider1.SetError(txtMatKhau, "Không được bỏ trống vùng này");
             }
             return flag;
+        }
+
+        private void btnMinimized_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void txtMatKhau_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                btnDangNhap_Click(null, null);
         }
     }
 }

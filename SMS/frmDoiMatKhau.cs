@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 
 namespace SMS
 {
@@ -44,9 +45,30 @@ namespace SMS
             this.Close();
         }
 
+        public static string EnCrypt(string strEnCrypt, string key)
+        {
+            try
+            {
+                byte[] keyArr;
+                byte[] EnCryptArr = UTF8Encoding.UTF8.GetBytes(strEnCrypt);
+                MD5CryptoServiceProvider MD5Hash = new MD5CryptoServiceProvider();
+                keyArr = MD5Hash.ComputeHash(UTF8Encoding.UTF8.GetBytes(key));
+                TripleDESCryptoServiceProvider tripDes = new TripleDESCryptoServiceProvider();
+                tripDes.Key = keyArr;
+                tripDes.Mode = CipherMode.ECB;
+                tripDes.Padding = PaddingMode.PKCS7;
+                ICryptoTransform transform = tripDes.CreateEncryptor();
+                byte[] arrResult = transform.TransformFinalBlock(EnCryptArr, 0, EnCryptArr.Length);
+                return Convert.ToBase64String(arrResult, 0, arrResult.Length);
+            }
+            catch (Exception ex) { }
+            return "";
+        }
+
         private void frmDoiMatKhau_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Normal;
+            txtTaikhoan.Text = DatabaseConnection.TenDangNhap;
             DatabaseConnection.Connected();
             if (!DatabaseConnection.IsConnect())
             {
@@ -60,7 +82,7 @@ namespace SMS
             {
                 string query = "SELECT * FROM " +
                     "TAIKHOAN WHERE TENDANGNHAP='" + txtTaikhoan.Text + "' AND " +
-                    "MATKHAU='" + txtMKcu.Text + "'";
+                    "MATKHAU='" + EnCrypt("LTTQ", txtMK.Text) + "'";
                 if (txtMKmoi.Text != txtXacNhanMk.Text)
                 {
                     //provider
@@ -69,10 +91,13 @@ namespace SMS
                 if (DatabaseConnection.CheckExist(query))
                 {
                     query = "UPDATE TAIKHOAN SET " +
-                            "MATKHAU='" + txtMKmoi.Text + "' " +
+                            "MATKHAU='" + EnCrypt("LTTQ", txtMKmoi.Text) + "' " +
                             "WHERE TENDANGNHAP='" + txtTaikhoan.Text + "'";
                     if (DatabaseConnection.ExcuteSql(query))
+                    {
                         MessageBox.Show("Thay đổi thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DatabaseConnection.SaveAction("Đổi mật khẩu", "TAIKHOAN");
+                    }
                 }
                 else
                     MessageBox.Show("Sai tên tài khoản hoặc mật khẩu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -83,7 +108,7 @@ namespace SMS
         {
             errorProvider1.Clear();
             txtTaikhoan.Text = "";
-            txtMKcu.Text = "";
+            txtMK.Text = "";
             txtMKmoi.Text = "";
             txtXacNhanMk.Text = "";
         }
@@ -92,19 +117,12 @@ namespace SMS
         {
             errorProvider1.Clear();
             bool flag = true;
-            if (txtTaikhoan.Text == "")
+            if (txtMK.Text == "")
             {
-                txtTaikhoan.Focus();
-                flag = false;
-                // Provider
-                errorProvider1.SetError(txtTaikhoan, "Không được bỏ trống vùng này");
-            }
-            if (txtMKcu.Text == "")
-            {
-                txtMKcu.Focus();
+                txtMK.Focus();
                 flag = false;
                 //Provider
-                errorProvider1.SetError(txtMKcu, "Không được bỏ trống vùng này");
+                errorProvider1.SetError(txtMK, "Không được bỏ trống vùng này");
             }
             if (txtMKmoi.Text == "")
             {
@@ -121,6 +139,11 @@ namespace SMS
                 //Provider;
             }
             return flag;
+        }
+
+        private void btnMinimized_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

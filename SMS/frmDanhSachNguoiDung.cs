@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 
 namespace SMS
 {
@@ -43,6 +44,46 @@ namespace SMS
             this.Close();
         }
 
+        public static string EnCrypt(string strEnCrypt, string key)
+        {
+            try
+            {
+                byte[] keyArr;
+                byte[] EnCryptArr = UTF8Encoding.UTF8.GetBytes(strEnCrypt);
+                MD5CryptoServiceProvider MD5Hash = new MD5CryptoServiceProvider();
+                keyArr = MD5Hash.ComputeHash(UTF8Encoding.UTF8.GetBytes(key));
+                TripleDESCryptoServiceProvider tripDes = new TripleDESCryptoServiceProvider();
+                tripDes.Key = keyArr;
+                tripDes.Mode = CipherMode.ECB;
+                tripDes.Padding = PaddingMode.PKCS7;
+                ICryptoTransform transform = tripDes.CreateEncryptor();
+                byte[] arrResult = transform.TransformFinalBlock(EnCryptArr, 0, EnCryptArr.Length);
+                return Convert.ToBase64String(arrResult, 0, arrResult.Length);
+            }
+            catch (Exception ex) { }
+            return "";
+        }
+
+        public static string DeCrypt(string strDecypt, string key)
+        {
+            try
+            {
+                byte[] keyArr;
+                byte[] DeCryptArr = Convert.FromBase64String(strDecypt);
+                MD5CryptoServiceProvider MD5Hash = new MD5CryptoServiceProvider();
+                keyArr = MD5Hash.ComputeHash(UTF8Encoding.UTF8.GetBytes(key));
+                TripleDESCryptoServiceProvider tripDes = new TripleDESCryptoServiceProvider();
+                tripDes.Key = keyArr;
+                tripDes.Mode = CipherMode.ECB;
+                tripDes.Padding = PaddingMode.PKCS7;
+                ICryptoTransform transform = tripDes.CreateDecryptor();
+                byte[] arrResult = transform.TransformFinalBlock(DeCryptArr, 0, DeCryptArr.Length);
+                return UTF8Encoding.UTF8.GetString(arrResult);
+            }
+            catch (Exception ex) { }
+            return "";
+        }
+
         private void frmDanhSachNguoiDung_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'quanLyHocSinhDataSet.TAIKHOAN' table. You can move, or remove it, as needed.           
@@ -73,14 +114,14 @@ namespace SMS
                     // Câu lệnh insert dữ liệu
                     string strInsert = "Insert into TAIKHOAN values ('";
                     strInsert += txtTaiKhoan.Text + "', N'";
-                    strInsert += txtMK.Text + "', N'";
+                    strInsert += EnCrypt("LTTQ", txtMK.Text) + "', N'";///////////////////////////
                     strInsert += cboQuyen.Text + "')";
                     //
                     if (DatabaseConnection.ExcuteSql(strInsert))
                     {
                         txtTaiKhoan.Enabled = false;
                         MessageBox.Show("Thêm tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        DatabaseConnection.SaveAction("Them", "TAIKHOAN");
+                        DatabaseConnection.SaveAction("Thêm mới", "TAIKHOAN");
                     }
                     else
                         MessageBox.Show("Thêm tài khoản thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -96,17 +137,18 @@ namespace SMS
             {
                 if (GeneralCheck())
                 {
-                    string strUpdate = "Update TAIKHOAN Set MATKHAU = '" + txtMK.Text + "', ";
+                    string strUpdate = "Update TAIKHOAN Set MATKHAU = '" + EnCrypt("LTTQ", txtMK.Text) + "', ";
                     strUpdate += "QUYENTRUYCAP = N'" + cboQuyen.Text + "' ";
                     strUpdate += "Where TENDANGNHAP = '" + txtTaiKhoan.Text + "'";
                     if (DatabaseConnection.ExcuteSql(strUpdate))
                     {
                         MessageBox.Show("Chỉnh sửa tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        DatabaseConnection.SaveAction("Sua", "TAIKHOAN");
+                        DatabaseConnection.SaveAction("Chỉnh sửa", "TAIKHOAN");
+
                     }
                     else
                         MessageBox.Show("Chỉnh sửa tài khoản thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    DatabaseConnection.SaveAction("ChinhSua", "TAIKHOAN");
+                    DatabaseConnection.SaveAction("Chỉnh sửa", "TAIKHOAN");
                     FillDataGridView();
                 }
             }
@@ -132,7 +174,7 @@ namespace SMS
                             }
                         FillDataGridView();
                         MessageBox.Show("Xóa tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        DatabaseConnection.SaveAction("Xoa", "TAIKHOAN");
+                        DatabaseConnection.SaveAction("Xóa", "TAIKHOAN");
                     }
                 }
             }
@@ -157,12 +199,13 @@ namespace SMS
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            string s1 = "Select * From TAIKHOAN Where ";
+            string s1 = "SELECT TENDANGNHAP as [Tên đăng nhập], MATKHAU AS [Mật khẩu], QUYENTRUYCAP AS [Quyền truy cập]" +
+                "FROM TAIKHOAN Where ";
             string strSelect = "Select * From TAIKHOAN Where ";
             if (txtTaiKhoan.Text != "")
                 strSelect += "TENDANGNHAP = '" + txtTaiKhoan.Text + "'and ";
             if (txtMK.Text != "")
-                strSelect += "MATKHAU = '" + txtMK.Text + "' and ";
+                strSelect += "MATKHAU = '" + EnCrypt("LTTQ", txtMK.Text) + "' and ";
             if (cboQuyen.Text != "")
                 strSelect += "QUYENTRUYCAP = N'" + cboQuyen.Text + "' and ";
             if (s1 == strSelect)
@@ -180,6 +223,7 @@ namespace SMS
                     dgvDSND.DataSource = DatabaseConnection.GetDataTable(strSelect);
                 }
             }
+            DatabaseConnection.SaveAction("Tìm kiếm", "TAIKHOAN");
         }
 
         private void dgvDSND_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -194,10 +238,14 @@ namespace SMS
 
         void FillDataGridView()
         {
-            string query = "SELECT * " +
+            string query = "SELECT TENDANGNHAP as [Tên đăng nhập], MATKHAU AS [Mật khẩu], QUYENTRUYCAP AS [Quyền truy cập]" +
                 "FROM TAIKHOAN ";
             dgvDSND.DataSource = DatabaseConnection.GetDataTable(query);
             // adapter.Dispose();
+            // Chỉnh sửa danh sách các cột
+            dgvDSND.Columns[0].Width = dgvDSND.Width / 4;
+            dgvDSND.Columns[1].Width = dgvDSND.Width / 4;
+            //dgvDSND.Columns[2].Width = d;
         }
 
         bool GeneralCheck()
@@ -232,6 +280,11 @@ namespace SMS
                 //Provider
             }
             return flag;
+        }
+
+        private void btnMinimized_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

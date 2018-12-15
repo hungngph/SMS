@@ -51,6 +51,11 @@ namespace SMS
             }
             else
             {
+                DatabaseConnection.Connected();
+                if (!DatabaseConnection.IsConnect())
+                {
+                    return;
+                }
                 btnQuanLyGiaoVien.LabelText = "Thông Tin Giáo Viên";
                 btnQuanLyGiangDay.Visible = false;
                 btnQuanLyLopHoc.Visible = false;
@@ -58,7 +63,7 @@ namespace SMS
                 if (DatabaseConnection.GetDataTable(query).Rows.Count == 0)
                     btnQuanLyHocSinh.Visible = false;
             }
-            
+
         }
     }
 }

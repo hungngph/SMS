@@ -88,6 +88,7 @@ namespace SMS
                     MessageBox.Show("Không tìm thấy kết quả!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
                     dgvDSNDi.DataSource = DatabaseConnection.GetDataTable(query);
+                DatabaseConnection.SaveAction("Tìm kiếm", "NHAPDIEM");
             }
         }
 
@@ -112,6 +113,7 @@ namespace SMS
             if (DatabaseConnection.ExcuteSql(query))
                 MessageBox.Show("Lưu điểm thành công");
             FillDataGridView();
+            DatabaseConnection.SaveAction("Lưu", "NHAPDIEM");
         }
 
         //Nút làm  mới
@@ -230,7 +232,8 @@ namespace SMS
                 string query2 = "select Distinct MAMH FROM PHANCONG where MAGV = '" + DatabaseConnection.MaGV + "'";
                 DataTable dt1 = DatabaseConnection.GetDataTable(query1);
                 DataTable dt2 = DatabaseConnection.GetDataTable(query2);
-                if (dt1.Rows != null && cboMaLop.SelectedValue.ToString() != dt1.Rows[0][0].ToString())
+                if ((dt1.Rows.Count != 0 && cboMaLop.SelectedValue.ToString() != dt1.Rows[0][0].ToString()) 
+                    || (dt1.Rows.Count == 0))
                 {
                     cboMaMon.DataSource = DatabaseConnection.GetDataTable(query2);
                 }
@@ -267,6 +270,11 @@ namespace SMS
                 txtTenLop.Text = dt.Rows[0][0].ToString();
             }
             UpdateCbo();
+        }
+
+        private void btnMinimized_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

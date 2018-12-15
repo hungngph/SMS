@@ -57,15 +57,14 @@ namespace SMS
             Load_combobox();
         }
 
-
+        int bo = 0;
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-
-            if (GeneralCheck())
-            {
+            bo = 0;
+            if (GeneralCheck()) {
                 string query = null;
-                if (cboMaMon.Text != "")
-                {
+                if (cboMaMon.Text != "") {
+                    bo = 1;
                     query = "SELECT DIEM.MAHS as [Mã học sinh], " +
                             "DIEM.TENHOCSINH as [Tên học sinh], " +
                             "DIEMMIENG1 as [Điểm miệng 1], " +
@@ -85,8 +84,8 @@ namespace SMS
                                        "AND DIEM.HOCKY='" + txtHocKy.Text + "' " +
                                        "AND MONHOC.MAMH = '" + cboMaMon.Text + "'";
                 }
-                else
-                {
+                else {
+                    bo = 2;
                     query = "SELECT MONHOC.TENMH AS [Môn học] ," +
                             "DIEM.MAHS as [Mã học sinh], " +
                             "DIEM.TENHOCSINH as [Tên học sinh], " +
@@ -102,8 +101,11 @@ namespace SMS
                 }
                 if (DatabaseConnection.GetDataTable(query).Rows.Count == 0)
                     MessageBox.Show("Không tìm thấy kết quả!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                else
+                else {
+                    bo += 2;
                     dgvDSXD.DataSource = DatabaseConnection.GetDataTable(query);
+                    AddChart();
+                }
             }
         }
 
@@ -209,6 +211,7 @@ namespace SMS
             //reOject(xlworkbook);
             //reOject(xlapp);
             MessageBox.Show("Xuất dữ liệu thành công", "Thông báo", MessageBoxButtons.OK);
+            DatabaseConnection.SaveAction("Xuất", "XEMDIEM");
         }
 
         private void reOject(object obj)
@@ -291,7 +294,8 @@ namespace SMS
                 string query2 = "select Distinct MAMH FROM PHANCONG where MAGV = '" + DatabaseConnection.MaGV + "'";
                 DataTable dt1 = DatabaseConnection.GetDataTable(query1);
                 DataTable dt2 = DatabaseConnection.GetDataTable(query2);
-                if (dt1.Rows != null && cboMaLop.SelectedValue.ToString() != dt1.Rows[0][0].ToString())
+                if ((dt1.Rows.Count != 0 && cboMaLop.SelectedValue.ToString() != dt1.Rows[0][0].ToString())
+                    || (dt1.Rows.Count == 0))
                 {
                     cboMaMon.DataSource = DatabaseConnection.GetDataTable(query2);
                 }
@@ -328,6 +332,38 @@ namespace SMS
                 txtTenLop.Text = dt.Rows[0][0].ToString();
             }
             UpdateCbo();
+        }
+
+        private void btnMinimized_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+        void AddChart() {
+
+            if (bo < 3)
+                return;
+            int[] bo2 = new int[11];
+            float x = 0;
+            float result;
+            if (bo == 3) {
+                for (int i = 0; i < dgvDSXD.Rows.Count; i++) {
+                    float.TryParse(dgvDSXD.Rows[i].Cells[9].Value.ToString(), out result);
+                    bo2[(int)Math.Floor(result)]++;
+                }
+            }
+            if (bo == 4) {
+                for (int i = 0; i < dgvDSXD.Rows.Count; i++) {
+                    float.TryParse(dgvDSXD.Rows[i].Cells[3].Value.ToString(), out result);
+                    if (result >= 10)
+                        result = 9.9f;
+                    bo2[(int)Math.Floor(result)]++;
+                }
+            }
+            for (int i = 0; i < bo2.Length; i++)
+                chart.Series["Diem"].Points.AddXY(i + 0.5f, (int)Math.Floor((float)bo2[i] / (dgvDSXD.Rows.Count) * 100));
+            for (int i = 0; i < 10; i++) {
+                chart.Series[0].Points[i].AxisLabel = i + " - " + (i + 1);
+            }
         }
     }
 }

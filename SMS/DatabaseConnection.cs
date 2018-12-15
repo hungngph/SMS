@@ -8,20 +8,25 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Data;
 
-namespace SMS {
-    class DatabaseConnection {
+namespace SMS
+{
+    class DatabaseConnection
+    {
         public static bool isAdmin = false;
         public static string MaGV;
+        public static string TenDangNhap;
         // Thành phần kết nối
         public static SqlConnection sqlConnection;
 
         // Hàm kiểm tra kết nối sql có thành công hay không
-        public static bool IsConnect() {
+        public static bool IsConnect()
+        {
             return (sqlConnection != null && sqlConnection.State == ConnectionState.Open);
         }
 
         // Hàm kết nối sql
-        public static bool Connected() {
+        public static bool Connected()
+        {
             if (IsConnect())
                 return true;
             string connect = SystemInformation.UserDomainName.ToString();
@@ -34,7 +39,8 @@ namespace SMS {
         }
 
         // Lấy table thông qua DataTable
-        public static DataTable GetDataTable(string query) {
+        public static DataTable GetDataTable(string query)
+        {
             DataTable ds = new DataTable();
             SqlCommand cmd = new SqlCommand(query, sqlConnection);
             SqlDataAdapter adapter = new SqlDataAdapter();
@@ -46,7 +52,8 @@ namespace SMS {
             return ds;
         }
         // Kiểm tra đã tồn tại Row kèm theo khóa chính
-        public static bool CheckExist(string query) {
+        public static bool CheckExist(string query)
+        {
             bool flag = true;
             SqlCommand cmd = new SqlCommand(query, sqlConnection);
             SqlDataReader reader = cmd.ExecuteReader();
@@ -57,39 +64,48 @@ namespace SMS {
             return flag;
         }
         // Thực thi câu lệnh sql
-        public static bool ExcuteSql(string query) {
+        public static bool ExcuteSql(string query)
+        {
             SqlCommand cmd = new SqlCommand(query, sqlConnection);
-            try {
+            try
+            {
                 cmd.ExecuteNonQuery();
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 MessageBox.Show(e.Message);
                 cmd.Dispose();
                 return false;
             }
             return true;
         }
-        public static bool ExcuteSql(SqlCommand cmd) {
-            try {
+        public static bool ExcuteSql(SqlCommand cmd)
+        {
+            try
+            {
                 cmd.ExecuteNonQuery();
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 MessageBox.Show(e.Message);
                 cmd.Dispose();
                 return false;
             }
             return true;
         }
-        public static void SaveAction(string action, string table) {
+        public static void SaveAction(string action, string table)
+        {
             string query = "INSERT INTO HOATDONG VALUES(GETDATE(), " +
                 "'" + MaGV + "', " +
                 "N'" + action + "', " +
                 "'" + table + "')";
             SqlCommand cmd = new SqlCommand(query, sqlConnection);
-            try {
+            try
+            {
                 cmd.ExecuteNonQuery();
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 MessageBox.Show(e.Message);
                 cmd.Dispose();
             }

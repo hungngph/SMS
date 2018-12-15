@@ -54,9 +54,9 @@ namespace SMS
 
         private void btnCapNhapThongTin_Click(object sender, EventArgs e)
         {
+            quanLyDiemLopHoc1.Visible = false;
             capNhatThongTin1.Visible = true;
             quanLyTaiKhoan1.Visible = false;
-            quanLyDiemLopHoc1.Visible = false;
             gioiThieu1.Visible = false;
         }
 
@@ -79,6 +79,10 @@ namespace SMS
         private void frmChucNang_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Normal;
+            quanLyDiemLopHoc1.Visible = false;
+            capNhatThongTin1.Visible = false;
+            quanLyTaiKhoan1.Visible = false;
+            gioiThieu1.Visible = false;
         }
 
         private void btnDangXuat_Click(object sender, EventArgs e)

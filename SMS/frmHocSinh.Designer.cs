@@ -69,29 +69,23 @@
             this.btnThemMoi = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnTimKiem = new Bunifu.Framework.UI.BunifuFlatButton();
             this.dgvHS = new System.Windows.Forms.DataGridView();
-            this.hOCSINHBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.quanLyHocSinhDataSet1 = new SMS.QuanLyHocSinhDataSet1();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnXoa = new Bunifu.Framework.UI.BunifuFlatButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.quanLyHocSinhDataSet = new SMS.QuanLyHocSinhDataSet();
-            this.quanLyHocSinhDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.hOCSINHTableAdapter = new SMS.QuanLyHocSinhDataSet1TableAdapters.HOCSINHTableAdapter();
             this.btnChonAnh = new Bunifu.Framework.UI.BunifuFlatButton();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.ptbAnh = new System.Windows.Forms.PictureBox();
+            this.btnXuat = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btnMinimized = new Bunifu.Framework.UI.BunifuImageButton();
             ((System.ComponentModel.ISupportInitialize)(this.btnDong)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hOCSINHBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quanLyHocSinhDataSet1)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quanLyHocSinhDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quanLyHocSinhDataSetBindingSource)).BeginInit();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbAnh)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimized)).BeginInit();
             this.SuspendLayout();
             // 
             // label12
@@ -110,7 +104,7 @@
             this.btnDong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
             this.btnDong.Image = ((System.Drawing.Image)(resources.GetObject("btnDong.Image")));
             this.btnDong.ImageActive = null;
-            this.btnDong.Location = new System.Drawing.Point(1112, 11);
+            this.btnDong.Location = new System.Drawing.Point(1355, 11);
             this.btnDong.Margin = new System.Windows.Forms.Padding(4);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(42, 34);
@@ -714,14 +708,14 @@
             this.btnLamMoi.IconVisible = true;
             this.btnLamMoi.IconZoom = 70D;
             this.btnLamMoi.IsTab = false;
-            this.btnLamMoi.Location = new System.Drawing.Point(998, 434);
+            this.btnLamMoi.Location = new System.Drawing.Point(1035, 425);
             this.btnLamMoi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnLamMoi.Name = "btnLamMoi";
             this.btnLamMoi.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
             this.btnLamMoi.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(81)))), ((int)(((byte)(90)))));
             this.btnLamMoi.OnHoverTextColor = System.Drawing.Color.White;
             this.btnLamMoi.selected = false;
-            this.btnLamMoi.Size = new System.Drawing.Size(151, 45);
+            this.btnLamMoi.Size = new System.Drawing.Size(178, 45);
             this.btnLamMoi.TabIndex = 129;
             this.btnLamMoi.Text = "Làm mới";
             this.btnLamMoi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -751,14 +745,14 @@
             this.btnChinhSua.IconVisible = true;
             this.btnChinhSua.IconZoom = 70D;
             this.btnChinhSua.IsTab = false;
-            this.btnChinhSua.Location = new System.Drawing.Point(815, 434);
+            this.btnChinhSua.Location = new System.Drawing.Point(815, 425);
             this.btnChinhSua.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnChinhSua.Name = "btnChinhSua";
             this.btnChinhSua.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
             this.btnChinhSua.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(81)))), ((int)(((byte)(90)))));
             this.btnChinhSua.OnHoverTextColor = System.Drawing.Color.White;
             this.btnChinhSua.selected = false;
-            this.btnChinhSua.Size = new System.Drawing.Size(151, 45);
+            this.btnChinhSua.Size = new System.Drawing.Size(178, 45);
             this.btnChinhSua.TabIndex = 128;
             this.btnChinhSua.Text = "Chỉnh sửa";
             this.btnChinhSua.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -795,7 +789,7 @@
             this.btnThemMoi.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(81)))), ((int)(((byte)(90)))));
             this.btnThemMoi.OnHoverTextColor = System.Drawing.Color.White;
             this.btnThemMoi.selected = false;
-            this.btnThemMoi.Size = new System.Drawing.Size(151, 45);
+            this.btnThemMoi.Size = new System.Drawing.Size(178, 45);
             this.btnThemMoi.TabIndex = 126;
             this.btnThemMoi.Text = "Thêm mới";
             this.btnThemMoi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -825,14 +819,14 @@
             this.btnTimKiem.IconVisible = true;
             this.btnTimKiem.IconZoom = 70D;
             this.btnTimKiem.IsTab = false;
-            this.btnTimKiem.Location = new System.Drawing.Point(896, 301);
+            this.btnTimKiem.Location = new System.Drawing.Point(815, 307);
             this.btnTimKiem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
             this.btnTimKiem.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(81)))), ((int)(((byte)(90)))));
             this.btnTimKiem.OnHoverTextColor = System.Drawing.Color.White;
             this.btnTimKiem.selected = false;
-            this.btnTimKiem.Size = new System.Drawing.Size(163, 45);
+            this.btnTimKiem.Size = new System.Drawing.Size(178, 45);
             this.btnTimKiem.TabIndex = 130;
             this.btnTimKiem.Text = "Tìm kiếm";
             this.btnTimKiem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -852,22 +846,13 @@
             this.dgvHS.Location = new System.Drawing.Point(3, 21);
             this.dgvHS.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvHS.Name = "dgvHS";
+            this.dgvHS.ReadOnly = true;
             this.dgvHS.RowHeadersVisible = false;
             this.dgvHS.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             this.dgvHS.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvHS.Size = new System.Drawing.Size(1374, 227);
             this.dgvHS.TabIndex = 131;
             this.dgvHS.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvHS_CellMouseClick);
-            // 
-            // hOCSINHBindingSource
-            // 
-            this.hOCSINHBindingSource.DataMember = "HOCSINH";
-            this.hOCSINHBindingSource.DataSource = this.quanLyHocSinhDataSet1;
-            // 
-            // quanLyHocSinhDataSet1
-            // 
-            this.quanLyHocSinhDataSet1.DataSetName = "QuanLyHocSinhDataSet1";
-            this.quanLyHocSinhDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // groupBox4
             // 
@@ -906,14 +891,14 @@
             this.btnXoa.IconVisible = true;
             this.btnXoa.IconZoom = 70D;
             this.btnXoa.IsTab = false;
-            this.btnXoa.Location = new System.Drawing.Point(998, 369);
+            this.btnXoa.Location = new System.Drawing.Point(1035, 369);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
             this.btnXoa.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(81)))), ((int)(((byte)(90)))));
             this.btnXoa.OnHoverTextColor = System.Drawing.Color.White;
             this.btnXoa.selected = false;
-            this.btnXoa.Size = new System.Drawing.Size(151, 45);
+            this.btnXoa.Size = new System.Drawing.Size(178, 45);
             this.btnXoa.TabIndex = 133;
             this.btnXoa.Text = "   Xóa";
             this.btnXoa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -925,20 +910,6 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // quanLyHocSinhDataSet
-            // 
-            this.quanLyHocSinhDataSet.DataSetName = "QuanLyHocSinhDataSet";
-            this.quanLyHocSinhDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // quanLyHocSinhDataSetBindingSource
-            // 
-            this.quanLyHocSinhDataSetBindingSource.DataSource = this.quanLyHocSinhDataSet;
-            this.quanLyHocSinhDataSetBindingSource.Position = 0;
-            // 
-            // hOCSINHTableAdapter
-            // 
-            this.hOCSINHTableAdapter.ClearBeforeFill = true;
-            // 
             // btnChonAnh
             // 
             this.btnChonAnh.Active = false;
@@ -946,7 +917,7 @@
             this.btnChonAnh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
             this.btnChonAnh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnChonAnh.BorderRadius = 7;
-            this.btnChonAnh.ButtonText = "Chọn ảnh";
+            this.btnChonAnh.ButtonText = "   Chọn ảnh";
             this.btnChonAnh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnChonAnh.DisabledColor = System.Drawing.Color.Gray;
             this.btnChonAnh.Iconcolor = System.Drawing.Color.Transparent;
@@ -961,16 +932,16 @@
             this.btnChonAnh.IconVisible = true;
             this.btnChonAnh.IconZoom = 70D;
             this.btnChonAnh.IsTab = false;
-            this.btnChonAnh.Location = new System.Drawing.Point(902, 11);
+            this.btnChonAnh.Location = new System.Drawing.Point(921, 18);
             this.btnChonAnh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnChonAnh.Name = "btnChonAnh";
             this.btnChonAnh.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
             this.btnChonAnh.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(81)))), ((int)(((byte)(90)))));
             this.btnChonAnh.OnHoverTextColor = System.Drawing.Color.White;
             this.btnChonAnh.selected = false;
-            this.btnChonAnh.Size = new System.Drawing.Size(163, 45);
+            this.btnChonAnh.Size = new System.Drawing.Size(178, 45);
             this.btnChonAnh.TabIndex = 136;
-            this.btnChonAnh.Text = "Chọn ảnh";
+            this.btnChonAnh.Text = "   Chọn ảnh";
             this.btnChonAnh.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnChonAnh.Textcolor = System.Drawing.Color.White;
             this.btnChonAnh.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -982,7 +953,7 @@
             this.groupBox5.Controls.Add(this.ptbAnh);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.ForeColor = System.Drawing.Color.White;
-            this.groupBox5.Location = new System.Drawing.Point(896, 53);
+            this.groupBox5.Location = new System.Drawing.Point(921, 69);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -993,12 +964,64 @@
             // 
             // ptbAnh
             // 
-            this.ptbAnh.Location = new System.Drawing.Point(6, 20);
+            this.ptbAnh.Location = new System.Drawing.Point(6, 18);
             this.ptbAnh.Name = "ptbAnh";
-            this.ptbAnh.Size = new System.Drawing.Size(166, 197);
+            this.ptbAnh.Size = new System.Drawing.Size(166, 199);
             this.ptbAnh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ptbAnh.TabIndex = 0;
             this.ptbAnh.TabStop = false;
+            // 
+            // btnXuat
+            // 
+            this.btnXuat.Active = false;
+            this.btnXuat.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            this.btnXuat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            this.btnXuat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnXuat.BorderRadius = 7;
+            this.btnXuat.ButtonText = "  Xuất Excel";
+            this.btnXuat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnXuat.DisabledColor = System.Drawing.Color.Gray;
+            this.btnXuat.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnXuat.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnXuat.Iconimage")));
+            this.btnXuat.Iconimage_right = null;
+            this.btnXuat.Iconimage_right_Selected = null;
+            this.btnXuat.Iconimage_Selected = null;
+            this.btnXuat.IconMarginLeft = 0;
+            this.btnXuat.IconMarginRight = 0;
+            this.btnXuat.IconRightVisible = true;
+            this.btnXuat.IconRightZoom = 0D;
+            this.btnXuat.IconVisible = true;
+            this.btnXuat.IconZoom = 70D;
+            this.btnXuat.IsTab = false;
+            this.btnXuat.Location = new System.Drawing.Point(1035, 307);
+            this.btnXuat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnXuat.Name = "btnXuat";
+            this.btnXuat.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            this.btnXuat.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(81)))), ((int)(((byte)(90)))));
+            this.btnXuat.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnXuat.selected = false;
+            this.btnXuat.Size = new System.Drawing.Size(178, 45);
+            this.btnXuat.TabIndex = 150;
+            this.btnXuat.Text = "  Xuất Excel";
+            this.btnXuat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXuat.Textcolor = System.Drawing.Color.White;
+            this.btnXuat.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXuat.Click += new System.EventHandler(this.btnXuat_Click);
+            // 
+            // btnMinimized
+            // 
+            this.btnMinimized.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
+            this.btnMinimized.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimized.Image")));
+            this.btnMinimized.ImageActive = null;
+            this.btnMinimized.Location = new System.Drawing.Point(1314, 11);
+            this.btnMinimized.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMinimized.Name = "btnMinimized";
+            this.btnMinimized.Size = new System.Drawing.Size(42, 34);
+            this.btnMinimized.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMinimized.TabIndex = 151;
+            this.btnMinimized.TabStop = false;
+            this.btnMinimized.Zoom = 10;
+            this.btnMinimized.Click += new System.EventHandler(this.btnMinimized_Click);
             // 
             // frmHocSinh
             // 
@@ -1006,6 +1029,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
             this.ClientSize = new System.Drawing.Size(1409, 764);
+            this.Controls.Add(this.btnMinimized);
+            this.Controls.Add(this.btnXuat);
             this.Controls.Add(this.btnChonAnh);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.btnXoa);
@@ -1024,21 +1049,17 @@
             this.Text = "frmHocSinh";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Load += new System.EventHandler(this.frmHocSinh_Load);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmHocSinh_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.btnDong)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hOCSINHBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quanLyHocSinhDataSet1)).EndInit();
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quanLyHocSinhDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quanLyHocSinhDataSetBindingSource)).EndInit();
             this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ptbAnh)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimized)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1088,13 +1109,10 @@
         private Bunifu.Framework.UI.BunifuMaterialTextbox txtTenLop;
         private System.Windows.Forms.ComboBox cboMaLop;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private QuanLyHocSinhDataSet quanLyHocSinhDataSet;
-        private System.Windows.Forms.BindingSource quanLyHocSinhDataSetBindingSource;
-        private QuanLyHocSinhDataSet1 quanLyHocSinhDataSet1;
-        private System.Windows.Forms.BindingSource hOCSINHBindingSource;
-        private QuanLyHocSinhDataSet1TableAdapters.HOCSINHTableAdapter hOCSINHTableAdapter;
         private Bunifu.Framework.UI.BunifuFlatButton btnChonAnh;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.PictureBox ptbAnh;
+        private Bunifu.Framework.UI.BunifuFlatButton btnXuat;
+        private Bunifu.Framework.UI.BunifuImageButton btnMinimized;
     }
 }

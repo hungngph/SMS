@@ -40,11 +40,13 @@
             this.btnDong = new Bunifu.Framework.UI.BunifuImageButton();
             this.lblKiemTra = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnMinimized = new Bunifu.Framework.UI.BunifuImageButton();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimized)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuImageButton1
@@ -109,6 +111,7 @@
             this.txtMatKhau.Size = new System.Drawing.Size(320, 38);
             this.txtMatKhau.TabIndex = 1;
             this.txtMatKhau.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtMatKhau.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMatKhau_KeyPress);
             // 
             // bunifuImageButton2
             // 
@@ -192,7 +195,7 @@
             this.btnDong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
             this.btnDong.Image = ((System.Drawing.Image)(resources.GetObject("btnDong.Image")));
             this.btnDong.ImageActive = null;
-            this.btnDong.Location = new System.Drawing.Point(469, 11);
+            this.btnDong.Location = new System.Drawing.Point(468, 11);
             this.btnDong.Margin = new System.Windows.Forms.Padding(4);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(42, 34);
@@ -205,7 +208,7 @@
             // lblKiemTra
             // 
             this.lblKiemTra.ForeColor = System.Drawing.Color.Red;
-            this.lblKiemTra.Location = new System.Drawing.Point(122, 422);
+            this.lblKiemTra.Location = new System.Drawing.Point(122, 416);
             this.lblKiemTra.Name = "lblKiemTra";
             this.lblKiemTra.Size = new System.Drawing.Size(320, 26);
             this.lblKiemTra.TabIndex = 83;
@@ -214,12 +217,28 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // btnMinimized
+            // 
+            this.btnMinimized.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
+            this.btnMinimized.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimized.Image")));
+            this.btnMinimized.ImageActive = null;
+            this.btnMinimized.Location = new System.Drawing.Point(427, 11);
+            this.btnMinimized.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMinimized.Name = "btnMinimized";
+            this.btnMinimized.Size = new System.Drawing.Size(42, 34);
+            this.btnMinimized.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMinimized.TabIndex = 85;
+            this.btnMinimized.TabStop = false;
+            this.btnMinimized.Zoom = 10;
+            this.btnMinimized.Click += new System.EventHandler(this.btnMinimized_Click);
+            // 
             // frmDangNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
             this.ClientSize = new System.Drawing.Size(523, 582);
+            this.Controls.Add(this.btnMinimized);
             this.Controls.Add(this.lblKiemTra);
             this.Controls.Add(this.btnDong);
             this.Controls.Add(this.label12);
@@ -241,6 +260,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.bunifuImageButton2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDong)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimized)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -257,5 +277,6 @@
         private Bunifu.Framework.UI.BunifuImageButton btnDong;
         private System.Windows.Forms.Label lblKiemTra;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private Bunifu.Framework.UI.BunifuImageButton btnMinimized;
     }
 }

@@ -82,6 +82,7 @@ namespace SMS
                     {
                         MessageBox.Show("Thêm Lớp học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txtMaLop.Enabled = false;
+                        DatabaseConnection.SaveAction("Thêm mới", "LOP");
                     }
                     else
                         MessageBox.Show("Thêm Lớp học thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -104,7 +105,10 @@ namespace SMS
                     strUpdate += "SISO = " + txtSiSo.Text + " ";
                     strUpdate += "Where MALOP = '" + txtMaLop.Text + "'";
                     if (DatabaseConnection.ExcuteSql(strUpdate))
+                    {
                         MessageBox.Show("Chỉnh sửa Lớp học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DatabaseConnection.SaveAction("Chỉnh sửa", "LOP");
+                    }
                     else
                         MessageBox.Show("Chỉnh sửa Lớp học thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     FillDataGridView();
@@ -132,6 +136,7 @@ namespace SMS
                             }
                         FillDataGridView();
                         MessageBox.Show("Xóa lớp học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DatabaseConnection.SaveAction("Xóa", "LOP");
                     }
                 }
             }
@@ -150,6 +155,34 @@ namespace SMS
             cboMAGVCN.Text = "";
             txtTenGVCN.Text = "";
             txtSiSo.Text = "";
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            string s1 = "Select * From LOP Where ";
+            string strSelect = "Select * From LOP Where ";
+            if (txtMaLop.Text != "")
+                strSelect += "MALOP = '" + txtMaLop.Text + "'and ";
+            if (txtTenLop.Text != "")
+                strSelect += "TENLOP = N'" + txtTenLop.Text + "' and ";
+            if (cboMAGVCN.Text != "")
+                strSelect += "MAGVCN = N'" + cboMAGVCN.Text + "' and ";
+            if (txtSiSo.Text != "")
+                strSelect += "SISO = " + txtSiSo.Text + " and ";
+            if (s1 == strSelect)
+            {
+                MessageBox.Show("Chưa nhập thông tin cần tìm kiếm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                FillDataGridView();
+            }
+            else
+            {
+                strSelect = strSelect.Substring(0, strSelect.Length - 4);
+                if (DatabaseConnection.GetDataTable(strSelect).Rows.Count == 0)
+                    MessageBox.Show("Không tìm thấy kết quả!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                    dgvLH.DataSource = DatabaseConnection.GetDataTable(strSelect);
+                DatabaseConnection.SaveAction("Tìm Kiếm", "LOP");
+            }
         }
 
         private void FillDataGridView()
@@ -227,6 +260,11 @@ namespace SMS
                 errorProvider1.SetError(txtSiSo, "Không được bỏ trống vùng này");
             }
             return flag;
+        }
+
+        private void btnMinimized_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

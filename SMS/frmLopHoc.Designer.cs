@@ -50,11 +50,14 @@
             this.btnXoa = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnLamMoi = new Bunifu.Framework.UI.BunifuFlatButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnTimKiem = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btnMinimized = new Bunifu.Framework.UI.BunifuImageButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLH)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnDong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimized)).BeginInit();
             this.SuspendLayout();
             // 
             // txtTenGVCN
@@ -109,6 +112,7 @@
             this.dgvLH.Location = new System.Drawing.Point(3, 21);
             this.dgvLH.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvLH.Name = "dgvLH";
+            this.dgvLH.ReadOnly = true;
             this.dgvLH.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             this.dgvLH.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLH.Size = new System.Drawing.Size(1122, 221);
@@ -335,7 +339,7 @@
             this.btnDong.Image = ((System.Drawing.Image)(resources.GetObject("btnDong.Image")));
             this.btnDong.ImageActive = null;
             this.btnDong.Location = new System.Drawing.Point(1110, 13);
-            this.btnDong.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDong.Margin = new System.Windows.Forms.Padding(4);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(42, 34);
             this.btnDong.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -459,12 +463,66 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.Active = false;
+            this.btnTimKiem.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            this.btnTimKiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            this.btnTimKiem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTimKiem.BorderRadius = 7;
+            this.btnTimKiem.ButtonText = "Tìm kiếm";
+            this.btnTimKiem.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTimKiem.DisabledColor = System.Drawing.Color.Gray;
+            this.btnTimKiem.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnTimKiem.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnTimKiem.Iconimage")));
+            this.btnTimKiem.Iconimage_right = null;
+            this.btnTimKiem.Iconimage_right_Selected = null;
+            this.btnTimKiem.Iconimage_Selected = null;
+            this.btnTimKiem.IconMarginLeft = 0;
+            this.btnTimKiem.IconMarginRight = 0;
+            this.btnTimKiem.IconRightVisible = true;
+            this.btnTimKiem.IconRightZoom = 0D;
+            this.btnTimKiem.IconVisible = true;
+            this.btnTimKiem.IconZoom = 70D;
+            this.btnTimKiem.IsTab = false;
+            this.btnTimKiem.Location = new System.Drawing.Point(903, 255);
+            this.btnTimKiem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            this.btnTimKiem.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(81)))), ((int)(((byte)(90)))));
+            this.btnTimKiem.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnTimKiem.selected = false;
+            this.btnTimKiem.Size = new System.Drawing.Size(163, 45);
+            this.btnTimKiem.TabIndex = 157;
+            this.btnTimKiem.Text = "Tìm kiếm";
+            this.btnTimKiem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTimKiem.Textcolor = System.Drawing.Color.White;
+            this.btnTimKiem.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
+            // 
+            // btnMinimized
+            // 
+            this.btnMinimized.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
+            this.btnMinimized.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimized.Image")));
+            this.btnMinimized.ImageActive = null;
+            this.btnMinimized.Location = new System.Drawing.Point(1069, 13);
+            this.btnMinimized.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMinimized.Name = "btnMinimized";
+            this.btnMinimized.Size = new System.Drawing.Size(42, 34);
+            this.btnMinimized.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMinimized.TabIndex = 158;
+            this.btnMinimized.TabStop = false;
+            this.btnMinimized.Zoom = 10;
+            this.btnMinimized.Click += new System.EventHandler(this.btnMinimized_Click);
+            // 
             // frmLopHoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
             this.ClientSize = new System.Drawing.Size(1164, 607);
+            this.Controls.Add(this.btnMinimized);
+            this.Controls.Add(this.btnTimKiem);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.btnThemMoi);
@@ -487,6 +545,7 @@
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnDong)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimized)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -514,5 +573,7 @@
         private Bunifu.Framework.UI.BunifuFlatButton btnXoa;
         private Bunifu.Framework.UI.BunifuFlatButton btnLamMoi;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private Bunifu.Framework.UI.BunifuFlatButton btnTimKiem;
+        private Bunifu.Framework.UI.BunifuImageButton btnMinimized;
     }
 }

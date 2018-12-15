@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmXemDiem));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label12 = new System.Windows.Forms.Label();
             this.txtTenMon = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.cboMaMon = new System.Windows.Forms.ComboBox();
@@ -48,11 +51,15 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnTimKiem = new Bunifu.Framework.UI.BunifuFlatButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnMinimized = new Bunifu.Framework.UI.BunifuImageButton();
+            this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnDong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSXD)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimized)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.SuspendLayout();
             // 
             // label12
@@ -82,7 +89,7 @@
             this.txtTenMon.LineIdleColor = System.Drawing.Color.Gray;
             this.txtTenMon.LineMouseHoverColor = System.Drawing.Color.Gray;
             this.txtTenMon.LineThickness = 2;
-            this.txtTenMon.Location = new System.Drawing.Point(363, 89);
+            this.txtTenMon.Location = new System.Drawing.Point(222, 91);
             this.txtTenMon.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtTenMon.MaxLength = 32767;
             this.txtTenMon.Name = "txtTenMon";
@@ -100,7 +107,7 @@
             this.cboMaMon.Items.AddRange(new object[] {
             "Nam",
             "Nữ"});
-            this.cboMaMon.Location = new System.Drawing.Point(262, 89);
+            this.cboMaMon.Location = new System.Drawing.Point(121, 91);
             this.cboMaMon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboMaMon.Name = "cboMaMon";
             this.cboMaMon.Size = new System.Drawing.Size(97, 28);
@@ -112,7 +119,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(160, 86);
+            this.label2.Location = new System.Drawing.Point(19, 88);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 20);
             this.label2.TabIndex = 120;
@@ -137,7 +144,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(776, 222);
+            this.groupBox1.Size = new System.Drawing.Size(498, 222);
             this.groupBox1.TabIndex = 147;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin";
@@ -158,7 +165,7 @@
             this.txtNamHoc.LineIdleColor = System.Drawing.Color.Gray;
             this.txtNamHoc.LineMouseHoverColor = System.Drawing.Color.Gray;
             this.txtNamHoc.LineThickness = 2;
-            this.txtNamHoc.Location = new System.Drawing.Point(262, 160);
+            this.txtNamHoc.Location = new System.Drawing.Point(121, 162);
             this.txtNamHoc.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtNamHoc.MaxLength = 32767;
             this.txtNamHoc.Name = "txtNamHoc";
@@ -171,7 +178,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(160, 170);
+            this.label8.Location = new System.Drawing.Point(19, 172);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(76, 20);
             this.label8.TabIndex = 114;
@@ -193,7 +200,7 @@
             this.txtHocKy.LineIdleColor = System.Drawing.Color.Gray;
             this.txtHocKy.LineMouseHoverColor = System.Drawing.Color.Gray;
             this.txtHocKy.LineThickness = 2;
-            this.txtHocKy.Location = new System.Drawing.Point(262, 118);
+            this.txtHocKy.Location = new System.Drawing.Point(121, 120);
             this.txtHocKy.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtHocKy.MaxLength = 32767;
             this.txtHocKy.Name = "txtHocKy";
@@ -206,7 +213,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(160, 128);
+            this.label7.Location = new System.Drawing.Point(19, 130);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(61, 20);
             this.label7.TabIndex = 111;
@@ -228,7 +235,7 @@
             this.txtTenLop.LineIdleColor = System.Drawing.Color.Gray;
             this.txtTenLop.LineMouseHoverColor = System.Drawing.Color.Gray;
             this.txtTenLop.LineThickness = 2;
-            this.txtTenLop.Location = new System.Drawing.Point(363, 40);
+            this.txtTenLop.Location = new System.Drawing.Point(222, 42);
             this.txtTenLop.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtTenLop.MaxLength = 32767;
             this.txtTenLop.Name = "txtTenLop";
@@ -241,7 +248,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(160, 42);
+            this.label4.Location = new System.Drawing.Point(19, 44);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 20);
             this.label4.TabIndex = 106;
@@ -257,7 +264,7 @@
             this.cboMaLop.Items.AddRange(new object[] {
             "Nam",
             "Nữ"});
-            this.cboMaLop.Location = new System.Drawing.Point(262, 40);
+            this.cboMaLop.Location = new System.Drawing.Point(121, 42);
             this.cboMaLop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboMaLop.Name = "cboMaLop";
             this.cboMaLop.Size = new System.Drawing.Size(97, 28);
@@ -269,7 +276,7 @@
             this.btnDong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
             this.btnDong.Image = ((System.Drawing.Image)(resources.GetObject("btnDong.Image")));
             this.btnDong.ImageActive = null;
-            this.btnDong.Location = new System.Drawing.Point(1112, 13);
+            this.btnDong.Location = new System.Drawing.Point(1110, 13);
             this.btnDong.Margin = new System.Windows.Forms.Padding(4);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(42, 34);
@@ -291,9 +298,11 @@
             this.dgvDSXD.Location = new System.Drawing.Point(3, 21);
             this.dgvDSXD.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvDSXD.Name = "dgvDSXD";
+            this.dgvDSXD.ReadOnly = true;
+            this.dgvDSXD.RowHeadersVisible = false;
             this.dgvDSXD.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             this.dgvDSXD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDSXD.Size = new System.Drawing.Size(1122, 226);
+            this.dgvDSXD.Size = new System.Drawing.Size(1122, 271);
             this.dgvDSXD.TabIndex = 132;
             // 
             // btnXuat
@@ -303,7 +312,7 @@
             this.btnXuat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
             this.btnXuat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnXuat.BorderRadius = 7;
-            this.btnXuat.ButtonText = "Xuất bảng điểm";
+            this.btnXuat.ButtonText = "  Xuất Excel";
             this.btnXuat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnXuat.DisabledColor = System.Drawing.Color.Gray;
             this.btnXuat.Iconcolor = System.Drawing.Color.Transparent;
@@ -318,16 +327,16 @@
             this.btnXuat.IconVisible = true;
             this.btnXuat.IconZoom = 70D;
             this.btnXuat.IsTab = false;
-            this.btnXuat.Location = new System.Drawing.Point(885, 177);
+            this.btnXuat.Location = new System.Drawing.Point(211, 306);
             this.btnXuat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnXuat.Name = "btnXuat";
             this.btnXuat.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
             this.btnXuat.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(81)))), ((int)(((byte)(90)))));
             this.btnXuat.OnHoverTextColor = System.Drawing.Color.White;
             this.btnXuat.selected = false;
-            this.btnXuat.Size = new System.Drawing.Size(193, 45);
+            this.btnXuat.Size = new System.Drawing.Size(165, 45);
             this.btnXuat.TabIndex = 149;
-            this.btnXuat.Text = "Xuất bảng điểm";
+            this.btnXuat.Text = "  Xuất Excel";
             this.btnXuat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnXuat.Textcolor = System.Drawing.Color.White;
             this.btnXuat.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -339,11 +348,11 @@
             this.groupBox4.Controls.Add(this.dgvDSXD);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.Color.White;
-            this.groupBox4.Location = new System.Drawing.Point(17, 312);
+            this.groupBox4.Location = new System.Drawing.Point(12, 370);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox4.Size = new System.Drawing.Size(1128, 249);
+            this.groupBox4.Size = new System.Drawing.Size(1128, 294);
             this.groupBox4.TabIndex = 153;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Danh sách";
@@ -370,14 +379,14 @@
             this.btnTimKiem.IconVisible = true;
             this.btnTimKiem.IconZoom = 70D;
             this.btnTimKiem.IsTab = false;
-            this.btnTimKiem.Location = new System.Drawing.Point(885, 111);
+            this.btnTimKiem.Location = new System.Drawing.Point(17, 306);
             this.btnTimKiem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
             this.btnTimKiem.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(81)))), ((int)(((byte)(90)))));
             this.btnTimKiem.OnHoverTextColor = System.Drawing.Color.White;
             this.btnTimKiem.selected = false;
-            this.btnTimKiem.Size = new System.Drawing.Size(193, 45);
+            this.btnTimKiem.Size = new System.Drawing.Size(165, 45);
             this.btnTimKiem.TabIndex = 151;
             this.btnTimKiem.Text = "Tìm kiếm";
             this.btnTimKiem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -389,12 +398,46 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // btnMinimized
+            // 
+            this.btnMinimized.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
+            this.btnMinimized.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimized.Image")));
+            this.btnMinimized.ImageActive = null;
+            this.btnMinimized.Location = new System.Drawing.Point(1069, 13);
+            this.btnMinimized.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMinimized.Name = "btnMinimized";
+            this.btnMinimized.Size = new System.Drawing.Size(42, 34);
+            this.btnMinimized.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMinimized.TabIndex = 154;
+            this.btnMinimized.TabStop = false;
+            this.btnMinimized.Zoom = 10;
+            this.btnMinimized.Click += new System.EventHandler(this.btnMinimized_Click);
+            // 
+            // chart
+            // 
+            chartArea1.AxisY.Maximum = 100D;
+            chartArea1.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart.Legends.Add(legend1);
+            this.chart.Location = new System.Drawing.Point(537, 51);
+            this.chart.Name = "chart";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Diem";
+            this.chart.Series.Add(series1);
+            this.chart.Size = new System.Drawing.Size(497, 300);
+            this.chart.TabIndex = 124;
+            this.chart.Text = "chart1";
+            // 
             // frmXemDiem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
-            this.ClientSize = new System.Drawing.Size(1165, 582);
+            this.ClientSize = new System.Drawing.Size(1165, 675);
+            this.Controls.Add(this.chart);
+            this.Controls.Add(this.btnMinimized);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnDong);
@@ -415,6 +458,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSXD)).EndInit();
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimized)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -440,5 +485,7 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private Bunifu.Framework.UI.BunifuFlatButton btnTimKiem;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private Bunifu.Framework.UI.BunifuImageButton btnMinimized;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart;
     }
 }

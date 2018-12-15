@@ -49,11 +49,13 @@
             this.btnLuu = new Bunifu.Framework.UI.BunifuFlatButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnTimKiem = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btnMinimized = new Bunifu.Framework.UI.BunifuImageButton();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTTGD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDong)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimized)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox4
@@ -422,12 +424,28 @@
             this.btnTimKiem.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
+            // btnMinimized
+            // 
+            this.btnMinimized.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
+            this.btnMinimized.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimized.Image")));
+            this.btnMinimized.ImageActive = null;
+            this.btnMinimized.Location = new System.Drawing.Point(1068, 16);
+            this.btnMinimized.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMinimized.Name = "btnMinimized";
+            this.btnMinimized.Size = new System.Drawing.Size(42, 34);
+            this.btnMinimized.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMinimized.TabIndex = 168;
+            this.btnMinimized.TabStop = false;
+            this.btnMinimized.Zoom = 10;
+            this.btnMinimized.Click += new System.EventHandler(this.btnMinimized_Click);
+            // 
             // frmPhanCong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
             this.ClientSize = new System.Drawing.Size(1165, 585);
+            this.Controls.Add(this.btnMinimized);
             this.Controls.Add(this.btnTimKiem);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.groupBox4);
@@ -449,6 +467,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimized)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -475,5 +494,6 @@
         private Bunifu.Framework.UI.BunifuFlatButton btnLuu;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private Bunifu.Framework.UI.BunifuFlatButton btnTimKiem;
+        private Bunifu.Framework.UI.BunifuImageButton btnMinimized;
     }
 }

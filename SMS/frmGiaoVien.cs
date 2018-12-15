@@ -8,19 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using System.IO;
 using System.Data.SqlClient;
+using System.IO;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace SMS
 {
     public partial class frmGiaoVien : Form
     {
-
-        string imgTest;
         public frmGiaoVien()
         {
             InitializeComponent();
         }
+        string imgTest;
         //Sử dụng thư viện
         //using System.Runtime.InteropServices;
         //để di chuyển frm
@@ -70,6 +70,7 @@ namespace SMS
             "ON GIAOVIEN.MAGV = LOP.MAGVCN WHERE MAGV = '" + DatabaseConnection.MaGV + "'";
                 dgvGV.DataSource = DatabaseConnection.GetDataTable(query);
                 //dgvGV.SelectAll();
+
             }
         }
 
@@ -97,9 +98,7 @@ namespace SMS
                     strInsert += txtDiaChi.Text + "', N'";
                     strInsert += txtDanToc.Text + "', '";
                     strInsert += txtEmail.Text + "', N'";
-                    strInsert += txtChucVu.Text + "')";
-                    MessageBox.Show(strInsert);
-                    //
+                    strInsert += txtChucVu.Text + "', @img2";
                     byte[] img = null;
                     FileStream fs = new FileStream(imgTest, FileMode.Open, FileAccess.Read);
                     BinaryReader br = new BinaryReader(fs);
@@ -107,12 +106,14 @@ namespace SMS
                     DatabaseConnection.Connected();
                     SqlCommand cmd = new SqlCommand(strInsert, DatabaseConnection.sqlConnection);
                     cmd.Parameters.Add(new SqlParameter("@img2", img));
-
-                    if (DatabaseConnection.ExcuteSql(cmd))
+                    //
+                    if (DatabaseConnection.ExcuteSql(strInsert))
                     {
                         MessageBox.Show("Thêm Giáo viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txtMaGV.Enabled = false;
+                        DatabaseConnection.SaveAction("Thêm mới", "GIAOVIEN");
                     }
+                    
                     else
                         MessageBox.Show("Thêm Giáo viên thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     FillDataGridView();
@@ -135,11 +136,23 @@ namespace SMS
                     strUpdate += "DANTOC = N'" + txtDanToc.Text + "', ";
                     strUpdate += "DIACHI = N'" + txtDiaChi.Text + "', ";
                     strUpdate += "SODIENTHOAI = '" + txtSDT.Text + "', ";
-                    strUpdate += "CHUCVU = N'" + txtChucVu.Text + "' ";
+                    strUpdate += "CHUCVU = N'" + txtChucVu.Text + "', ";
+                    strUpdate += "ANHTHE = " + "@img2 ";
                     strUpdate += "Where MAGV = '" + txtMaGV.Text + "'";
+                    byte[] img = null;
+                    FileStream fs = new FileStream(imgTest, FileMode.Open, FileAccess.Read);
+                    BinaryReader br = new BinaryReader(fs);
+                    img = br.ReadBytes((int)fs.Length);
+                    DatabaseConnection.Connected();
+                    SqlCommand cmd = new SqlCommand(strUpdate, DatabaseConnection.sqlConnection);
+                    cmd.Parameters.Add(new SqlParameter("@img2", img));
+                    MessageBox.Show(strUpdate);
                     //
                     if (DatabaseConnection.ExcuteSql(strUpdate))
+                    {
                         MessageBox.Show("Chỉnh sửa Giáo viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DatabaseConnection.SaveAction("Chỉnh sửa", "GIAOVIEN");
+                    }
                     else
                         MessageBox.Show("Chỉnh sửa Giáo viên thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     FillDataGridView();
@@ -167,6 +180,7 @@ namespace SMS
                             }
                         FillDataGridView();
                         MessageBox.Show("Xóa giáo viên thành công ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        DatabaseConnection.SaveAction("Xóa", "GIAOVIEN");
                     }
                 }
             }
@@ -233,6 +247,7 @@ namespace SMS
                     MessageBox.Show("Không tìm thấy kết quả!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
                     dgvGV.DataSource = DatabaseConnection.GetDataTable(query);
+                DatabaseConnection.SaveAction("Tìm kiếm", "GIAOVIEN");
             }
         }
 
@@ -245,6 +260,15 @@ namespace SMS
             "ON GIAOVIEN.MAGV = LOP.MAGVCN";
             dgvGV.DataSource = DatabaseConnection.GetDataTable(query);
             // Chỉnh sửa kích thước các cột
+            dgvGV.Columns[0].Width = dgvGV.Width / 13;
+            dgvGV.Columns[1].Width = dgvGV.Width / 7;
+            dgvGV.Columns[2].Width = dgvGV.Width / 12;
+            dgvGV.Columns[3].Width = dgvGV.Width / 9;
+            dgvGV.Columns[4].Width = dgvGV.Width / 11;
+            dgvGV.Columns[5].Width = dgvGV.Width / 11;
+            dgvGV.Columns[6].Width = dgvGV.Width / 12;
+            dgvGV.Columns[7].Width = dgvGV.Width / 9;
+            dgvGV.Columns[8].Width = dgvGV.Width / 9;
         }
 
 
@@ -262,21 +286,11 @@ namespace SMS
             txtChucVu.Text = dgvGV.CurrentRow.Cells[8].Value.ToString();
             txtLop.Text = dgvGV.CurrentRow.Cells[9].Value.ToString();
             txtMaGV.Enabled = false;
-            if (string.IsNullOrEmpty(dgvGV.CurrentRow.Cells[10].Value.ToString()))
-                return;
-            byte[] img = (byte[])dgvGV.CurrentRow.Cells[14].Value;
-            if (img == null)
-                ptbAnh.Image = null;
-            else {
-                MemoryStream ms = new MemoryStream(img);
-                ptbAnh.Image = Image.FromStream(ms);
-            }
         }
 
         private void dtpNgaySinh_onValueChanged(object sender, EventArgs e)
         {
-            
-            txtNgaySinh.Text = dtpNgaySinh.Text;
+            txtNgaySinh.Text = dtpNgaySinh.Value.ToShortDateString();
         }
 
         bool GeneralCheck()
@@ -349,18 +363,27 @@ namespace SMS
             return flag;
         }
 
-        private void btnChonAnh_Click(object sender, EventArgs e) {
-            try {
+
+        private void btnMinimized_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnChonAnh_Click(object sender, EventArgs e)
+        {
+            try
+            {
                 OpenFileDialog dlg = new OpenFileDialog();
                 dlg.Filter = "All File(.)|*.*";
                 dlg.Title = "Select Employee Picture...";
-                if (dlg.ShowDialog() == DialogResult.OK) {
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
                     imgTest = dlg.FileName.ToString();
                     ptbAnh.ImageLocation = imgTest;
                 }
-
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show("ex.Message");
 
             }

@@ -138,6 +138,9 @@ namespace SMS
             string query = "SELECT PC.MALOP AS [Lớp], PC.MAMH AS [Môn học], PC.MAGV AS [Giáo viên dạy] " +
                             "FROM PHANCONG PC ";                            
             dgvTTGD.DataSource = DatabaseConnection.GetDataTable(query);
+            //
+            dgvTTGD.Columns[0].Width = dgvTTGD.Width / 5;
+            dgvTTGD.Columns[1].Width = dgvTTGD.Width / 5;
         }
 
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -196,6 +199,11 @@ namespace SMS
                 txtTenMon.Text = "";
             else
                 txtTenMon.Text = dt.Rows[0][0].ToString();
+        }
+
+        private void btnMinimized_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

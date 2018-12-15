@@ -43,6 +43,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -135,16 +136,6 @@
     <Compile Include="QuanLyDiemLopHoc.Designer.cs">
       <DependentUpon>QuanLyDiemLopHoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuanLyHocSinhDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QuanLyHocSinhDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="QuanLyHocSinhDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QuanLyHocSinhDataSet1.xsd</DependentUpon>
-    </Compile>
     <Compile Include="QuanLyTaiKhoan.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -211,28 +202,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="QuanLyHocSinhDataSet.xsc">
-      <DependentUpon>QuanLyHocSinhDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="QuanLyHocSinhDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>QuanLyHocSinhDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="QuanLyHocSinhDataSet.xss">
-      <DependentUpon>QuanLyHocSinhDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="QuanLyHocSinhDataSet1.xsc">
-      <DependentUpon>QuanLyHocSinhDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="QuanLyHocSinhDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>QuanLyHocSinhDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="QuanLyHocSinhDataSet1.xss">
-      <DependentUpon>QuanLyHocSinhDataSet1.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
