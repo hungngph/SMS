@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Data.SqlClient;
 using System.IO;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace SMS
 {
@@ -68,7 +69,20 @@ namespace SMS
                 DataTable dt = DatabaseConnection.GetDataTable(query);
                 cboMaLop.Text = dt.Rows[0][0].ToString();
                 cboMaLop.Enabled = false;
-                string strSelect = "SELECT * FROM HOCSINH where MALOP = '" + cboMaLop.Text + "'";
+                string strSelect = "SELECT MAHS AS [Mã học sinh] , " +
+                                          "HOTEN AS [Họ tên], " +
+                                          "MALOP AS [Khóa học], " +
+                                          "NGAYSINH AS [Ngày sinh], "+
+                                          "GIOITINH AS [Giới tính], "+
+                                          "DIACHI AS[Địa chỉ], "+
+                                          "HOTENCHA AS[Họ tên Cha], "+
+                                          "HOTENME AS[Họ tên Mẹ], "+
+                                          "SDTCHA AS[SĐT Cha], "+
+                                          "SDTME AS[SĐT Mẹ], "+
+                                          "DANTOC AS[Dân tộc], "+
+                                          "EMAIL AS[Email], "+
+                                          "DIENTHOAI AS[Điện thoại] "+
+                                    "FROM HOCSINH where MALOP = '" + cboMaLop.Text + "'";
                 dgvHS.DataSource = DatabaseConnection.GetDataTable(strSelect);
 
             }
@@ -296,7 +310,21 @@ namespace SMS
 
         private void FillDataGridView()
         {
-            string strSelect = "SELECT * FROM HOCSINH";
+            //string strSelect = "SELECT * FROM HOCSINH";
+            string strSelect = "SELECT MAHS AS [Mã học sinh] , " +
+                                          "HOTEN AS [Họ tên], " +
+                                          "MALOP AS [Khóa học], " +
+                                          "NGAYSINH AS [Ngày sinh], " +
+                                          "GIOITINH AS [Giới tính], " +
+                                          "DIACHI AS[Địa chỉ], " +
+                                          "HOTENCHA AS[Họ tên Cha], " +
+                                          "HOTENME AS[Họ tên Mẹ], " +
+                                          "SDTCHA AS[SĐT Cha], " +
+                                          "SDTME AS[SĐT Mẹ], " +
+                                          "DANTOC AS[Dân tộc], " +
+                                          "EMAIL AS[Email], " +
+                                          "DIENTHOAI AS[Điện thoại] " +
+                                "FROM HOCSINH";
             dgvHS.DataSource = DatabaseConnection.GetDataTable(strSelect);
             //// Chỉnh sửa kích thước các cột
             dgvHS.Columns[0].Width = dgvHS.Width / 14;
@@ -319,6 +347,7 @@ namespace SMS
         private void dgvHS_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             errorProvider1.Clear();
+
             txtMSHS.Text = dgvHS.CurrentRow.Cells[0].Value.ToString();
             txtHoTen.Text = dgvHS.CurrentRow.Cells[1].Value.ToString();
             cboMaLop.Text = dgvHS.CurrentRow.Cells[2].Value.ToString();
@@ -328,12 +357,13 @@ namespace SMS
             txtDiaChi.Text = dgvHS.CurrentRow.Cells[6].Value.ToString();
             txtHoTenCha.Text = dgvHS.CurrentRow.Cells[7].Value.ToString();
             txtHoTenMe.Text = dgvHS.CurrentRow.Cells[8].Value.ToString();
-            txtSDTCha.Text = dgvHS.CurrentRow.Cells[9].Value.ToString();
+            txtSDT.Text = dgvHS.CurrentRow.Cells[9].Value.ToString();
             txtSDTMe.Text = dgvHS.CurrentRow.Cells[10].Value.ToString();
             txtDanToc.Text = dgvHS.CurrentRow.Cells[11].Value.ToString();
             txtEmail.Text = dgvHS.CurrentRow.Cells[12].Value.ToString();
-            txtSDT.Text = dgvHS.CurrentRow.Cells[13].Value.ToString();
-            //txtMSHS.Enabled = false; // Không cho phép sửa Mã học sinh
+            //txtSDT.Text = dgvHS.CurrentRow.Cells[13].Value.ToString();
+
+            txtMSHS.Enabled = false; // Không cho phép sửa Mã học sinh
         }
 
         private void dtpNgaySinh_onValueChanged(object sender, EventArgs e)
@@ -442,6 +472,36 @@ namespace SMS
                 MessageBox.Show("ex.Message");
 
             }
+        }
+
+        private void btnXuat_Click(object sender, EventArgs e)
+        {
+            //Tạo FileName
+            SaveFileDialog fsave = new SaveFileDialog();
+            fsave.Filter = "All files|*.*|Excel file|*.xlsx";
+            Excel.Application app = new Excel.Application();
+            Excel.Workbook workbook = app.Workbooks.Add(Type.Missing);
+            Excel.Worksheet worksheet = null;
+
+
+            worksheet = workbook.ActiveSheet;
+            worksheet.Name = "Xuất dữ liệu";
+            //Tạo dữ liệu cho file Excel
+
+            for (int i = 1; i <= dgvHS.Columns.Count; i++)
+            {
+                worksheet.Cells[1, i] = dgvHS.Columns[i - 1].HeaderText;
+            }
+            for (int i = 0; i < dgvHS.Rows.Count; i++)
+                for (int j = 0; j < dgvHS.Columns.Count; j++)
+                    worksheet.Cells[i + 2, j + 1] = dgvHS.Rows[i].Cells[j].Value.ToString();
+            if (fsave.ShowDialog() == DialogResult.OK)
+            {
+                workbook.SaveAs(fsave.FileName, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing);
+            }
+            app.Quit();
+
+            MessageBox.Show("Xuất dữ liệu thành công", "Thông báo", MessageBoxButtons.OK);
         }
     }
 }

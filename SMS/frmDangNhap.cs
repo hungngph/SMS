@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 
 namespace SMS
 {
@@ -38,6 +39,46 @@ namespace SMS
 
         }
 
+        public static string EnCrypt(string strEnCrypt, string key)
+        {
+            try
+            {
+                byte[] keyArr;
+                byte[] EnCryptArr = UTF8Encoding.UTF8.GetBytes(strEnCrypt);
+                MD5CryptoServiceProvider MD5Hash = new MD5CryptoServiceProvider();
+                keyArr = MD5Hash.ComputeHash(UTF8Encoding.UTF8.GetBytes(key));
+                TripleDESCryptoServiceProvider tripDes = new TripleDESCryptoServiceProvider();
+                tripDes.Key = keyArr;
+                tripDes.Mode = CipherMode.ECB;
+                tripDes.Padding = PaddingMode.PKCS7;
+                ICryptoTransform transform = tripDes.CreateEncryptor();
+                byte[] arrResult = transform.TransformFinalBlock(EnCryptArr, 0, EnCryptArr.Length);
+                return Convert.ToBase64String(arrResult, 0, arrResult.Length);
+            }
+            catch (Exception ex) { }
+            return "";
+        }
+
+        public static string DeCrypt(string strDecypt, string key)
+        {
+            try
+            {
+                byte[] keyArr;
+                byte[] DeCryptArr = Convert.FromBase64String(strDecypt);
+                MD5CryptoServiceProvider MD5Hash = new MD5CryptoServiceProvider();
+                keyArr = MD5Hash.ComputeHash(UTF8Encoding.UTF8.GetBytes(key));
+                TripleDESCryptoServiceProvider tripDes = new TripleDESCryptoServiceProvider();
+                tripDes.Key = keyArr;
+                tripDes.Mode = CipherMode.ECB;
+                tripDes.Padding = PaddingMode.PKCS7;
+                ICryptoTransform transform = tripDes.CreateDecryptor();
+                byte[] arrResult = transform.TransformFinalBlock(DeCryptArr, 0, DeCryptArr.Length);
+                return UTF8Encoding.UTF8.GetString(arrResult);
+            }
+            catch (Exception ex) { }
+            return "";
+        }
+
         private void btnDong_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -59,8 +100,8 @@ namespace SMS
             if (GeneralCheck())
             {
                 string query = "SELECT * FROM TAIKHOAN WHERE" +
-                    " TENDANGNHAP = '" + txtTaiKhoan.Text +
-                    "' AND MATKHAU = '" + txtMatKhau.Text;
+                    " TENDANGNHAP = '" +  txtTaiKhoan.Text +
+                    "' AND MATKHAU = '" + EnCrypt("LTTQ", txtMatKhau.Text);
                 string admin = "' AND QUYENTRUYCAP = 'Admin'";
                 string teacher = "' AND QUYENTRUYCAP = N'Giáo viên'";
                 if (DatabaseConnection.CheckExist(query + admin))
@@ -109,6 +150,45 @@ namespace SMS
                 errorProvider1.SetError(txtMatKhau, "Không được bỏ trống vùng này");
             }
             return flag;
+        }
+
+        private void btnMinimized_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void txtMatKhau_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                if (GeneralCheck())
+                {
+                    string query = "SELECT * FROM TAIKHOAN WHERE" +
+                        " TENDANGNHAP = '" + txtTaiKhoan.Text +
+                        "' AND MATKHAU = '" + EnCrypt("LTTQ", txtMatKhau.Text);
+                    string admin = "' AND QUYENTRUYCAP = 'Admin'";
+                    string teacher = "' AND QUYENTRUYCAP = N'Giáo viên'";
+                    if (DatabaseConnection.CheckExist(query + admin))
+                    {
+                        DatabaseConnection.isAdmin = true;
+                        this.Hide();
+                        frmChucNang frm = new frmChucNang();
+                        frm.Show();
+                        return;
+                    }
+                    if (DatabaseConnection.CheckExist(query + teacher))
+                    {
+                        DatabaseConnection.MaGV = txtTaiKhoan.Text;
+                        DatabaseConnection.isAdmin = false;
+                        this.Hide();
+                        frmChucNang frm = new frmChucNang();
+                        frm.Show();
+                        return;
+                    }
+                    lblKiemTra.Text = "Sai tên đăng nhập hoặc mật khẩu";
+                    txtMatKhau.Text = "";
+                }
+            }
         }
     }
 }
