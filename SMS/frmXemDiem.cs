@@ -57,15 +57,14 @@ namespace SMS
             Load_combobox();
         }
 
-
+        int bo = 0;
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-
-            if (GeneralCheck())
-            {
+            bo = 0;
+            if (GeneralCheck()) {
                 string query = null;
-                if (cboMaMon.Text != "")
-                {
+                if (cboMaMon.Text != "") {
+                    bo = 1;
                     query = "SELECT DIEM.MAHS as [Mã học sinh], " +
                             "DIEM.TENHOCSINH as [Tên học sinh], " +
                             "DIEMMIENG1 as [Điểm miệng 1], " +
@@ -85,8 +84,8 @@ namespace SMS
                                        "AND DIEM.HOCKY='" + txtHocKy.Text + "' " +
                                        "AND MONHOC.MAMH = '" + cboMaMon.Text + "'";
                 }
-                else
-                {
+                else {
+                    bo = 2;
                     query = "SELECT MONHOC.TENMH AS [Môn học] ," +
                             "DIEM.MAHS as [Mã học sinh], " +
                             "DIEM.TENHOCSINH as [Tên học sinh], " +
@@ -99,18 +98,14 @@ namespace SMS
                                       "AND DIEM.NAMHOC='" + txtNamHoc.Text + "' " +
                                       "AND DIEM.HOCKY='" + txtHocKy.Text + "' " +
                             "GROUP BY MONHOC.TENMH, DIEM.MAHS, DIEM.TENHOCSINH, DIEM.DIEMTONGKET";
-                    
                 }
                 if (DatabaseConnection.GetDataTable(query).Rows.Count == 0)
                     MessageBox.Show("Không tìm thấy kết quả!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                else
-                {
+                else {
+                    bo += 2;
                     dgvDSXD.DataSource = DatabaseConnection.GetDataTable(query);
-                    dgvDSXD.Columns[0].Width = dgvDSXD.Width / 6;
-                    dgvDSXD.Columns[1].Width = dgvDSXD.Width / 6;
-                    dgvDSXD.Columns[2].Width = dgvDSXD.Width / 3;
+                    AddChart();
                 }
-                DatabaseConnection.SaveAction("Tìm kiếm", "XEMDIEM");
             }
         }
 
@@ -342,6 +337,33 @@ namespace SMS
         private void btnMinimized_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+        void AddChart() {
+            chart.Series["Diem"].Points.Clear();
+            if (bo < 3)
+                return;
+            int[] bo2 = new int[11];
+            float x = 0;
+            float result;
+            if (bo == 3) {
+                for (int i = 0; i < dgvDSXD.Rows.Count; i++) {
+                    float.TryParse(dgvDSXD.Rows[i].Cells[9].Value.ToString(), out result);
+                    bo2[(int)Math.Floor(result)]++;
+                }
+            }
+            if (bo == 4) {
+                for (int i = 0; i < dgvDSXD.Rows.Count; i++) {
+                    float.TryParse(dgvDSXD.Rows[i].Cells[3].Value.ToString(), out result);
+                    if (result >= 10)
+                        result = 9.9f;
+                    bo2[(int)Math.Floor(result)]++;
+                }
+            }
+            for (int i = 0; i < bo2.Length; i++)
+                chart.Series["Diem"].Points.AddXY(i + 0.5f, (int)Math.Floor((float)bo2[i] / (dgvDSXD.Rows.Count) * 100));
+            for (int i = 0; i < 10; i++) {
+                chart.Series[0].Points[i].AxisLabel = i + " - " + (i + 1);
+            }
         }
     }
 }
