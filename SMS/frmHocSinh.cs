@@ -34,11 +34,6 @@ namespace SMS
 
         private void frmHocSinh_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
 
         }
 
@@ -49,9 +44,6 @@ namespace SMS
 
         private void frmHocSinh_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'quanLyHocSinhDataSet1.HOCSINH' table. You can move, or remove it, as needed.
-
-
             this.WindowState = FormWindowState.Normal;
             DatabaseConnection.Connected();
             if (!DatabaseConnection.IsConnect())
@@ -69,7 +61,20 @@ namespace SMS
                 DataTable dt = DatabaseConnection.GetDataTable(query);
                 cboMaLop.Text = dt.Rows[0][0].ToString();
                 cboMaLop.Enabled = false;
-                string strSelect = "SELECT * FROM HOCSINH where MALOP = '" + cboMaLop.Text + "'";
+                string strSelect = "SELECT MAHS AS [Mã học sinh] , " +
+                                          "HOTEN AS [Họ tên], " +
+                                          "MALOP AS [Khóa học], " +
+                                          "NGAYSINH AS [Ngày sinh], " +
+                                          "GIOITINH AS [Giới tính], " +
+                                          "DIACHI AS[Địa chỉ], " +
+                                          "HOTENCHA AS[Họ tên Cha], " +
+                                          "HOTENME AS[Họ tên Mẹ], " +
+                                          "SDTCHA AS[SĐT Cha], " +
+                                          "SDTME AS[SĐT Mẹ], " +
+                                          "DANTOC AS[Dân tộc], " +
+                                          "EMAIL AS[Email], " +
+                                          "DIENTHOAI AS[Điện thoại] " +
+                                    "FROM HOCSINH where MALOP = '" + cboMaLop.Text + "'";
                 dgvHS.DataSource = DatabaseConnection.GetDataTable(strSelect);
 
             }
@@ -181,18 +186,22 @@ namespace SMS
                     if (txtSDTMe.Text != "")
                         strUpdate += "SDTME = '" + txtSDTMe.Text + "' ";
                     else
-                        strUpdate += "SDTME = NULL, ";
+                        strUpdate += "SDTME = NULL ";
+                    if (ptbAnh != null)
+                        strUpdate += " = '" + txtSDTMe.Text + "' ";
+                    else
+                        strUpdate += "SDTME = NULL ";
                     strUpdate += "Where MAHS = '" + txtMSHS.Text + "'";
                     //
                     if (DatabaseConnection.ExcuteSql(strUpdate))
                     {
                         MessageBox.Show("Chỉnh sửa Học sinh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        DatabaseConnection.SaveAction("Sua", "HOCSINH");
+                        DatabaseConnection.SaveAction("Chỉnh sửa", "TAIKHOAN");
                     }
                     else
                         MessageBox.Show("Chỉnh sửa Học sinh thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     FillDataGridView();
-                    DatabaseConnection.SaveAction("Chỉnh sửa", "TAIKHOAN");
+                    
                 }
             }
             else

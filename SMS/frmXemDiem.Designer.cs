@@ -294,6 +294,7 @@
             this.dgvDSXD.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvDSXD.Name = "dgvDSXD";
             this.dgvDSXD.ReadOnly = true;
+            this.dgvDSXD.RowHeadersVisible = false;
             this.dgvDSXD.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             this.dgvDSXD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDSXD.Size = new System.Drawing.Size(1122, 226);

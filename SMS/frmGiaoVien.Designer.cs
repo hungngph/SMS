@@ -826,6 +826,7 @@
             this.btnChonAnh.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnChonAnh.Textcolor = System.Drawing.Color.White;
             this.btnChonAnh.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChonAnh.Click += new System.EventHandler(this.btnChonAnh_Click);
             // 
             // frmGiaoVien
             // 

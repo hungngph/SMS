@@ -99,11 +99,17 @@ namespace SMS
                                       "AND DIEM.NAMHOC='" + txtNamHoc.Text + "' " +
                                       "AND DIEM.HOCKY='" + txtHocKy.Text + "' " +
                             "GROUP BY MONHOC.TENMH, DIEM.MAHS, DIEM.TENHOCSINH, DIEM.DIEMTONGKET";
+                    
                 }
                 if (DatabaseConnection.GetDataTable(query).Rows.Count == 0)
                     MessageBox.Show("Không tìm thấy kết quả!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
+                {
                     dgvDSXD.DataSource = DatabaseConnection.GetDataTable(query);
+                    dgvDSXD.Columns[0].Width = dgvDSXD.Width / 6;
+                    dgvDSXD.Columns[1].Width = dgvDSXD.Width / 6;
+                    dgvDSXD.Columns[2].Width = dgvDSXD.Width / 3;
+                }
                 DatabaseConnection.SaveAction("Tìm kiếm", "XEMDIEM");
             }
         }

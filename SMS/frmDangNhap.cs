@@ -142,35 +142,7 @@ namespace SMS
         private void txtMatKhau_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
-            {
-                if (GeneralCheck())
-                {
-                    string query = "SELECT * FROM TAIKHOAN WHERE" +
-                        " TENDANGNHAP = '" + txtTaiKhoan.Text +
-                        "' AND MATKHAU = '" + EnCrypt("LTTQ", txtMatKhau.Text);
-                    string admin = "' AND QUYENTRUYCAP = 'Admin'";
-                    string teacher = "' AND QUYENTRUYCAP = N'Giáo viên'";
-                    if (DatabaseConnection.CheckExist(query + admin))
-                    {
-                        DatabaseConnection.isAdmin = true;
-                        this.Hide();
-                        frmChucNang frm = new frmChucNang();
-                        frm.Show();
-                        return;
-                    }
-                    if (DatabaseConnection.CheckExist(query + teacher))
-                    {
-                        DatabaseConnection.MaGV = txtTaiKhoan.Text;
-                        DatabaseConnection.isAdmin = false;
-                        this.Hide();
-                        frmChucNang frm = new frmChucNang();
-                        frm.Show();
-                        return;
-                    }
-                    lblKiemTra.Text = "Sai tên đăng nhập hoặc mật khẩu";
-                    txtMatKhau.Text = "";
-                }
-            }
+                btnDangNhap_Click(null, null);
         }
     }
 }

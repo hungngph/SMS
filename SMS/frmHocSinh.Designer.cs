@@ -1049,7 +1049,6 @@
             this.Text = "frmHocSinh";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Load += new System.EventHandler(this.frmHocSinh_Load);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmHocSinh_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.btnDong)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

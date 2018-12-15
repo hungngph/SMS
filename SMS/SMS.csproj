@@ -115,12 +115,6 @@
     <Compile Include="frmPhanCong.Designer.cs">
       <DependentUpon>frmPhanCong.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmQLTK.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmQLTK.Designer.cs">
-      <DependentUpon>frmQLTK.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmXemDiem.cs">
       <SubType>Form</SubType>
     </Compile>

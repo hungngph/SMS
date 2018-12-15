@@ -98,7 +98,7 @@ namespace SMS
                     strInsert += txtDiaChi.Text + "', N'";
                     strInsert += txtDanToc.Text + "', '";
                     strInsert += txtEmail.Text + "', N'";
-                    strInsert += txtChucVu.Text + "', @img";
+                    strInsert += txtChucVu.Text + "', @img2";
                     byte[] img = null;
                     FileStream fs = new FileStream(imgTest, FileMode.Open, FileAccess.Read);
                     BinaryReader br = new BinaryReader(fs);
@@ -136,8 +136,17 @@ namespace SMS
                     strUpdate += "DANTOC = N'" + txtDanToc.Text + "', ";
                     strUpdate += "DIACHI = N'" + txtDiaChi.Text + "', ";
                     strUpdate += "SODIENTHOAI = '" + txtSDT.Text + "', ";
-                    strUpdate += "CHUCVU = N'" + txtChucVu.Text + "' ";
+                    strUpdate += "CHUCVU = N'" + txtChucVu.Text + "', ";
+                    strUpdate += "ANHTHE = " + "@img2 ";
                     strUpdate += "Where MAGV = '" + txtMaGV.Text + "'";
+                    byte[] img = null;
+                    FileStream fs = new FileStream(imgTest, FileMode.Open, FileAccess.Read);
+                    BinaryReader br = new BinaryReader(fs);
+                    img = br.ReadBytes((int)fs.Length);
+                    DatabaseConnection.Connected();
+                    SqlCommand cmd = new SqlCommand(strUpdate, DatabaseConnection.sqlConnection);
+                    cmd.Parameters.Add(new SqlParameter("@img2", img));
+                    MessageBox.Show(strUpdate);
                     //
                     if (DatabaseConnection.ExcuteSql(strUpdate))
                     {
@@ -281,8 +290,7 @@ namespace SMS
 
         private void dtpNgaySinh_onValueChanged(object sender, EventArgs e)
         {
-            
-            txtNgaySinh.Text = dtpNgaySinh.Text;
+            txtNgaySinh.Text = dtpNgaySinh.Value.ToShortDateString();
         }
 
         bool GeneralCheck()
@@ -359,6 +367,26 @@ namespace SMS
         private void btnMinimized_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnChonAnh_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog dlg = new OpenFileDialog();
+                dlg.Filter = "All File(.)|*.*";
+                dlg.Title = "Select Employee Picture...";
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    imgTest = dlg.FileName.ToString();
+                    ptbAnh.ImageLocation = imgTest;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ex.Message");
+
+            }
         }
     }
 }
