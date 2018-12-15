@@ -37,14 +37,16 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtTaikhoan = new Bunifu.Framework.UI.BunifuMaterialTextbox();
-            this.txtMKcu = new Bunifu.Framework.UI.BunifuMaterialTextbox();
+            this.txtMK = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.txtMKmoi = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.txtXacNhanMk = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.btnLamMoi = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnHoanTat = new Bunifu.Framework.UI.BunifuFlatButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnMinimized = new Bunifu.Framework.UI.BunifuImageButton();
             ((System.ComponentModel.ISupportInitialize)(this.btnDong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimized)).BeginInit();
             this.SuspendLayout();
             // 
             // btnDong
@@ -123,6 +125,7 @@
             this.txtTaikhoan.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
             this.txtTaikhoan.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtTaikhoan.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtTaikhoan.Enabled = false;
             this.txtTaikhoan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTaikhoan.ForeColor = System.Drawing.Color.White;
             this.txtTaikhoan.HintForeColor = System.Drawing.Color.White;
@@ -141,29 +144,29 @@
             this.txtTaikhoan.TabIndex = 86;
             this.txtTaikhoan.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
-            // txtMKcu
+            // txtMK
             // 
-            this.txtMKcu.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-            this.txtMKcu.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.txtMKcu.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.txtMKcu.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtMKcu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMKcu.ForeColor = System.Drawing.Color.White;
-            this.txtMKcu.HintForeColor = System.Drawing.Color.White;
-            this.txtMKcu.HintText = "";
-            this.txtMKcu.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtMKcu.isPassword = false;
-            this.txtMKcu.LineFocusedColor = System.Drawing.Color.Gray;
-            this.txtMKcu.LineIdleColor = System.Drawing.Color.Gray;
-            this.txtMKcu.LineMouseHoverColor = System.Drawing.Color.Gray;
-            this.txtMKcu.LineThickness = 2;
-            this.txtMKcu.Location = new System.Drawing.Point(243, 123);
-            this.txtMKcu.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.txtMKcu.MaxLength = 32767;
-            this.txtMKcu.Name = "txtMKcu";
-            this.txtMKcu.Size = new System.Drawing.Size(320, 30);
-            this.txtMKcu.TabIndex = 87;
-            this.txtMKcu.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtMK.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.txtMK.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.txtMK.characterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtMK.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtMK.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMK.ForeColor = System.Drawing.Color.White;
+            this.txtMK.HintForeColor = System.Drawing.Color.White;
+            this.txtMK.HintText = "";
+            this.txtMK.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtMK.isPassword = true;
+            this.txtMK.LineFocusedColor = System.Drawing.Color.Gray;
+            this.txtMK.LineIdleColor = System.Drawing.Color.Gray;
+            this.txtMK.LineMouseHoverColor = System.Drawing.Color.Gray;
+            this.txtMK.LineThickness = 2;
+            this.txtMK.Location = new System.Drawing.Point(243, 123);
+            this.txtMK.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.txtMK.MaxLength = 32767;
+            this.txtMK.Name = "txtMK";
+            this.txtMK.Size = new System.Drawing.Size(320, 30);
+            this.txtMK.TabIndex = 87;
+            this.txtMK.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // txtMKmoi
             // 
@@ -176,7 +179,7 @@
             this.txtMKmoi.HintForeColor = System.Drawing.Color.White;
             this.txtMKmoi.HintText = "";
             this.txtMKmoi.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtMKmoi.isPassword = false;
+            this.txtMKmoi.isPassword = true;
             this.txtMKmoi.LineFocusedColor = System.Drawing.Color.Gray;
             this.txtMKmoi.LineIdleColor = System.Drawing.Color.Gray;
             this.txtMKmoi.LineMouseHoverColor = System.Drawing.Color.Gray;
@@ -200,7 +203,7 @@
             this.txtXacNhanMk.HintForeColor = System.Drawing.Color.White;
             this.txtXacNhanMk.HintText = "";
             this.txtXacNhanMk.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtXacNhanMk.isPassword = false;
+            this.txtXacNhanMk.isPassword = true;
             this.txtXacNhanMk.LineFocusedColor = System.Drawing.Color.Gray;
             this.txtXacNhanMk.LineIdleColor = System.Drawing.Color.Gray;
             this.txtXacNhanMk.LineMouseHoverColor = System.Drawing.Color.Gray;
@@ -291,17 +294,33 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // btnMinimized
+            // 
+            this.btnMinimized.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
+            this.btnMinimized.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimized.Image")));
+            this.btnMinimized.ImageActive = null;
+            this.btnMinimized.Location = new System.Drawing.Point(542, 7);
+            this.btnMinimized.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMinimized.Name = "btnMinimized";
+            this.btnMinimized.Size = new System.Drawing.Size(42, 34);
+            this.btnMinimized.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMinimized.TabIndex = 144;
+            this.btnMinimized.TabStop = false;
+            this.btnMinimized.Zoom = 10;
+            this.btnMinimized.Click += new System.EventHandler(this.btnMinimized_Click);
+            // 
             // frmDoiMatKhau
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
             this.ClientSize = new System.Drawing.Size(636, 361);
+            this.Controls.Add(this.btnMinimized);
             this.Controls.Add(this.btnHoanTat);
             this.Controls.Add(this.btnLamMoi);
             this.Controls.Add(this.txtXacNhanMk);
             this.Controls.Add(this.txtMKmoi);
-            this.Controls.Add(this.txtMKcu);
+            this.Controls.Add(this.txtMK);
             this.Controls.Add(this.txtTaikhoan);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -319,6 +338,7 @@
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmDoiMatKhau_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.btnDong)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimized)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -333,11 +353,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private Bunifu.Framework.UI.BunifuMaterialTextbox txtTaikhoan;
-        private Bunifu.Framework.UI.BunifuMaterialTextbox txtMKcu;
+        private Bunifu.Framework.UI.BunifuMaterialTextbox txtMK;
         private Bunifu.Framework.UI.BunifuMaterialTextbox txtMKmoi;
         private Bunifu.Framework.UI.BunifuMaterialTextbox txtXacNhanMk;
         private Bunifu.Framework.UI.BunifuFlatButton btnLamMoi;
         private Bunifu.Framework.UI.BunifuFlatButton btnHoanTat;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private Bunifu.Framework.UI.BunifuImageButton btnMinimized;
     }
 }

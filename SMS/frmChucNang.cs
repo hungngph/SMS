@@ -54,9 +54,9 @@ namespace SMS
 
         private void btnCapNhapThongTin_Click(object sender, EventArgs e)
         {
+            quanLyDiemLopHoc1.Visible = false;
             capNhatThongTin1.Visible = true;
             quanLyTaiKhoan1.Visible = false;
-            quanLyDiemLopHoc1.Visible = false;
             gioiThieu1.Visible = false;
         }
 

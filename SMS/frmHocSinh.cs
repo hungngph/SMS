@@ -69,20 +69,7 @@ namespace SMS
                 DataTable dt = DatabaseConnection.GetDataTable(query);
                 cboMaLop.Text = dt.Rows[0][0].ToString();
                 cboMaLop.Enabled = false;
-                string strSelect = "SELECT MAHS AS [Mã học sinh] , " +
-                                          "HOTEN AS [Họ tên], " +
-                                          "MALOP AS [Khóa học], " +
-                                          "NGAYSINH AS [Ngày sinh], "+
-                                          "GIOITINH AS [Giới tính], "+
-                                          "DIACHI AS[Địa chỉ], "+
-                                          "HOTENCHA AS[Họ tên Cha], "+
-                                          "HOTENME AS[Họ tên Mẹ], "+
-                                          "SDTCHA AS[SĐT Cha], "+
-                                          "SDTME AS[SĐT Mẹ], "+
-                                          "DANTOC AS[Dân tộc], "+
-                                          "EMAIL AS[Email], "+
-                                          "DIENTHOAI AS[Điện thoại] "+
-                                    "FROM HOCSINH where MALOP = '" + cboMaLop.Text + "'";
+                string strSelect = "SELECT * FROM HOCSINH where MALOP = '" + cboMaLop.Text + "'";
                 dgvHS.DataSource = DatabaseConnection.GetDataTable(strSelect);
 
             }
@@ -133,22 +120,22 @@ namespace SMS
                     else
                         strInsert += "NULL, ";
                     if (txtSDT.Text != "")
-                        strInsert += "'" + txtSDT.Text + "', @img";
+                        strInsert += "'" + txtSDT.Text + "', @img2)";
                     else
-                        strInsert += "NULL, @img)";
-                    //
-                    //byte[] img = null;
-                    //FileStream fs = new FileStream(imgTest, FileMode.Open, FileAccess.Read);
-                    //BinaryReader br = new BinaryReader(fs);
-                    //img =  .ReadBytes((int)fs.Length);
-                    //DatabaseConnection.Connected();
-                    //SqlCommand cmd = new SqlCommand(strInsert, DatabaseConnection.sqlConnection);
-                    //cmd.Parameters.AddWithValue(new SqlParameter("@img", img));
+                        strInsert += "NULL, @img2)";
 
-                    if (DatabaseConnection.ExcuteSql(strInsert))
+                    byte[] img = null;
+                    FileStream fs = new FileStream(imgTest, FileMode.Open, FileAccess.Read);
+                    BinaryReader br = new BinaryReader(fs);
+                    img = br.ReadBytes((int)fs.Length);
+                    DatabaseConnection.Connected();
+                    SqlCommand cmd = new SqlCommand(strInsert, DatabaseConnection.sqlConnection);
+                    cmd.Parameters.Add(new SqlParameter("@img2", img));
+
+                    if (DatabaseConnection.ExcuteSql(cmd))
                     {
                         MessageBox.Show("Thêm Học sinh thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        DatabaseConnection.SaveAction("Them", "HOCSINH");
+                        DatabaseConnection.SaveAction("Thêm mới", "HOCSINH");
                         txtMSHS.Enabled = false;
                     }
                     else
@@ -205,6 +192,7 @@ namespace SMS
                     else
                         MessageBox.Show("Chỉnh sửa Học sinh thất bại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     FillDataGridView();
+                    DatabaseConnection.SaveAction("Chỉnh sửa", "TAIKHOAN");
                 }
             }
             else
@@ -229,7 +217,7 @@ namespace SMS
                             }
                         FillDataGridView();
                         MessageBox.Show("Xóa học sinh thành công ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        DatabaseConnection.SaveAction("Xoa", "HOCSINH");
+                        DatabaseConnection.SaveAction("Xóa", "HOCSINH");
                     }
                 }
             }
@@ -305,26 +293,44 @@ namespace SMS
                     MessageBox.Show("Không tìm thấy kết quả!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
                     dgvHS.DataSource = DatabaseConnection.GetDataTable(strSelect);
+                DatabaseConnection.SaveAction("Tìm kiếm", "GIAOVIEN"); 
             }
+        }
+
+        private void btnXuat_Click(object sender, EventArgs e)
+        {
+            //Tạo FileName
+            SaveFileDialog fsave = new SaveFileDialog();
+            fsave.Filter = "All files|*.*|Excel file|*.xlsx";
+            Excel.Application app = new Excel.Application();
+            Excel.Workbook workbook = app.Workbooks.Add(Type.Missing);
+            Excel.Worksheet worksheet = null;
+
+
+            worksheet = workbook.ActiveSheet;
+            worksheet.Name = "Xuất dữ liệu";
+            //Tạo dữ liệu cho file Excel
+
+            for (int i = 1; i <= dgvHS.Columns.Count; i++)
+            {
+                worksheet.Cells[1, i] = dgvHS.Columns[i - 1].HeaderText;
+            }
+            for (int i = 0; i < dgvHS.Rows.Count; i++)
+                for (int j = 0; j < dgvHS.Columns.Count; j++)
+                    worksheet.Cells[i + 2, j + 1] = dgvHS.Rows[i].Cells[j].Value.ToString();
+            if (fsave.ShowDialog() == DialogResult.OK)
+            {
+                workbook.SaveAs(fsave.FileName, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing);
+            }
+            app.Quit();
+
+            MessageBox.Show("Xuất dữ liệu thành công", "Thông báo", MessageBoxButtons.OK);
+            DatabaseConnection.SaveAction("Xuất dữ liệu", "GIAOVIEN");
         }
 
         private void FillDataGridView()
         {
-            //string strSelect = "SELECT * FROM HOCSINH";
-            string strSelect = "SELECT MAHS AS [Mã học sinh] , " +
-                                          "HOTEN AS [Họ tên], " +
-                                          "MALOP AS [Khóa học], " +
-                                          "NGAYSINH AS [Ngày sinh], " +
-                                          "GIOITINH AS [Giới tính], " +
-                                          "DIACHI AS[Địa chỉ], " +
-                                          "HOTENCHA AS[Họ tên Cha], " +
-                                          "HOTENME AS[Họ tên Mẹ], " +
-                                          "SDTCHA AS[SĐT Cha], " +
-                                          "SDTME AS[SĐT Mẹ], " +
-                                          "DANTOC AS[Dân tộc], " +
-                                          "EMAIL AS[Email], " +
-                                          "DIENTHOAI AS[Điện thoại] " +
-                                "FROM HOCSINH";
+            string strSelect = "SELECT * FROM HOCSINH";
             dgvHS.DataSource = DatabaseConnection.GetDataTable(strSelect);
             //// Chỉnh sửa kích thước các cột
             dgvHS.Columns[0].Width = dgvHS.Width / 14;
@@ -347,7 +353,6 @@ namespace SMS
         private void dgvHS_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             errorProvider1.Clear();
-
             txtMSHS.Text = dgvHS.CurrentRow.Cells[0].Value.ToString();
             txtHoTen.Text = dgvHS.CurrentRow.Cells[1].Value.ToString();
             cboMaLop.Text = dgvHS.CurrentRow.Cells[2].Value.ToString();
@@ -357,13 +362,23 @@ namespace SMS
             txtDiaChi.Text = dgvHS.CurrentRow.Cells[6].Value.ToString();
             txtHoTenCha.Text = dgvHS.CurrentRow.Cells[7].Value.ToString();
             txtHoTenMe.Text = dgvHS.CurrentRow.Cells[8].Value.ToString();
-            txtSDT.Text = dgvHS.CurrentRow.Cells[9].Value.ToString();
+            txtSDTCha.Text = dgvHS.CurrentRow.Cells[9].Value.ToString();
             txtSDTMe.Text = dgvHS.CurrentRow.Cells[10].Value.ToString();
             txtDanToc.Text = dgvHS.CurrentRow.Cells[11].Value.ToString();
             txtEmail.Text = dgvHS.CurrentRow.Cells[12].Value.ToString();
-            //txtSDT.Text = dgvHS.CurrentRow.Cells[13].Value.ToString();
+            txtSDT.Text = dgvHS.CurrentRow.Cells[13].Value.ToString();
+            if (string.IsNullOrEmpty(dgvHS.CurrentRow.Cells[14].Value.ToString()))
+                return;
+            byte[] img = (byte[])dgvHS.CurrentRow.Cells[14].Value;
+            if (img == null)
+                ptbAnh.Image = null;
+            else
+            {
+                MemoryStream ms = new MemoryStream(img);
+                ptbAnh.Image = Image.FromStream(ms);
+            }
 
-            txtMSHS.Enabled = false; // Không cho phép sửa Mã học sinh
+            //txtMSHS.Enabled = false; // Không cho phép sửa Mã học sinh
         }
 
         private void dtpNgaySinh_onValueChanged(object sender, EventArgs e)
@@ -465,7 +480,6 @@ namespace SMS
                     imgTest = dlg.FileName.ToString();
                     ptbAnh.ImageLocation = imgTest;
                 }
-
             }
             catch (Exception ex)
             {
@@ -474,34 +488,9 @@ namespace SMS
             }
         }
 
-        private void btnXuat_Click(object sender, EventArgs e)
+        private void btnMinimized_Click(object sender, EventArgs e)
         {
-            //Tạo FileName
-            SaveFileDialog fsave = new SaveFileDialog();
-            fsave.Filter = "All files|*.*|Excel file|*.xlsx";
-            Excel.Application app = new Excel.Application();
-            Excel.Workbook workbook = app.Workbooks.Add(Type.Missing);
-            Excel.Worksheet worksheet = null;
-
-
-            worksheet = workbook.ActiveSheet;
-            worksheet.Name = "Xuất dữ liệu";
-            //Tạo dữ liệu cho file Excel
-
-            for (int i = 1; i <= dgvHS.Columns.Count; i++)
-            {
-                worksheet.Cells[1, i] = dgvHS.Columns[i - 1].HeaderText;
-            }
-            for (int i = 0; i < dgvHS.Rows.Count; i++)
-                for (int j = 0; j < dgvHS.Columns.Count; j++)
-                    worksheet.Cells[i + 2, j + 1] = dgvHS.Rows[i].Cells[j].Value.ToString();
-            if (fsave.ShowDialog() == DialogResult.OK)
-            {
-                workbook.SaveAs(fsave.FileName, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing);
-            }
-            app.Quit();
-
-            MessageBox.Show("Xuất dữ liệu thành công", "Thông báo", MessageBoxButtons.OK);
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

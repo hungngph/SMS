@@ -46,17 +46,14 @@
             this.btnLamMoi = new Bunifu.Framework.UI.BunifuFlatButton();
             this.btnTimKiem = new Bunifu.Framework.UI.BunifuFlatButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.quanLyHocSinhDataSet = new SMS.QuanLyHocSinhDataSet();
-            this.tAIKHOANBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tAIKHOANTableAdapter = new SMS.QuanLyHocSinhDataSetTableAdapters.TAIKHOANTableAdapter();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvDSND = new System.Windows.Forms.DataGridView();
+            this.btnMinimized = new Bunifu.Framework.UI.BunifuImageButton();
             ((System.ComponentModel.ISupportInitialize)(this.btnDong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quanLyHocSinhDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tAIKHOANBindingSource)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSND)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimized)).BeginInit();
             this.SuspendLayout();
             // 
             // btnDong
@@ -64,7 +61,7 @@
             this.btnDong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
             this.btnDong.Image = ((System.Drawing.Image)(resources.GetObject("btnDong.Image")));
             this.btnDong.ImageActive = null;
-            this.btnDong.Location = new System.Drawing.Point(895, 11);
+            this.btnDong.Location = new System.Drawing.Point(883, 11);
             this.btnDong.Margin = new System.Windows.Forms.Padding(4);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(42, 34);
@@ -175,9 +172,9 @@
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(34, 165);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(109, 20);
+            this.label4.Size = new System.Drawing.Size(152, 20);
             this.label4.TabIndex = 92;
-            this.label4.Text = "Mật khẩu mới";
+            this.label4.Text = "Xác nhận mật khẩu";
             // 
             // label3
             // 
@@ -186,9 +183,9 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(34, 125);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 20);
+            this.label3.Size = new System.Drawing.Size(77, 20);
             this.label3.TabIndex = 91;
-            this.label3.Text = "Mật khẩu cũ";
+            this.label3.Text = "Mật khẩu";
             // 
             // label2
             // 
@@ -406,30 +403,16 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // quanLyHocSinhDataSet
-            // 
-            this.quanLyHocSinhDataSet.DataSetName = "QuanLyHocSinhDataSet";
-            this.quanLyHocSinhDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tAIKHOANBindingSource
-            // 
-            this.tAIKHOANBindingSource.DataMember = "TAIKHOAN";
-            this.tAIKHOANBindingSource.DataSource = this.quanLyHocSinhDataSet;
-            // 
-            // tAIKHOANTableAdapter
-            // 
-            this.tAIKHOANTableAdapter.ClearBeforeFill = true;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgvDSND);
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(38, 258);
+            this.groupBox2.Location = new System.Drawing.Point(38, 249);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(942, 231);
+            this.groupBox2.Size = new System.Drawing.Size(887, 231);
             this.groupBox2.TabIndex = 110;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Danh sách";
@@ -446,19 +429,35 @@
             this.dgvDSND.Location = new System.Drawing.Point(3, 22);
             this.dgvDSND.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvDSND.Name = "dgvDSND";
+            this.dgvDSND.ReadOnly = true;
             this.dgvDSND.RowHeadersVisible = false;
             this.dgvDSND.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             this.dgvDSND.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDSND.Size = new System.Drawing.Size(936, 207);
-            this.dgvDSND.TabIndex = 0;
-            this.dgvDSND.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDSND_CellMouseClick);
+            this.dgvDSND.Size = new System.Drawing.Size(881, 207);
+            this.dgvDSND.TabIndex = 133;
+            // 
+            // btnMinimized
+            // 
+            this.btnMinimized.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
+            this.btnMinimized.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimized.Image")));
+            this.btnMinimized.ImageActive = null;
+            this.btnMinimized.Location = new System.Drawing.Point(842, 11);
+            this.btnMinimized.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMinimized.Name = "btnMinimized";
+            this.btnMinimized.Size = new System.Drawing.Size(42, 34);
+            this.btnMinimized.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMinimized.TabIndex = 111;
+            this.btnMinimized.TabStop = false;
+            this.btnMinimized.Zoom = 10;
+            this.btnMinimized.Click += new System.EventHandler(this.btnMinimized_Click);
             // 
             // frmDanhSachNguoiDung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
-            this.ClientSize = new System.Drawing.Size(1021, 500);
+            this.ClientSize = new System.Drawing.Size(950, 500);
+            this.Controls.Add(this.btnMinimized);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnTimKiem);
             this.Controls.Add(this.btnLamMoi);
@@ -486,10 +485,9 @@
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmDanhSachNguoiDung_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.btnDong)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quanLyHocSinhDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tAIKHOANBindingSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSND)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimized)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -513,10 +511,8 @@
         private Bunifu.Framework.UI.BunifuFlatButton btnLamMoi;
         private Bunifu.Framework.UI.BunifuFlatButton btnTimKiem;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private QuanLyHocSinhDataSet quanLyHocSinhDataSet;
-        private System.Windows.Forms.BindingSource tAIKHOANBindingSource;
-        private QuanLyHocSinhDataSetTableAdapters.TAIKHOANTableAdapter tAIKHOANTableAdapter;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dgvDSND;
+        private Bunifu.Framework.UI.BunifuImageButton btnMinimized;
     }
 }

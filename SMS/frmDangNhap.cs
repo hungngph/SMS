@@ -59,29 +59,9 @@ namespace SMS
             return "";
         }
 
-        public static string DeCrypt(string strDecypt, string key)
-        {
-            try
-            {
-                byte[] keyArr;
-                byte[] DeCryptArr = Convert.FromBase64String(strDecypt);
-                MD5CryptoServiceProvider MD5Hash = new MD5CryptoServiceProvider();
-                keyArr = MD5Hash.ComputeHash(UTF8Encoding.UTF8.GetBytes(key));
-                TripleDESCryptoServiceProvider tripDes = new TripleDESCryptoServiceProvider();
-                tripDes.Key = keyArr;
-                tripDes.Mode = CipherMode.ECB;
-                tripDes.Padding = PaddingMode.PKCS7;
-                ICryptoTransform transform = tripDes.CreateDecryptor();
-                byte[] arrResult = transform.TransformFinalBlock(DeCryptArr, 0, DeCryptArr.Length);
-                return UTF8Encoding.UTF8.GetString(arrResult);
-            }
-            catch (Exception ex) { }
-            return "";
-        }
-
         private void btnDong_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void frmDangNhap_Load(object sender, EventArgs e)
@@ -100,12 +80,13 @@ namespace SMS
             if (GeneralCheck())
             {
                 string query = "SELECT * FROM TAIKHOAN WHERE" +
-                    " TENDANGNHAP = '" +  txtTaiKhoan.Text +
+                    " TENDANGNHAP = '" + txtTaiKhoan.Text +
                     "' AND MATKHAU = '" + EnCrypt("LTTQ", txtMatKhau.Text);
                 string admin = "' AND QUYENTRUYCAP = 'Admin'";
                 string teacher = "' AND QUYENTRUYCAP = N'Giáo viên'";
                 if (DatabaseConnection.CheckExist(query + admin))
                 {
+                    DatabaseConnection.TenDangNhap = txtTaiKhoan.Text;
                     DatabaseConnection.isAdmin = true;
                     this.Hide();
                     frmChucNang frm = new frmChucNang();
@@ -114,6 +95,7 @@ namespace SMS
                 }
                 if (DatabaseConnection.CheckExist(query + teacher))
                 {
+                    DatabaseConnection.TenDangNhap = txtTaiKhoan.Text;
                     DatabaseConnection.MaGV = txtTaiKhoan.Text;
                     DatabaseConnection.isAdmin = false;
                     this.Hide();

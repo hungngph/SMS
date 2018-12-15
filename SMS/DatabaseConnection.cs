@@ -14,6 +14,7 @@ namespace SMS
     {
         public static bool isAdmin = false;
         public static string MaGV;
+        public static string TenDangNhap;
         // Thành phần kết nối
         public static SqlConnection sqlConnection;
 
@@ -66,6 +67,20 @@ namespace SMS
         public static bool ExcuteSql(string query)
         {
             SqlCommand cmd = new SqlCommand(query, sqlConnection);
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                cmd.Dispose();
+                return false;
+            }
+            return true;
+        }
+        public static bool ExcuteSql(SqlCommand cmd)
+        {
             try
             {
                 cmd.ExecuteNonQuery();

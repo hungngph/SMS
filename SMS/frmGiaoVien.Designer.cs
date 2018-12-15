@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGiaoVien));
             this.btnLamMoi = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtEmail = new Bunifu.Framework.UI.BunifuMaterialTextbox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtSDT = new Bunifu.Framework.UI.BunifuMaterialTextbox();
@@ -65,6 +64,10 @@
             this.label12 = new System.Windows.Forms.Label();
             this.btnXoa = new Bunifu.Framework.UI.BunifuFlatButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnMinimized = new Bunifu.Framework.UI.BunifuImageButton();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.ptbAnh = new System.Windows.Forms.PictureBox();
+            this.btnChonAnh = new Bunifu.Framework.UI.BunifuFlatButton();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGV)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -72,6 +75,9 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnDong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimized)).BeginInit();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbAnh)).BeginInit();
             this.SuspendLayout();
             // 
             // btnLamMoi
@@ -110,20 +116,6 @@
             this.btnLamMoi.Textcolor = System.Drawing.Color.White;
             this.btnLamMoi.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.ForeColor = System.Drawing.Color.White;
-            this.groupBox3.Location = new System.Drawing.Point(887, 69);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Size = new System.Drawing.Size(178, 200);
-            this.groupBox3.TabIndex = 137;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Hình";
             // 
             // txtEmail
             // 
@@ -481,6 +473,7 @@
             this.dgvGV.Location = new System.Drawing.Point(3, 21);
             this.dgvGV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvGV.Name = "dgvGV";
+            this.dgvGV.ReadOnly = true;
             this.dgvGV.RowHeadersVisible = false;
             this.dgvGV.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             this.dgvGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -759,15 +752,92 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // btnMinimized
+            // 
+            this.btnMinimized.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
+            this.btnMinimized.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimized.Image")));
+            this.btnMinimized.ImageActive = null;
+            this.btnMinimized.Location = new System.Drawing.Point(1336, 13);
+            this.btnMinimized.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMinimized.Name = "btnMinimized";
+            this.btnMinimized.Size = new System.Drawing.Size(42, 34);
+            this.btnMinimized.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMinimized.TabIndex = 146;
+            this.btnMinimized.TabStop = false;
+            this.btnMinimized.Zoom = 10;
+            this.btnMinimized.Click += new System.EventHandler(this.btnMinimized_Click);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
+            this.groupBox5.Controls.Add(this.ptbAnh);
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.ForeColor = System.Drawing.Color.White;
+            this.groupBox5.Location = new System.Drawing.Point(882, 64);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox5.Size = new System.Drawing.Size(178, 222);
+            this.groupBox5.TabIndex = 147;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Hình";
+            // 
+            // ptbAnh
+            // 
+            this.ptbAnh.Location = new System.Drawing.Point(6, 16);
+            this.ptbAnh.Name = "ptbAnh";
+            this.ptbAnh.Size = new System.Drawing.Size(166, 199);
+            this.ptbAnh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbAnh.TabIndex = 0;
+            this.ptbAnh.TabStop = false;
+            // 
+            // btnChonAnh
+            // 
+            this.btnChonAnh.Active = false;
+            this.btnChonAnh.Activecolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            this.btnChonAnh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            this.btnChonAnh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnChonAnh.BorderRadius = 7;
+            this.btnChonAnh.ButtonText = "   Chọn ảnh";
+            this.btnChonAnh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnChonAnh.DisabledColor = System.Drawing.Color.Gray;
+            this.btnChonAnh.Iconcolor = System.Drawing.Color.Transparent;
+            this.btnChonAnh.Iconimage = ((System.Drawing.Image)(resources.GetObject("btnChonAnh.Iconimage")));
+            this.btnChonAnh.Iconimage_right = null;
+            this.btnChonAnh.Iconimage_right_Selected = null;
+            this.btnChonAnh.Iconimage_Selected = null;
+            this.btnChonAnh.IconMarginLeft = 0;
+            this.btnChonAnh.IconMarginRight = 0;
+            this.btnChonAnh.IconRightVisible = true;
+            this.btnChonAnh.IconRightZoom = 0D;
+            this.btnChonAnh.IconVisible = true;
+            this.btnChonAnh.IconZoom = 70D;
+            this.btnChonAnh.IsTab = false;
+            this.btnChonAnh.Location = new System.Drawing.Point(882, 14);
+            this.btnChonAnh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnChonAnh.Name = "btnChonAnh";
+            this.btnChonAnh.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
+            this.btnChonAnh.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(81)))), ((int)(((byte)(90)))));
+            this.btnChonAnh.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnChonAnh.selected = false;
+            this.btnChonAnh.Size = new System.Drawing.Size(178, 45);
+            this.btnChonAnh.TabIndex = 148;
+            this.btnChonAnh.Text = "   Chọn ảnh";
+            this.btnChonAnh.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnChonAnh.Textcolor = System.Drawing.Color.White;
+            this.btnChonAnh.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // 
             // frmGiaoVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
             this.ClientSize = new System.Drawing.Size(1432, 764);
+            this.Controls.Add(this.btnChonAnh);
+            this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.btnMinimized);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnLamMoi);
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnChinhSua);
             this.Controls.Add(this.btnTimKiem);
             this.Controls.Add(this.btnThemMoi);
@@ -794,6 +864,9 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnDong)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimized)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ptbAnh)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -802,7 +875,6 @@
         #endregion
 
         private Bunifu.Framework.UI.BunifuFlatButton btnLamMoi;
-        private System.Windows.Forms.GroupBox groupBox3;
         private Bunifu.Framework.UI.BunifuMaterialTextbox txtEmail;
         private System.Windows.Forms.Label label10;
         private Bunifu.Framework.UI.BunifuMaterialTextbox txtSDT;
@@ -836,5 +908,9 @@
         private Bunifu.Framework.UI.BunifuFlatButton btnXoa;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.DataGridView dgvGV;
+        private Bunifu.Framework.UI.BunifuImageButton btnMinimized;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.PictureBox ptbAnh;
+        private Bunifu.Framework.UI.BunifuFlatButton btnChonAnh;
     }
 }

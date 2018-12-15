@@ -54,10 +54,10 @@
             this.bunifuImageButton1.BackColor = System.Drawing.Color.Transparent;
             this.bunifuImageButton1.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton1.Image")));
             this.bunifuImageButton1.ImageActive = null;
-            this.bunifuImageButton1.Location = new System.Drawing.Point(183, 82);
-            this.bunifuImageButton1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.bunifuImageButton1.Location = new System.Drawing.Point(163, 66);
+            this.bunifuImageButton1.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuImageButton1.Name = "bunifuImageButton1";
-            this.bunifuImageButton1.Size = new System.Drawing.Size(213, 185);
+            this.bunifuImageButton1.Size = new System.Drawing.Size(189, 148);
             this.bunifuImageButton1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.bunifuImageButton1.TabIndex = 4;
             this.bunifuImageButton1.TabStop = false;
@@ -68,10 +68,10 @@
             this.bunifuImageButton9.BackColor = System.Drawing.Color.Transparent;
             this.bunifuImageButton9.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton9.Image")));
             this.bunifuImageButton9.ImageActive = null;
-            this.bunifuImageButton9.Location = new System.Drawing.Point(69, 332);
-            this.bunifuImageButton9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.bunifuImageButton9.Location = new System.Drawing.Point(61, 266);
+            this.bunifuImageButton9.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuImageButton9.Name = "bunifuImageButton9";
-            this.bunifuImageButton9.Size = new System.Drawing.Size(43, 48);
+            this.bunifuImageButton9.Size = new System.Drawing.Size(38, 38);
             this.bunifuImageButton9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.bunifuImageButton9.TabIndex = 10;
             this.bunifuImageButton9.TabStop = false;
@@ -82,9 +82,9 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft YaHei", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(126)))), ((int)(((byte)(49)))));
-            this.label12.Location = new System.Drawing.Point(12, 14);
+            this.label12.Location = new System.Drawing.Point(11, 11);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(89, 42);
+            this.label12.Size = new System.Drawing.Size(75, 36);
             this.label12.TabIndex = 78;
             this.label12.Text = "SMS";
             // 
@@ -104,11 +104,11 @@
             this.txtMatKhau.LineIdleColor = System.Drawing.Color.Gray;
             this.txtMatKhau.LineMouseHoverColor = System.Drawing.Color.Gray;
             this.txtMatKhau.LineThickness = 2;
-            this.txtMatKhau.Location = new System.Drawing.Point(137, 434);
-            this.txtMatKhau.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.txtMatKhau.Location = new System.Drawing.Point(122, 347);
+            this.txtMatKhau.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtMatKhau.MaxLength = 32767;
             this.txtMatKhau.Name = "txtMatKhau";
-            this.txtMatKhau.Size = new System.Drawing.Size(360, 48);
+            this.txtMatKhau.Size = new System.Drawing.Size(320, 38);
             this.txtMatKhau.TabIndex = 1;
             this.txtMatKhau.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtMatKhau.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMatKhau_KeyPress);
@@ -118,10 +118,10 @@
             this.bunifuImageButton2.BackColor = System.Drawing.Color.Transparent;
             this.bunifuImageButton2.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton2.Image")));
             this.bunifuImageButton2.ImageActive = null;
-            this.bunifuImageButton2.Location = new System.Drawing.Point(69, 434);
-            this.bunifuImageButton2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.bunifuImageButton2.Location = new System.Drawing.Point(61, 347);
+            this.bunifuImageButton2.Margin = new System.Windows.Forms.Padding(4);
             this.bunifuImageButton2.Name = "bunifuImageButton2";
-            this.bunifuImageButton2.Size = new System.Drawing.Size(43, 48);
+            this.bunifuImageButton2.Size = new System.Drawing.Size(38, 38);
             this.bunifuImageButton2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.bunifuImageButton2.TabIndex = 79;
             this.bunifuImageButton2.TabStop = false;
@@ -143,11 +143,11 @@
             this.txtTaiKhoan.LineIdleColor = System.Drawing.Color.Gray;
             this.txtTaiKhoan.LineMouseHoverColor = System.Drawing.Color.Gray;
             this.txtTaiKhoan.LineThickness = 2;
-            this.txtTaiKhoan.Location = new System.Drawing.Point(137, 332);
-            this.txtTaiKhoan.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.txtTaiKhoan.Location = new System.Drawing.Point(122, 266);
+            this.txtTaiKhoan.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtTaiKhoan.MaxLength = 32767;
             this.txtTaiKhoan.Name = "txtTaiKhoan";
-            this.txtTaiKhoan.Size = new System.Drawing.Size(360, 48);
+            this.txtTaiKhoan.Size = new System.Drawing.Size(320, 38);
             this.txtTaiKhoan.TabIndex = 0;
             this.txtTaiKhoan.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtTaiKhoan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTaiKhoan_KeyPress);
@@ -175,14 +175,14 @@
             this.btnDangNhap.IconVisible = true;
             this.btnDangNhap.IconZoom = 60D;
             this.btnDangNhap.IsTab = false;
-            this.btnDangNhap.Location = new System.Drawing.Point(137, 601);
-            this.btnDangNhap.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.btnDangNhap.Location = new System.Drawing.Point(122, 481);
+            this.btnDangNhap.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
             this.btnDangNhap.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btnDangNhap.OnHoverTextColor = System.Drawing.Color.White;
             this.btnDangNhap.selected = false;
-            this.btnDangNhap.Size = new System.Drawing.Size(317, 66);
+            this.btnDangNhap.Size = new System.Drawing.Size(282, 53);
             this.btnDangNhap.TabIndex = 2;
             this.btnDangNhap.Text = "Đăng Nhập";
             this.btnDangNhap.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -195,10 +195,10 @@
             this.btnDong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
             this.btnDong.Image = ((System.Drawing.Image)(resources.GetObject("btnDong.Image")));
             this.btnDong.ImageActive = null;
-            this.btnDong.Location = new System.Drawing.Point(528, 14);
-            this.btnDong.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnDong.Location = new System.Drawing.Point(468, 11);
+            this.btnDong.Margin = new System.Windows.Forms.Padding(4);
             this.btnDong.Name = "btnDong";
-            this.btnDong.Size = new System.Drawing.Size(47, 42);
+            this.btnDong.Size = new System.Drawing.Size(42, 34);
             this.btnDong.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnDong.TabIndex = 2;
             this.btnDong.TabStop = false;
@@ -208,9 +208,9 @@
             // lblKiemTra
             // 
             this.lblKiemTra.ForeColor = System.Drawing.Color.Red;
-            this.lblKiemTra.Location = new System.Drawing.Point(137, 528);
+            this.lblKiemTra.Location = new System.Drawing.Point(122, 416);
             this.lblKiemTra.Name = "lblKiemTra";
-            this.lblKiemTra.Size = new System.Drawing.Size(360, 32);
+            this.lblKiemTra.Size = new System.Drawing.Size(320, 26);
             this.lblKiemTra.TabIndex = 83;
             // 
             // errorProvider1
@@ -222,22 +222,22 @@
             this.btnMinimized.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
             this.btnMinimized.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimized.Image")));
             this.btnMinimized.ImageActive = null;
-            this.btnMinimized.Location = new System.Drawing.Point(482, 14);
-            this.btnMinimized.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnMinimized.Location = new System.Drawing.Point(427, 11);
+            this.btnMinimized.Margin = new System.Windows.Forms.Padding(4);
             this.btnMinimized.Name = "btnMinimized";
-            this.btnMinimized.Size = new System.Drawing.Size(47, 42);
+            this.btnMinimized.Size = new System.Drawing.Size(42, 34);
             this.btnMinimized.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMinimized.TabIndex = 84;
+            this.btnMinimized.TabIndex = 85;
             this.btnMinimized.TabStop = false;
             this.btnMinimized.Zoom = 10;
             this.btnMinimized.Click += new System.EventHandler(this.btnMinimized_Click);
             // 
             // frmDangNhap
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
-            this.ClientSize = new System.Drawing.Size(588, 728);
+            this.ClientSize = new System.Drawing.Size(523, 582);
             this.Controls.Add(this.btnMinimized);
             this.Controls.Add(this.lblKiemTra);
             this.Controls.Add(this.btnDong);

@@ -71,6 +71,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnTimKem = new Bunifu.Framework.UI.BunifuFlatButton();
+            this.btnMinimized = new Bunifu.Framework.UI.BunifuImageButton();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSNDi)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -78,6 +79,7 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnDong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimized)).BeginInit();
             this.SuspendLayout();
             // 
             // btnLamMoi
@@ -349,6 +351,7 @@
             this.dgvDSNDi.Location = new System.Drawing.Point(3, 21);
             this.dgvDSNDi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvDSNDi.Name = "dgvDSNDi";
+            this.dgvDSNDi.ReadOnly = true;
             this.dgvDSNDi.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             this.dgvDSNDi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDSNDi.Size = new System.Drawing.Size(1122, 226);
@@ -850,12 +853,28 @@
             this.btnTimKem.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTimKem.Click += new System.EventHandler(this.btnTimKem_Click);
             // 
+            // btnMinimized
+            // 
+            this.btnMinimized.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
+            this.btnMinimized.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimized.Image")));
+            this.btnMinimized.ImageActive = null;
+            this.btnMinimized.Location = new System.Drawing.Point(1071, 13);
+            this.btnMinimized.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMinimized.Name = "btnMinimized";
+            this.btnMinimized.Size = new System.Drawing.Size(42, 34);
+            this.btnMinimized.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMinimized.TabIndex = 148;
+            this.btnMinimized.TabStop = false;
+            this.btnMinimized.Zoom = 10;
+            this.btnMinimized.Click += new System.EventHandler(this.btnMinimized_Click);
+            // 
             // frmNhapDiem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
             this.ClientSize = new System.Drawing.Size(1161, 774);
+            this.Controls.Add(this.btnMinimized);
             this.Controls.Add(this.btnTimKem);
             this.Controls.Add(this.btnLamMoi);
             this.Controls.Add(this.btnLuu);
@@ -883,6 +902,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnDong)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimized)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -931,5 +951,6 @@
         private System.Windows.Forms.DataGridView dgvDSNDi;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private Bunifu.Framework.UI.BunifuFlatButton btnTimKem;
+        private Bunifu.Framework.UI.BunifuImageButton btnMinimized;
     }
 }

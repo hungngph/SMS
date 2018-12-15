@@ -48,11 +48,13 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnTimKiem = new Bunifu.Framework.UI.BunifuFlatButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnMinimized = new Bunifu.Framework.UI.BunifuImageButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnDong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSXD)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimized)).BeginInit();
             this.SuspendLayout();
             // 
             // label12
@@ -269,7 +271,7 @@
             this.btnDong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
             this.btnDong.Image = ((System.Drawing.Image)(resources.GetObject("btnDong.Image")));
             this.btnDong.ImageActive = null;
-            this.btnDong.Location = new System.Drawing.Point(1112, 13);
+            this.btnDong.Location = new System.Drawing.Point(1110, 13);
             this.btnDong.Margin = new System.Windows.Forms.Padding(4);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(42, 34);
@@ -291,6 +293,7 @@
             this.dgvDSXD.Location = new System.Drawing.Point(3, 21);
             this.dgvDSXD.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvDSXD.Name = "dgvDSXD";
+            this.dgvDSXD.ReadOnly = true;
             this.dgvDSXD.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             this.dgvDSXD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDSXD.Size = new System.Drawing.Size(1122, 226);
@@ -303,7 +306,7 @@
             this.btnXuat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(71)))), ((int)(((byte)(79)))));
             this.btnXuat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnXuat.BorderRadius = 7;
-            this.btnXuat.ButtonText = "Xuất bảng điểm";
+            this.btnXuat.ButtonText = "  Xuất Excel";
             this.btnXuat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnXuat.DisabledColor = System.Drawing.Color.Gray;
             this.btnXuat.Iconcolor = System.Drawing.Color.Transparent;
@@ -325,9 +328,9 @@
             this.btnXuat.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(81)))), ((int)(((byte)(90)))));
             this.btnXuat.OnHoverTextColor = System.Drawing.Color.White;
             this.btnXuat.selected = false;
-            this.btnXuat.Size = new System.Drawing.Size(193, 45);
+            this.btnXuat.Size = new System.Drawing.Size(165, 45);
             this.btnXuat.TabIndex = 149;
-            this.btnXuat.Text = "Xuất bảng điểm";
+            this.btnXuat.Text = "  Xuất Excel";
             this.btnXuat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnXuat.Textcolor = System.Drawing.Color.White;
             this.btnXuat.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -377,7 +380,7 @@
             this.btnTimKiem.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(81)))), ((int)(((byte)(90)))));
             this.btnTimKiem.OnHoverTextColor = System.Drawing.Color.White;
             this.btnTimKiem.selected = false;
-            this.btnTimKiem.Size = new System.Drawing.Size(193, 45);
+            this.btnTimKiem.Size = new System.Drawing.Size(165, 45);
             this.btnTimKiem.TabIndex = 151;
             this.btnTimKiem.Text = "Tìm kiếm";
             this.btnTimKiem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -389,12 +392,28 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // btnMinimized
+            // 
+            this.btnMinimized.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
+            this.btnMinimized.Image = ((System.Drawing.Image)(resources.GetObject("btnMinimized.Image")));
+            this.btnMinimized.ImageActive = null;
+            this.btnMinimized.Location = new System.Drawing.Point(1069, 13);
+            this.btnMinimized.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMinimized.Name = "btnMinimized";
+            this.btnMinimized.Size = new System.Drawing.Size(42, 34);
+            this.btnMinimized.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMinimized.TabIndex = 154;
+            this.btnMinimized.TabStop = false;
+            this.btnMinimized.Zoom = 10;
+            this.btnMinimized.Click += new System.EventHandler(this.btnMinimized_Click);
+            // 
             // frmXemDiem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(62)))), ((int)(((byte)(66)))));
             this.ClientSize = new System.Drawing.Size(1165, 582);
+            this.Controls.Add(this.btnMinimized);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnDong);
@@ -415,6 +434,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSXD)).EndInit();
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimized)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -440,5 +460,6 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private Bunifu.Framework.UI.BunifuFlatButton btnTimKiem;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private Bunifu.Framework.UI.BunifuImageButton btnMinimized;
     }
 }
